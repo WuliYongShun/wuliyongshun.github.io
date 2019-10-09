@@ -132,18 +132,18 @@
 
 
 
-<meta name="description" content="多线程‘’’ C++CRITICAL_SECTION CriticalSection;    //防止共有资源被同时调用static int number = 10;    //定义一个变量初始值为10 DWORD WINAPI ThreadOne(LPVOID lpParameter){    qDebug() &amp;lt;&amp;lt; “窗口1开始售票”;    while(1)    {">
+<meta name="description" content="多线程123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263CRITICAL_SECTION CriticalSection;    //防止共有资源被同时调用static int number = 10;    //定">
 <meta name="keywords" content="C++,Qt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="多线程">
+<meta property="og:title" content="C++多线程">
 <meta property="og:url" content="http://yoursite.com/2019/10/09/C++-多线程/index.html">
 <meta property="og:site_name" content="邢MEIMEI">
-<meta property="og:description" content="多线程‘’’ C++CRITICAL_SECTION CriticalSection;    //防止共有资源被同时调用static int number = 10;    //定义一个变量初始值为10 DWORD WINAPI ThreadOne(LPVOID lpParameter){    qDebug() &amp;lt;&amp;lt; “窗口1开始售票”;    while(1)    {">
+<meta property="og:description" content="多线程123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263CRITICAL_SECTION CriticalSection;    //防止共有资源被同时调用static int number = 10;    //定">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-09T07:37:37.455Z">
+<meta property="og:updated_time" content="2019-10-09T07:53:38.402Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="多线程">
-<meta name="twitter:description" content="多线程‘’’ C++CRITICAL_SECTION CriticalSection;    //防止共有资源被同时调用static int number = 10;    //定义一个变量初始值为10 DWORD WINAPI ThreadOne(LPVOID lpParameter){    qDebug() &amp;lt;&amp;lt; “窗口1开始售票”;    while(1)    {">
+<meta name="twitter:title" content="C++多线程">
+<meta name="twitter:description" content="多线程123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263CRITICAL_SECTION CriticalSection;    //防止共有资源被同时调用static int number = 10;    //定">
 
 
 
@@ -179,7 +179,7 @@
 
 
 
-  <title>多线程 | 邢MEIMEI</title>
+  <title>C++多线程 | 邢MEIMEI</title>
   
 
 
@@ -333,7 +333,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">多线程</h1>
+          <h1 class="post-title" itemprop="name headline">C++多线程</h1>
         
 
         <div class="post-meta">
@@ -410,11 +410,7 @@
       
 
       
-        <h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><p>‘’’ C++<br>CRITICAL_SECTION CriticalSection;    //防止共有资源被同时调用<br>static int number = 10;    //定义一个变量初始值为10</p>
-<p>DWORD WINAPI ThreadOne(LPVOID lpParameter)<br>{<br>    qDebug() &lt;&lt; “窗口1开始售票”;<br>    while(1)<br>    {<br>        EnterCriticalSection(&amp;CriticalSection);    //进入临界状态<br>        if(number &gt; 0)<br>        {<br>            qDebug() &lt;&lt; “窗口1售出” &lt;&lt; number;    //打印出线程1抢占数值<br>            number–;<br>            Sleep(1000);<br>       }<br>       LeaveCriticalSection(&amp;CriticalSection);    //退出临界状态<br>       Sleep(100);<br>   }<br>   return 0;<br>}</p>
-<p>DWORD WINAPI ThreadTwo(LPVOID lpParameter)<br>{<br>    qDebug() &lt;&lt; “窗口2售票开始”;<br>    while(1)<br>    {<br>    EnterCriticalSection(&amp;CriticalSection);    //进入线程临界状态<br>    if(number&gt;0)<br>    {<br>        qDebug() &lt;&lt; “窗口2售出第” &lt;&lt; number &lt;&lt; “张票”；<br>        Sleep(1000);<br>        number–;<br>    }<br>    LeaveCriticalSection(&amp;CriticalSection);<br>    Sleep(100);<br>    }<br>    return 0;<br>}</p>
-<p>void Widget::on_pushButton_clicked()<br>{<br>    HANDLE HOne,HTwo;<br>    InitaializeCriticalSection(&amp;CriticalSection);<br>    qDebug() &lt;&lt; “<strong>*****</strong>vpoet<strong>**</strong>“;<br>    HOne = CreateThread(NULL,0,ThreadOne,NULL,0,NULL);<br>    HTwo = CreateThread(NULL,0,ThreadTwo,NULL,0,NULL);<br>    CloseHandle(HOne);<br>    CloseHandle(HTwo);<br>    while(TRUE)<br>    {<br>        if(number = 0)<br>        {<br>            qDebug() &lt;&lt; “票没了！”<br>            DeleCriticalSection(&amp;CriticalSection);<br>            return;<br>        }<br>        else<br>        {<br>            coutinue;<br>        }<br>    }<br>    return;<br>}<br>‘’’</p>
-
+        <h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">CRITICAL_SECTION CriticalSection;    <span class="comment">//防止共有资源被同时调用</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> number = <span class="number">10</span>;    <span class="comment">//定义一个变量初始值为10</span></span><br><span class="line"></span><br><span class="line"><span class="function">DWORD WINAPI <span class="title">ThreadOne</span><span class="params">(LPVOID lpParameter)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    qDebug() &lt;&lt; <span class="string">"窗口1开始售票"</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        EnterCriticalSection(&amp;CriticalSection);    <span class="comment">//进入临界状态</span></span><br><span class="line">        <span class="keyword">if</span>(number &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            qDebug() &lt;&lt; <span class="string">"窗口1售出"</span> &lt;&lt; number;    <span class="comment">//打印出线程1抢占数值</span></span><br><span class="line">            number--;</span><br><span class="line">            Sleep(<span class="number">1000</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       LeaveCriticalSection(&amp;CriticalSection);    <span class="comment">//退出临界状态</span></span><br><span class="line">       Sleep(<span class="number">100</span>);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">DWORD WINAPI <span class="title">ThreadTwo</span><span class="params">(LPVOID lpParameter)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    qDebug() &lt;&lt; <span class="string">"窗口2售票开始"</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">    EnterCriticalSection(&amp;CriticalSection);    <span class="comment">//进入线程临界状态</span></span><br><span class="line">    <span class="keyword">if</span>(number&gt;<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        qDebug() &lt;&lt; <span class="string">"窗口2售出第"</span> &lt;&lt; number &lt;&lt; <span class="string">"张票"</span>；</span><br><span class="line">        Sleep(<span class="number">1000</span>);</span><br><span class="line">        number--;</span><br><span class="line">    &#125;</span><br><span class="line">    LeaveCriticalSection(&amp;CriticalSection);</span><br><span class="line">    Sleep(<span class="number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> Widget::on_pushButton_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    HANDLE HOne,HTwo;</span><br><span class="line">    InitaializeCriticalSection(&amp;CriticalSection);</span><br><span class="line">    qDebug() &lt;&lt; <span class="string">"*********vpoet******"</span>;</span><br><span class="line">    HOne = CreateThread(<span class="literal">NULL</span>,<span class="number">0</span>,ThreadOne,<span class="literal">NULL</span>,<span class="number">0</span>,<span class="literal">NULL</span>);</span><br><span class="line">    HTwo = CreateThread(<span class="literal">NULL</span>,<span class="number">0</span>,ThreadTwo,<span class="literal">NULL</span>,<span class="number">0</span>,<span class="literal">NULL</span>);</span><br><span class="line">    CloseHandle(HOne);</span><br><span class="line">    CloseHandle(HTwo);</span><br><span class="line">    <span class="keyword">while</span>(TRUE)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(number = <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            qDebug() &lt;&lt; <span class="string">"票没了！"</span></span><br><span class="line">            DeleCriticalSection(&amp;CriticalSection);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            coutinue;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -446,8 +442,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/09/C++-函数/" rel="next" title="C++函数">
-                <i class="fa fa-chevron-left"></i> C++函数
+              <a href="/2019/10/09/C++-内联函数(C++ inline)/" rel="next" title="C++内联函数(C++ inline)">
+                <i class="fa fa-chevron-left"></i> C++内联函数(C++ inline)
               </a>
             
           </div>
@@ -456,8 +452,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/09/YF-阻塞与非阻塞的区别/" rel="prev" title="阻塞与非阻塞的区别">
-                阻塞与非阻塞的区别 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/09/Qt-QT_BEGIN_NAMESPACE和QT_END_NAMESPACE的作用/" rel="prev" title="Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用">
+                Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -546,7 +542,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

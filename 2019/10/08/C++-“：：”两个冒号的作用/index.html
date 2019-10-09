@@ -140,7 +140,7 @@
 <meta property="og:site_name" content="邢MEIMEI">
 <meta property="og:description" content="“：：”两个冒号的作用“::”在C++中表示作用域，和所属关系。”::”是运算符中登记最高的，它分为三种，如下： 一、作用域符号作用域符号”::”的前面一般是类名称，后面一般是该类的成员名称，C++为例避免不同的类有名称相同的成员而采用作用域的方式进行区分。 例如：A、B表示两个类，在A、B中都有成员member那么：        1、A::member就表示类A中的成员member；">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-09T07:34:19.824Z">
+<meta property="og:updated_time" content="2019-10-09T07:53:25.580Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="两个冒号的作用">
 <meta name="twitter:description" content="“：：”两个冒号的作用“::”在C++中表示作用域，和所属关系。”::”是运算符中登记最高的，它分为三种，如下： 一、作用域符号作用域符号”::”的前面一般是类名称，后面一般是该类的成员名称，C++为例避免不同的类有名称相同的成员而采用作用域的方式进行区分。 例如：A、B表示两个类，在A、B中都有成员member那么：        1、A::member就表示类A中的成员member；">
@@ -414,8 +414,16 @@
 <p>一、作用域符号<br>作用域符号”::”的前面一般是类名称，后面一般是该类的成员名称，C++为例避免不同的类有名称相同的成员而采用作用域的方式进行区分。</p>
 <p>例如：A、B表示两个类，在A、B中都有成员member<br>那么：<br>        1、A::member就表示类A中的成员member；<br>        2、B::member就表示类B中的成员member；</p>
 <p>二、全局作用域符号<br>全局作用域符号：当全局变量在局部函数中与其中某个变量重名，那么就可以用::来区分，例如：<br>char zhou；    //全局变量<br>void    sleep()<br>{<br>    char zhou;    //局部变量<br>    char(局部变量) = char(局部变量) * char(局部变量);<br>    ::char(全局变量) = ::char(全局变量) * ::char(全局变量)；<br>}</p>
-<p>三、作用域分解运算符<br>::是C++里的作用域分解运算符，比如类说明了一个类A，类A里声明了一个成员函数void f(),但没有在类的声明里给出f的定义，那么在类外定义f时，就要写成void A :: f();表示这个f()函数是类A的成员函数。例如：<br>class CA{<br>public :<br>    int ca_var;<br>    int add（int a, int b）;<br>    int add(int a);<br>};</p>
-<p>//那么在实现这个函数时候，必须要这么写<br>int CA::add(int a, int b)<br>{<br>    return a + b;<br>}<br>//另外，双冒号也常常用于在类变量内部作为当前类实例的元素进行表示，比如：<br>int CA::add(int a)<br>{<br>    return a + :: ca_var;<br>}<br>//表示当前类实例中的变量ca_var;</p>
+<p>三、作用域分解运算符<br>::是C++里的作用域分解运算符，比如类说明了一个类A，类A里声明了一个成员函数void f(),但没有在类的声明里给出f的定义，那么在类外定义f时，就要写成void A :: f();表示这个f()函数是类A的成员函数。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class CA&#123;</span><br><span class="line">public :</span><br><span class="line">    int ca_var;</span><br><span class="line">    int add（int a, int b）;</span><br><span class="line">    int add(int a);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>//那么在实现这个函数时候，必须要这么写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int CA::add(int a, int b)</span><br><span class="line">&#123;</span><br><span class="line">    return a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>//另外，双冒号也常常用于在类变量内部作为当前类实例的元素进行表示，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int CA::add(int a)</span><br><span class="line">&#123;</span><br><span class="line">    return a + :: ca_var;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>//表示当前类实例中的变量ca_var;</p>
 
       
     </div>
@@ -446,8 +454,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/08/Markdown-使用及语法/" rel="next" title="Markdown教程">
-                <i class="fa fa-chevron-left"></i> Markdown教程
+              <a href="/2019/10/08/Markdown-标题/" rel="next" title="Markdown 标题">
+                <i class="fa fa-chevron-left"></i> Markdown 标题
               </a>
             
           </div>
@@ -456,8 +464,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/08/Markdown-标题/" rel="prev" title="Markdown 标题">
-                Markdown 标题 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/08/Qt-多线程实例/" rel="prev" title="Qt多线程实例">
+                Qt多线程实例 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -546,7 +554,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
