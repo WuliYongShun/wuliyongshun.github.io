@@ -741,152 +741,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/Qt-QT_BEGIN_NAMESPACE和QT_END_NAMESPACE的作用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="不会飞的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="邢MEIMEI">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/09/Qt-QT_BEGIN_NAMESPACE和QT_END_NAMESPACE的作用/" itemprop="url">Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-09T15:11:06+08:00">
-                2019-10-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Qt/" itemprop="url" rel="index">
-                    <span itemprop="name">Qt</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用"><a href="#Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用" class="headerlink" title="Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用"></a>Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用</h1><p> QT_BEGIN_NAMESPACE其实就是个宏，以前Qt4是没有命令空间的，后来才加上的，编译Qt源码时会有选项，是否将这些类放到专用的Qt命令空间内，默认是没有的。这就出来问题了，为了统一，如果你的代码在默认没有Qt命令空间的SDK中编译，那你就不用在前面加上命令空间，反之则需要。</p>
-<p>为了屏蔽上面这个差异，使得你的代码能在这两种情况下都进行编译，Qt就提供了QT_BEGIN_NAMESPACE宏，这样开发者就省的自己来用程序或宏进行处理了。</p>
-<p>至于说该宏提升编译速度什么的，那是上述类的声明的作用，与Qt无关的（也即与该宏QT_BEGIN_NAMESPACE无关），若要大幅提升编译速度需要开启qt的预编译头文件，会另起章节解说，并附测试结果。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#ifndef PREVIEWWINDOW_H</span><br><span class="line"></span><br><span class="line">#define PREVIEWWINDOW_H</span><br><span class="line"></span><br><span class="line">#include &lt;QMainWindow&gt;</span><br><span class="line"></span><br><span class="line">#if 0</span><br><span class="line"><span class="comment">// 方式一:</span></span><br><span class="line">#include &lt;QTextBrowser&gt;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#if 0</span><br><span class="line"><span class="comment">// 方式二:    比方式一可轻微提升编译速度</span></span><br><span class="line">class QTextBrowser;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#if 1</span><br><span class="line"><span class="comment">// 方式三:    编译速度与方式二一样，该宏用于自编译qt源码是否启动命令空间的补充</span></span><br><span class="line">QT_BEGIN_NAMESPACE</span><br><span class="line">class QTextBrowser;</span><br><span class="line">QT_END_NAMESPACE</span><br><span class="line"></span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">class <span class="attribute">PreviewWindow</span> : public QMainWindow</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"><span class="attribute">public</span>:</span><br><span class="line">    explicit PreviewWindow(QWidget *<span class="built_in">parent</span> = <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="attribute">signals</span>:</span><br><span class="line"></span><br><span class="line">public <span class="attribute">slots</span>:</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">#endif // PREVIEWWINDOW_H</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/Qt-常用控件的创建和使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -983,6 +837,306 @@
             <h1 id="常用控件的创建和使用"><a href="#常用控件的创建和使用" class="headerlink" title="常用控件的创建和使用"></a>常用控件的创建和使用</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"mainwindow.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMenuBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QToolBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QStatusBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QLabel&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDockWidget&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QTextEdit&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MainWindow::MainWindow(QWidget *parent)</span><br><span class="line">    : QMainWindow(parent)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;resize(<span class="number">600</span>,<span class="number">400</span>);  <span class="comment">//Set the window size</span></span><br><span class="line"></span><br><span class="line">    QMenuBar *bar = menuBar();  <span class="comment">//创建菜单栏,只能一个</span></span><br><span class="line">    setMenuBar(bar);    <span class="comment">//将菜单栏设置到窗口中</span></span><br><span class="line"></span><br><span class="line">    QMenu * fileMenu = bar-&gt;addMenu(<span class="string">"文件"</span>);</span><br><span class="line">    QMenu * editMenu = bar-&gt;addMenu(<span class="string">"编辑"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//添加文件菜单项</span></span><br><span class="line">    QAction * createAction = fileMenu-&gt;addAction(<span class="string">"创建"</span>);</span><br><span class="line">    fileMenu-&gt;addSeparator();<span class="comment">//添加分割线</span></span><br><span class="line">    QAction * closeAction = fileMenu-&gt;addAction(<span class="string">"关闭"</span>);</span><br><span class="line">    fileMenu-&gt;addSeparator();<span class="comment">//添加分割线</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//添加编辑菜单栏</span></span><br><span class="line">    QAction * copyAction = editMenu-&gt;addAction(<span class="string">"拷贝"</span>);</span><br><span class="line">    QAction * pasteAction = editMenu-&gt;addAction(<span class="string">"粘贴"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//菜单栏 可以有很多个</span></span><br><span class="line">    QToolBar *toolBar = <span class="keyword">new</span> QToolBar(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//将工具栏放入窗口中</span></span><br><span class="line">    addToolBar(Qt::LeftToolBarArea, toolBar);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//只允许左右停靠</span></span><br><span class="line">    toolBar-&gt;setAllowedAreas(Qt::LeftToolBarArea | Qt::RightToolBarArea</span><br><span class="line">                             | Qt::TopToolBarArea | Qt::BottomToolBarArea);</span><br><span class="line">    <span class="comment">//设置是否允许浮动</span></span><br><span class="line">    toolBar-&gt;setFloatable(<span class="literal">false</span>);</span><br><span class="line">    <span class="comment">//设置是否允许移动</span></span><br><span class="line">    toolBar-&gt;setMovable(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//在工具栏中添加控件</span></span><br><span class="line">    QPushButton *btn = <span class="keyword">new</span> QPushButton(<span class="string">"按钮1"</span>,<span class="keyword">this</span>);</span><br><span class="line">    QPushButton *btn1 = <span class="keyword">new</span> QPushButton(<span class="string">"按钮2"</span>,<span class="keyword">this</span>);</span><br><span class="line">    btn1-&gt;setStyleSheet(<span class="string">"QPushButton&#123;color:red&#125;"</span>);</span><br><span class="line">    QPushButton *btn2 = <span class="keyword">new</span> QPushButton(<span class="string">"按钮3"</span>,<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    toolBar-&gt;addWidget(btn);</span><br><span class="line">    toolBar-&gt;addSeparator();</span><br><span class="line">    toolBar-&gt;addWidget(btn1);</span><br><span class="line">    toolBar-&gt;addSeparator();</span><br><span class="line">    toolBar-&gt;addWidget(btn2);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//状态栏，只有一个</span></span><br><span class="line">    QStatusBar * status = statusBar();</span><br><span class="line">    <span class="comment">//将状态栏放入到窗口中</span></span><br><span class="line">    setStatusBar(status);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建标签</span></span><br><span class="line">    QLabel * label1 = <span class="keyword">new</span> QLabel(<span class="string">"左侧信息"</span>, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//将label放入到状态栏中</span></span><br><span class="line">    status-&gt;addWidget(label1);</span><br><span class="line">    QLabel * label2 = <span class="keyword">new</span> QLabel(<span class="string">"右侧信息"</span>, <span class="keyword">this</span>);</span><br><span class="line">    status-&gt;addPermanentWidget(label2);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//铆接部件 浮动窗口 可以多个</span></span><br><span class="line">    QDockWidget * dock = <span class="keyword">new</span> QDockWidget(<span class="string">"铆接部件"</span>, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//将铆接部件放到窗体的核心部件的下方</span></span><br><span class="line">    addDockWidget(Qt::BottomDockWidgetArea, dock);</span><br><span class="line">    <span class="comment">//铆接部件设置停靠范文</span></span><br><span class="line">    dock-&gt;setAllowedAreas(Qt::TopDockWidgetArea | Qt::BottomDockWidgetArea);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建核心部件 只能有一个</span></span><br><span class="line">    QTextEdit * edit = <span class="keyword">new</span> QTextEdit(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//将文本编辑 放到窗体中间</span></span><br><span class="line">    setCentralWidget(edit);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainWindow::~MainWindow()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>总结：直接使用set方法的窗口中只能有一个，使用add方法的窗口中可以有很多个</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/Qt-设置背景界面/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="不会飞的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邢MEIMEI">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/09/Qt-设置背景界面/" itemprop="url">Qt设置背景界面</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-09T15:11:06+08:00">
+                2019-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Qt/" itemprop="url" rel="index">
+                    <span itemprop="name">Qt</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Qt设置背景界面"><a href="#Qt设置背景界面" class="headerlink" title="Qt设置背景界面"></a>Qt设置背景界面</h1><p>1.设置背景图片的一种方式</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">QPixmap <span class="title">pixmap</span><span class="params">(QString::fromUtf8(<span class="string">"./icon/background.png"</span>))</span></span>;<span class="comment">//当前文件夹下面的图片</span></span><br><span class="line">QPalette palette = <span class="keyword">this</span>-&gt;palette();</span><br><span class="line">palette.setBrush(backgroundRole(), QBrush(pixmap));</span><br><span class="line">setPalette(palette);</span><br></pre></td></tr></table></figure>
+
+<p>2.使用Qt捕获windows窗口变化事件函数，自动调整背景缩放</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> （当前函数所在类）::resizeEvent(QResizeEvent *e)</span><br><span class="line">&#123;</span><br><span class="line">    Q_UNUSED(e);    <span class="comment">//不使用传入参数e，避免警告</span></span><br><span class="line">    <span class="keyword">int</span> w = <span class="keyword">this</span>-&gt;widght();    <span class="comment">//w为当前widght宽度</span></span><br><span class="line">    <span class="keyword">int</span> h = <span class="keyword">this</span>-&gt;height();    <span class="comment">//h为当前widght高度</span></span><br><span class="line">    QPixmap back_icon(QString::fromUtf8("资源路径"))；    //back_icon指向图片路径</span><br><span class="line">    QPlette.setBrush(<span class="keyword">this</span>-&gt;backgroundRole(),QBrush(back_icon.scaled(w,h)));    <span class="comment">//设置窗体背景和和缩放比例</span></span><br><span class="line">    <span class="keyword">this</span>-&gt;setPalette(palette);    <span class="comment">//设置当前palette生效</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/08/C++-“：：”两个冒号的作用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="不会飞的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="邢MEIMEI">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/08/C++-“：：”两个冒号的作用/" itemprop="url">两个冒号的作用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-08T13:28:06+08:00">
+                2019-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/YY/" itemprop="url" rel="index">
+                    <span itemprop="name">YY</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="“：：”两个冒号的作用"><a href="#“：：”两个冒号的作用" class="headerlink" title="“：：”两个冒号的作用"></a>“：：”两个冒号的作用</h1><p>“::”在C++中表示作用域，和所属关系。”::”是运算符中登记最高的，它分为三种，如下：</p>
+<p>一、作用域符号<br>作用域符号”::”的前面一般是类名称，后面一般是该类的成员名称，C++为例避免不同的类有名称相同的成员而采用作用域的方式进行区分。</p>
+<p>例如：A、B表示两个类，在A、B中都有成员member<br>那么：<br>        1、A::member就表示类A中的成员member；<br>        2、B::member就表示类B中的成员member；</p>
+<p>二、全局作用域符号<br>全局作用域符号：当全局变量在局部函数中与其中某个变量重名，那么就可以用::来区分，例如：<br>char zhou；    //全局变量<br>void    sleep()<br>{<br>    char zhou;    //局部变量<br>    char(局部变量) = char(局部变量) * char(局部变量);<br>    ::char(全局变量) = ::char(全局变量) * ::char(全局变量)；<br>}</p>
+<p>三、作用域分解运算符<br>::是C++里的作用域分解运算符，比如类说明了一个类A，类A里声明了一个成员函数void f(),但没有在类的声明里给出f的定义，那么在类外定义f时，就要写成void A :: f();表示这个f()函数是类A的成员函数。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class CA&#123;</span><br><span class="line">public :</span><br><span class="line">    int ca_var;</span><br><span class="line">    int add（int a, int b）;</span><br><span class="line">    int add(int a);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>//那么在实现这个函数时候，必须要这么写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int CA::add(int a, int b)</span><br><span class="line">&#123;</span><br><span class="line">    return a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>//另外，双冒号也常常用于在类变量内部作为当前类实例的元素进行表示，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int CA::add(int a)</span><br><span class="line">&#123;</span><br><span class="line">    return a + :: ca_var;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>//表示当前类实例中的变量ca_var;</p>
 
           
         
@@ -1318,161 +1472,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/08/C++-“：：”两个冒号的作用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="不会飞的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="邢MEIMEI">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/08/C++-“：：”两个冒号的作用/" itemprop="url">两个冒号的作用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-08T13:28:06+08:00">
-                2019-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/YY/" itemprop="url" rel="index">
-                    <span itemprop="name">YY</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="“：：”两个冒号的作用"><a href="#“：：”两个冒号的作用" class="headerlink" title="“：：”两个冒号的作用"></a>“：：”两个冒号的作用</h1><p>“::”在C++中表示作用域，和所属关系。”::”是运算符中登记最高的，它分为三种，如下：</p>
-<p>一、作用域符号<br>作用域符号”::”的前面一般是类名称，后面一般是该类的成员名称，C++为例避免不同的类有名称相同的成员而采用作用域的方式进行区分。</p>
-<p>例如：A、B表示两个类，在A、B中都有成员member<br>那么：<br>        1、A::member就表示类A中的成员member；<br>        2、B::member就表示类B中的成员member；</p>
-<p>二、全局作用域符号<br>全局作用域符号：当全局变量在局部函数中与其中某个变量重名，那么就可以用::来区分，例如：<br>char zhou；    //全局变量<br>void    sleep()<br>{<br>    char zhou;    //局部变量<br>    char(局部变量) = char(局部变量) * char(局部变量);<br>    ::char(全局变量) = ::char(全局变量) * ::char(全局变量)；<br>}</p>
-<p>三、作用域分解运算符<br>::是C++里的作用域分解运算符，比如类说明了一个类A，类A里声明了一个成员函数void f(),但没有在类的声明里给出f的定义，那么在类外定义f时，就要写成void A :: f();表示这个f()函数是类A的成员函数。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class CA&#123;</span><br><span class="line">public :</span><br><span class="line">    int ca_var;</span><br><span class="line">    int add（int a, int b）;</span><br><span class="line">    int add(int a);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>//那么在实现这个函数时候，必须要这么写</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int CA::add(int a, int b)</span><br><span class="line">&#123;</span><br><span class="line">    return a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>//另外，双冒号也常常用于在类变量内部作为当前类实例的元素进行表示，比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int CA::add(int a)</span><br><span class="line">&#123;</span><br><span class="line">    return a + :: ca_var;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>//表示当前类实例中的变量ca_var;</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/08/Markdown-使用及语法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1527,29 +1526,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/Typora/" itemprop="url" rel="index">
-                    <span itemprop="name">Typora</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/Typora/Markdown/" itemprop="url" rel="index">
+                  <a href="/categories/Markdown/" itemprop="url" rel="index">
                     <span itemprop="name">Markdown</span>
                   </a>
                 </span>
@@ -1694,7 +1671,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
