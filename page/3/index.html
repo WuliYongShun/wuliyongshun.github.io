@@ -315,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/08/Qt-多线程实例/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/08/Markdown2-标题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="不会飞的风">
@@ -334,7 +334,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/08/Qt-多线程实例/" itemprop="url">Qt多线程实例</a></h1>
+                <a class="post-title-link" href="/2019/10/08/Markdown2-标题/" itemprop="url">Markdown 标题</a></h1>
         
 
         <div class="post-meta">
@@ -369,8 +369,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/YY/" itemprop="url" rel="index">
-                    <span itemprop="name">YY</span>
+                  <a href="/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
                   </a>
                 </span>
 
@@ -408,12 +408,16 @@
       
         
           
-            <h1 id="多线程实例"><a href="#多线程实例" class="headerlink" title="多线程实例"></a>多线程实例</h1><p><strong>使用QThread类，实现Qt多线程</strong></p>
-<p>方法：使用一个类继承QThread，然后重新改写虚函数run()。</p>
-<p><strong>使用moveToThread，实现Qt多线程</strong></p>
-<p>通过这种方法不需要继承QThread,重写run()函数来实现Qt多线程，而是通过moveToThread(QThread *thread)函数将工作累对象移到所创建的QThread对象中去执行。利用信号与槽机制。</p>
-<p>程序结构：<br>1.在主程序中，那里需要多线程就在哪里创建一个QThread实例；<br>2.把耗时操作封装到一个继承QObject的子类</p>
+            <p>Mrakdown 标题有两种格式。</p>
+<h1 id="1、使用-和-标记一级和二级标题"><a href="#1、使用-和-标记一级和二级标题" class="headerlink" title="1、使用=和 - 标记一级和二级标题"></a>1、使用=和 - 标记一级和二级标题</h1><p>=和-标记语法格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">这是一级标题展示</span><br><span class="line">=================</span><br><span class="line"></span><br><span class="line">这是二级标题</span><br><span class="line">-----------------</span><br></pre></td></tr></table></figure>
 
+<p>效果如下（在源码格式下查看格式）：</p>
+<h1 id="这是一级标题展示"><a href="#这是一级标题展示" class="headerlink" title="这是一级标题展示"></a>这是一级标题展示</h1><h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><h1 id="2、使用-号标记"><a href="#2、使用-号标记" class="headerlink" title="2、使用#号标记"></a>2、使用#号标记</h1><p>使用‘#’号可以表一1-6级标题，一级标题对应一个#号，二级标题对应两个#号，以此类推</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure>
+
+<p>效果如下所示（可以在源码格式下查看详细格式）：</p>
+<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6>
           
         
       

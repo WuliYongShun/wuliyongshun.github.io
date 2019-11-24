@@ -95,6 +95,32 @@
   </entry>
   
   <entry>
+    <title>C++内联函数(C++ inline)</title>
+    <link href="http://yoursite.com/2019/10/09/C++-%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0(C++%20inline)/"/>
+    <id>http://yoursite.com/2019/10/09/C++-内联函数(C++ inline)/</id>
+    <published>2019-10-09T07:11:06.000Z</published>
+    <updated>2019-10-09T07:54:13.460Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="C-内联函数-C-inline"><a href="#C-内联函数-C-inline" class="headerlink" title="C++内联函数(C++ inline)"></a>C++内联函数(C++ inline)</h1><p>使用函数能够避免将相同代码重写多次的麻烦，还能减少可执行程序的体积，但也会带来程序运行时间上的开销。</p><p>函数调用在执行时，首先要在栈中为形参和局部变量分配存储空间，然后还要将实参的值复制给形参，接下来还要将函数的返回地址（该地址指明了函数执行结束后，程序应该回到哪里继续执行）放入栈中，最后才跳转到函数内部执行。这个过程是要耗费时间的。</p><p>另外，函数执行 return 语句返回时，需要从栈中回收形参和局部变量占用的存储空间，然后从栈中取出返回地址，再跳转到该地址继续执行，这个过程也要耗费时间。</p><p>总之，使用函数调用语句和直接把函数中的代码重新抄写一遍相比，节省了人力，但是带来了程序运行时间上的额外开销。</p><p>一般情况下，这个开销可以忽略不计。但是，如果一个函数内部没有几条语句，执行时间本来就非常短，那么这个函数调用产生的额外开销和函数本身执行的时间相比，就显得不能忽略了。假如这样的函数在一个循环中被上千万次地执行，函数调用导致的时间开销可能就会使得程序运行明显变慢。</p><p>作为特别注重程序执行效率，适合编写底层系统软件的高级程序设计语言，C++ 用 inline 关键字较好地解决了函数调用开销的问题。</p><p>在 C++ 中，可以在定义函数时，在返回值类型前面加上 inline 关键字。如： </p><pre><code>inline int Max (int a, int b){    if(a &gt;b)        return a;    return b;}</code></pre><p>增加了 inline 关键字的函数称为“内联函数”。内联函数和普通函数的区别在于：当编译器处理调用内联函数的语句时，不会将该语句编译成函数调用的指令，而是直接将整个函数体的代码插人调用语句处，就像整个函数体在调用处被重写了一遍一样。</p><p>有了内联函数，就能像调用一个函数那样方便地重复使用一段代码，而不需要付出执行函数调用的额外开销。很显然，使用内联函数会使最终可执行程序的体积增加。以时间换取空间，或增加空间消耗来节省时间，这是计算机学科中常用的方法。</p><p>内联函数中的代码应该只是很简单、执行很快的几条语句。如果一个函数较为复杂，它执行的时间可能上万倍于函数调用的额外开销，那么将其作为内联函数处理的结果是付出让代码体积增加不少的代价，却只使速度提高了万分之一，这显然是不划算的。</p><p>有时函数看上去很简单，例如只有一个包含一两条语句的循环，但该循环的执行次数可能很多，要消耗大量时间，那么这种情况也不适合将其实现为内联函数。</p><p>注意：的是，调用内联函数的语句前必须已经出现内联函数的定义（即整个数体），而不能只出现内联函数的声明！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;C-内联函数-C-inline&quot;&gt;&lt;a href=&quot;#C-内联函数-C-inline&quot; class=&quot;headerlink&quot; title=&quot;C++内联函数(C++ inline)&quot;&gt;&lt;/a&gt;C++内联函数(C++ inline)&lt;/h1&gt;&lt;p&gt;使用函数能够避免将相
+      
+    
+    </summary>
+    
+    
+      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>C++中显式、隐式与explicit关键字</title>
     <link href="http://yoursite.com/2019/10/09/C++-%E4%B8%AD%E6%98%BE%E5%BC%8F%E3%80%81%E9%9A%90%E5%BC%8F%E4%B8%8Eexplicit%E5%85%B3%E9%94%AE%E5%AD%97/"/>
     <id>http://yoursite.com/2019/10/09/C++-中显式、隐式与explicit关键字/</id>
@@ -121,19 +147,20 @@
   </entry>
   
   <entry>
-    <title>C++内联函数(C++ inline)</title>
-    <link href="http://yoursite.com/2019/10/09/C++-%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0(C++%20inline)/"/>
-    <id>http://yoursite.com/2019/10/09/C++-内联函数(C++ inline)/</id>
+    <title>构造函数和析构函数</title>
+    <link href="http://yoursite.com/2019/10/09/C++-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/"/>
+    <id>http://yoursite.com/2019/10/09/C++-构造函数和析构函数/</id>
     <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:54:13.460Z</updated>
+    <updated>2019-10-09T07:53:55.839Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="C-内联函数-C-inline"><a href="#C-内联函数-C-inline" class="headerlink" title="C++内联函数(C++ inline)"></a>C++内联函数(C++ inline)</h1><p>使用函数能够避免将相同代码重写多次的麻烦，还能减少可执行程序的体积，但也会带来程序运行时间上的开销。</p><p>函数调用在执行时，首先要在栈中为形参和局部变量分配存储空间，然后还要将实参的值复制给形参，接下来还要将函数的返回地址（该地址指明了函数执行结束后，程序应该回到哪里继续执行）放入栈中，最后才跳转到函数内部执行。这个过程是要耗费时间的。</p><p>另外，函数执行 return 语句返回时，需要从栈中回收形参和局部变量占用的存储空间，然后从栈中取出返回地址，再跳转到该地址继续执行，这个过程也要耗费时间。</p><p>总之，使用函数调用语句和直接把函数中的代码重新抄写一遍相比，节省了人力，但是带来了程序运行时间上的额外开销。</p><p>一般情况下，这个开销可以忽略不计。但是，如果一个函数内部没有几条语句，执行时间本来就非常短，那么这个函数调用产生的额外开销和函数本身执行的时间相比，就显得不能忽略了。假如这样的函数在一个循环中被上千万次地执行，函数调用导致的时间开销可能就会使得程序运行明显变慢。</p><p>作为特别注重程序执行效率，适合编写底层系统软件的高级程序设计语言，C++ 用 inline 关键字较好地解决了函数调用开销的问题。</p><p>在 C++ 中，可以在定义函数时，在返回值类型前面加上 inline 关键字。如： </p><pre><code>inline int Max (int a, int b){    if(a &gt;b)        return a;    return b;}</code></pre><p>增加了 inline 关键字的函数称为“内联函数”。内联函数和普通函数的区别在于：当编译器处理调用内联函数的语句时，不会将该语句编译成函数调用的指令，而是直接将整个函数体的代码插人调用语句处，就像整个函数体在调用处被重写了一遍一样。</p><p>有了内联函数，就能像调用一个函数那样方便地重复使用一段代码，而不需要付出执行函数调用的额外开销。很显然，使用内联函数会使最终可执行程序的体积增加。以时间换取空间，或增加空间消耗来节省时间，这是计算机学科中常用的方法。</p><p>内联函数中的代码应该只是很简单、执行很快的几条语句。如果一个函数较为复杂，它执行的时间可能上万倍于函数调用的额外开销，那么将其作为内联函数处理的结果是付出让代码体积增加不少的代价，却只使速度提高了万分之一，这显然是不划算的。</p><p>有时函数看上去很简单，例如只有一个包含一两条语句的循环，但该循环的执行次数可能很多，要消耗大量时间，那么这种情况也不适合将其实现为内联函数。</p><p>注意：的是，调用内联函数的语句前必须已经出现内联函数的定义（即整个数体），而不能只出现内联函数的声明！</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h1><p><strong>构造函数</strong></p><p><strong>析构函数</strong><br>    构造函数（destructor）与构造函数相反，当对象结束其生命周期，如对象所在的函数已调用完毕时，系统自动执行析构函数。析构函数用来做“清理善后”的工作（例如在建立对象时用new开辟了一片内存空间，delete会自动调用析构函数后释放内存）。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;C-内联函数-C-inline&quot;&gt;&lt;a href=&quot;#C-内联函数-C-inline&quot; class=&quot;headerlink&quot; title=&quot;C++内联函数(C++ inline)&quot;&gt;&lt;/a&gt;C++内联函数(C++ inline)&lt;/h1&gt;&lt;p&gt;使用函数能够避免将相
+        &lt;h1 id=&quot;构造函数和析构函数&quot;&gt;&lt;a href=&quot;#构造函数和析构函数&quot; class=&quot;headerlink&quot; title=&quot;构造函数和析构函数&quot;&gt;&lt;/a&gt;构造函数和析构函数&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;构造函数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;析构函数&lt;
       
     
     </summary>
@@ -201,33 +228,6 @@
   </entry>
   
   <entry>
-    <title>构造函数和析构函数</title>
-    <link href="http://yoursite.com/2019/10/09/C++-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/"/>
-    <id>http://yoursite.com/2019/10/09/C++-构造函数和析构函数/</id>
-    <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:53:55.839Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h1><p><strong>构造函数</strong></p><p><strong>析构函数</strong><br>    构造函数（destructor）与构造函数相反，当对象结束其生命周期，如对象所在的函数已调用完毕时，系统自动执行析构函数。析构函数用来做“清理善后”的工作（例如在建立对象时用new开辟了一片内存空间，delete会自动调用析构函数后释放内存）。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;构造函数和析构函数&quot;&gt;&lt;a href=&quot;#构造函数和析构函数&quot; class=&quot;headerlink&quot; title=&quot;构造函数和析构函数&quot;&gt;&lt;/a&gt;构造函数和析构函数&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;构造函数&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;析构函数&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Qt中C++中文显示</title>
     <link href="http://yoursite.com/2019/10/09/Qt-C++%E4%B8%AD%E6%96%87%E6%98%BE%E7%A4%BA/"/>
     <id>http://yoursite.com/2019/10/09/Qt-C++中文显示/</id>
@@ -250,58 +250,6 @@
     
     
       <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Qt中QLineEdit的使用</title>
-    <link href="http://yoursite.com/2019/10/09/Qt-QLineEdit%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>http://yoursite.com/2019/10/09/Qt-QLineEdit的使用/</id>
-    <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:54:49.759Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="QLineEdit的使用"><a href="#QLineEdit的使用" class="headerlink" title="QLineEdit的使用"></a>QLineEdit的使用</h1><p>定义：<br>        QLineEdit是一个单行文本编辑控件。<br>功能：<br>        可以调用多个可用函数，输入和编辑单行文本，比如撤销、恢复、剪切、粘贴及拖放等。</p><p>函数说明：<br>    echoMode()：可以设置其属性，比如一密码的形式输入；<br>    maxLength()：限制文本长度；<br>    validator()或inputMask()：限制智能输入数字，在对同一个QLineEdit的validator或者inputmask进行转换时，最好将它的validator或者inputmask清楚，以避免错误发生；</p><p>与QLineEdit相关的一个类QTextEdit，她允许多行文本以及富文本编辑：<br>    setText()或者insert()改变其中的文本;<br>    text()：获得文本；<br>    displayText()：获得显示的文本；<br>    setSelection()或者selectAll()选中文本；<br>    cut()、copy()、paste()函数可以对文本中的数据进行剪切、复制和粘贴；<br>    setAlignment()：设置文本为位置；</p><p>信号反馈：<br>    文本改变信号：textChange();<br>    不是由setText()造成文本的改变信号：textEdit();<br>    鼠标光标改变时信号：cursorPostionChanged()；<br>    返回键或者回车键按下时信号：returnPressed();</p><p>常用方法说明：</p><p>1.setPlaceholderText()设置提示文字<br><img src="https://images2015.cnblogs.com/blog/628412/201602/628412-20160205204407710-892374169.jpg" alt="文本框提示文字"><br>豆瓣电影的搜索输入框，没有输入任何字符时，显示“电影、影人、影院、电视剧”这些占位文字，对用户输入作相关提示。<br>echoLineEdit-&gt;setPlaceholderText(“电影、影人、影院、电视剧”);</p><p>2.setEchoMode()设置模式<br><img src="https://images2015.cnblogs.com/blog/628412/201602/628412-20160205223926663-818638865.jpg" alt="淘宝"><br>淘宝登录界面的一部分，用户名可以直接看到，密码一般都用小黑点掩盖。</p><figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            <span class="comment">//默认,输入什么即显示什么</span></span><br><span class="line">            echoLineEdit-&gt;setEchoMode(<span class="attribute">QLineEdit</span>::Normal);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">     <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">             <span class="comment">//密码，一般用小黑点覆盖你所输入的字符</span></span><br><span class="line">             echoLineEdit-&gt;setEchoMode(<span class="attribute">QLineEdit</span>::Password);</span><br><span class="line">             <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            <span class="comment">//编辑时输入字符显示输入内容否则用小黑点代替</span></span><br><span class="line">            echoLineEdit-&gt;setEchoMode(<span class="attribute">QLintEdit</span>::PasswordEchoOnEdit);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            <span class="comment">//任何输入都看不见（只是看不见，不是不能输入）</span></span><br><span class="line">            echoLineEdit-&gt;setEchoMode(<span class="attribute">ALineEdit</span>::NoEcho);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>3.setAlignment()设置文本位置</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            alignmentLineEdit-&gt;setAlignment(Qt::Alignleft);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            alignmentLineEdit-&gt;setAlignment(Qt::AlignCenter);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            alignmentLineEdit-&gt;setAlignment(Qt::AlignRight);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>4.setReadOnly()设置能否编辑</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            accessLineEdit-&gt;setReadOnly(<span class="literal">false</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            accessLineEdit-&gt;setReadOnly(<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>5.setValidator()对输入进行限制<br>这种方式的是指是通过正则表达式限制输入内容<br><img src="https://images2015.cnblogs.com/blog/628412/201602/628412-20160205224628272-1758708857.jpg" alt="输入限制"></p><figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            <span class="comment">//无限制</span></span><br><span class="line">            validatorLineEdit-&gt;setValidator(<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            <span class="comment">//只能输入整数</span></span><br><span class="line">            validatorLineEdit-&gt;setValidator(<span class="keyword">new</span> QintValidator);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            <span class="comment">//实例，只能输入-180到180之间的小数，小数点后最多两位（可用于限制经纬度等）</span></span><br><span class="line">            QDoubleValodator *pDfValidator = <span class="keyword">new</span> QDoubleValidator(<span class="number">-180</span>, <span class="number">180.0</span>, <span class="number">2</span>, validatorLineEdit);</span><br><span class="line">            pDfValidator-&gt;setNotation(<span class="attribute">QDoubleValidator</span>::StandardNotation);</span><br><span class="line">            validatorLineEdit-&gt;setValidator(pDfValidator);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>6.setInputMask()对输入进行限制<br>通过限制格式限制输入，具体怎么格式化客气参考Qt助手。<br><img src="https://images2015.cnblogs.com/blog/628412/201602/628412-20160205213813663-1721525219.jpg" alt="对输入进行限制"></p><figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            inputMaskLineEdit-&gt;setInputMask(<span class="string">""</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            inputMaskLineEdit-&gt;setInputMask(<span class="string">"-99 99 99 99 99;_"</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            inputMaskLineEdit-&gt;setInputMask(<span class="string">"0000-00-00"</span>);</span><br><span class="line">            inputMaskLineEdit-&gt;setText(<span class="string">"00000000"</span>);</span><br><span class="line">            inputMaskLineEdit-&gt;setCursorposition(<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            inputMaskLineEdit-&gt;setInputMask(<span class="string">"&gt;AAAAA-AAAAA-AAAAA-AAAAA-AAAAA;#"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>7.setLength()设置可以输入的最多字符数<br>//最多只能输入9个字符</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echoLineEdit-&gt;setMaxLength(9);</span><br></pre></td></tr></table></figure><p>8.validator和inputmask的结合<br>比如经纬度用“度”</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;QLineEdit的使用&quot;&gt;&lt;a href=&quot;#QLineEdit的使用&quot; class=&quot;headerlink&quot; title=&quot;QLineEdit的使用&quot;&gt;&lt;/a&gt;QLineEdit的使用&lt;/h1&gt;&lt;p&gt;定义：&lt;br&gt;        QLineEdit是一个单行文
-      
-    
-    </summary>
-    
-    
-      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
-    
-    
-      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用</title>
-    <link href="http://yoursite.com/2019/10/09/Qt-QT_BEGIN_NAMESPACE%E5%92%8CQT_END_NAMESPACE%E7%9A%84%E4%BD%9C%E7%94%A8/"/>
-    <id>http://yoursite.com/2019/10/09/Qt-QT_BEGIN_NAMESPACE和QT_END_NAMESPACE的作用/</id>
-    <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:21:15.682Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用"><a href="#Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用" class="headerlink" title="Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用"></a>Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用</h1><p> QT_BEGIN_NAMESPACE其实就是个宏，以前Qt4是没有命令空间的，后来才加上的，编译Qt源码时会有选项，是否将这些类放到专用的Qt命令空间内，默认是没有的。这就出来问题了，为了统一，如果你的代码在默认没有Qt命令空间的SDK中编译，那你就不用在前面加上命令空间，反之则需要。</p><p>为了屏蔽上面这个差异，使得你的代码能在这两种情况下都进行编译，Qt就提供了QT_BEGIN_NAMESPACE宏，这样开发者就省的自己来用程序或宏进行处理了。</p><p>至于说该宏提升编译速度什么的，那是上述类的声明的作用，与Qt无关的（也即与该宏QT_BEGIN_NAMESPACE无关），若要大幅提升编译速度需要开启qt的预编译头文件，会另起章节解说，并附测试结果。</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#ifndef PREVIEWWINDOW_H</span><br><span class="line"></span><br><span class="line">#define PREVIEWWINDOW_H</span><br><span class="line"></span><br><span class="line">#include &lt;QMainWindow&gt;</span><br><span class="line"></span><br><span class="line">#if 0</span><br><span class="line"><span class="comment">// 方式一:</span></span><br><span class="line">#include &lt;QTextBrowser&gt;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#if 0</span><br><span class="line"><span class="comment">// 方式二:    比方式一可轻微提升编译速度</span></span><br><span class="line">class QTextBrowser;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#if 1</span><br><span class="line"><span class="comment">// 方式三:    编译速度与方式二一样，该宏用于自编译qt源码是否启动命令空间的补充</span></span><br><span class="line">QT_BEGIN_NAMESPACE</span><br><span class="line">class QTextBrowser;</span><br><span class="line">QT_END_NAMESPACE</span><br><span class="line"></span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">class <span class="attribute">PreviewWindow</span> : public QMainWindow</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"><span class="attribute">public</span>:</span><br><span class="line">    explicit PreviewWindow(QWidget *<span class="built_in">parent</span> = <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="attribute">signals</span>:</span><br><span class="line"></span><br><span class="line">public <span class="attribute">slots</span>:</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">#endif // PREVIEWWINDOW_H</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用&quot;&gt;&lt;a href=&quot;#Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用&quot; class=&quot;headerlink&quot; title=&quot;Qt中QT_BEGI
-      
-    
-    </summary>
-    
-    
-      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
-    
     
       <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
     
@@ -387,6 +335,32 @@
   </entry>
   
   <entry>
+    <title>Qt中QLineEdit的使用</title>
+    <link href="http://yoursite.com/2019/10/09/Qt-QLineEdit%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yoursite.com/2019/10/09/Qt-QLineEdit的使用/</id>
+    <published>2019-10-09T07:11:06.000Z</published>
+    <updated>2019-10-09T07:54:49.759Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="QLineEdit的使用"><a href="#QLineEdit的使用" class="headerlink" title="QLineEdit的使用"></a>QLineEdit的使用</h1><p>定义：<br>        QLineEdit是一个单行文本编辑控件。<br>功能：<br>        可以调用多个可用函数，输入和编辑单行文本，比如撤销、恢复、剪切、粘贴及拖放等。</p><p>函数说明：<br>    echoMode()：可以设置其属性，比如一密码的形式输入；<br>    maxLength()：限制文本长度；<br>    validator()或inputMask()：限制智能输入数字，在对同一个QLineEdit的validator或者inputmask进行转换时，最好将它的validator或者inputmask清楚，以避免错误发生；</p><p>与QLineEdit相关的一个类QTextEdit，她允许多行文本以及富文本编辑：<br>    setText()或者insert()改变其中的文本;<br>    text()：获得文本；<br>    displayText()：获得显示的文本；<br>    setSelection()或者selectAll()选中文本；<br>    cut()、copy()、paste()函数可以对文本中的数据进行剪切、复制和粘贴；<br>    setAlignment()：设置文本为位置；</p><p>信号反馈：<br>    文本改变信号：textChange();<br>    不是由setText()造成文本的改变信号：textEdit();<br>    鼠标光标改变时信号：cursorPostionChanged()；<br>    返回键或者回车键按下时信号：returnPressed();</p><p>常用方法说明：</p><p>1.setPlaceholderText()设置提示文字<br><img src="https://images2015.cnblogs.com/blog/628412/201602/628412-20160205204407710-892374169.jpg" alt="文本框提示文字"><br>豆瓣电影的搜索输入框，没有输入任何字符时，显示“电影、影人、影院、电视剧”这些占位文字，对用户输入作相关提示。<br>echoLineEdit-&gt;setPlaceholderText(“电影、影人、影院、电视剧”);</p><p>2.setEchoMode()设置模式<br><img src="https://images2015.cnblogs.com/blog/628412/201602/628412-20160205223926663-818638865.jpg" alt="淘宝"><br>淘宝登录界面的一部分，用户名可以直接看到，密码一般都用小黑点掩盖。</p><figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            <span class="comment">//默认,输入什么即显示什么</span></span><br><span class="line">            echoLineEdit-&gt;setEchoMode(<span class="attribute">QLineEdit</span>::Normal);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">     <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">             <span class="comment">//密码，一般用小黑点覆盖你所输入的字符</span></span><br><span class="line">             echoLineEdit-&gt;setEchoMode(<span class="attribute">QLineEdit</span>::Password);</span><br><span class="line">             <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            <span class="comment">//编辑时输入字符显示输入内容否则用小黑点代替</span></span><br><span class="line">            echoLineEdit-&gt;setEchoMode(<span class="attribute">QLintEdit</span>::PasswordEchoOnEdit);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            <span class="comment">//任何输入都看不见（只是看不见，不是不能输入）</span></span><br><span class="line">            echoLineEdit-&gt;setEchoMode(<span class="attribute">ALineEdit</span>::NoEcho);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>3.setAlignment()设置文本位置</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            alignmentLineEdit-&gt;setAlignment(Qt::Alignleft);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            alignmentLineEdit-&gt;setAlignment(Qt::AlignCenter);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            alignmentLineEdit-&gt;setAlignment(Qt::AlignRight);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>4.setReadOnly()设置能否编辑</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            accessLineEdit-&gt;setReadOnly(<span class="literal">false</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            accessLineEdit-&gt;setReadOnly(<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>5.setValidator()对输入进行限制<br>这种方式的是指是通过正则表达式限制输入内容<br><img src="https://images2015.cnblogs.com/blog/628412/201602/628412-20160205224628272-1758708857.jpg" alt="输入限制"></p><figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            <span class="comment">//无限制</span></span><br><span class="line">            validatorLineEdit-&gt;setValidator(<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            <span class="comment">//只能输入整数</span></span><br><span class="line">            validatorLineEdit-&gt;setValidator(<span class="keyword">new</span> QintValidator);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            <span class="comment">//实例，只能输入-180到180之间的小数，小数点后最多两位（可用于限制经纬度等）</span></span><br><span class="line">            QDoubleValodator *pDfValidator = <span class="keyword">new</span> QDoubleValidator(<span class="number">-180</span>, <span class="number">180.0</span>, <span class="number">2</span>, validatorLineEdit);</span><br><span class="line">            pDfValidator-&gt;setNotation(<span class="attribute">QDoubleValidator</span>::StandardNotation);</span><br><span class="line">            validatorLineEdit-&gt;setValidator(pDfValidator);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>6.setInputMask()对输入进行限制<br>通过限制格式限制输入，具体怎么格式化客气参考Qt助手。<br><img src="https://images2015.cnblogs.com/blog/628412/201602/628412-20160205213813663-1721525219.jpg" alt="对输入进行限制"></p><figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            inputMaskLineEdit-&gt;setInputMask(<span class="string">""</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            inputMaskLineEdit-&gt;setInputMask(<span class="string">"-99 99 99 99 99;_"</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            inputMaskLineEdit-&gt;setInputMask(<span class="string">"0000-00-00"</span>);</span><br><span class="line">            inputMaskLineEdit-&gt;setText(<span class="string">"00000000"</span>);</span><br><span class="line">            inputMaskLineEdit-&gt;setCursorposition(<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            inputMaskLineEdit-&gt;setInputMask(<span class="string">"&gt;AAAAA-AAAAA-AAAAA-AAAAA-AAAAA;#"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>7.setLength()设置可以输入的最多字符数<br>//最多只能输入9个字符</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echoLineEdit-&gt;setMaxLength(9);</span><br></pre></td></tr></table></figure><p>8.validator和inputmask的结合<br>比如经纬度用“度”</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;QLineEdit的使用&quot;&gt;&lt;a href=&quot;#QLineEdit的使用&quot; class=&quot;headerlink&quot; title=&quot;QLineEdit的使用&quot;&gt;&lt;/a&gt;QLineEdit的使用&lt;/h1&gt;&lt;p&gt;定义：&lt;br&gt;        QLineEdit是一个单行文
+      
+    
+    </summary>
+    
+    
+      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
+    
+    
+      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Qt常用控件的创建和使用</title>
     <link href="http://yoursite.com/2019/10/09/Qt-%E5%B8%B8%E7%94%A8%E6%8E%A7%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/"/>
     <id>http://yoursite.com/2019/10/09/Qt-常用控件的创建和使用/</id>
@@ -427,6 +401,32 @@
       
         &lt;h1 id=&quot;Qt设置背景界面&quot;&gt;&lt;a href=&quot;#Qt设置背景界面&quot; class=&quot;headerlink&quot; title=&quot;Qt设置背景界面&quot;&gt;&lt;/a&gt;Qt设置背景界面&lt;/h1&gt;&lt;p&gt;1.设置背景图片的一种方式&lt;/p&gt;
 &lt;figure class=&quot;highlight c++
+      
+    
+    </summary>
+    
+    
+      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
+    
+    
+      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用</title>
+    <link href="http://yoursite.com/2019/10/09/Qt-QT_BEGIN_NAMESPACE%E5%92%8CQT_END_NAMESPACE%E7%9A%84%E4%BD%9C%E7%94%A8/"/>
+    <id>http://yoursite.com/2019/10/09/Qt-QT_BEGIN_NAMESPACE和QT_END_NAMESPACE的作用/</id>
+    <published>2019-10-09T07:11:06.000Z</published>
+    <updated>2019-10-09T07:21:15.682Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用"><a href="#Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用" class="headerlink" title="Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用"></a>Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用</h1><p> QT_BEGIN_NAMESPACE其实就是个宏，以前Qt4是没有命令空间的，后来才加上的，编译Qt源码时会有选项，是否将这些类放到专用的Qt命令空间内，默认是没有的。这就出来问题了，为了统一，如果你的代码在默认没有Qt命令空间的SDK中编译，那你就不用在前面加上命令空间，反之则需要。</p><p>为了屏蔽上面这个差异，使得你的代码能在这两种情况下都进行编译，Qt就提供了QT_BEGIN_NAMESPACE宏，这样开发者就省的自己来用程序或宏进行处理了。</p><p>至于说该宏提升编译速度什么的，那是上述类的声明的作用，与Qt无关的（也即与该宏QT_BEGIN_NAMESPACE无关），若要大幅提升编译速度需要开启qt的预编译头文件，会另起章节解说，并附测试结果。</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#ifndef PREVIEWWINDOW_H</span><br><span class="line"></span><br><span class="line">#define PREVIEWWINDOW_H</span><br><span class="line"></span><br><span class="line">#include &lt;QMainWindow&gt;</span><br><span class="line"></span><br><span class="line">#if 0</span><br><span class="line"><span class="comment">// 方式一:</span></span><br><span class="line">#include &lt;QTextBrowser&gt;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#if 0</span><br><span class="line"><span class="comment">// 方式二:    比方式一可轻微提升编译速度</span></span><br><span class="line">class QTextBrowser;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#if 1</span><br><span class="line"><span class="comment">// 方式三:    编译速度与方式二一样，该宏用于自编译qt源码是否启动命令空间的补充</span></span><br><span class="line">QT_BEGIN_NAMESPACE</span><br><span class="line">class QTextBrowser;</span><br><span class="line">QT_END_NAMESPACE</span><br><span class="line"></span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">class <span class="attribute">PreviewWindow</span> : public QMainWindow</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"><span class="attribute">public</span>:</span><br><span class="line">    explicit PreviewWindow(QWidget *<span class="built_in">parent</span> = <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="attribute">signals</span>:</span><br><span class="line"></span><br><span class="line">public <span class="attribute">slots</span>:</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">#endif // PREVIEWWINDOW_H</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用&quot;&gt;&lt;a href=&quot;#Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用&quot; class=&quot;headerlink&quot; title=&quot;Qt中QT_BEGI
       
     
     </summary>
@@ -518,33 +518,6 @@
   </entry>
   
   <entry>
-    <title>Markdown 标题</title>
-    <link href="http://yoursite.com/2019/10/08/Markdown2-%E6%A0%87%E9%A2%98/"/>
-    <id>http://yoursite.com/2019/10/08/Markdown2-标题/</id>
-    <published>2019-10-08T05:28:06.000Z</published>
-    <updated>2019-10-14T05:06:53.523Z</updated>
-    
-    <content type="html"><![CDATA[<p>Mrakdown 标题有两种格式。</p><h1 id="1、使用-和-标记一级和二级标题"><a href="#1、使用-和-标记一级和二级标题" class="headerlink" title="1、使用=和 - 标记一级和二级标题"></a>1、使用=和 - 标记一级和二级标题</h1><p>=和-标记语法格式如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">这是一级标题展示</span><br><span class="line">=================</span><br><span class="line"></span><br><span class="line">这是二级标题</span><br><span class="line">-----------------</span><br></pre></td></tr></table></figure><p>效果如下（在源码格式下查看格式）：</p><h1 id="这是一级标题展示"><a href="#这是一级标题展示" class="headerlink" title="这是一级标题展示"></a>这是一级标题展示</h1><h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><h1 id="2、使用-号标记"><a href="#2、使用-号标记" class="headerlink" title="2、使用#号标记"></a>2、使用#号标记</h1><p>使用‘#’号可以表一1-6级标题，一级标题对应一个#号，二级标题对应两个#号，以此类推</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure><p>效果如下所示（可以在源码格式下查看详细格式）：</p><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Mrakdown 标题有两种格式。&lt;/p&gt;
-&lt;h1 id=&quot;1、使用-和-标记一级和二级标题&quot;&gt;&lt;a href=&quot;#1、使用-和-标记一级和二级标题&quot; class=&quot;headerlink&quot; title=&quot;1、使用=和 - 标记一级和二级标题&quot;&gt;&lt;/a&gt;1、使用=和 - 标记
-      
-    
-    </summary>
-    
-    
-      <category term="Hexo" scheme="http://yoursite.com/categories/Hexo/"/>
-    
-    
-      <category term="Markdown" scheme="http://yoursite.com/tags/Markdown/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Qt多线程实例</title>
     <link href="http://yoursite.com/2019/10/08/Qt-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E4%BE%8B/"/>
     <id>http://yoursite.com/2019/10/08/Qt-多线程实例/</id>
@@ -568,6 +541,33 @@
     
     
       <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Markdown 标题</title>
+    <link href="http://yoursite.com/2019/10/08/Markdown2-%E6%A0%87%E9%A2%98/"/>
+    <id>http://yoursite.com/2019/10/08/Markdown2-标题/</id>
+    <published>2019-10-08T05:28:06.000Z</published>
+    <updated>2019-10-14T05:06:53.523Z</updated>
+    
+    <content type="html"><![CDATA[<p>Mrakdown 标题有两种格式。</p><h1 id="1、使用-和-标记一级和二级标题"><a href="#1、使用-和-标记一级和二级标题" class="headerlink" title="1、使用=和 - 标记一级和二级标题"></a>1、使用=和 - 标记一级和二级标题</h1><p>=和-标记语法格式如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">这是一级标题展示</span><br><span class="line">=================</span><br><span class="line"></span><br><span class="line">这是二级标题</span><br><span class="line">-----------------</span><br></pre></td></tr></table></figure><p>效果如下（在源码格式下查看格式）：</p><h1 id="这是一级标题展示"><a href="#这是一级标题展示" class="headerlink" title="这是一级标题展示"></a>这是一级标题展示</h1><h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><h1 id="2、使用-号标记"><a href="#2、使用-号标记" class="headerlink" title="2、使用#号标记"></a>2、使用#号标记</h1><p>使用‘#’号可以表一1-6级标题，一级标题对应一个#号，二级标题对应两个#号，以此类推</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure><p>效果如下所示（可以在源码格式下查看详细格式）：</p><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Mrakdown 标题有两种格式。&lt;/p&gt;
+&lt;h1 id=&quot;1、使用-和-标记一级和二级标题&quot;&gt;&lt;a href=&quot;#1、使用-和-标记一级和二级标题&quot; class=&quot;headerlink&quot; title=&quot;1、使用=和 - 标记一级和二级标题&quot;&gt;&lt;/a&gt;1、使用=和 - 标记
+      
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="http://yoursite.com/categories/Hexo/"/>
+    
+    
+      <category term="Markdown" scheme="http://yoursite.com/tags/Markdown/"/>
     
   </entry>
   
