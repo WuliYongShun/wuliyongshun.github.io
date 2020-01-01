@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-11-26T05:35:19.260Z</updated>
+  <updated>2020-01-01T09:45:08.413Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>BC95_AT_指令</title>
+    <link href="http://yoursite.com/2020/01/01/BC95_AT_%E6%8C%87%E4%BB%A4/"/>
+    <id>http://yoursite.com/2020/01/01/BC95_AT_指令/</id>
+    <published>2020-01-01T03:47:12.000Z</published>
+    <updated>2020-01-01T09:45:08.413Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-3GPP命令"><a href="#1-3GPP命令" class="headerlink" title="1.   3GPP命令"></a>1.   3GPP命令</h1><h2 id="1-1-显示产品详细信息命令"><a href="#1-1-显示产品详细信息命令" class="headerlink" title="1.1 显示产品详细信息命令"></a>1.1 显示产品详细信息命令</h2><p><strong>ATI</strong> </p><p>例子：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ATI</span><br><span class="line">Quectel</span><br><span class="line">BC95-B5</span><br><span class="line">Revision:BC95B5HBR01A02W16</span><br><span class="line">OK</span><br></pre></td></tr></table></figure><h2 id="1-2-打开关闭命令回显"><a href="#1-2-打开关闭命令回显" class="headerlink" title="1.2 打开关闭命令回显"></a>1.2 打开关闭命令回显</h2><p><strong>ATE</strong></p><p>例子：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ATE0</span><br><span class="line">OK</span><br><span class="line">ATI</span><br><span class="line">Quectel</span><br><span class="line">BC95-B5</span><br><span class="line">Revision:BC95B5HBR01A02W16</span><br><span class="line">OK</span><br><span class="line">ATE1</span><br><span class="line">OK</span><br><span class="line">ATI</span><br><span class="line">ATI</span><br><span class="line">Quectel</span><br><span class="line">BC95-B5</span><br><span class="line">Revision:BC95B5HBR01A02W16</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;1-3GPP命令&quot;&gt;&lt;a href=&quot;#1-3GPP命令&quot; class=&quot;headerlink&quot; title=&quot;1.   3GPP命令&quot;&gt;&lt;/a&gt;1.   3GPP命令&lt;/h1&gt;&lt;h2 id=&quot;1-1-显示产品详细信息命令&quot;&gt;&lt;a href=&quot;#1-1-显示产品详
+      
+    
+    </summary>
+    
+    
+      <category term="NBIOT" scheme="http://yoursite.com/categories/NBIOT/"/>
+    
+    
+      <category term="BC95" scheme="http://yoursite.com/tags/BC95/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux4-VIM文本编辑器的安装及使用</title>
@@ -196,19 +222,20 @@
   </entry>
   
   <entry>
-    <title>Qt中C++中文显示</title>
-    <link href="http://yoursite.com/2019/10/09/Qt-C++%E4%B8%AD%E6%96%87%E6%98%BE%E7%A4%BA/"/>
-    <id>http://yoursite.com/2019/10/09/Qt-C++中文显示/</id>
+    <title>构造函数和析构函数</title>
+    <link href="http://yoursite.com/2019/10/09/C++-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/"/>
+    <id>http://yoursite.com/2019/10/09/C++-构造函数和析构函数/</id>
     <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:54:40.813Z</updated>
+    <updated>2019-10-09T07:53:55.839Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Qt中C-中文显示"><a href="#Qt中C-中文显示" class="headerlink" title="Qt中C++中文显示"></a>Qt中C++中文显示</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QTextCodec&gt;    //1.包含头文件</span></span></span><br><span class="line"></span><br><span class="line">QTextCodec *codec;     <span class="comment">//2声明一个全局变量</span></span><br><span class="line">codec = QtextCodec::codecForName(<span class="string">"GBK"</span>);    <span class="comment">//将编码格式声明为GBK</span></span><br><span class="line">ui-&gt;textEdit-&gt;setText(codec-&gt;toUnicode*(<span class="string">"中文"</span>));    <span class="comment">//将中文转换为为固定编码格式</span></span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h1><p><strong>构造函数</strong></p><p><strong>析构函数</strong><br>    构造函数（destructor）与构造函数相反，当对象结束其生命周期，如对象所在的函数已调用完毕时，系统自动执行析构函数。析构函数用来做“清理善后”的工作（例如在建立对象时用new开辟了一片内存空间，delete会自动调用析构函数后释放内存）。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;Qt中C-中文显示&quot;&gt;&lt;a href=&quot;#Qt中C-中文显示&quot; class=&quot;headerlink&quot; title=&quot;Qt中C++中文显示&quot;&gt;&lt;/a&gt;Qt中C++中文显示&lt;/h1&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;t
+        &lt;h1 id=&quot;构造函数和析构函数&quot;&gt;&lt;a href=&quot;#构造函数和析构函数&quot; class=&quot;headerlink&quot; title=&quot;构造函数和析构函数&quot;&gt;&lt;/a&gt;构造函数和析构函数&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;构造函数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;析构函数&lt;
       
     
     </summary>
@@ -218,8 +245,6 @@
     
     
       <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
     
   </entry>
   
@@ -237,84 +262,6 @@
       
       
         &lt;h1 id=&quot;C-内联函数-C-inline&quot;&gt;&lt;a href=&quot;#C-内联函数-C-inline&quot; class=&quot;headerlink&quot; title=&quot;C++内联函数(C++ inline)&quot;&gt;&lt;/a&gt;C++内联函数(C++ inline)&lt;/h1&gt;&lt;p&gt;使用函数能够避免将相
-      
-    
-    </summary>
-    
-    
-      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://yoursite.com/2019/10/09/YY-#pragma%E9%A2%84%E5%A4%84%E7%90%86%E6%8C%87%E4%BB%A4/"/>
-    <id>http://yoursite.com/2019/10/09/YY-#pragma预处理指令/</id>
-    <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:56:50.519Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="pragma预处理指令"><a href="#pragma预处理指令" class="headerlink" title="#pragma预处理指令"></a>#pragma预处理指令</h1><p><strong><em>定义：</em></strong><br>在所有的预处理指令中，#pragma 指令可能是最复杂的了，它的作用是设定编译器的状态或者是指示编译器完成一些特定的动作。#pragma指令对每个编译器给出了一个方法，在保持与C和C++语言完全兼容的情况下，给出主机或操作系统专有的特征。依据定义，编译指示是机器或操作系统专有的，且对于每个编译器都是不同的。</p><p><strong><em>一般格式：</em></strong></p><p>#pargam Para        其中Para为参数</p><p><strong>举例</strong><br><em>1.message参数：</em><br>    Message 参数能够在编译信息输出窗口中输出相应的信息，这对于源代码信息的控制是非常重要的。其使用方法为：</p><p>   #pragma message(“消息文本”)</p><p>   当编译器遇到这条指令时就在编译输出窗口中将消息文本打印出来。<br>   当我们在程序中定义了许多宏来控制源代码版本的时候，我们自己有可能都会忘记有没有正确的设置这些宏，此时我们可以用这条指令在编译的时候就进行检查。假设我们希望判断自己有没有在源代码的什么地方定义了_X86这个宏可以用下面的方法<br>    #ifdef _X86<br>    #pragma message(“_X86 macro activated!”)<br>    #endif</p><p>当我们定义了_X86这个宏以后，应用程序在编译时就会在编译输出窗口里显示“_X86 macro activated! ”。我们就不会因为不记得自己定义的一些特定的宏而抓耳挠腮了。</p><p><em>2.code_seg存放代码段：</em></p><p>code_seg对pragma的使用量也比较大</p><p>#pragma code_seg([“section-name”[,”section-class”]])</p><p>它能够设置程序中函数代码存放的代码段，当我们开发驱动程序的时候就会使用到它。</p><p>3.pragma once 执行一次（常用）<br>    只要在头文件的最开始加入这条指令就能够保证头文件被编译一次，这条指令实际上在VC6中就已经有了，但是考虑到兼容性并没有太多的使用它。<br>    #pragma once是编译相关，就是说这个编译系统上能用，但在其他编译系统不一定可以，也就是说移植性差，不过现在基本上已经是每个编译器都有这个定义了。<br>    #ifndef，#define，#endif这个是C++语言相关，这是C++语言中的宏定义，通过宏定义避免文件多次编译。所以在所有支持C++语言的编译器上都是有效的，如果写的程序要跨平台，最好使用这种方式</p><p>附件链接：<a href="https://baike.baidu.com/item/%23pragma/706691?fr=aladdin#1_10" target="_blank" rel="noopener">pragma百度百科</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;pragma预处理指令&quot;&gt;&lt;a href=&quot;#pragma预处理指令&quot; class=&quot;headerlink&quot; title=&quot;#pragma预处理指令&quot;&gt;&lt;/a&gt;#pragma预处理指令&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt;定义：&lt;/em&gt;&lt;/strong&gt;&lt;br
-      
-    
-    </summary>
-    
-    
-      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>阻塞与非阻塞的区别</title>
-    <link href="http://yoursite.com/2019/10/09/YY-%E9%98%BB%E5%A1%9E%E4%B8%8E%E9%9D%9E%E9%98%BB%E5%A1%9E%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
-    <id>http://yoursite.com/2019/10/09/YY-阻塞与非阻塞的区别/</id>
-    <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:57:02.361Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="阻塞与非阻塞的区别"><a href="#阻塞与非阻塞的区别" class="headerlink" title="阻塞与非阻塞的区别"></a>阻塞与非阻塞的区别</h1><p><strong>概念性理解：</strong><br>1.阻塞就是干不完不准回来；<br>2.非阻塞就是你先干，我现在看看有其他事没有，完了告诉我一声。</p><p><strong>以常用函数send和recv举例：</strong><br>    比如你调用send函数发送一定的Byte,在系统内部send做的工作其实只是把数据传输(Copy)到TCP/IP协议栈的输出缓冲区,它执行成功并不代表数据已经成功的发送出去了,如果TCP/IP协议栈没有足够的可用缓冲区来保存你Copy过来的数据的话…这时候就体现出阻塞和非阻塞的不同之处了:对于阻塞模式的socket send函数将不返回直到系统缓冲区有足够的空间把你要发送的数据Copy过去以后才返回,而对于非阻塞的socket来说send会立即返回WSAEWOULDDBLOCK告诉调用者说:”发送操作被阻塞了!!!你想办法处理吧…”<br>    对于recv函数,同样道理,该函数的内部工作机制其实是在等待TCP/IP协议栈的接收缓冲区通知它说:嗨,你的数据来了.对于阻塞模式的socket来说如果TCP/IP协议栈的接收缓冲区没有通知一个结果给它它就一直不返回:耗费着系统资源….对于非阻塞模式的socket该函数会马上返回,然后告诉你:WSAEWOULDDBLOCK—“现在没有数据,回头在来看看”</p><p><strong>概念性拓展：</strong><br>在进行网络编程时，我们常常见到同步、异步、阻塞和非阻塞四种调用方式。这些方式彼此概念并不好理解。下面是我对这些术语的理解。</p><p><em>同步</em><br>    所谓同步，就是在发出一个功能调用时，在没有得到结果之前，该调用就不返回。按照这个定义，其实绝大多数函数都是同步调用（例如sin, isdigit等）。但是一般而言，我们在说同步、异步的时候，特指那些需要其他部件协作或者需要一定时间完成的任务。最常见的例子就是 SendMessage。该函数发送一个消息给某个窗口，在对方处理完消息之前，这个函数不返回。当对方处理完毕以后，该函数才把消息处理函数所返回的 LRESULT值返回给调用者。</p><p><em>异步</em><br>    异步的概念和同步相对。当一个异步过程调用发出后，调用者不能立刻得到结果。实际处理这个调用的部件在完成后，通过状态、通知和回调来通知调用者。以 CAsycSocket类为例（注意，CSocket从CAsyncSocket派生，但是起功能已经由异步转化为同步），当一个客户端通过调用 Connect函数发出一个连接请求后，调用者线程立刻可以向下运行。当连接真正建立起来以后，socket底 层会发送一个消息通知该对象。这里提到执行部件和调用者通过三种途径返回结果：状态、通知和回调。可以使用哪一种依赖于执行部件的实现，除非执行部件提供 多种选择，否则不受调用者控制。如果执行部件用状态来通知，那么调用者就需要每隔一定时间检查一次，效率就很低（有些初学多线程编程的人，总喜欢用一个循 环去检查某个变量的值，这其实是一种很严重的错误）。如果是使用通知的方式，效率则很高，因为执行部件几乎不需要做额外的操作。至于回调函数，其实和通知 没太多区别。</p><p><em>阻塞</em><br>    阻塞调用是指调用结果返回之前，当前线程会被挂起。函数只有在得到结果之后才会返回。有人也许会把阻塞调用和同步调用等同起来，实际上它们是不同的。对于同步调用来说，很多时候当前线程还是激活的，只是从逻辑上当前函数没有返回而已。例如，我们在CSocket中调用Receive函数，如果缓冲区中没有数据，这个函数就会一直等待，直到有数据才返回。而此时，当前线程还会继续处理各种各样的消息。如果主窗口和调用函数在同一个线程中，除非你在特殊的界面操作函数中调用，其实主界面还是应该可以刷新。socket接收数据的另外一个函数recv则是一个阻塞调用的例子。当socket工作在阻塞模式的时候， 如果没有数据的情况下调用该函数，则当前线程就会被挂起，直到有数据为止。</p><p><em>非阻塞</em><br>    非阻塞和阻塞的概念相对应，指在不能立刻得到结果之前，该函数不会阻塞当前线程，而会立刻返回。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;阻塞与非阻塞的区别&quot;&gt;&lt;a href=&quot;#阻塞与非阻塞的区别&quot; class=&quot;headerlink&quot; title=&quot;阻塞与非阻塞的区别&quot;&gt;&lt;/a&gt;阻塞与非阻塞的区别&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;概念性理解：&lt;/strong&gt;&lt;br&gt;1.阻塞就是干不完不准回来；&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C++中显式、隐式与explicit关键字</title>
-    <link href="http://yoursite.com/2019/10/09/C++-%E4%B8%AD%E6%98%BE%E5%BC%8F%E3%80%81%E9%9A%90%E5%BC%8F%E4%B8%8Eexplicit%E5%85%B3%E9%94%AE%E5%AD%97/"/>
-    <id>http://yoursite.com/2019/10/09/C++-中显式、隐式与explicit关键字/</id>
-    <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:54:21.523Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="C-中显式、隐式与explicit关键字"><a href="#C-中显式、隐式与explicit关键字" class="headerlink" title="C++中显式、隐式与explicit关键字"></a>C++中显式、隐式与explicit关键字</h1><p><strong><em>1.隐式转换</em></strong><br>隐式转换，即编译器完成的转换，例如<br>int a = 1;<br>float b = 3;<br>float sum;<br>sum = a + b;//a是int类型，b是float类型；在编译的时候，编译器自动将int a转换成了float类型</p><p><strong><em>2.显式转换</em></strong><br>显式转换，即用户完成的转换，例如<br>float a = 1;<br>float b = 3;<br>int s;<br>s = (int)a + (int)b;//float类型的a与b被显示的(强制)转换成成为float数据类型</p><p>对于非数据的函数函数而言，例：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line">　　<span class="keyword">int</span> x;</span><br><span class="line">　　<span class="keyword">public</span>:</span><br><span class="line">　　　　A()&#123;x=<span class="number">0</span>;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:0"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　A(<span class="keyword">int</span> a)&#123;x=a;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　~A()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Delete A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">　　A a1;</span><br><span class="line">　　A *a2=<span class="keyword">new</span> A(<span class="number">10</span>);</span><br><span class="line">　　<span class="keyword">delete</span> a2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>程序分析：<br>A a1；隐式的调用了A();<br>A *a2 = new A(10);对A()进行了重载，显式的调用了A(int a);</p><p><strong><em>3.explicit关键字</em></strong></p><p>explicit用于构造函数，抑制隐式转换的发生，防止出现误区。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;C-中显式、隐式与explicit关键字&quot;&gt;&lt;a href=&quot;#C-中显式、隐式与explicit关键字&quot; class=&quot;headerlink&quot; title=&quot;C++中显式、隐式与explicit关键字&quot;&gt;&lt;/a&gt;C++中显式、隐式与explicit关键字&lt;/h1
       
     
     </summary>
@@ -382,26 +329,54 @@
   </entry>
   
   <entry>
-    <title>Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用</title>
-    <link href="http://yoursite.com/2019/10/09/Qt-QT_BEGIN_NAMESPACE%E5%92%8CQT_END_NAMESPACE%E7%9A%84%E4%BD%9C%E7%94%A8/"/>
-    <id>http://yoursite.com/2019/10/09/Qt-QT_BEGIN_NAMESPACE和QT_END_NAMESPACE的作用/</id>
+    <title>C++中显式、隐式与explicit关键字</title>
+    <link href="http://yoursite.com/2019/10/09/C++-%E4%B8%AD%E6%98%BE%E5%BC%8F%E3%80%81%E9%9A%90%E5%BC%8F%E4%B8%8Eexplicit%E5%85%B3%E9%94%AE%E5%AD%97/"/>
+    <id>http://yoursite.com/2019/10/09/C++-中显式、隐式与explicit关键字/</id>
     <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:21:15.682Z</updated>
+    <updated>2019-10-09T07:54:21.523Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用"><a href="#Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用" class="headerlink" title="Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用"></a>Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用</h1><p> QT_BEGIN_NAMESPACE其实就是个宏，以前Qt4是没有命令空间的，后来才加上的，编译Qt源码时会有选项，是否将这些类放到专用的Qt命令空间内，默认是没有的。这就出来问题了，为了统一，如果你的代码在默认没有Qt命令空间的SDK中编译，那你就不用在前面加上命令空间，反之则需要。</p><p>为了屏蔽上面这个差异，使得你的代码能在这两种情况下都进行编译，Qt就提供了QT_BEGIN_NAMESPACE宏，这样开发者就省的自己来用程序或宏进行处理了。</p><p>至于说该宏提升编译速度什么的，那是上述类的声明的作用，与Qt无关的（也即与该宏QT_BEGIN_NAMESPACE无关），若要大幅提升编译速度需要开启qt的预编译头文件，会另起章节解说，并附测试结果。</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#ifndef PREVIEWWINDOW_H</span><br><span class="line"></span><br><span class="line">#define PREVIEWWINDOW_H</span><br><span class="line"></span><br><span class="line">#include &lt;QMainWindow&gt;</span><br><span class="line"></span><br><span class="line">#if 0</span><br><span class="line"><span class="comment">// 方式一:</span></span><br><span class="line">#include &lt;QTextBrowser&gt;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#if 0</span><br><span class="line"><span class="comment">// 方式二:    比方式一可轻微提升编译速度</span></span><br><span class="line">class QTextBrowser;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#if 1</span><br><span class="line"><span class="comment">// 方式三:    编译速度与方式二一样，该宏用于自编译qt源码是否启动命令空间的补充</span></span><br><span class="line">QT_BEGIN_NAMESPACE</span><br><span class="line">class QTextBrowser;</span><br><span class="line">QT_END_NAMESPACE</span><br><span class="line"></span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">class <span class="attribute">PreviewWindow</span> : public QMainWindow</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"><span class="attribute">public</span>:</span><br><span class="line">    explicit PreviewWindow(QWidget *<span class="built_in">parent</span> = <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="attribute">signals</span>:</span><br><span class="line"></span><br><span class="line">public <span class="attribute">slots</span>:</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">#endif // PREVIEWWINDOW_H</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="C-中显式、隐式与explicit关键字"><a href="#C-中显式、隐式与explicit关键字" class="headerlink" title="C++中显式、隐式与explicit关键字"></a>C++中显式、隐式与explicit关键字</h1><p><strong><em>1.隐式转换</em></strong><br>隐式转换，即编译器完成的转换，例如<br>int a = 1;<br>float b = 3;<br>float sum;<br>sum = a + b;//a是int类型，b是float类型；在编译的时候，编译器自动将int a转换成了float类型</p><p><strong><em>2.显式转换</em></strong><br>显式转换，即用户完成的转换，例如<br>float a = 1;<br>float b = 3;<br>int s;<br>s = (int)a + (int)b;//float类型的a与b被显示的(强制)转换成成为float数据类型</p><p>对于非数据的函数函数而言，例：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line">　　<span class="keyword">int</span> x;</span><br><span class="line">　　<span class="keyword">public</span>:</span><br><span class="line">　　　　A()&#123;x=<span class="number">0</span>;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:0"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　A(<span class="keyword">int</span> a)&#123;x=a;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　~A()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Delete A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">　　A a1;</span><br><span class="line">　　A *a2=<span class="keyword">new</span> A(<span class="number">10</span>);</span><br><span class="line">　　<span class="keyword">delete</span> a2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>程序分析：<br>A a1；隐式的调用了A();<br>A *a2 = new A(10);对A()进行了重载，显式的调用了A(int a);</p><p><strong><em>3.explicit关键字</em></strong></p><p>explicit用于构造函数，抑制隐式转换的发生，防止出现误区。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用&quot;&gt;&lt;a href=&quot;#Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用&quot; class=&quot;headerlink&quot; title=&quot;Qt中QT_BEGI
+        &lt;h1 id=&quot;C-中显式、隐式与explicit关键字&quot;&gt;&lt;a href=&quot;#C-中显式、隐式与explicit关键字&quot; class=&quot;headerlink&quot; title=&quot;C++中显式、隐式与explicit关键字&quot;&gt;&lt;/a&gt;C++中显式、隐式与explicit关键字&lt;/h1
       
     
     </summary>
     
     
-      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
+      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
     
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Qt中C++中文显示</title>
+    <link href="http://yoursite.com/2019/10/09/Qt-C++%E4%B8%AD%E6%96%87%E6%98%BE%E7%A4%BA/"/>
+    <id>http://yoursite.com/2019/10/09/Qt-C++中文显示/</id>
+    <published>2019-10-09T07:11:06.000Z</published>
+    <updated>2019-10-09T07:54:40.813Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Qt中C-中文显示"><a href="#Qt中C-中文显示" class="headerlink" title="Qt中C++中文显示"></a>Qt中C++中文显示</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QTextCodec&gt;    //1.包含头文件</span></span></span><br><span class="line"></span><br><span class="line">QTextCodec *codec;     <span class="comment">//2声明一个全局变量</span></span><br><span class="line">codec = QtextCodec::codecForName(<span class="string">"GBK"</span>);    <span class="comment">//将编码格式声明为GBK</span></span><br><span class="line">ui-&gt;textEdit-&gt;setText(codec-&gt;toUnicode*(<span class="string">"中文"</span>));    <span class="comment">//将中文转换为为固定编码格式</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Qt中C-中文显示&quot;&gt;&lt;a href=&quot;#Qt中C-中文显示&quot; class=&quot;headerlink&quot; title=&quot;Qt中C++中文显示&quot;&gt;&lt;/a&gt;Qt中C++中文显示&lt;/h1&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;t
+      
+    
+    </summary>
+    
+    
+      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
     
       <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
     
@@ -430,59 +405,6 @@
     
     
       <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Qt使Widget打开为全屏</title>
-    <link href="http://yoursite.com/2019/10/09/Qt-%E4%BD%BFWidget%E6%89%93%E5%BC%80%E4%B8%BA%E5%85%A8%E5%B1%8F/"/>
-    <id>http://yoursite.com/2019/10/09/Qt-使Widget打开为全屏/</id>
-    <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:24:07.471Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Qt5-5-1使Widget打开为全屏"><a href="#Qt5-5-1使Widget打开为全屏" class="headerlink" title="Qt5.5.1使Widget打开为全屏"></a>Qt5.5.1使Widget打开为全屏</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MainWindow w;</span><br><span class="line">w.showMaximized();</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Qt5-5-1使Widget打开为全屏&quot;&gt;&lt;a href=&quot;#Qt5-5-1使Widget打开为全屏&quot; class=&quot;headerlink&quot; title=&quot;Qt5.5.1使Widget打开为全屏&quot;&gt;&lt;/a&gt;Qt5.5.1使Widget打开为全屏&lt;/h1&gt;&lt;figu
-      
-    
-    </summary>
-    
-    
-      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
-    
-    
-      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>构造函数和析构函数</title>
-    <link href="http://yoursite.com/2019/10/09/C++-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/"/>
-    <id>http://yoursite.com/2019/10/09/C++-构造函数和析构函数/</id>
-    <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:53:55.839Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h1><p><strong>构造函数</strong></p><p><strong>析构函数</strong><br>    构造函数（destructor）与构造函数相反，当对象结束其生命周期，如对象所在的函数已调用完毕时，系统自动执行析构函数。析构函数用来做“清理善后”的工作（例如在建立对象时用new开辟了一片内存空间，delete会自动调用析构函数后释放内存）。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;构造函数和析构函数&quot;&gt;&lt;a href=&quot;#构造函数和析构函数&quot; class=&quot;headerlink&quot; title=&quot;构造函数和析构函数&quot;&gt;&lt;/a&gt;构造函数和析构函数&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;构造函数&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;析构函数&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
     
   </entry>
   
@@ -566,6 +488,110 @@
   </entry>
   
   <entry>
+    <title>Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用</title>
+    <link href="http://yoursite.com/2019/10/09/Qt-QT_BEGIN_NAMESPACE%E5%92%8CQT_END_NAMESPACE%E7%9A%84%E4%BD%9C%E7%94%A8/"/>
+    <id>http://yoursite.com/2019/10/09/Qt-QT_BEGIN_NAMESPACE和QT_END_NAMESPACE的作用/</id>
+    <published>2019-10-09T07:11:06.000Z</published>
+    <updated>2019-10-09T07:21:15.682Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用"><a href="#Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用" class="headerlink" title="Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用"></a>Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用</h1><p> QT_BEGIN_NAMESPACE其实就是个宏，以前Qt4是没有命令空间的，后来才加上的，编译Qt源码时会有选项，是否将这些类放到专用的Qt命令空间内，默认是没有的。这就出来问题了，为了统一，如果你的代码在默认没有Qt命令空间的SDK中编译，那你就不用在前面加上命令空间，反之则需要。</p><p>为了屏蔽上面这个差异，使得你的代码能在这两种情况下都进行编译，Qt就提供了QT_BEGIN_NAMESPACE宏，这样开发者就省的自己来用程序或宏进行处理了。</p><p>至于说该宏提升编译速度什么的，那是上述类的声明的作用，与Qt无关的（也即与该宏QT_BEGIN_NAMESPACE无关），若要大幅提升编译速度需要开启qt的预编译头文件，会另起章节解说，并附测试结果。</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#ifndef PREVIEWWINDOW_H</span><br><span class="line"></span><br><span class="line">#define PREVIEWWINDOW_H</span><br><span class="line"></span><br><span class="line">#include &lt;QMainWindow&gt;</span><br><span class="line"></span><br><span class="line">#if 0</span><br><span class="line"><span class="comment">// 方式一:</span></span><br><span class="line">#include &lt;QTextBrowser&gt;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#if 0</span><br><span class="line"><span class="comment">// 方式二:    比方式一可轻微提升编译速度</span></span><br><span class="line">class QTextBrowser;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#if 1</span><br><span class="line"><span class="comment">// 方式三:    编译速度与方式二一样，该宏用于自编译qt源码是否启动命令空间的补充</span></span><br><span class="line">QT_BEGIN_NAMESPACE</span><br><span class="line">class QTextBrowser;</span><br><span class="line">QT_END_NAMESPACE</span><br><span class="line"></span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">class <span class="attribute">PreviewWindow</span> : public QMainWindow</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"><span class="attribute">public</span>:</span><br><span class="line">    explicit PreviewWindow(QWidget *<span class="built_in">parent</span> = <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="attribute">signals</span>:</span><br><span class="line"></span><br><span class="line">public <span class="attribute">slots</span>:</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">#endif // PREVIEWWINDOW_H</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用&quot;&gt;&lt;a href=&quot;#Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用&quot; class=&quot;headerlink&quot; title=&quot;Qt中QT_BEGI
+      
+    
+    </summary>
+    
+    
+      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
+    
+    
+      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2019/10/09/YY-#pragma%E9%A2%84%E5%A4%84%E7%90%86%E6%8C%87%E4%BB%A4/"/>
+    <id>http://yoursite.com/2019/10/09/YY-#pragma预处理指令/</id>
+    <published>2019-10-09T07:11:06.000Z</published>
+    <updated>2019-10-09T07:56:50.519Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="pragma预处理指令"><a href="#pragma预处理指令" class="headerlink" title="#pragma预处理指令"></a>#pragma预处理指令</h1><p><strong><em>定义：</em></strong><br>在所有的预处理指令中，#pragma 指令可能是最复杂的了，它的作用是设定编译器的状态或者是指示编译器完成一些特定的动作。#pragma指令对每个编译器给出了一个方法，在保持与C和C++语言完全兼容的情况下，给出主机或操作系统专有的特征。依据定义，编译指示是机器或操作系统专有的，且对于每个编译器都是不同的。</p><p><strong><em>一般格式：</em></strong></p><p>#pargam Para        其中Para为参数</p><p><strong>举例</strong><br><em>1.message参数：</em><br>    Message 参数能够在编译信息输出窗口中输出相应的信息，这对于源代码信息的控制是非常重要的。其使用方法为：</p><p>   #pragma message(“消息文本”)</p><p>   当编译器遇到这条指令时就在编译输出窗口中将消息文本打印出来。<br>   当我们在程序中定义了许多宏来控制源代码版本的时候，我们自己有可能都会忘记有没有正确的设置这些宏，此时我们可以用这条指令在编译的时候就进行检查。假设我们希望判断自己有没有在源代码的什么地方定义了_X86这个宏可以用下面的方法<br>    #ifdef _X86<br>    #pragma message(“_X86 macro activated!”)<br>    #endif</p><p>当我们定义了_X86这个宏以后，应用程序在编译时就会在编译输出窗口里显示“_X86 macro activated! ”。我们就不会因为不记得自己定义的一些特定的宏而抓耳挠腮了。</p><p><em>2.code_seg存放代码段：</em></p><p>code_seg对pragma的使用量也比较大</p><p>#pragma code_seg([“section-name”[,”section-class”]])</p><p>它能够设置程序中函数代码存放的代码段，当我们开发驱动程序的时候就会使用到它。</p><p>3.pragma once 执行一次（常用）<br>    只要在头文件的最开始加入这条指令就能够保证头文件被编译一次，这条指令实际上在VC6中就已经有了，但是考虑到兼容性并没有太多的使用它。<br>    #pragma once是编译相关，就是说这个编译系统上能用，但在其他编译系统不一定可以，也就是说移植性差，不过现在基本上已经是每个编译器都有这个定义了。<br>    #ifndef，#define，#endif这个是C++语言相关，这是C++语言中的宏定义，通过宏定义避免文件多次编译。所以在所有支持C++语言的编译器上都是有效的，如果写的程序要跨平台，最好使用这种方式</p><p>附件链接：<a href="https://baike.baidu.com/item/%23pragma/706691?fr=aladdin#1_10" target="_blank" rel="noopener">pragma百度百科</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;pragma预处理指令&quot;&gt;&lt;a href=&quot;#pragma预处理指令&quot; class=&quot;headerlink&quot; title=&quot;#pragma预处理指令&quot;&gt;&lt;/a&gt;#pragma预处理指令&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt;定义：&lt;/em&gt;&lt;/strong&gt;&lt;br
+      
+    
+    </summary>
+    
+    
+      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Qt使Widget打开为全屏</title>
+    <link href="http://yoursite.com/2019/10/09/Qt-%E4%BD%BFWidget%E6%89%93%E5%BC%80%E4%B8%BA%E5%85%A8%E5%B1%8F/"/>
+    <id>http://yoursite.com/2019/10/09/Qt-使Widget打开为全屏/</id>
+    <published>2019-10-09T07:11:06.000Z</published>
+    <updated>2019-10-09T07:24:07.471Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Qt5-5-1使Widget打开为全屏"><a href="#Qt5-5-1使Widget打开为全屏" class="headerlink" title="Qt5.5.1使Widget打开为全屏"></a>Qt5.5.1使Widget打开为全屏</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MainWindow w;</span><br><span class="line">w.showMaximized();</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Qt5-5-1使Widget打开为全屏&quot;&gt;&lt;a href=&quot;#Qt5-5-1使Widget打开为全屏&quot; class=&quot;headerlink&quot; title=&quot;Qt5.5.1使Widget打开为全屏&quot;&gt;&lt;/a&gt;Qt5.5.1使Widget打开为全屏&lt;/h1&gt;&lt;figu
+      
+    
+    </summary>
+    
+    
+      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
+    
+    
+      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>阻塞与非阻塞的区别</title>
+    <link href="http://yoursite.com/2019/10/09/YY-%E9%98%BB%E5%A1%9E%E4%B8%8E%E9%9D%9E%E9%98%BB%E5%A1%9E%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>http://yoursite.com/2019/10/09/YY-阻塞与非阻塞的区别/</id>
+    <published>2019-10-09T07:11:06.000Z</published>
+    <updated>2019-10-09T07:57:02.361Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="阻塞与非阻塞的区别"><a href="#阻塞与非阻塞的区别" class="headerlink" title="阻塞与非阻塞的区别"></a>阻塞与非阻塞的区别</h1><p><strong>概念性理解：</strong><br>1.阻塞就是干不完不准回来；<br>2.非阻塞就是你先干，我现在看看有其他事没有，完了告诉我一声。</p><p><strong>以常用函数send和recv举例：</strong><br>    比如你调用send函数发送一定的Byte,在系统内部send做的工作其实只是把数据传输(Copy)到TCP/IP协议栈的输出缓冲区,它执行成功并不代表数据已经成功的发送出去了,如果TCP/IP协议栈没有足够的可用缓冲区来保存你Copy过来的数据的话…这时候就体现出阻塞和非阻塞的不同之处了:对于阻塞模式的socket send函数将不返回直到系统缓冲区有足够的空间把你要发送的数据Copy过去以后才返回,而对于非阻塞的socket来说send会立即返回WSAEWOULDDBLOCK告诉调用者说:”发送操作被阻塞了!!!你想办法处理吧…”<br>    对于recv函数,同样道理,该函数的内部工作机制其实是在等待TCP/IP协议栈的接收缓冲区通知它说:嗨,你的数据来了.对于阻塞模式的socket来说如果TCP/IP协议栈的接收缓冲区没有通知一个结果给它它就一直不返回:耗费着系统资源….对于非阻塞模式的socket该函数会马上返回,然后告诉你:WSAEWOULDDBLOCK—“现在没有数据,回头在来看看”</p><p><strong>概念性拓展：</strong><br>在进行网络编程时，我们常常见到同步、异步、阻塞和非阻塞四种调用方式。这些方式彼此概念并不好理解。下面是我对这些术语的理解。</p><p><em>同步</em><br>    所谓同步，就是在发出一个功能调用时，在没有得到结果之前，该调用就不返回。按照这个定义，其实绝大多数函数都是同步调用（例如sin, isdigit等）。但是一般而言，我们在说同步、异步的时候，特指那些需要其他部件协作或者需要一定时间完成的任务。最常见的例子就是 SendMessage。该函数发送一个消息给某个窗口，在对方处理完消息之前，这个函数不返回。当对方处理完毕以后，该函数才把消息处理函数所返回的 LRESULT值返回给调用者。</p><p><em>异步</em><br>    异步的概念和同步相对。当一个异步过程调用发出后，调用者不能立刻得到结果。实际处理这个调用的部件在完成后，通过状态、通知和回调来通知调用者。以 CAsycSocket类为例（注意，CSocket从CAsyncSocket派生，但是起功能已经由异步转化为同步），当一个客户端通过调用 Connect函数发出一个连接请求后，调用者线程立刻可以向下运行。当连接真正建立起来以后，socket底 层会发送一个消息通知该对象。这里提到执行部件和调用者通过三种途径返回结果：状态、通知和回调。可以使用哪一种依赖于执行部件的实现，除非执行部件提供 多种选择，否则不受调用者控制。如果执行部件用状态来通知，那么调用者就需要每隔一定时间检查一次，效率就很低（有些初学多线程编程的人，总喜欢用一个循 环去检查某个变量的值，这其实是一种很严重的错误）。如果是使用通知的方式，效率则很高，因为执行部件几乎不需要做额外的操作。至于回调函数，其实和通知 没太多区别。</p><p><em>阻塞</em><br>    阻塞调用是指调用结果返回之前，当前线程会被挂起。函数只有在得到结果之后才会返回。有人也许会把阻塞调用和同步调用等同起来，实际上它们是不同的。对于同步调用来说，很多时候当前线程还是激活的，只是从逻辑上当前函数没有返回而已。例如，我们在CSocket中调用Receive函数，如果缓冲区中没有数据，这个函数就会一直等待，直到有数据才返回。而此时，当前线程还会继续处理各种各样的消息。如果主窗口和调用函数在同一个线程中，除非你在特殊的界面操作函数中调用，其实主界面还是应该可以刷新。socket接收数据的另外一个函数recv则是一个阻塞调用的例子。当socket工作在阻塞模式的时候， 如果没有数据的情况下调用该函数，则当前线程就会被挂起，直到有数据为止。</p><p><em>非阻塞</em><br>    非阻塞和阻塞的概念相对应，指在不能立刻得到结果之前，该函数不会阻塞当前线程，而会立刻返回。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;阻塞与非阻塞的区别&quot;&gt;&lt;a href=&quot;#阻塞与非阻塞的区别&quot; class=&quot;headerlink&quot; title=&quot;阻塞与非阻塞的区别&quot;&gt;&lt;/a&gt;阻塞与非阻塞的区别&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;概念性理解：&lt;/strong&gt;&lt;br&gt;1.阻塞就是干不完不准回来；&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Qt设置背景界面</title>
     <link href="http://yoursite.com/2019/10/09/Qt-%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E7%95%8C%E9%9D%A2/"/>
     <id>http://yoursite.com/2019/10/09/Qt-设置背景界面/</id>
@@ -593,20 +619,19 @@
   </entry>
   
   <entry>
-    <title>Qt多线程实例</title>
-    <link href="http://yoursite.com/2019/10/08/Qt-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E4%BE%8B/"/>
-    <id>http://yoursite.com/2019/10/08/Qt-多线程实例/</id>
+    <title>两个冒号的作用</title>
+    <link href="http://yoursite.com/2019/10/08/C++-%E2%80%9C%EF%BC%9A%EF%BC%9A%E2%80%9D%E4%B8%A4%E4%B8%AA%E5%86%92%E5%8F%B7%E7%9A%84%E4%BD%9C%E7%94%A8/"/>
+    <id>http://yoursite.com/2019/10/08/C++-“：：”两个冒号的作用/</id>
     <published>2019-10-08T05:28:06.000Z</published>
-    <updated>2019-10-09T07:36:41.015Z</updated>
+    <updated>2019-10-09T07:53:25.580Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="多线程实例"><a href="#多线程实例" class="headerlink" title="多线程实例"></a>多线程实例</h1><p><strong>使用QThread类，实现Qt多线程</strong></p><p>方法：使用一个类继承QThread，然后重新改写虚函数run()。</p><p><strong>使用moveToThread，实现Qt多线程</strong></p><p>通过这种方法不需要继承QThread,重写run()函数来实现Qt多线程，而是通过moveToThread(QThread *thread)函数将工作累对象移到所创建的QThread对象中去执行。利用信号与槽机制。</p><p>程序结构：<br>1.在主程序中，那里需要多线程就在哪里创建一个QThread实例；<br>2.把耗时操作封装到一个继承QObject的子类</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="“：：”两个冒号的作用"><a href="#“：：”两个冒号的作用" class="headerlink" title="“：：”两个冒号的作用"></a>“：：”两个冒号的作用</h1><p>“::”在C++中表示作用域，和所属关系。”::”是运算符中登记最高的，它分为三种，如下：</p><p>一、作用域符号<br>作用域符号”::”的前面一般是类名称，后面一般是该类的成员名称，C++为例避免不同的类有名称相同的成员而采用作用域的方式进行区分。</p><p>例如：A、B表示两个类，在A、B中都有成员member<br>那么：<br>        1、A::member就表示类A中的成员member；<br>        2、B::member就表示类B中的成员member；</p><p>二、全局作用域符号<br>全局作用域符号：当全局变量在局部函数中与其中某个变量重名，那么就可以用::来区分，例如：<br>char zhou；    //全局变量<br>void    sleep()<br>{<br>    char zhou;    //局部变量<br>    char(局部变量) = char(局部变量) * char(局部变量);<br>    ::char(全局变量) = ::char(全局变量) * ::char(全局变量)；<br>}</p><p>三、作用域分解运算符<br>::是C++里的作用域分解运算符，比如类说明了一个类A，类A里声明了一个成员函数void f(),但没有在类的声明里给出f的定义，那么在类外定义f时，就要写成void A :: f();表示这个f()函数是类A的成员函数。例如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class CA&#123;</span><br><span class="line">public :</span><br><span class="line">    int ca_var;</span><br><span class="line">    int add（int a, int b）;</span><br><span class="line">    int add(int a);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>//那么在实现这个函数时候，必须要这么写</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int CA::add(int a, int b)</span><br><span class="line">&#123;</span><br><span class="line">    return a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>//另外，双冒号也常常用于在类变量内部作为当前类实例的元素进行表示，比如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int CA::add(int a)</span><br><span class="line">&#123;</span><br><span class="line">    return a + :: ca_var;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>//表示当前类实例中的变量ca_var;</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;多线程实例&quot;&gt;&lt;a href=&quot;#多线程实例&quot; class=&quot;headerlink&quot; title=&quot;多线程实例&quot;&gt;&lt;/a&gt;多线程实例&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;使用QThread类，实现Qt多线程&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;方法：使用一个类继承QThre
+        &lt;h1 id=&quot;“：：”两个冒号的作用&quot;&gt;&lt;a href=&quot;#“：：”两个冒号的作用&quot; class=&quot;headerlink&quot; title=&quot;“：：”两个冒号的作用&quot;&gt;&lt;/a&gt;“：：”两个冒号的作用&lt;/h1&gt;&lt;p&gt;“::”在C++中表示作用域，和所属关系。”::”是运算符中登记最高
       
     
     </summary>
@@ -615,7 +640,7 @@
       <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
     
     
-      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
     
   </entry>
   
@@ -647,19 +672,20 @@
   </entry>
   
   <entry>
-    <title>两个冒号的作用</title>
-    <link href="http://yoursite.com/2019/10/08/C++-%E2%80%9C%EF%BC%9A%EF%BC%9A%E2%80%9D%E4%B8%A4%E4%B8%AA%E5%86%92%E5%8F%B7%E7%9A%84%E4%BD%9C%E7%94%A8/"/>
-    <id>http://yoursite.com/2019/10/08/C++-“：：”两个冒号的作用/</id>
+    <title>Qt多线程实例</title>
+    <link href="http://yoursite.com/2019/10/08/Qt-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E4%BE%8B/"/>
+    <id>http://yoursite.com/2019/10/08/Qt-多线程实例/</id>
     <published>2019-10-08T05:28:06.000Z</published>
-    <updated>2019-10-09T07:53:25.580Z</updated>
+    <updated>2019-10-09T07:36:41.015Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="“：：”两个冒号的作用"><a href="#“：：”两个冒号的作用" class="headerlink" title="“：：”两个冒号的作用"></a>“：：”两个冒号的作用</h1><p>“::”在C++中表示作用域，和所属关系。”::”是运算符中登记最高的，它分为三种，如下：</p><p>一、作用域符号<br>作用域符号”::”的前面一般是类名称，后面一般是该类的成员名称，C++为例避免不同的类有名称相同的成员而采用作用域的方式进行区分。</p><p>例如：A、B表示两个类，在A、B中都有成员member<br>那么：<br>        1、A::member就表示类A中的成员member；<br>        2、B::member就表示类B中的成员member；</p><p>二、全局作用域符号<br>全局作用域符号：当全局变量在局部函数中与其中某个变量重名，那么就可以用::来区分，例如：<br>char zhou；    //全局变量<br>void    sleep()<br>{<br>    char zhou;    //局部变量<br>    char(局部变量) = char(局部变量) * char(局部变量);<br>    ::char(全局变量) = ::char(全局变量) * ::char(全局变量)；<br>}</p><p>三、作用域分解运算符<br>::是C++里的作用域分解运算符，比如类说明了一个类A，类A里声明了一个成员函数void f(),但没有在类的声明里给出f的定义，那么在类外定义f时，就要写成void A :: f();表示这个f()函数是类A的成员函数。例如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class CA&#123;</span><br><span class="line">public :</span><br><span class="line">    int ca_var;</span><br><span class="line">    int add（int a, int b）;</span><br><span class="line">    int add(int a);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>//那么在实现这个函数时候，必须要这么写</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int CA::add(int a, int b)</span><br><span class="line">&#123;</span><br><span class="line">    return a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>//另外，双冒号也常常用于在类变量内部作为当前类实例的元素进行表示，比如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int CA::add(int a)</span><br><span class="line">&#123;</span><br><span class="line">    return a + :: ca_var;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>//表示当前类实例中的变量ca_var;</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="多线程实例"><a href="#多线程实例" class="headerlink" title="多线程实例"></a>多线程实例</h1><p><strong>使用QThread类，实现Qt多线程</strong></p><p>方法：使用一个类继承QThread，然后重新改写虚函数run()。</p><p><strong>使用moveToThread，实现Qt多线程</strong></p><p>通过这种方法不需要继承QThread,重写run()函数来实现Qt多线程，而是通过moveToThread(QThread *thread)函数将工作累对象移到所创建的QThread对象中去执行。利用信号与槽机制。</p><p>程序结构：<br>1.在主程序中，那里需要多线程就在哪里创建一个QThread实例；<br>2.把耗时操作封装到一个继承QObject的子类</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;“：：”两个冒号的作用&quot;&gt;&lt;a href=&quot;#“：：”两个冒号的作用&quot; class=&quot;headerlink&quot; title=&quot;“：：”两个冒号的作用&quot;&gt;&lt;/a&gt;“：：”两个冒号的作用&lt;/h1&gt;&lt;p&gt;“::”在C++中表示作用域，和所属关系。”::”是运算符中登记最高
+        &lt;h1 id=&quot;多线程实例&quot;&gt;&lt;a href=&quot;#多线程实例&quot; class=&quot;headerlink&quot; title=&quot;多线程实例&quot;&gt;&lt;/a&gt;多线程实例&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;使用QThread类，实现Qt多线程&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;方法：使用一个类继承QThre
       
     
     </summary>
@@ -668,7 +694,7 @@
       <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
     
     
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
     
   </entry>
   
