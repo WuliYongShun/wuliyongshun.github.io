@@ -461,304 +461,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/YY-#pragma预处理指令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="不会飞的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="向北方">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/09/YY-#pragma预处理指令/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-09T15:11:06+08:00">
-                2019-10-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/YY/" itemprop="url" rel="index">
-                    <span itemprop="name">YY</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="pragma预处理指令"><a href="#pragma预处理指令" class="headerlink" title="#pragma预处理指令"></a>#pragma预处理指令</h1><p><strong><em>定义：</em></strong><br>在所有的预处理指令中，#pragma 指令可能是最复杂的了，它的作用是设定编译器的状态或者是指示编译器完成一些特定的动作。#pragma指令对每个编译器给出了一个方法，在保持与C和C++语言完全兼容的情况下，给出主机或操作系统专有的特征。依据定义，编译指示是机器或操作系统专有的，且对于每个编译器都是不同的。</p>
-<p><strong><em>一般格式：</em></strong></p>
-<p>#pargam Para        其中Para为参数</p>
-<p><strong>举例</strong><br><em>1.message参数：</em><br>    Message 参数能够在编译信息输出窗口中输出相应的信息，这对于源代码信息的控制是非常重要的。其使用方法为：</p>
-<p>   #pragma message(“消息文本”)</p>
-<p>   当编译器遇到这条指令时就在编译输出窗口中将消息文本打印出来。<br>   当我们在程序中定义了许多宏来控制源代码版本的时候，我们自己有可能都会忘记有没有正确的设置这些宏，此时我们可以用这条指令在编译的时候就进行检查。假设我们希望判断自己有没有在源代码的什么地方定义了_X86这个宏可以用下面的方法<br>    #ifdef _X86<br>    #pragma message(“_X86 macro activated!”)<br>    #endif</p>
-<p>当我们定义了_X86这个宏以后，应用程序在编译时就会在编译输出窗口里显示“_X86 macro activated! ”。我们就不会因为不记得自己定义的一些特定的宏而抓耳挠腮了。</p>
-<p><em>2.code_seg存放代码段：</em></p>
-<p>code_seg对pragma的使用量也比较大</p>
-<p>#pragma code_seg([“section-name”[,”section-class”]])</p>
-<p>它能够设置程序中函数代码存放的代码段，当我们开发驱动程序的时候就会使用到它。</p>
-<p>3.pragma once 执行一次（常用）<br>    只要在头文件的最开始加入这条指令就能够保证头文件被编译一次，这条指令实际上在VC6中就已经有了，但是考虑到兼容性并没有太多的使用它。<br>    #pragma once是编译相关，就是说这个编译系统上能用，但在其他编译系统不一定可以，也就是说移植性差，不过现在基本上已经是每个编译器都有这个定义了。<br>    #ifndef，#define，#endif这个是C++语言相关，这是C++语言中的宏定义，通过宏定义避免文件多次编译。所以在所有支持C++语言的编译器上都是有效的，如果写的程序要跨平台，最好使用这种方式</p>
-<p>附件链接：<a href="https://baike.baidu.com/item/%23pragma/706691?fr=aladdin#1_10" target="_blank" rel="noopener">pragma百度百科</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/Qt-常用控件的创建和使用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="不会飞的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="向北方">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/09/Qt-常用控件的创建和使用/" itemprop="url">Qt常用控件的创建和使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-09T15:11:06+08:00">
-                2019-10-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Qt/" itemprop="url" rel="index">
-                    <span itemprop="name">Qt</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="常用控件的创建和使用"><a href="#常用控件的创建和使用" class="headerlink" title="常用控件的创建和使用"></a>常用控件的创建和使用</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"mainwindow.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMenuBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QToolBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QStatusBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QLabel&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDockWidget&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QTextEdit&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MainWindow::MainWindow(QWidget *parent)</span><br><span class="line">    : QMainWindow(parent)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;resize(<span class="number">600</span>,<span class="number">400</span>);  <span class="comment">//Set the window size</span></span><br><span class="line"></span><br><span class="line">    QMenuBar *bar = menuBar();  <span class="comment">//创建菜单栏,只能一个</span></span><br><span class="line">    setMenuBar(bar);    <span class="comment">//将菜单栏设置到窗口中</span></span><br><span class="line"></span><br><span class="line">    QMenu * fileMenu = bar-&gt;addMenu(<span class="string">"文件"</span>);</span><br><span class="line">    QMenu * editMenu = bar-&gt;addMenu(<span class="string">"编辑"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//添加文件菜单项</span></span><br><span class="line">    QAction * createAction = fileMenu-&gt;addAction(<span class="string">"创建"</span>);</span><br><span class="line">    fileMenu-&gt;addSeparator();<span class="comment">//添加分割线</span></span><br><span class="line">    QAction * closeAction = fileMenu-&gt;addAction(<span class="string">"关闭"</span>);</span><br><span class="line">    fileMenu-&gt;addSeparator();<span class="comment">//添加分割线</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//添加编辑菜单栏</span></span><br><span class="line">    QAction * copyAction = editMenu-&gt;addAction(<span class="string">"拷贝"</span>);</span><br><span class="line">    QAction * pasteAction = editMenu-&gt;addAction(<span class="string">"粘贴"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//菜单栏 可以有很多个</span></span><br><span class="line">    QToolBar *toolBar = <span class="keyword">new</span> QToolBar(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//将工具栏放入窗口中</span></span><br><span class="line">    addToolBar(Qt::LeftToolBarArea, toolBar);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//只允许左右停靠</span></span><br><span class="line">    toolBar-&gt;setAllowedAreas(Qt::LeftToolBarArea | Qt::RightToolBarArea</span><br><span class="line">                             | Qt::TopToolBarArea | Qt::BottomToolBarArea);</span><br><span class="line">    <span class="comment">//设置是否允许浮动</span></span><br><span class="line">    toolBar-&gt;setFloatable(<span class="literal">false</span>);</span><br><span class="line">    <span class="comment">//设置是否允许移动</span></span><br><span class="line">    toolBar-&gt;setMovable(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//在工具栏中添加控件</span></span><br><span class="line">    QPushButton *btn = <span class="keyword">new</span> QPushButton(<span class="string">"按钮1"</span>,<span class="keyword">this</span>);</span><br><span class="line">    QPushButton *btn1 = <span class="keyword">new</span> QPushButton(<span class="string">"按钮2"</span>,<span class="keyword">this</span>);</span><br><span class="line">    btn1-&gt;setStyleSheet(<span class="string">"QPushButton&#123;color:red&#125;"</span>);</span><br><span class="line">    QPushButton *btn2 = <span class="keyword">new</span> QPushButton(<span class="string">"按钮3"</span>,<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    toolBar-&gt;addWidget(btn);</span><br><span class="line">    toolBar-&gt;addSeparator();</span><br><span class="line">    toolBar-&gt;addWidget(btn1);</span><br><span class="line">    toolBar-&gt;addSeparator();</span><br><span class="line">    toolBar-&gt;addWidget(btn2);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//状态栏，只有一个</span></span><br><span class="line">    QStatusBar * status = statusBar();</span><br><span class="line">    <span class="comment">//将状态栏放入到窗口中</span></span><br><span class="line">    setStatusBar(status);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建标签</span></span><br><span class="line">    QLabel * label1 = <span class="keyword">new</span> QLabel(<span class="string">"左侧信息"</span>, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//将label放入到状态栏中</span></span><br><span class="line">    status-&gt;addWidget(label1);</span><br><span class="line">    QLabel * label2 = <span class="keyword">new</span> QLabel(<span class="string">"右侧信息"</span>, <span class="keyword">this</span>);</span><br><span class="line">    status-&gt;addPermanentWidget(label2);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//铆接部件 浮动窗口 可以多个</span></span><br><span class="line">    QDockWidget * dock = <span class="keyword">new</span> QDockWidget(<span class="string">"铆接部件"</span>, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//将铆接部件放到窗体的核心部件的下方</span></span><br><span class="line">    addDockWidget(Qt::BottomDockWidgetArea, dock);</span><br><span class="line">    <span class="comment">//铆接部件设置停靠范文</span></span><br><span class="line">    dock-&gt;setAllowedAreas(Qt::TopDockWidgetArea | Qt::BottomDockWidgetArea);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建核心部件 只能有一个</span></span><br><span class="line">    QTextEdit * edit = <span class="keyword">new</span> QTextEdit(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//将文本编辑 放到窗体中间</span></span><br><span class="line">    setCentralWidget(edit);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainWindow::~MainWindow()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>总结：直接使用set方法的窗口中只能有一个，使用add方法的窗口中可以有很多个</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/Qt-设置背景界面/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1004,6 +706,304 @@
 <p><em>异步</em><br>    异步的概念和同步相对。当一个异步过程调用发出后，调用者不能立刻得到结果。实际处理这个调用的部件在完成后，通过状态、通知和回调来通知调用者。以 CAsycSocket类为例（注意，CSocket从CAsyncSocket派生，但是起功能已经由异步转化为同步），当一个客户端通过调用 Connect函数发出一个连接请求后，调用者线程立刻可以向下运行。当连接真正建立起来以后，socket底 层会发送一个消息通知该对象。这里提到执行部件和调用者通过三种途径返回结果：状态、通知和回调。可以使用哪一种依赖于执行部件的实现，除非执行部件提供 多种选择，否则不受调用者控制。如果执行部件用状态来通知，那么调用者就需要每隔一定时间检查一次，效率就很低（有些初学多线程编程的人，总喜欢用一个循 环去检查某个变量的值，这其实是一种很严重的错误）。如果是使用通知的方式，效率则很高，因为执行部件几乎不需要做额外的操作。至于回调函数，其实和通知 没太多区别。</p>
 <p><em>阻塞</em><br>    阻塞调用是指调用结果返回之前，当前线程会被挂起。函数只有在得到结果之后才会返回。有人也许会把阻塞调用和同步调用等同起来，实际上它们是不同的。对于同步调用来说，很多时候当前线程还是激活的，只是从逻辑上当前函数没有返回而已。例如，我们在CSocket中调用Receive函数，如果缓冲区中没有数据，这个函数就会一直等待，直到有数据才返回。而此时，当前线程还会继续处理各种各样的消息。如果主窗口和调用函数在同一个线程中，除非你在特殊的界面操作函数中调用，其实主界面还是应该可以刷新。socket接收数据的另外一个函数recv则是一个阻塞调用的例子。当socket工作在阻塞模式的时候， 如果没有数据的情况下调用该函数，则当前线程就会被挂起，直到有数据为止。</p>
 <p><em>非阻塞</em><br>    非阻塞和阻塞的概念相对应，指在不能立刻得到结果之前，该函数不会阻塞当前线程，而会立刻返回。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/Qt-常用控件的创建和使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="不会飞的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="向北方">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/09/Qt-常用控件的创建和使用/" itemprop="url">Qt常用控件的创建和使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-09T15:11:06+08:00">
+                2019-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Qt/" itemprop="url" rel="index">
+                    <span itemprop="name">Qt</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="常用控件的创建和使用"><a href="#常用控件的创建和使用" class="headerlink" title="常用控件的创建和使用"></a>常用控件的创建和使用</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"mainwindow.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMenuBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QToolBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QStatusBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QLabel&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDockWidget&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QTextEdit&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MainWindow::MainWindow(QWidget *parent)</span><br><span class="line">    : QMainWindow(parent)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;resize(<span class="number">600</span>,<span class="number">400</span>);  <span class="comment">//Set the window size</span></span><br><span class="line"></span><br><span class="line">    QMenuBar *bar = menuBar();  <span class="comment">//创建菜单栏,只能一个</span></span><br><span class="line">    setMenuBar(bar);    <span class="comment">//将菜单栏设置到窗口中</span></span><br><span class="line"></span><br><span class="line">    QMenu * fileMenu = bar-&gt;addMenu(<span class="string">"文件"</span>);</span><br><span class="line">    QMenu * editMenu = bar-&gt;addMenu(<span class="string">"编辑"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//添加文件菜单项</span></span><br><span class="line">    QAction * createAction = fileMenu-&gt;addAction(<span class="string">"创建"</span>);</span><br><span class="line">    fileMenu-&gt;addSeparator();<span class="comment">//添加分割线</span></span><br><span class="line">    QAction * closeAction = fileMenu-&gt;addAction(<span class="string">"关闭"</span>);</span><br><span class="line">    fileMenu-&gt;addSeparator();<span class="comment">//添加分割线</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//添加编辑菜单栏</span></span><br><span class="line">    QAction * copyAction = editMenu-&gt;addAction(<span class="string">"拷贝"</span>);</span><br><span class="line">    QAction * pasteAction = editMenu-&gt;addAction(<span class="string">"粘贴"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//菜单栏 可以有很多个</span></span><br><span class="line">    QToolBar *toolBar = <span class="keyword">new</span> QToolBar(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//将工具栏放入窗口中</span></span><br><span class="line">    addToolBar(Qt::LeftToolBarArea, toolBar);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//只允许左右停靠</span></span><br><span class="line">    toolBar-&gt;setAllowedAreas(Qt::LeftToolBarArea | Qt::RightToolBarArea</span><br><span class="line">                             | Qt::TopToolBarArea | Qt::BottomToolBarArea);</span><br><span class="line">    <span class="comment">//设置是否允许浮动</span></span><br><span class="line">    toolBar-&gt;setFloatable(<span class="literal">false</span>);</span><br><span class="line">    <span class="comment">//设置是否允许移动</span></span><br><span class="line">    toolBar-&gt;setMovable(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//在工具栏中添加控件</span></span><br><span class="line">    QPushButton *btn = <span class="keyword">new</span> QPushButton(<span class="string">"按钮1"</span>,<span class="keyword">this</span>);</span><br><span class="line">    QPushButton *btn1 = <span class="keyword">new</span> QPushButton(<span class="string">"按钮2"</span>,<span class="keyword">this</span>);</span><br><span class="line">    btn1-&gt;setStyleSheet(<span class="string">"QPushButton&#123;color:red&#125;"</span>);</span><br><span class="line">    QPushButton *btn2 = <span class="keyword">new</span> QPushButton(<span class="string">"按钮3"</span>,<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    toolBar-&gt;addWidget(btn);</span><br><span class="line">    toolBar-&gt;addSeparator();</span><br><span class="line">    toolBar-&gt;addWidget(btn1);</span><br><span class="line">    toolBar-&gt;addSeparator();</span><br><span class="line">    toolBar-&gt;addWidget(btn2);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//状态栏，只有一个</span></span><br><span class="line">    QStatusBar * status = statusBar();</span><br><span class="line">    <span class="comment">//将状态栏放入到窗口中</span></span><br><span class="line">    setStatusBar(status);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建标签</span></span><br><span class="line">    QLabel * label1 = <span class="keyword">new</span> QLabel(<span class="string">"左侧信息"</span>, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//将label放入到状态栏中</span></span><br><span class="line">    status-&gt;addWidget(label1);</span><br><span class="line">    QLabel * label2 = <span class="keyword">new</span> QLabel(<span class="string">"右侧信息"</span>, <span class="keyword">this</span>);</span><br><span class="line">    status-&gt;addPermanentWidget(label2);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//铆接部件 浮动窗口 可以多个</span></span><br><span class="line">    QDockWidget * dock = <span class="keyword">new</span> QDockWidget(<span class="string">"铆接部件"</span>, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//将铆接部件放到窗体的核心部件的下方</span></span><br><span class="line">    addDockWidget(Qt::BottomDockWidgetArea, dock);</span><br><span class="line">    <span class="comment">//铆接部件设置停靠范文</span></span><br><span class="line">    dock-&gt;setAllowedAreas(Qt::TopDockWidgetArea | Qt::BottomDockWidgetArea);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建核心部件 只能有一个</span></span><br><span class="line">    QTextEdit * edit = <span class="keyword">new</span> QTextEdit(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//将文本编辑 放到窗体中间</span></span><br><span class="line">    setCentralWidget(edit);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainWindow::~MainWindow()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>总结：直接使用set方法的窗口中只能有一个，使用add方法的窗口中可以有很多个</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/YY-#pragma预处理指令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="不会飞的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="向北方">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/09/YY-#pragma预处理指令/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-09T15:11:06+08:00">
+                2019-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/YY/" itemprop="url" rel="index">
+                    <span itemprop="name">YY</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="pragma预处理指令"><a href="#pragma预处理指令" class="headerlink" title="#pragma预处理指令"></a>#pragma预处理指令</h1><p><strong><em>定义：</em></strong><br>在所有的预处理指令中，#pragma 指令可能是最复杂的了，它的作用是设定编译器的状态或者是指示编译器完成一些特定的动作。#pragma指令对每个编译器给出了一个方法，在保持与C和C++语言完全兼容的情况下，给出主机或操作系统专有的特征。依据定义，编译指示是机器或操作系统专有的，且对于每个编译器都是不同的。</p>
+<p><strong><em>一般格式：</em></strong></p>
+<p>#pargam Para        其中Para为参数</p>
+<p><strong>举例</strong><br><em>1.message参数：</em><br>    Message 参数能够在编译信息输出窗口中输出相应的信息，这对于源代码信息的控制是非常重要的。其使用方法为：</p>
+<p>   #pragma message(“消息文本”)</p>
+<p>   当编译器遇到这条指令时就在编译输出窗口中将消息文本打印出来。<br>   当我们在程序中定义了许多宏来控制源代码版本的时候，我们自己有可能都会忘记有没有正确的设置这些宏，此时我们可以用这条指令在编译的时候就进行检查。假设我们希望判断自己有没有在源代码的什么地方定义了_X86这个宏可以用下面的方法<br>    #ifdef _X86<br>    #pragma message(“_X86 macro activated!”)<br>    #endif</p>
+<p>当我们定义了_X86这个宏以后，应用程序在编译时就会在编译输出窗口里显示“_X86 macro activated! ”。我们就不会因为不记得自己定义的一些特定的宏而抓耳挠腮了。</p>
+<p><em>2.code_seg存放代码段：</em></p>
+<p>code_seg对pragma的使用量也比较大</p>
+<p>#pragma code_seg([“section-name”[,”section-class”]])</p>
+<p>它能够设置程序中函数代码存放的代码段，当我们开发驱动程序的时候就会使用到它。</p>
+<p>3.pragma once 执行一次（常用）<br>    只要在头文件的最开始加入这条指令就能够保证头文件被编译一次，这条指令实际上在VC6中就已经有了，但是考虑到兼容性并没有太多的使用它。<br>    #pragma once是编译相关，就是说这个编译系统上能用，但在其他编译系统不一定可以，也就是说移植性差，不过现在基本上已经是每个编译器都有这个定义了。<br>    #ifndef，#define，#endif这个是C++语言相关，这是C++语言中的宏定义，通过宏定义避免文件多次编译。所以在所有支持C++语言的编译器上都是有效的，如果写的程序要跨平台，最好使用这种方式</p>
+<p>附件链接：<a href="https://baike.baidu.com/item/%23pragma/706691?fr=aladdin#1_10" target="_blank" rel="noopener">pragma百度百科</a></p>
 
           
         
