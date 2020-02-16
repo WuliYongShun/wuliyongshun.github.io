@@ -15,5 +15,5 @@ categories:
 ## 使用回调函数的好处
 回掉函数的好处和作用，那就是解耦，就是因为这个特点，普通函数代替不了回调函数。所以，在我眼里，这才是回调函数最大的特点。来看看维基百科上面我觉得画得很好的一张图片。
 ***
-<img src="./pictureSource/<img src="./assets/1543803099995.png" style="zoom:70%" />" style="zoom:70%" />
+![calback picture](http://note.youdao.com/noteshare?id=f4e293235c7a6ddd037871d998546bd5&sub=7F9CD7C1DF024733BE2D987B992A01DE)
 
