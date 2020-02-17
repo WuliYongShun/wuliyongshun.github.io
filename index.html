@@ -315,6 +315,173 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/17/Modbus1-modbus协议分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="不会飞的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="向北方">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/17/Modbus1-modbus协议分析/" itemprop="url">Modbus1-modbus协议分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-17T09:23:41+08:00">
+                2020-02-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/STM32/" itemprop="url" rel="index">
+                    <span itemprop="name">STM32</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h2><h3 id="1-1-范围"><a href="#1-1-范围" class="headerlink" title="1.1 范围"></a>1.1 范围</h3><p>MODBUS 是 OSI 模型第 7 层上的应用层报文传输协议，它在连接至不同类型总线或网络的设备之间提供客户机/服务器通信。<br>自从 1979 年出现工业串行链路的事实标准以来，MODBUS 使成千上万的自动化设备能够通信。<br>目前，继续增加对简单而雅观的 MODBUS 结构支持。互联网组织能够使 TCP/IP 栈上的保留系统端口 502 访问MODBUS。<br>MODBUS 是一个请求/应答协议，并且提供功能码规定的服务。MODBUS 功能码是 MODBUS请求/应答 PDU 的元素。本文件的作用是描述 MODBUS 事务处理框架内使用的功能码。</p>
+<h3 id="1-2规范性引用文件"><a href="#1-2规范性引用文件" class="headerlink" title="1.2规范性引用文件"></a>1.2规范性引用文件</h3><p>1．RFC791，互联网协议，Sep81 DARPA<br>2．MODBUS 协议参考指南 Rev J,MODICON，1996 年 6 月，doc#PI_MBUS_300<br>MODBUS 是一项应用层报文传输协议，用于在通过不同类型的总线或网络连接的设备之间的客户机/服务器通信。<br>目前，使用下列情况实现 MODBUS：<br>以太网上的 TCP/IP。<br>各种媒体（有线：EIA/TIA-232-E、EIA-422、EIA/TIA-485-A；光纤、无线等等）上的异步串行传输。<br>MODBUS PLUS，一种高速令牌传递网络。<br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/0A6964ABCFB740B0B1434B68C7F12090/2422" alt="picture"></p>
+<h2 id="2、缩略语"><a href="#2、缩略语" class="headerlink" title="2、缩略语"></a>2、缩略语</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ADU 	应用数据单元</span><br><span class="line">HDLC 	高级数据链路控制</span><br><span class="line">HMI 	人机界面</span><br><span class="line">IETF	因特网工程工作组</span><br><span class="line">I/O 	输入/输出设备</span><br><span class="line">IP 		互连网协议</span><br><span class="line">MAC	    介质访问控制</span><br><span class="line">MB 	    MODBUS 协议</span><br><span class="line">MBAP    MODBUS 协议</span><br><span class="line">PDU     协议数据单元</span><br><span class="line">PLC	    可编程逻辑控制器</span><br><span class="line">TCP     传输控制协议</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、背景概要"><a href="#3、背景概要" class="headerlink" title="3、背景概要"></a>3、背景概要</h2><p>  MODBUS 协议允许在各种网络体系结构内进行简单通信。  </p>
+<p><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/0A6964ABCFB740B0B1434B68C7F12090/2422" alt="picture"></p>
+<p>  每种设备（PLC、HMI、控制面板、驱动程序、动作控制、输入/输出设备）都能使用 MODBUS协议来启动远程操作。</p>
+<p>  在基于串行链路和以太 TCP/IP 网络的 MODBUS 上可以进行相同通信。</p>
+<p>  一些网关允许在几种使用 MODBUS 协议的总线或网络之间进行通信。  </p>
+<h2 id="4、总体描述"><a href="#4、总体描述" class="headerlink" title="4、总体描述"></a>4、总体描述</h2><h3 id="4-1-协议描述"><a href="#4-1-协议描述" class="headerlink" title="4.1 协议描述"></a>4.1 协议描述</h3><p>  MODBUS 协议定义了一个与基础通信层无关的简单协议数据单元（PDU）。特定总线或网络上的 MODBUS 协议映射能够在应用数据单元（ADU）上引入一些附加域。  </p>
+<p> <img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/2371EEE1EFA542AC889C4DF395764A95/2427" alt="img"> </p>
+<p>启动 MODBUS 事务处理的客户机创建 MODBUS 应用数据单元。功能码向服务器指示将执行哪种操作。  </p>
+<p>MODBUS 协议建立了客户机启动的请求格式。  </p>
+<p>用一个字节编码 MODBUS 数据单元的功能码域。有效的码字范围是十进制 1-255（128-255 为  异常响应保留）。当从客户机向服务器设备发送报文时，功能码域通知服务器执行哪种操作。</p>
+<p>向一些功能码加入子功能码来定义多项操作。<br>从客户机向服务器设备发送的报文数据域包括附加信息，服务器使用这个信息执行功能码定义  的操作。这个域还包括离散项目和寄存器地址、处理的项目数量以及域中的实际数据字节数。<br>在某种请求中，数据域可以是不存在的（0 长度），在此情况下服务器不需要任何附加信息。功能码仅说明操作。<br>如果在一个正确接收的 MODBUS ADU 中，不出现与请求 MODBUS 功能有关的差错，那么服<br>务器至客户机的响应数据域包括请求数据。如果出现与请求 MODBUS 功能有关的差错，那么域包括一个异常码，服务器应用能够使用这个域确定下一个执行的操作。<br>例如，客户机能够读一组离散量输出或输入的开/关状态，或者客户机能够读/写一组寄存器的数据内容。<br>当服务器对客户机响应时，它使用功能码域来指示正常（无差错）响应或者出现某种差错（称为异常响应）。对于一个正常响应来说，服务器仅对原始功能码响应。<br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/28DF4966200D413B87E15ABCFFEEAA49/2429" alt="img"><br>对于异常响应，服务器返回一个与原始功能码等同的码，设置该原始功能码的最高有效位为逻辑 1。  </p>
+<p><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/EF0936A44DD84FCFB539A9FDB99691CC/2431" alt="img"><br><strong>注释：</strong>需要管理超时，以便明确地等待可能不会出现的应答。<br>串行链路上第一个 MODBUS 执行的长度约束限制了 MODBUS PDU 大小（最大 RS485ADU=256字节）。<br>因此，对串行链路通信来说，MODBUS PDU=256-服务器地址（1 字节）-CRC（2 字节）＝253字节。<br>RS232 / RS485 ADU = 253 字节+服务器地址(1 byte) + CRC (2 字节) = 256 字节。<br>TCP MODBUS ADU = 249 字节+ MBAP (7 字节) = 256 字节。<br>MODBUS 协议定义了三种 PDU。它们是：<br><em>MODBUS 请求 PDU，mb_req_pdu</em><br><em>MODBUS 响应 PDU，mb_rsp_pdu</em><br><em>MODBUS 异常响应 PDU，mb_excep_rsp_pdu</em></p>
+<p>定义 mb_req_pdu 为：<br>mb_req_pdu = { function_code, request_data}，其中function_code - [1 个字节] MODBUS 功能码<br>mb_req_pdu = { function_code, request_data}，其中function_code - [1 个字节] MODBUS 功能码量、子功能码等信息。</p>
+<p>定义 mb_rsp_pdu 为：<br>mb_rsp_pdu = { function_code, response_ data}，其中<br>function_code - [1 个字节] MODBUS 功能码<br>response_data - [n 个字节]，这个域与功能码有关，并且通常包括诸如可变参考、变量、数据偏移量、子功能码等信息。</p>
+<p>定义 mb_excep_rsp_pdu 为：<br>mb_excep_rsp_pdu = { function_code, request_data}，其中<br>function_code - [1 个字节] MODBUS 功能码 + 0x80<br>exception_code - [1 个字节]，在下表中定义了 MODBUS 异常码。</p>
+<h3 id="4-2-数据编码"><a href="#4-2-数据编码" class="headerlink" title="4.2 数据编码"></a>4.2 数据编码</h3><p>MODBUS 使用一个‘big-Endian’ 表示地址和数据项。这意味着当发射多个字节时，首先发送最高有效位。例如：<br>    <u>寄存器大小        值</u></p>
+<p>  16 – 比特        0x1234        发送的第一字节为     0x12    然后 0x34  </p>
+<h3 id="4-3-MODBUS数据模型"><a href="#4-3-MODBUS数据模型" class="headerlink" title="4.3 MODBUS数据模型"></a>4.3 MODBUS数据模型</h3><p>MODBUS 以一系列具有不同特征表格上的数据模型为基础。四个基本表格为：<br>| 基本表格 | 对象类型 | 访问类型 | 内容 |<br>| :—–| :—-: | :—-: | :—-: |<br>| <strong>离散量输入</strong> | 单个比特 | 只读 | I/O 系统提供这种类型数据 |<br>| <strong>线圈</strong> | 单个比特 | 读写 | 通过应用程序改变这种类型数据 |<br>| <strong>输入寄存器</strong> | 16-比特字 | 只读 | I/O 系统提供这种类型数据 |<br>| <strong>保持寄存器</strong> | 16-比特字 | 读写 | 通过应用程序改变这种类型数据 |</p>
+<p>  输入与输出之间以及比特寻址的和字寻址的数据项之间的区别并没有暗示任何应用操作。如果这是对可疑对象核心部分最自然的解释，那么这种区别是可完全接受的，而且很普通，以便认为四个表格全部覆盖了另外一个表格。 </p>
+<p> 对于基本表格中任何一项，协议都允许单个地选择 65536 个数据项，而且设计那些项的读写操作可以越过多个连续数据项直到数据大小规格限制，这个数据大小规格限制与事务处理功能码有关。很显然，必须将通过 MODBUS 处理的所有数据放置在设备应用存储器中。但是，存储器的物理地址不应该与数据参考混淆。要求仅仅是数据参考与物理地址的链接。</p>
+<p>MODBUS 功能码中使用的 MODBUS 逻辑参考数字是以 0 开始的无符号整数索引。<br>MODBUS 模型实现的实例<br>下例实例示出了两种在设备中构造数据的方法。可能有不同的结构，这个文件中没有全部描述出来。每个设备根据其应用都有它自己的数据结构。<br><strong>实例 1：有 4 个独立块的设备</strong><br>下例实例示出了设备中的数据结构，这个设备含有数字量和模拟量、输入量和输出量。由于不同块中的数据不相关，每个块是相互独立。按不同 MODBUS 功能码访问每个块。<br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/5D5E85E04EF345ACA518F43389CA6788/2439" alt="img"><br><strong>实例 2：仅有 1 个块的设备</strong><br>在这个实例中，设备仅有 1 个数据块。通过几个 MODBUS 功能码可能得到一个相同数据，或者通过 16 比特访问或 1 个访问比特。<br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/A1CA82F95175410E8D21F74834084BBF/2436" alt="img"></p>
+<h3 id="4-3-MODBUS-事务处理的定义"><a href="#4-3-MODBUS-事务处理的定义" class="headerlink" title="4.3 MODBUS 事务处理的定义"></a>4.3 MODBUS 事务处理的定义</h3><p>下列状态图描述了在服务器侧 MODBUS 事务处理的一般处理过程。<br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/C0F92039AA914ECF9B09A41115FE73EE/2441" alt="img"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/16/C-回调函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1686,152 +1853,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/23/Linux-苦逼如我开始开发简介/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="不会飞的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="向北方">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/23/Linux-苦逼如我开始开发简介/" itemprop="url">Linux-苦逼如我开始开发简介</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-23T21:17:09+08:00">
-                2019-11-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Embedded-system/" itemprop="url" rel="index">
-                    <span itemprop="name">Embedded system</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="说说我自己吧！！"><a href="#说说我自己吧！！" class="headerlink" title="说说我自己吧！！"></a>说说我自己吧！！</h1><p>作为一个毕业1年的本科学生也就是我本人，自从毕业之后一直还从事着电子类相关行业，会使用AD画一些图、会使用keil和一些开源软件写单片机代码；每个月拿着不多的工资、干着并不创新又重复操作的工作、生活在一个三四线又没有足够资金定居城市。毕业这一年每天都感到巨大的压力，从一个一心想转软件的小白到妥协搞嵌入式的渣渣，但是吧生活总是要继续的，总不能让明天过得比今天差吧，所以呢要坚持学习，相信付出总会有回报，坚持！！！！</p>
-<h1 id="说说为什么要学嵌入式linux"><a href="#说说为什么要学嵌入式linux" class="headerlink" title="说说为什么要学嵌入式linux"></a>说说为什么要学嵌入式linux</h1><p>为什么要学linux呢，首先linux是一个世界级别的开源系统咱们就不在BB了，linux技术除了主要应用在服务器设备中，还在嵌入式行业占有很大的市场，通俗的再说一下吧，现在整个嵌入式除了单片机就是linux了，然后呢单片机主要面对的额是低端市场居多，嵌入式长期占领高端市场。那我们一个五六七八九十流的小公司来说吧，一个设备跑单片机完全能够解决所有问题，那还要花费巨大的人力和资金将设备转成linux操作系统的设备，就是为了个宣传假装高大上很多而已。说了这么多其实都是客套的在说，因为这不符合我的初衷啊，俺可是真的是热爱喜欢呢，大学就开始学习linux操作系统，Ubuntu系统一直在玩就是一直没有用武之地导致自己二半吊子的啥也不行，这次借助正点原子和野火这波风气必须好好搞一搞这个linux。</p>
-<h1 id="说说我的准备吧"><a href="#说说我的准备吧" class="headerlink" title="说说我的准备吧"></a>说说我的准备吧</h1><p>为了学这个操作系统我在一年之前就买了一块核心吧，基于Cotex-A53架构的全志A64芯片做的一块核心板，这大半年一直想点亮呢，又由于各种事情没有进行下去，拓展板画好了很久很久也一直没有投出去焊接出来成品，这次是真的下定决心了，所以呢我吧自己画的板子做了一批件也买了一批，暂时只是没有时间焊接，等哪天挑出来个大片的时间把板子搞定再慢慢调吧。同时呢，我又买了一块野火的I.MX6ULL的开发板，画了几百票（想想千万不要为了省钱而不花钱投资自己的学习，你现在的话费和付出在将来一定会几倍、几十倍、几百倍的汇报回来）。</p>
-<h1 id="说说开发板的选择吧"><a href="#说说开发板的选择吧" class="headerlink" title="说说开发板的选择吧"></a>说说开发板的选择吧</h1><p>这个开发板我可是选了很久很久，主要在正点原子和野火两家之间进行选择。我好的衡量了下还是野火的更适合我吧，屏幕的驱动转接板可以自己画，主要板载HDMI不要LCD也照样能看效果。话说这两家的套路还是很神的呢，很芯片做成了邮票边很明显不能再次更换核心了，BTB板接和金手指的还要再等他一个月，不过呢我忍了，就是个买吧，先好好地铺垫学习下等到板子回来之后就可以直接上手开发学习了；前边说的这个都是野火的板子，他的三个版本还是给大家留下了选择的余地了，再说说正点原子的吧，这个板子真的是让我又爱又气，虽然留下了BTB的核心板（显然是为了日后升级），但是呢只有LCD的屏幕接口（还是被改良过的只能用他们家的LCD液晶屏，显然不划算），没有HDMI接口还需后续购买，唯一让我能说好的就只是发货快，还能开发4G模组了。综合两个比较呢，还是野火的开发板更适合我了。</p>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>以上内容多数都为自己的观点，本片文章只是留给以后的自己看，在以后的日子中要为自己的这个开始做一个收尾。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1882,7 +1903,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1893,7 +1914,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1904,7 +1925,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
