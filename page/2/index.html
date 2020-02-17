@@ -125,7 +125,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="向北方" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="小杰杰" type="application/atom+xml">
 
 
 
@@ -134,13 +134,13 @@
 
 <meta name="description" content="此站点为自己学习的技术笔记">
 <meta property="og:type" content="website">
-<meta property="og:title" content="向北方">
+<meta property="og:title" content="小杰杰">
 <meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="向北方">
+<meta property="og:site_name" content="小杰杰">
 <meta property="og:description" content="此站点为自己学习的技术笔记">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="向北方">
+<meta name="twitter:title" content="小杰杰">
 <meta name="twitter:description" content="此站点为自己学习的技术笔记">
 
 
@@ -177,7 +177,7 @@
 
 
 
-  <title>向北方</title>
+  <title>小杰杰</title>
   
 
 
@@ -208,7 +208,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">向北方</span>
+        <span class="site-title">小杰杰</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -324,7 +324,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="向北方">
+      <meta itemprop="name" content="小杰杰">
     </span>
 
     
@@ -470,7 +470,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="向北方">
+      <meta itemprop="name" content="小杰杰">
     </span>
 
     
@@ -611,7 +611,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="向北方">
+      <meta itemprop="name" content="小杰杰">
     </span>
 
     
@@ -780,155 +780,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/C++-中显式、隐式与explicit关键字/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="不会飞的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="向北方">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/09/C++-中显式、隐式与explicit关键字/" itemprop="url">C++中显式、隐式与explicit关键字</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-09T15:11:06+08:00">
-                2019-10-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/YY/" itemprop="url" rel="index">
-                    <span itemprop="name">YY</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="C-中显式、隐式与explicit关键字"><a href="#C-中显式、隐式与explicit关键字" class="headerlink" title="C++中显式、隐式与explicit关键字"></a>C++中显式、隐式与explicit关键字</h1><p><strong><em>1.隐式转换</em></strong><br>隐式转换，即编译器完成的转换，例如<br>int a = 1;<br>float b = 3;<br>float sum;<br>sum = a + b;//a是int类型，b是float类型；在编译的时候，编译器自动将int a转换成了float类型</p>
-<p><strong><em>2.显式转换</em></strong><br>显式转换，即用户完成的转换，例如<br>float a = 1;<br>float b = 3;<br>int s;<br>s = (int)a + (int)b;//float类型的a与b被显示的(强制)转换成成为float数据类型</p>
-<p>对于非数据的函数函数而言，例：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line">　　<span class="keyword">int</span> x;</span><br><span class="line">　　<span class="keyword">public</span>:</span><br><span class="line">　　　　A()&#123;x=<span class="number">0</span>;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:0"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　A(<span class="keyword">int</span> a)&#123;x=a;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　~A()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Delete A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">　　A a1;</span><br><span class="line">　　A *a2=<span class="keyword">new</span> A(<span class="number">10</span>);</span><br><span class="line">　　<span class="keyword">delete</span> a2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>程序分析：<br>A a1；隐式的调用了A();<br>A *a2 = new A(10);对A()进行了重载，显式的调用了A(int a);</p>
-<p><strong><em>3.explicit关键字</em></strong></p>
-<p>explicit用于构造函数，抑制隐式转换的发生，防止出现误区。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/C++-内联函数(C++ inline)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -938,7 +789,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="向北方">
+      <meta itemprop="name" content="小杰杰">
     </span>
 
     
@@ -1087,6 +938,298 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/C++-构造函数和析构函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="不会飞的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小杰杰">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/09/C++-构造函数和析构函数/" itemprop="url">构造函数和析构函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-09T15:11:06+08:00">
+                2019-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/YY/" itemprop="url" rel="index">
+                    <span itemprop="name">YY</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h1><p><strong>构造函数</strong></p>
+<p><strong>析构函数</strong><br>    构造函数（destructor）与构造函数相反，当对象结束其生命周期，如对象所在的函数已调用完毕时，系统自动执行析构函数。析构函数用来做“清理善后”的工作（例如在建立对象时用new开辟了一片内存空间，delete会自动调用析构函数后释放内存）。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/C++-中显式、隐式与explicit关键字/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="不会飞的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小杰杰">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/09/C++-中显式、隐式与explicit关键字/" itemprop="url">C++中显式、隐式与explicit关键字</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-09T15:11:06+08:00">
+                2019-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/YY/" itemprop="url" rel="index">
+                    <span itemprop="name">YY</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="C-中显式、隐式与explicit关键字"><a href="#C-中显式、隐式与explicit关键字" class="headerlink" title="C++中显式、隐式与explicit关键字"></a>C++中显式、隐式与explicit关键字</h1><p><strong><em>1.隐式转换</em></strong><br>隐式转换，即编译器完成的转换，例如<br>int a = 1;<br>float b = 3;<br>float sum;<br>sum = a + b;//a是int类型，b是float类型；在编译的时候，编译器自动将int a转换成了float类型</p>
+<p><strong><em>2.显式转换</em></strong><br>显式转换，即用户完成的转换，例如<br>float a = 1;<br>float b = 3;<br>int s;<br>s = (int)a + (int)b;//float类型的a与b被显示的(强制)转换成成为float数据类型</p>
+<p>对于非数据的函数函数而言，例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line">　　<span class="keyword">int</span> x;</span><br><span class="line">　　<span class="keyword">public</span>:</span><br><span class="line">　　　　A()&#123;x=<span class="number">0</span>;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:0"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　A(<span class="keyword">int</span> a)&#123;x=a;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　~A()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Delete A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">　　A a1;</span><br><span class="line">　　A *a2=<span class="keyword">new</span> A(<span class="number">10</span>);</span><br><span class="line">　　<span class="keyword">delete</span> a2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>程序分析：<br>A a1；隐式的调用了A();<br>A *a2 = new A(10);对A()进行了重载，显式的调用了A(int a);</p>
+<p><strong><em>3.explicit关键字</em></strong></p>
+<p>explicit用于构造函数，抑制隐式转换的发生，防止出现误区。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/C++-函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1096,7 +1239,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="向北方">
+      <meta itemprop="name" content="小杰杰">
     </span>
 
     
@@ -1276,7 +1419,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="向北方">
+      <meta itemprop="name" content="小杰杰">
     </span>
 
     
@@ -1408,149 +1551,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/C++-构造函数和析构函数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="不会飞的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="向北方">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/09/C++-构造函数和析构函数/" itemprop="url">构造函数和析构函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-09T15:11:06+08:00">
-                2019-10-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/YY/" itemprop="url" rel="index">
-                    <span itemprop="name">YY</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h1><p><strong>构造函数</strong></p>
-<p><strong>析构函数</strong><br>    构造函数（destructor）与构造函数相反，当对象结束其生命周期，如对象所在的函数已调用完毕时，系统自动执行析构函数。析构函数用来做“清理善后”的工作（例如在建立对象时用new开辟了一片内存空间，delete会自动调用析构函数后释放内存）。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/Qt-C++中文显示/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1560,7 +1560,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="向北方">
+      <meta itemprop="name" content="小杰杰">
     </span>
 
     
@@ -1692,7 +1692,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/Qt-QLineEdit的使用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/Qt-sqlite数据库连接/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="不会飞的风">
@@ -1701,7 +1701,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="向北方">
+      <meta itemprop="name" content="小杰杰">
     </span>
 
     
@@ -1711,7 +1711,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/09/Qt-QLineEdit的使用/" itemprop="url">Qt中QLineEdit的使用</a></h1>
+                <a class="post-title-link" href="/2019/10/09/Qt-sqlite数据库连接/" itemprop="url">Qt+sqlite数据库连接</a></h1>
         
 
         <div class="post-meta">
@@ -1746,8 +1746,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/YY/" itemprop="url" rel="index">
-                    <span itemprop="name">YY</span>
+                  <a href="/categories/Qt/" itemprop="url" rel="index">
+                    <span itemprop="name">Qt</span>
                   </a>
                 </span>
 
@@ -1785,32 +1785,7 @@
       
         
           
-            <h1 id="QLineEdit的使用"><a href="#QLineEdit的使用" class="headerlink" title="QLineEdit的使用"></a>QLineEdit的使用</h1><p>定义：<br>        QLineEdit是一个单行文本编辑控件。<br>功能：<br>        可以调用多个可用函数，输入和编辑单行文本，比如撤销、恢复、剪切、粘贴及拖放等。</p>
-<p>函数说明：<br>    echoMode()：可以设置其属性，比如一密码的形式输入；<br>    maxLength()：限制文本长度；<br>    validator()或inputMask()：限制智能输入数字，在对同一个QLineEdit的validator或者inputmask进行转换时，最好将它的validator或者inputmask清楚，以避免错误发生；</p>
-<p>与QLineEdit相关的一个类QTextEdit，她允许多行文本以及富文本编辑：<br>    setText()或者insert()改变其中的文本;<br>    text()：获得文本；<br>    displayText()：获得显示的文本；<br>    setSelection()或者selectAll()选中文本；<br>    cut()、copy()、paste()函数可以对文本中的数据进行剪切、复制和粘贴；<br>    setAlignment()：设置文本为位置；</p>
-<p>信号反馈：<br>    文本改变信号：textChange();<br>    不是由setText()造成文本的改变信号：textEdit();<br>    鼠标光标改变时信号：cursorPostionChanged()；<br>    返回键或者回车键按下时信号：returnPressed();</p>
-<p>常用方法说明：</p>
-<p>1.setPlaceholderText()设置提示文字<br><img src="https://images2015.cnblogs.com/blog/628412/201602/628412-20160205204407710-892374169.jpg" alt="文本框提示文字"><br>豆瓣电影的搜索输入框，没有输入任何字符时，显示“电影、影人、影院、电视剧”这些占位文字，对用户输入作相关提示。<br>echoLineEdit-&gt;setPlaceholderText(“电影、影人、影院、电视剧”);</p>
-<p>2.setEchoMode()设置模式<br><img src="https://images2015.cnblogs.com/blog/628412/201602/628412-20160205223926663-818638865.jpg" alt="淘宝"><br>淘宝登录界面的一部分，用户名可以直接看到，密码一般都用小黑点掩盖。</p>
-<figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            <span class="comment">//默认,输入什么即显示什么</span></span><br><span class="line">            echoLineEdit-&gt;setEchoMode(<span class="attribute">QLineEdit</span>::Normal);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">     <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">             <span class="comment">//密码，一般用小黑点覆盖你所输入的字符</span></span><br><span class="line">             echoLineEdit-&gt;setEchoMode(<span class="attribute">QLineEdit</span>::Password);</span><br><span class="line">             <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            <span class="comment">//编辑时输入字符显示输入内容否则用小黑点代替</span></span><br><span class="line">            echoLineEdit-&gt;setEchoMode(<span class="attribute">QLintEdit</span>::PasswordEchoOnEdit);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            <span class="comment">//任何输入都看不见（只是看不见，不是不能输入）</span></span><br><span class="line">            echoLineEdit-&gt;setEchoMode(<span class="attribute">ALineEdit</span>::NoEcho);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>3.setAlignment()设置文本位置</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            alignmentLineEdit-&gt;setAlignment(Qt::Alignleft);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            alignmentLineEdit-&gt;setAlignment(Qt::AlignCenter);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            alignmentLineEdit-&gt;setAlignment(Qt::AlignRight);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>4.setReadOnly()设置能否编辑</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            accessLineEdit-&gt;setReadOnly(<span class="literal">false</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            accessLineEdit-&gt;setReadOnly(<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>5.setValidator()对输入进行限制<br>这种方式的是指是通过正则表达式限制输入内容<br><img src="https://images2015.cnblogs.com/blog/628412/201602/628412-20160205224628272-1758708857.jpg" alt="输入限制"></p>
-<figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            <span class="comment">//无限制</span></span><br><span class="line">            validatorLineEdit-&gt;setValidator(<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            <span class="comment">//只能输入整数</span></span><br><span class="line">            validatorLineEdit-&gt;setValidator(<span class="keyword">new</span> QintValidator);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            <span class="comment">//实例，只能输入-180到180之间的小数，小数点后最多两位（可用于限制经纬度等）</span></span><br><span class="line">            QDoubleValodator *pDfValidator = <span class="keyword">new</span> QDoubleValidator(<span class="number">-180</span>, <span class="number">180.0</span>, <span class="number">2</span>, validatorLineEdit);</span><br><span class="line">            pDfValidator-&gt;setNotation(<span class="attribute">QDoubleValidator</span>::StandardNotation);</span><br><span class="line">            validatorLineEdit-&gt;setValidator(pDfValidator);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>6.setInputMask()对输入进行限制<br>通过限制格式限制输入，具体怎么格式化客气参考Qt助手。<br><img src="https://images2015.cnblogs.com/blog/628412/201602/628412-20160205213813663-1721525219.jpg" alt="对输入进行限制"></p>
-<figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            inputMaskLineEdit-&gt;setInputMask(<span class="string">""</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            inputMaskLineEdit-&gt;setInputMask(<span class="string">"-99 99 99 99 99;_"</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            inputMaskLineEdit-&gt;setInputMask(<span class="string">"0000-00-00"</span>);</span><br><span class="line">            inputMaskLineEdit-&gt;setText(<span class="string">"00000000"</span>);</span><br><span class="line">            inputMaskLineEdit-&gt;setCursorposition(<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            inputMaskLineEdit-&gt;setInputMask(<span class="string">"&gt;AAAAA-AAAAA-AAAAA-AAAAA-AAAAA;#"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>7.setLength()设置可以输入的最多字符数<br>//最多只能输入9个字符</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echoLineEdit-&gt;setMaxLength(9);</span><br></pre></td></tr></table></figure>
-
-<p>8.validator和inputmask的结合<br>比如经纬度用“度”</p>
-
+            <h1 id="Qt-sqlite数据库连接"><a href="#Qt-sqlite数据库连接" class="headerlink" title="Qt+sqlite数据库连接"></a>Qt+sqlite数据库连接</h1>
           
         
       
