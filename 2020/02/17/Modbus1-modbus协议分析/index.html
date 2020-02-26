@@ -154,7 +154,8 @@
 <meta property="og:image" content="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/3121D1376C784C2283B18AE2AB252268/2449">
 <meta property="og:image" content="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/780818F9ED26436499B25A9BE46DCE7E/2454">
 <meta property="og:image" content="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/B4A983D8D5DD4131A743EC9466CC3D08/2459">
-<meta property="og:updated_time" content="2020-02-17T05:26:37.898Z">
+<meta property="og:image" content="https://note.youdao.com/ynoteshare1/images/replace-img.png">
+<meta property="og:updated_time" content="2020-02-17T05:51:04.689Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Modbus1-modbus协议分析">
 <meta name="twitter:description" content="1、简介1.1 范围MODBUS 是 OSI 模型第 7 层上的应用层报文传输协议，它在连接至不同类型总线或网络的设备之间提供客户机/服务器通信。自从 1979 年出现工业串行链路的事实标准以来，MODBUS 使成千上万的自动化设备能够通信。目前，继续增加对简单而雅观的 MODBUS 结构支持。互联网组织能够使 TCP/IP 栈上的保留系统端口 502 访问MODBUS。MODBUS 是一个请求/">
@@ -455,8 +456,10 @@
 <h2 id="5、功能码分类"><a href="#5、功能码分类" class="headerlink" title="5、功能码分类"></a>5、功能码分类</h2><pre><code>有三类 MODBUS 功能码。它们是：</code></pre><p><strong>公共功能码</strong><br>    <em>是较好地被定义的功能码，</em><br>    <em>保证是唯一的，</em><br>    <em>MODBUS 组织可改变的，</em><br>    <em>公开证明的，</em><br>    <em>具有可用的一致性测试，</em><br>    <em>MB IETF RFC 中证明的，</em><br>    <em>包含已被定义的公共指配功能码和未来使用的未指配保留供功能码。</em><br><strong>用户定义功能码</strong><br>    <em>有两个用户定义功能码的定义范围，即 65 至 72 和十进制 100 至 110。</em><br>    <em>用户没有 MODBUS 组织的任何批准就可以选择和实现一个功能码</em><br>    <em>不能保证被选功能码的使用是唯一的。</em><br>    <em>如果用户要重新设置功能作为一个公共功能码，那么用户必须启动 RFC，以便将改变引入公共分类中，并且指配一个新的公共功能码。</em></p>
 <p><strong>保留功能码</strong><br>    <em>一些公司对传统产品通常使用的功能码，并且对公共使用是无效的功能码。</em><br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/E0CBA29A1F924C4080D78EC42FAA374D/2443" alt="img"></p>
 <h3 id="5-1公共功能码定义"><a href="#5-1公共功能码定义" class="headerlink" title="5.1公共功能码定义"></a>5.1公共功能码定义</h3><p><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/06EFDA58E07C4A8EBA86B6752864D2CC/2445" alt="img"></p>
-<h2 id="功能码描述"><a href="#功能码描述" class="headerlink" title="功能码描述"></a>功能码描述</h2><h3 id="6-1-01-0x01-读线圈"><a href="#6-1-01-0x01-读线圈" class="headerlink" title="6.1 01 (0x01)读线圈"></a>6.1 01 (0x01)读线圈</h3><p>在一个远程设备中，使用该功能码读取线圈的 1 至 2000 连续状态。请求 PDU 详细说明了起始地址，即指定的第一个线圈地址和线圈编号。从零开始寻址线圈。因此寻址线圈 1-16 为 0-15。<br>根据数据域的每个比特将响应报文中的线圈分成为一个线圈。指示状态为 1= ON 和 0= OFF。第一个数据字节的 LSB（最低有效位）包括在询问中寻址的输出。其它线圈依次类推，一直到这个字节的高位端为止，并在后续字节中从低位到高位的顺序。<br>如果返回的输出数量不是八的倍数，将用零填充最后数据字节中的剩余比特（一直到字节的高位端）。字节数量域说明了数据的完整字节数。<br><strong>请求PDU</strong><br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/9979FB72F5354F83BC7FEAFBD899E66C/2452" alt="img"><br><strong>响应PDU</strong><br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/3121D1376C784C2283B18AE2AB252268/2449" alt="img"><br><em>N＝输出数量/8，如果余数不等于 0，那么 N = N+1<br>*</em>错误**<br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/780818F9ED26436499B25A9BE46DCE7E/2454" alt="img"></p>
-<p>这是一个请求读离散量输出 20-38 的实例：<br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/B4A983D8D5DD4131A743EC9466CC3D08/2459" alt="img"><br>将输出 27-20 的状态表示为十六进制字节值 CD，或二进制 1100 1101。输出 27 是这个字节的MSB，输出 20 是 LSB。</p>
+<h2 id="6、功能码描述"><a href="#6、功能码描述" class="headerlink" title="6、功能码描述"></a>6、功能码描述</h2><h3 id="6-1-01-0x01-读线圈"><a href="#6-1-01-0x01-读线圈" class="headerlink" title="6.1 01 (0x01)读线圈"></a>6.1 01 (0x01)读线圈</h3><p>在一个远程设备中，使用该功能码读取线圈的 1 至 2000 连续状态。请求 PDU 详细说明了起始地址，即指定的第一个线圈地址和线圈编号。从零开始寻址线圈。因此寻址线圈 1-16 为 0-15。<br>根据数据域的每个比特将响应报文中的线圈分成为一个线圈。指示状态为 1= ON 和 0= OFF。第一个数据字节的 LSB（最低有效位）包括在询问中寻址的输出。其它线圈依次类推，一直到这个字节的高位端为止，并在后续字节中从低位到高位的顺序。<br>如果返回的输出数量不是八的倍数，将用零填充最后数据字节中的剩余比特（一直到字节的高位端）。字节数量域说明了数据的完整字节数。<br><strong>请求PDU</strong><br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/9979FB72F5354F83BC7FEAFBD899E66C/2452" alt="img"><br><strong>响应PDU</strong><br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/3121D1376C784C2283B18AE2AB252268/2449" alt="img"><br><em>N＝输出数量/8，如果余数不等于 0，那么 N = N+1<br>*</em>错误**<br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/780818F9ED26436499B25A9BE46DCE7E/2454" alt="img"></p>
+<p>这是一个请求读离散量输出 20-38 的实例：<br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/B4A983D8D5DD4131A743EC9466CC3D08/2459" alt="img"><br>将输出 27-20 的状态表示为十六进制字节值 CD，或二进制 1100 1101。输出 27 是这个字节的MSB，输出 20 是 LSB。<br>通常，将一个字节内的比特表示为 MSB 位于左侧，LSB 位于右侧。第一字节的输出从左至右为 27 至 20。下一个字节的输出从左到右为 35 至 28。当串行发射比特时，从 LSB 向 MSB 传输：20 . . .27、28 . . . 35 等等。<br>在最后的数据字节中，将输出状态 38-36 表示为十六进制字节值 05，或二进制 0000 0101。输出<br>38 是左侧第六个比特位置，输出 36 是这个字节的 LSB。用零填充五个剩余高位比特。<br><strong>注:</strong> 用零填充五个剩余比特（一直到高位端）。</p>
+<p><img src="https://note.youdao.com/ynoteshare1/images/replace-img.png" alt="img"></p>
+<h3 id="02-0x02-读离散量输入"><a href="#02-0x02-读离散量输入" class="headerlink" title="02 (0x02)读离散量输入"></a>02 (0x02)读离散量输入</h3><p>在一个远程设备中，使用该功能码读取离散量输入的 1 至 2000 连续状态。请求 PDU 详细说明了起始地址，即指定的第一个输入地址和输入编号。从零开始寻址输入。因此寻址输入 1-16 为 0-15。<br>根据数据域的每个比特将响应报文中的离散量输入分成为一个输入。指示状态为 1= ON 和 0=OFF。第一个数据字节的 LSB（最低有效位）包括在询问中寻址的输入。其它输入依次类推，一直到这个字节的高位端为止，并在后续字节中从低位到高位的顺序。<br>如果返回的输入数量不是八的倍数，将用零填充最后数据字节中的剩余比特（一直到字节的高位端）。字节数量域说明了数据的完整字节数。</p>
 
       
     </div>
@@ -496,6 +499,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/26/Linux7-vi常用命令汇总/" rel="prev" title="Linux7-vi常用命令汇总">
+                Linux7-vi常用命令汇总 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -572,7 +579,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -583,7 +590,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -682,7 +689,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、简介"><span class="nav-number">1.</span> <span class="nav-text">1、简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-范围"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2规范性引用文件"><span class="nav-number">1.2.</span> <span class="nav-text">1.2规范性引用文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、缩略语"><span class="nav-number">2.</span> <span class="nav-text">2、缩略语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、背景概要"><span class="nav-number">3.</span> <span class="nav-text">3、背景概要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、总体描述"><span class="nav-number">4.</span> <span class="nav-text">4、总体描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-协议描述"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 协议描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-数据编码"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 数据编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-MODBUS数据模型"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 MODBUS数据模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-MODBUS-事务处理的定义"><span class="nav-number">4.4.</span> <span class="nav-text">4.3 MODBUS 事务处理的定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、功能码分类"><span class="nav-number">5.</span> <span class="nav-text">5、功能码分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1公共功能码定义"><span class="nav-number">5.1.</span> <span class="nav-text">5.1公共功能码定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#功能码描述"><span class="nav-number">6.</span> <span class="nav-text">功能码描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-01-0x01-读线圈"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 01 (0x01)读线圈</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、简介"><span class="nav-number">1.</span> <span class="nav-text">1、简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-范围"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2规范性引用文件"><span class="nav-number">1.2.</span> <span class="nav-text">1.2规范性引用文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、缩略语"><span class="nav-number">2.</span> <span class="nav-text">2、缩略语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、背景概要"><span class="nav-number">3.</span> <span class="nav-text">3、背景概要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、总体描述"><span class="nav-number">4.</span> <span class="nav-text">4、总体描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-协议描述"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 协议描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-数据编码"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 数据编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-MODBUS数据模型"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 MODBUS数据模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-MODBUS-事务处理的定义"><span class="nav-number">4.4.</span> <span class="nav-text">4.3 MODBUS 事务处理的定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、功能码分类"><span class="nav-number">5.</span> <span class="nav-text">5、功能码分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1公共功能码定义"><span class="nav-number">5.1.</span> <span class="nav-text">5.1公共功能码定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、功能码描述"><span class="nav-number">6.</span> <span class="nav-text">6、功能码描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-01-0x01-读线圈"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 01 (0x01)读线圈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-0x02-读离散量输入"><span class="nav-number">6.2.</span> <span class="nav-text">02 (0x02)读离散量输入</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -315,6 +315,383 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/26/Linux7-vi常用命令汇总/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="不会飞的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小杰杰">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/26/Linux7-vi常用命令汇总/" itemprop="url">Linux7-vi常用命令汇总</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-26T12:44:52+08:00">
+                2020-02-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="vi编辑器的使用"><a href="#vi编辑器的使用" class="headerlink" title="vi编辑器的使用"></a>vi编辑器的使用</h1><p><strong>一个编辑器具备的功能</strong><br>1）打开文件、新建文件、保存文件<br>2）光标移动<br>3）文本编辑<br>4）(多行间|多列间)复制、粘贴、删除<br>5）查找和替换</p>
+<p>//=========================================<br><strong>vi编辑器的配置</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/vim</span><br><span class="line">cp vimrc ~/.vimrc</span><br><span class="line">cd ~</span><br><span class="line">gedit .vimrc</span><br></pre></td></tr></table></figure>
+
+<p>在.vimrc中加入如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&quot;关闭兼容功能</span><br><span class="line">set nocompatible </span><br><span class="line">&quot;显示行号</span><br><span class="line">set number</span><br><span class="line">&quot;编辑时 backspace 键设置为2个空格</span><br><span class="line">set backspace=2</span><br><span class="line">&quot;编辑时 tab 键设置为4个空格</span><br><span class="line">set tabstop=4</span><br><span class="line">&quot;设置自动对齐为4个空格</span><br><span class="line">set shiftwidth=4</span><br><span class="line">&quot;搜索时不区分大小写</span><br><span class="line">set ignorecase</span><br><span class="line">&quot;搜索时高亮显示</span><br><span class="line">set hlsearch</span><br></pre></td></tr></table></figure>
+
+<p>//=========================================</p>
+<p><strong>vi编辑器有三种模式</strong><br>1）一般模式（光标移动、复制、粘贴、删除）<br>2）编辑模式（编辑文本）<br>3）命令行模式（查找和替换）</p>
+<p><strong>注意：</strong><br>1）当不知道处于何种模式时，按ESC键返回到一般模式。<br>2）wq(write quit)<br>3）i(insert)</p>
+<p>//==================================================</p>
+<h2 id="1-打开文件、新建文件、保存文件"><a href="#1-打开文件、新建文件、保存文件" class="headerlink" title="1.打开文件、新建文件、保存文件"></a>1.打开文件、新建文件、保存文件</h2><pre><code>vi 文件名
+如果文件存在，输入结束后，:wq保存并退出文件
+如果文件不存在，输入结束后，:wq就可以新建并保存文件</code></pre><p><em>在编辑完成时，返回一般模式，</em><br>1）输入:w则保存文件，如果已经保存文件，输入:q则退出文件<br>2）直接输入:wq保存并退出<br>3)如果不想保存被修改的内容，则:q!强制退出。</p>
+<h2 id="2-进入编辑模式"><a href="#2-进入编辑模式" class="headerlink" title="2.进入编辑模式"></a>2.进入编辑模式</h2><p>i(在光标前开始插入文本)<br>a在光标后开始插入文本<br>o(在当前行之下新开一行，并到行首)</p>
+<h2 id="3-光标移动"><a href="#3-光标移动" class="headerlink" title="3.光标移动"></a>3.光标移动</h2><p>在一般模式下，hjkl这四个按键就可以移动光标<br>h(左)<br>j(下)<br>k(上)<br>l(右)</p>
+<p>快速的定位到某一行：<br>文件头、文件尾、指定某一行<br>ngg光标移至第n行的行首（n为数字），<br>    如1gg就跳到第一行的行首，就是文件头<br>    如2gg就跳到第二行的行首</p>
+<p>G转至文件结尾<br>注意：ngg和G是在一般模式</p>
+<p>在某一行如何快速定位到某一列<br>0（数字零）光标移至当前行行首<br>$光标移至当前行行末<br>fx搜索当前行中下一个出现字母x的地方<br>注意：0、$、fx是在一般模式</p>
+<p>vi的难点：<br>1）vi操作之前，先判断一下当前是哪一种模式，再看光标所在位置。<br>当你不知道处于何种模式时，使用esc键返回到一般模式。<br>再看光标，难点在于移动光标，可以做到快速切换到某一行某一列。</p>
+<h2 id="4-文本复制、粘贴、删除、撤销"><a href="#4-文本复制、粘贴、删除、撤销" class="headerlink" title="4.文本复制、粘贴、删除、撤销"></a>4.文本复制、粘贴、删除、撤销</h2><p>yy复制当前行(y:yank(复制))<br>nyy复制当前行及其后的n-1行(n是数字)</p>
+<p>使用P键来粘贴(p:paste)</p>
+<p>dd  删除光标所在行(d:delete)<br>ndd 删除当前行及其后的n-1行(n是数字)</p>
+<p>按u键来撤销上一步操作</p>
+<p>x删除光标所在位置的字符</p>
+<p>注意：<br>yy/nyy/dd/ndd/x/u都是在一般模式。</p>
+<h2 id="5-查找和替换"><a href="#5-查找和替换" class="headerlink" title="5.查找和替换"></a>5.查找和替换</h2><p>/pattern 从光标开始处向文件尾搜索pattern，后按下n或N<br>注意：<br>n在同一个方向重复上一次搜索命令<br>N在反方向重复上一次搜索命令<br>n(N)来源于next</p>
+<p>注意：<br>在/pattern之前先跳到第一行则进行全文件搜索。</p>
+<p>:%s/p1/p2/g将文件中所有的p1均用p2替换<br>:%s/p1/p2/gc替换时需要确认</p>
+<p>s:substitute替换<br>g:global全局<br>c:confirm确认</p>
+<p>vi的难点：<br>1）vi操作之前，先判断一下当前是哪一种模式，再看光标所在位置。<br>当你不知道处于何种模式时，使用esc键返回到一般模式。<br>再看光标，难点在于移动光标，可以做到快速切换到某一行某一列。</p>
+<p>vi编辑器有三种模式<br>1）一般模式（光标移动、复制、粘贴、删除、撤销）<br>   hjkl、ngg/G、0、$、fx<br>   yy/nyy<br>   p<br>   dd/ndd、x<br>   u<br>2）编辑模式（编辑文本）<br>   i  a o<br>3）命令行模式（查找和替换、保存退出文件）<br>   /pattern、:%s/p1/p2/gc、:wq</p>
+<p>举例：<br>1）用vi 新建一个文件test2.txt，然后输入”welaome to the world of vi.”,并保存。<br>2）由于拼写错误，需要将其中的welaome中的a替换成c。<br>3）在上步的基础上，复制第一行到第二行和第三行。<br>4）在上步的基础上，删除第三行的全部内容。<br>5）在上步的基础上，搜索出现vi的地方。<br>6）在上步的基础上，将字符串vi替换成vim。<br>7）保存并退出。</p>
+<h1 id="vi常用命令汇总表"><a href="#vi常用命令汇总表" class="headerlink" title="vi常用命令汇总表"></a><strong>vi常用命令汇总表</strong></h1><table>
+<thead>
+<tr>
+<th align="left">内容</th>
+<th align="left">命令及作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>打开文件</strong></td>
+<td align="left">vi+文件名/vi+文件名+行号</td>
+</tr>
+<tr>
+<td align="left"><strong>退出/保存文件</strong></td>
+<td align="left">:q! 强制退出vi,即使文件被修改，也不保存</td>
+</tr>
+<tr>
+<td align="left"><strong>进入编辑模式</strong></td>
+<td align="left">:wq 保存文件并退出</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">:w 保存文件</td>
+</tr>
+<tr>
+<td align="left"><strong>进入编辑模式</strong></td>
+<td align="left"><em>i 在光标前开始插入文本</em></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><em>a 在光标后开始插入文本</em></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><em>o 在当前行之下新开一行</em></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><em>O 在当前行之上新开一行</em></td>
+</tr>
+<tr>
+<td align="left"><strong>光标移动（多行间切换）</strong></td>
+<td align="left">Ctrl+f 向前滚动一整屏</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Ctrl+b 向后滚动一整屏</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">gg 转至文件开头</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">G 转至文件结尾</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">ngg/nG 光标移至第n行的行首（n为数字）</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">:n 光标移动至第n行的行首（n为数字）</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">n+ 光标向下移动n行（n为数字）</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">n- 光标向上移动n行（n为数字）</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">j/nj 光标向下移动1行/n行（n为数字）</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">k/nk 光标向上移动1行/n行（n为数字）</td>
+</tr>
+<tr>
+<td align="left"><strong>光标移动（单行间切换）</strong></td>
+<td align="left">0 （数字零）光标移至当前行行首</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">$ 光标移至当前行行末</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">h/nh 光标向左移动1列/n列（n为数字）</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">k/nk 光标向右移动1列/n列（n为数字）</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">w 光标移动到下一个字的开头</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">b 光标移动到上一个字的开头</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">fx 搜索当前行中下一个出现字母x的地方</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Fx 搜索当前行中上一个出现字母x的地方</td>
+</tr>
+<tr>
+<td align="left"><strong>文本复制命令</strong></td>
+<td align="left"><em>yy 复制当前行</em></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><em>nyy 复制当前行及其后的n-1行</em></td>
+</tr>
+<tr>
+<td align="left"><strong>文本删除命令</strong></td>
+<td align="left"><em>x 删除光标后的一个字符</em></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">X 删除光标前的一个字符</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">nx 删除光标后的n个字符</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">nX 删除光标前的n个字符</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">dw 从光标处删至当前词尾</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">db 从光标处删至当前词首</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">d0 从光标处删至行首</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">d$/D 从光标处删至行尾</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><em>dd  删除光标所在行</em></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><em>ndd 删除当前行及其后的n-1行</em></td>
+</tr>
+<tr>
+<td align="left"><strong>文本粘贴命令</strong></td>
+<td align="left"><em>使用P键</em></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">如复制当前行，先用yy复制当前行，切换到目的行的上一行后，用p来粘贴所复制的行。</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">如剪切当前行，先用dd复制当前行，切换到目的行的上一行后，用p来粘贴所剪切的行。</td>
+</tr>
+<tr>
+<td align="left"><strong>撤销命令</strong></td>
+<td align="left"><em>按u键来撤销上一步操作</em></td>
+</tr>
+<tr>
+<td align="left"><strong>查找及替换命令</strong></td>
+<td align="left"><em>/pattern 从光标开始处向文件尾搜索pattern</em>（在/pattern之前先跳到第一行则进行全文件搜索），后按下n或N</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">?pattern 从光标开始处向文件首部搜索pattern ，后按下n或N</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">注：n在同一个方向重复上一次搜索命令,N在反方向重复上一次搜索命令</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">:s/p1/p2/g将当前行中所有的p1均用p2替换，:s/p1/p2/gc替换时需要确认</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">:n1,n2s/p1/p2/g将n1至n2行中所有的p1均用p2替换，:n1,n2s/p1/p2/gc替换时需要确认</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><em>:%s/p1/p2/g将文件中所有的p1均用p2替换，:%s/p1/p2/gc替换时需要确认</em></td>
+</tr>
+</tbody></table>
+<p>更正：</p>
+<p>x删除光标所在位置的字符</p>
+<p>nx删除光标所在位置和光标后的n-1个字符</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/17/Modbus1-modbus协议分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -438,8 +815,10 @@
 <h2 id="5、功能码分类"><a href="#5、功能码分类" class="headerlink" title="5、功能码分类"></a>5、功能码分类</h2><pre><code>有三类 MODBUS 功能码。它们是：</code></pre><p><strong>公共功能码</strong><br>    <em>是较好地被定义的功能码，</em><br>    <em>保证是唯一的，</em><br>    <em>MODBUS 组织可改变的，</em><br>    <em>公开证明的，</em><br>    <em>具有可用的一致性测试，</em><br>    <em>MB IETF RFC 中证明的，</em><br>    <em>包含已被定义的公共指配功能码和未来使用的未指配保留供功能码。</em><br><strong>用户定义功能码</strong><br>    <em>有两个用户定义功能码的定义范围，即 65 至 72 和十进制 100 至 110。</em><br>    <em>用户没有 MODBUS 组织的任何批准就可以选择和实现一个功能码</em><br>    <em>不能保证被选功能码的使用是唯一的。</em><br>    <em>如果用户要重新设置功能作为一个公共功能码，那么用户必须启动 RFC，以便将改变引入公共分类中，并且指配一个新的公共功能码。</em></p>
 <p><strong>保留功能码</strong><br>    <em>一些公司对传统产品通常使用的功能码，并且对公共使用是无效的功能码。</em><br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/E0CBA29A1F924C4080D78EC42FAA374D/2443" alt="img"></p>
 <h3 id="5-1公共功能码定义"><a href="#5-1公共功能码定义" class="headerlink" title="5.1公共功能码定义"></a>5.1公共功能码定义</h3><p><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/06EFDA58E07C4A8EBA86B6752864D2CC/2445" alt="img"></p>
-<h2 id="功能码描述"><a href="#功能码描述" class="headerlink" title="功能码描述"></a>功能码描述</h2><h3 id="6-1-01-0x01-读线圈"><a href="#6-1-01-0x01-读线圈" class="headerlink" title="6.1 01 (0x01)读线圈"></a>6.1 01 (0x01)读线圈</h3><p>在一个远程设备中，使用该功能码读取线圈的 1 至 2000 连续状态。请求 PDU 详细说明了起始地址，即指定的第一个线圈地址和线圈编号。从零开始寻址线圈。因此寻址线圈 1-16 为 0-15。<br>根据数据域的每个比特将响应报文中的线圈分成为一个线圈。指示状态为 1= ON 和 0= OFF。第一个数据字节的 LSB（最低有效位）包括在询问中寻址的输出。其它线圈依次类推，一直到这个字节的高位端为止，并在后续字节中从低位到高位的顺序。<br>如果返回的输出数量不是八的倍数，将用零填充最后数据字节中的剩余比特（一直到字节的高位端）。字节数量域说明了数据的完整字节数。<br><strong>请求PDU</strong><br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/9979FB72F5354F83BC7FEAFBD899E66C/2452" alt="img"><br><strong>响应PDU</strong><br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/3121D1376C784C2283B18AE2AB252268/2449" alt="img"><br><em>N＝输出数量/8，如果余数不等于 0，那么 N = N+1<br>*</em>错误**<br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/780818F9ED26436499B25A9BE46DCE7E/2454" alt="img"></p>
-<p>这是一个请求读离散量输出 20-38 的实例：<br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/B4A983D8D5DD4131A743EC9466CC3D08/2459" alt="img"><br>将输出 27-20 的状态表示为十六进制字节值 CD，或二进制 1100 1101。输出 27 是这个字节的MSB，输出 20 是 LSB。</p>
+<h2 id="6、功能码描述"><a href="#6、功能码描述" class="headerlink" title="6、功能码描述"></a>6、功能码描述</h2><h3 id="6-1-01-0x01-读线圈"><a href="#6-1-01-0x01-读线圈" class="headerlink" title="6.1 01 (0x01)读线圈"></a>6.1 01 (0x01)读线圈</h3><p>在一个远程设备中，使用该功能码读取线圈的 1 至 2000 连续状态。请求 PDU 详细说明了起始地址，即指定的第一个线圈地址和线圈编号。从零开始寻址线圈。因此寻址线圈 1-16 为 0-15。<br>根据数据域的每个比特将响应报文中的线圈分成为一个线圈。指示状态为 1= ON 和 0= OFF。第一个数据字节的 LSB（最低有效位）包括在询问中寻址的输出。其它线圈依次类推，一直到这个字节的高位端为止，并在后续字节中从低位到高位的顺序。<br>如果返回的输出数量不是八的倍数，将用零填充最后数据字节中的剩余比特（一直到字节的高位端）。字节数量域说明了数据的完整字节数。<br><strong>请求PDU</strong><br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/9979FB72F5354F83BC7FEAFBD899E66C/2452" alt="img"><br><strong>响应PDU</strong><br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/3121D1376C784C2283B18AE2AB252268/2449" alt="img"><br><em>N＝输出数量/8，如果余数不等于 0，那么 N = N+1<br>*</em>错误**<br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/780818F9ED26436499B25A9BE46DCE7E/2454" alt="img"></p>
+<p>这是一个请求读离散量输出 20-38 的实例：<br><img src="https://note.youdao.com/yws/public/resource/86101c74995dfe9b994f5b4ded7a0a42/xmlnote/B4A983D8D5DD4131A743EC9466CC3D08/2459" alt="img"><br>将输出 27-20 的状态表示为十六进制字节值 CD，或二进制 1100 1101。输出 27 是这个字节的MSB，输出 20 是 LSB。<br>通常，将一个字节内的比特表示为 MSB 位于左侧，LSB 位于右侧。第一字节的输出从左至右为 27 至 20。下一个字节的输出从左到右为 35 至 28。当串行发射比特时，从 LSB 向 MSB 传输：20 . . .27、28 . . . 35 等等。<br>在最后的数据字节中，将输出状态 38-36 表示为十六进制字节值 05，或二进制 0000 0101。输出<br>38 是左侧第六个比特位置，输出 36 是这个字节的 LSB。用零填充五个剩余高位比特。<br><strong>注:</strong> 用零填充五个剩余比特（一直到高位端）。</p>
+<p><img src="https://note.youdao.com/ynoteshare1/images/replace-img.png" alt="img"></p>
+<h3 id="02-0x02-读离散量输入"><a href="#02-0x02-读离散量输入" class="headerlink" title="02 (0x02)读离散量输入"></a>02 (0x02)读离散量输入</h3><p>在一个远程设备中，使用该功能码读取离散量输入的 1 至 2000 连续状态。请求 PDU 详细说明了起始地址，即指定的第一个输入地址和输入编号。从零开始寻址输入。因此寻址输入 1-16 为 0-15。<br>根据数据域的每个比特将响应报文中的离散量输入分成为一个输入。指示状态为 1= ON 和 0=OFF。第一个数据字节的 LSB（最低有效位）包括在询问中寻址的输入。其它输入依次类推，一直到这个字节的高位端为止，并在后续字节中从低位到高位的顺序。<br>如果返回的输入数量不是八的倍数，将用零填充最后数据字节中的剩余比特（一直到字节的高位端）。字节数量域说明了数据的完整字节数。</p>
 
           
         
@@ -1712,153 +2091,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/24/Linux1-虚拟机及Ubuntu系统安装/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="不会飞的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小杰杰">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/24/Linux1-虚拟机及Ubuntu系统安装/" itemprop="url">Linux1-虚拟机及Ubuntu系统安装</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-24T20:54:42+08:00">
-                2019-11-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Embedded-system/" itemprop="url" rel="index">
-                    <span itemprop="name">Embedded system</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="开发前准备"><a href="#开发前准备" class="headerlink" title="开发前准备"></a>开发前准备</h1><p>整个开发需要在windows电脑上安装虚拟机，在虚拟机中安装Linux操作系统</p>
-<h2 id="虚拟机安装"><a href="#虚拟机安装" class="headerlink" title="虚拟机安装"></a>虚拟机安装</h2><p>虚拟机使用VMware 15pro，在官网下载完成直接安装，适用和激活自己看着办吧。<br>下载地址：<a href="https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html" target="_blank" rel="noopener">https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html</a><br>网络上随便找的秘钥（亲测可用），随便找一个用吧：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">YG5H2-ANZ0H-M8ERY-TXZZZ-YKRV8</span><br><span class="line">UG5J2-0ME12-M89WY-NPWXX-WQH88</span><br><span class="line">UA5DR-2ZD4H-089FY-6YQ5T-YPRX6</span><br><span class="line">GA590-86Y05-4806Y-X4PEE-ZV8E0</span><br><span class="line">ZF582-0NW5N-H8D2P-0XZEE-Z22VA</span><br><span class="line">YA18K-0WY8P-H85DY-L4NZG-X7RAD</span><br></pre></td></tr></table></figure>
-
-<h2 id="Ubuntu安装"><a href="#Ubuntu安装" class="headerlink" title="Ubuntu安装"></a>Ubuntu安装</h2><h3 id="1-首先下载Ubuntu"><a href="#1-首先下载Ubuntu" class="headerlink" title="1.首先下载Ubuntu"></a>1.首先下载Ubuntu</h3><p>官网下载链接（本人下载Ubuntu18.04.3版本）：</p>
-<p>  <a href="https://www.ubuntu.com/download/desktop" target="_blank" rel="noopener">https://www.ubuntu.com/download/desktop</a></p>
-<h3 id="2-挂载到虚拟机中安装完成即可"><a href="#2-挂载到虚拟机中安装完成即可" class="headerlink" title="2.挂载到虚拟机中安装完成即可"></a>2.挂载到虚拟机中安装完成即可</h3><h2 id="学习适用Ubuntu操作系统"><a href="#学习适用Ubuntu操作系统" class="headerlink" title="学习适用Ubuntu操作系统"></a>学习适用Ubuntu操作系统</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1909,7 +2141,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1920,7 +2152,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
