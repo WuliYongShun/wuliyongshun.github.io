@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>小杰杰</title>
+  <title>向北方</title>
   
   <subtitle>code</subtitle>
   <link href="/atom.xml" rel="self"/>
@@ -367,6 +367,32 @@
   </entry>
   
   <entry>
+    <title>C++中显式、隐式与explicit关键字</title>
+    <link href="http://yoursite.com/2019/10/09/C++-%E4%B8%AD%E6%98%BE%E5%BC%8F%E3%80%81%E9%9A%90%E5%BC%8F%E4%B8%8Eexplicit%E5%85%B3%E9%94%AE%E5%AD%97/"/>
+    <id>http://yoursite.com/2019/10/09/C++-中显式、隐式与explicit关键字/</id>
+    <published>2019-10-09T07:11:06.000Z</published>
+    <updated>2019-10-09T07:54:21.523Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="C-中显式、隐式与explicit关键字"><a href="#C-中显式、隐式与explicit关键字" class="headerlink" title="C++中显式、隐式与explicit关键字"></a>C++中显式、隐式与explicit关键字</h1><p><strong><em>1.隐式转换</em></strong><br>隐式转换，即编译器完成的转换，例如<br>int a = 1;<br>float b = 3;<br>float sum;<br>sum = a + b;//a是int类型，b是float类型；在编译的时候，编译器自动将int a转换成了float类型</p><p><strong><em>2.显式转换</em></strong><br>显式转换，即用户完成的转换，例如<br>float a = 1;<br>float b = 3;<br>int s;<br>s = (int)a + (int)b;//float类型的a与b被显示的(强制)转换成成为float数据类型</p><p>对于非数据的函数函数而言，例：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line">　　<span class="keyword">int</span> x;</span><br><span class="line">　　<span class="keyword">public</span>:</span><br><span class="line">　　　　A()&#123;x=<span class="number">0</span>;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:0"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　A(<span class="keyword">int</span> a)&#123;x=a;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　~A()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Delete A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">　　A a1;</span><br><span class="line">　　A *a2=<span class="keyword">new</span> A(<span class="number">10</span>);</span><br><span class="line">　　<span class="keyword">delete</span> a2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>程序分析：<br>A a1；隐式的调用了A();<br>A *a2 = new A(10);对A()进行了重载，显式的调用了A(int a);</p><p><strong><em>3.explicit关键字</em></strong></p><p>explicit用于构造函数，抑制隐式转换的发生，防止出现误区。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;C-中显式、隐式与explicit关键字&quot;&gt;&lt;a href=&quot;#C-中显式、隐式与explicit关键字&quot; class=&quot;headerlink&quot; title=&quot;C++中显式、隐式与explicit关键字&quot;&gt;&lt;/a&gt;C++中显式、隐式与explicit关键字&lt;/h1
+      
+    
+    </summary>
+    
+    
+      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>C++内联函数(C++ inline)</title>
     <link href="http://yoursite.com/2019/10/09/C++-%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0(C++%20inline)/"/>
     <id>http://yoursite.com/2019/10/09/C++-内联函数(C++ inline)/</id>
@@ -393,20 +419,19 @@
   </entry>
   
   <entry>
-    <title>构造函数和析构函数</title>
-    <link href="http://yoursite.com/2019/10/09/C++-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/"/>
-    <id>http://yoursite.com/2019/10/09/C++-构造函数和析构函数/</id>
+    <title>C++函数</title>
+    <link href="http://yoursite.com/2019/10/09/C++-%E5%87%BD%E6%95%B0/"/>
+    <id>http://yoursite.com/2019/10/09/C++-函数/</id>
     <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:53:55.839Z</updated>
+    <updated>2019-10-09T07:54:04.471Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h1><p><strong>构造函数</strong></p><p><strong>析构函数</strong><br>    构造函数（destructor）与构造函数相反，当对象结束其生命周期，如对象所在的函数已调用完毕时，系统自动执行析构函数。析构函数用来做“清理善后”的工作（例如在建立对象时用new开辟了一片内存空间，delete会自动调用析构函数后释放内存）。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="C-函数"><a href="#C-函数" class="headerlink" title="C++函数"></a>C++函数</h1><p>函数是一组一起执行一个任务的语句。每个 C++ 程序都至少有一个函数，即主函数 main() ，所有简单的程序都可以定义其他额外的函数。</p><p>您可以把代码划分到不同的函数中。如何划分代码到不同的函数中是由您来决定的，但在逻辑上，划分通常是根据每个函数执行一个特定的任务来进行的。</p><p>函数声明告诉编译器函数的名称、返回类型和参数。函数定义提供了函数的实际主体。</p><p>C++ 标准库提供了大量的程序可以调用的内置函数。例如，函数 strcat() 用来连接两个字符串，函数 memcpy() 用来复制内存到另一个位置。</p><p>函数还有很多叫法，比如方法、子例程或程序，等等。</p><p><strong>函数定义格式</strong><br>C++ 中的函数定义的一般形式如下：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">return_type <span class="title">function_name</span><span class="params">( parameter <span class="built_in">list</span> )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    body of the function</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>在 C++ 中，函数由一个函数头和一个函数主体组成。下面列出一个函数的所有组成部分：</p><pre><code>返回类型：一个函数可以返回一个值。return_type 是函数返回的值的数据类型。有些函数执行所需的操作而不返回值，在这种情况下，return_type 是关键字 void。函数名称：这是函数的实际名称。函数名和参数列表一起构成了函数签名。参数：参数就像是占位符。当函数被调用时，您向参数传递一个值，这个值被称为实际参数。参数列表包括函数参数的类型、顺序、数量。参数是可选的，也就是说，函数可能不包含参数。函数主体：函数主体包含一组定义函数执行任务的语句。</code></pre><p><strong>实例</strong><br>以下是 max() 函数的源代码。该函数有两个参数 num1 和 num2，会返回这两个数中较大的那个数：<br>//函数返回两个数中较大那个数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int max( int num1, int num2 )</span><br><span class="line">&#123;</span><br><span class="line">    //局部变量声明</span><br><span class="line">    int result；</span><br><span class="line">    </span><br><span class="line">   if(num1 &gt; num2 )</span><br><span class="line">        result = num1;</span><br><span class="line">    else </span><br><span class="line">        result = num2;</span><br><span class="line">        </span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>函数声明</strong><br>函数声明会告诉编译器函数名称及如何调用函数。函数的实际主体可以单独定义。<br>函数声明包括以下几个部分：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return_type function_name( parameter list );</span><br></pre></td></tr></table></figure><p>针对上面定义的函数 max()，以下是函数声明：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int max(int num1, int num2);</span><br></pre></td></tr></table></figure><p>在函数声明中，参数的名称并不重要，只有参数的类型是必需的，因此下面也是有效的声明：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int max(int, int);</span><br></pre></td></tr></table></figure><p>当您在一个源文件中定义函数且在另一个文件中调用函数时，函数声明是必需的。在这种情况下，您应该在调用函数的文件顶部声明函数。</p><p>创建 C++ 函数时，会定义函数做什么，然后通过调用函数来完成已定义的任务。</p><p><strong>函数调用</strong><br>当程序调用函数时，程序控制权会转移给被调用的函数。被调用的函数执行已定义的任务，当函数的返回语句被执行时，或到达函数的结束括号时，会把程序控制权交还给主程序。<br>调用函数时，传递所需参数，如果函数返回一个值，则可以存储返回值。例如：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数声明</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> num1, <span class="keyword">int</span> num2)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="comment">// 局部变量声明</span></span><br><span class="line">   <span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">   <span class="keyword">int</span> b = <span class="number">200</span>;</span><br><span class="line">   <span class="keyword">int</span> ret;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 调用函数来获取最大值</span></span><br><span class="line">   ret = max(a, b);</span><br><span class="line"></span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"Max value is : "</span> &lt;&lt; ret &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数返回两个数中较大的那个数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> num1, <span class="keyword">int</span> num2)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="comment">// 局部变量声明</span></span><br><span class="line">   <span class="keyword">int</span> result;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span> (num1 &gt; num2)</span><br><span class="line">      result = num1;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">      result = num2;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> result; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>把 max() 函数和 main() 函数放一块，编译源代码。当运行最后的可执行文件时，会产生下列结果：<br>Max value is : 200</p><p><strong>函数参数</strong></p><p>如果函数要使用参数，则必须声明接受参数值的变量。这些变量称为函数的形式参数。<br>形式参数就像函数内的其他局部变量，在进入函数时被创建，退出函数时被销毁。<br>当调用函数时，有两种向函数传递参数的方式：</p><p>调用类型：<br>传值调用：该方法把参数的实际值复制给函数的形式参数。在这种情况下，修改函数内的形式参数对实际参数没有影响。<br>指针调用：该方法把参数的地址复制给形式参数。在函数内，该地址用于访问调用中要用到的实际参数。这意味着，修改形式参数会影响实际参数。<br>引用调用：该方法把参数的引用复制给形式参数。在函数内，该引用用于访问调用中要用到的实际参数。这意味着，修改形式参数会影响实际参数。</p><p>默认情况下，C++ 使用传值调用来传递参数。一般来说，这意味着函数内的代码不能改变用于调用函数的参数。之前提到的实例，调用 max() 函数时，使用了相同的方法。</p><p><strong>参数的默认值</strong></p><p>当您定义一个函数，您可以为参数列表中后边的每一个参数指定默认值。当调用函数时，如果实际参数的值留空，则使用这个默认值。<br>这是通过在函数定义中使用赋值运算符来为参数赋值的。调用函数时，如果未传递参数的值，则会使用默认值，如果指定了值，则会忽略默认值，使用传递的值。请看下面的实例：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b=<span class="number">20</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> result;</span><br><span class="line"></span><br><span class="line">  result = a + b;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (result);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="comment">// 局部变量声明</span></span><br><span class="line">   <span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">   <span class="keyword">int</span> b = <span class="number">200</span>;</span><br><span class="line">   <span class="keyword">int</span> result;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 调用函数来添加值</span></span><br><span class="line">   result = sum(a, b);</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"Total value is :"</span> &lt;&lt; result &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 再次调用函数</span></span><br><span class="line">   result = sum(a);</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"Total value is :"</span> &lt;&lt; result &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>结果：<br>Total value is :300<br>Total value is :120</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;构造函数和析构函数&quot;&gt;&lt;a href=&quot;#构造函数和析构函数&quot; class=&quot;headerlink&quot; title=&quot;构造函数和析构函数&quot;&gt;&lt;/a&gt;构造函数和析构函数&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;构造函数&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;析构函数&lt;
+        &lt;h1 id=&quot;C-函数&quot;&gt;&lt;a href=&quot;#C-函数&quot; class=&quot;headerlink&quot; title=&quot;C++函数&quot;&gt;&lt;/a&gt;C++函数&lt;/h1&gt;&lt;p&gt;函数是一组一起执行一个任务的语句。每个 C++ 程序都至少有一个函数，即主函数 main() ，所有简单的程序都可以定义
       
     
     </summary>
@@ -448,45 +473,20 @@
   </entry>
   
   <entry>
-    <title>C++函数</title>
-    <link href="http://yoursite.com/2019/10/09/C++-%E5%87%BD%E6%95%B0/"/>
-    <id>http://yoursite.com/2019/10/09/C++-函数/</id>
+    <title>构造函数和析构函数</title>
+    <link href="http://yoursite.com/2019/10/09/C++-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/"/>
+    <id>http://yoursite.com/2019/10/09/C++-构造函数和析构函数/</id>
     <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:54:04.471Z</updated>
+    <updated>2019-10-09T07:53:55.839Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="C-函数"><a href="#C-函数" class="headerlink" title="C++函数"></a>C++函数</h1><p>函数是一组一起执行一个任务的语句。每个 C++ 程序都至少有一个函数，即主函数 main() ，所有简单的程序都可以定义其他额外的函数。</p><p>您可以把代码划分到不同的函数中。如何划分代码到不同的函数中是由您来决定的，但在逻辑上，划分通常是根据每个函数执行一个特定的任务来进行的。</p><p>函数声明告诉编译器函数的名称、返回类型和参数。函数定义提供了函数的实际主体。</p><p>C++ 标准库提供了大量的程序可以调用的内置函数。例如，函数 strcat() 用来连接两个字符串，函数 memcpy() 用来复制内存到另一个位置。</p><p>函数还有很多叫法，比如方法、子例程或程序，等等。</p><p><strong>函数定义格式</strong><br>C++ 中的函数定义的一般形式如下：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">return_type <span class="title">function_name</span><span class="params">( parameter <span class="built_in">list</span> )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    body of the function</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>在 C++ 中，函数由一个函数头和一个函数主体组成。下面列出一个函数的所有组成部分：</p><pre><code>返回类型：一个函数可以返回一个值。return_type 是函数返回的值的数据类型。有些函数执行所需的操作而不返回值，在这种情况下，return_type 是关键字 void。函数名称：这是函数的实际名称。函数名和参数列表一起构成了函数签名。参数：参数就像是占位符。当函数被调用时，您向参数传递一个值，这个值被称为实际参数。参数列表包括函数参数的类型、顺序、数量。参数是可选的，也就是说，函数可能不包含参数。函数主体：函数主体包含一组定义函数执行任务的语句。</code></pre><p><strong>实例</strong><br>以下是 max() 函数的源代码。该函数有两个参数 num1 和 num2，会返回这两个数中较大的那个数：<br>//函数返回两个数中较大那个数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int max( int num1, int num2 )</span><br><span class="line">&#123;</span><br><span class="line">    //局部变量声明</span><br><span class="line">    int result；</span><br><span class="line">    </span><br><span class="line">   if(num1 &gt; num2 )</span><br><span class="line">        result = num1;</span><br><span class="line">    else </span><br><span class="line">        result = num2;</span><br><span class="line">        </span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>函数声明</strong><br>函数声明会告诉编译器函数名称及如何调用函数。函数的实际主体可以单独定义。<br>函数声明包括以下几个部分：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return_type function_name( parameter list );</span><br></pre></td></tr></table></figure><p>针对上面定义的函数 max()，以下是函数声明：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int max(int num1, int num2);</span><br></pre></td></tr></table></figure><p>在函数声明中，参数的名称并不重要，只有参数的类型是必需的，因此下面也是有效的声明：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int max(int, int);</span><br></pre></td></tr></table></figure><p>当您在一个源文件中定义函数且在另一个文件中调用函数时，函数声明是必需的。在这种情况下，您应该在调用函数的文件顶部声明函数。</p><p>创建 C++ 函数时，会定义函数做什么，然后通过调用函数来完成已定义的任务。</p><p><strong>函数调用</strong><br>当程序调用函数时，程序控制权会转移给被调用的函数。被调用的函数执行已定义的任务，当函数的返回语句被执行时，或到达函数的结束括号时，会把程序控制权交还给主程序。<br>调用函数时，传递所需参数，如果函数返回一个值，则可以存储返回值。例如：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数声明</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> num1, <span class="keyword">int</span> num2)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="comment">// 局部变量声明</span></span><br><span class="line">   <span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">   <span class="keyword">int</span> b = <span class="number">200</span>;</span><br><span class="line">   <span class="keyword">int</span> ret;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 调用函数来获取最大值</span></span><br><span class="line">   ret = max(a, b);</span><br><span class="line"></span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"Max value is : "</span> &lt;&lt; ret &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数返回两个数中较大的那个数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> num1, <span class="keyword">int</span> num2)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="comment">// 局部变量声明</span></span><br><span class="line">   <span class="keyword">int</span> result;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span> (num1 &gt; num2)</span><br><span class="line">      result = num1;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">      result = num2;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> result; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>把 max() 函数和 main() 函数放一块，编译源代码。当运行最后的可执行文件时，会产生下列结果：<br>Max value is : 200</p><p><strong>函数参数</strong></p><p>如果函数要使用参数，则必须声明接受参数值的变量。这些变量称为函数的形式参数。<br>形式参数就像函数内的其他局部变量，在进入函数时被创建，退出函数时被销毁。<br>当调用函数时，有两种向函数传递参数的方式：</p><p>调用类型：<br>传值调用：该方法把参数的实际值复制给函数的形式参数。在这种情况下，修改函数内的形式参数对实际参数没有影响。<br>指针调用：该方法把参数的地址复制给形式参数。在函数内，该地址用于访问调用中要用到的实际参数。这意味着，修改形式参数会影响实际参数。<br>引用调用：该方法把参数的引用复制给形式参数。在函数内，该引用用于访问调用中要用到的实际参数。这意味着，修改形式参数会影响实际参数。</p><p>默认情况下，C++ 使用传值调用来传递参数。一般来说，这意味着函数内的代码不能改变用于调用函数的参数。之前提到的实例，调用 max() 函数时，使用了相同的方法。</p><p><strong>参数的默认值</strong></p><p>当您定义一个函数，您可以为参数列表中后边的每一个参数指定默认值。当调用函数时，如果实际参数的值留空，则使用这个默认值。<br>这是通过在函数定义中使用赋值运算符来为参数赋值的。调用函数时，如果未传递参数的值，则会使用默认值，如果指定了值，则会忽略默认值，使用传递的值。请看下面的实例：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b=<span class="number">20</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> result;</span><br><span class="line"></span><br><span class="line">  result = a + b;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (result);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="comment">// 局部变量声明</span></span><br><span class="line">   <span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">   <span class="keyword">int</span> b = <span class="number">200</span>;</span><br><span class="line">   <span class="keyword">int</span> result;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 调用函数来添加值</span></span><br><span class="line">   result = sum(a, b);</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"Total value is :"</span> &lt;&lt; result &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 再次调用函数</span></span><br><span class="line">   result = sum(a);</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"Total value is :"</span> &lt;&lt; result &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>结果：<br>Total value is :300<br>Total value is :120</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h1><p><strong>构造函数</strong></p><p><strong>析构函数</strong><br>    构造函数（destructor）与构造函数相反，当对象结束其生命周期，如对象所在的函数已调用完毕时，系统自动执行析构函数。析构函数用来做“清理善后”的工作（例如在建立对象时用new开辟了一片内存空间，delete会自动调用析构函数后释放内存）。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;C-函数&quot;&gt;&lt;a href=&quot;#C-函数&quot; class=&quot;headerlink&quot; title=&quot;C++函数&quot;&gt;&lt;/a&gt;C++函数&lt;/h1&gt;&lt;p&gt;函数是一组一起执行一个任务的语句。每个 C++ 程序都至少有一个函数，即主函数 main() ，所有简单的程序都可以定义
-      
-    
-    </summary>
-    
-    
-      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C++中显式、隐式与explicit关键字</title>
-    <link href="http://yoursite.com/2019/10/09/C++-%E4%B8%AD%E6%98%BE%E5%BC%8F%E3%80%81%E9%9A%90%E5%BC%8F%E4%B8%8Eexplicit%E5%85%B3%E9%94%AE%E5%AD%97/"/>
-    <id>http://yoursite.com/2019/10/09/C++-中显式、隐式与explicit关键字/</id>
-    <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:54:21.523Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="C-中显式、隐式与explicit关键字"><a href="#C-中显式、隐式与explicit关键字" class="headerlink" title="C++中显式、隐式与explicit关键字"></a>C++中显式、隐式与explicit关键字</h1><p><strong><em>1.隐式转换</em></strong><br>隐式转换，即编译器完成的转换，例如<br>int a = 1;<br>float b = 3;<br>float sum;<br>sum = a + b;//a是int类型，b是float类型；在编译的时候，编译器自动将int a转换成了float类型</p><p><strong><em>2.显式转换</em></strong><br>显式转换，即用户完成的转换，例如<br>float a = 1;<br>float b = 3;<br>int s;<br>s = (int)a + (int)b;//float类型的a与b被显示的(强制)转换成成为float数据类型</p><p>对于非数据的函数函数而言，例：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line">　　<span class="keyword">int</span> x;</span><br><span class="line">　　<span class="keyword">public</span>:</span><br><span class="line">　　　　A()&#123;x=<span class="number">0</span>;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:0"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　A(<span class="keyword">int</span> a)&#123;x=a;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　~A()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Delete A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">　　A a1;</span><br><span class="line">　　A *a2=<span class="keyword">new</span> A(<span class="number">10</span>);</span><br><span class="line">　　<span class="keyword">delete</span> a2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>程序分析：<br>A a1；隐式的调用了A();<br>A *a2 = new A(10);对A()进行了重载，显式的调用了A(int a);</p><p><strong><em>3.explicit关键字</em></strong></p><p>explicit用于构造函数，抑制隐式转换的发生，防止出现误区。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;C-中显式、隐式与explicit关键字&quot;&gt;&lt;a href=&quot;#C-中显式、隐式与explicit关键字&quot; class=&quot;headerlink&quot; title=&quot;C++中显式、隐式与explicit关键字&quot;&gt;&lt;/a&gt;C++中显式、隐式与explicit关键字&lt;/h1
+        &lt;h1 id=&quot;构造函数和析构函数&quot;&gt;&lt;a href=&quot;#构造函数和析构函数&quot; class=&quot;headerlink&quot; title=&quot;构造函数和析构函数&quot;&gt;&lt;/a&gt;构造函数和析构函数&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;构造函数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;析构函数&lt;
       
     
     </summary>
@@ -522,85 +522,6 @@
     
     
       <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Qt+sqlite数据库连接</title>
-    <link href="http://yoursite.com/2019/10/09/Qt-sqlite%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5/"/>
-    <id>http://yoursite.com/2019/10/09/Qt-sqlite数据库连接/</id>
-    <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:21:43.231Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Qt-sqlite数据库连接"><a href="#Qt-sqlite数据库连接" class="headerlink" title="Qt+sqlite数据库连接"></a>Qt+sqlite数据库连接</h1>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Qt-sqlite数据库连接&quot;&gt;&lt;a href=&quot;#Qt-sqlite数据库连接&quot; class=&quot;headerlink&quot; title=&quot;Qt+sqlite数据库连接&quot;&gt;&lt;/a&gt;Qt+sqlite数据库连接&lt;/h1&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
-    
-    
-      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Qt信号与槽</title>
-    <link href="http://yoursite.com/2019/10/09/Qt-%E4%BF%A1%E5%8F%B7%E4%B8%8E%E6%A7%BD/"/>
-    <id>http://yoursite.com/2019/10/09/Qt-信号与槽/</id>
-    <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:24:52.843Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="信号与槽"><a href="#信号与槽" class="headerlink" title="信号与槽"></a>信号与槽</h1><p>简介：</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;信号与槽&quot;&gt;&lt;a href=&quot;#信号与槽&quot; class=&quot;headerlink&quot; title=&quot;信号与槽&quot;&gt;&lt;/a&gt;信号与槽&lt;/h1&gt;&lt;p&gt;简介：&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
-    
-    
-      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Qt使Widget打开为全屏</title>
-    <link href="http://yoursite.com/2019/10/09/Qt-%E4%BD%BFWidget%E6%89%93%E5%BC%80%E4%B8%BA%E5%85%A8%E5%B1%8F/"/>
-    <id>http://yoursite.com/2019/10/09/Qt-使Widget打开为全屏/</id>
-    <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:24:07.471Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Qt5-5-1使Widget打开为全屏"><a href="#Qt5-5-1使Widget打开为全屏" class="headerlink" title="Qt5.5.1使Widget打开为全屏"></a>Qt5.5.1使Widget打开为全屏</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MainWindow w;</span><br><span class="line">w.showMaximized();</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Qt5-5-1使Widget打开为全屏&quot;&gt;&lt;a href=&quot;#Qt5-5-1使Widget打开为全屏&quot; class=&quot;headerlink&quot; title=&quot;Qt5.5.1使Widget打开为全屏&quot;&gt;&lt;/a&gt;Qt5.5.1使Widget打开为全屏&lt;/h1&gt;&lt;figu
-      
-    
-    </summary>
-    
-    
-      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
-    
     
       <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
     
@@ -659,6 +580,85 @@
   </entry>
   
   <entry>
+    <title>Qt+sqlite数据库连接</title>
+    <link href="http://yoursite.com/2019/10/09/Qt-sqlite%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5/"/>
+    <id>http://yoursite.com/2019/10/09/Qt-sqlite数据库连接/</id>
+    <published>2019-10-09T07:11:06.000Z</published>
+    <updated>2019-10-09T07:21:43.231Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Qt-sqlite数据库连接"><a href="#Qt-sqlite数据库连接" class="headerlink" title="Qt+sqlite数据库连接"></a>Qt+sqlite数据库连接</h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Qt-sqlite数据库连接&quot;&gt;&lt;a href=&quot;#Qt-sqlite数据库连接&quot; class=&quot;headerlink&quot; title=&quot;Qt+sqlite数据库连接&quot;&gt;&lt;/a&gt;Qt+sqlite数据库连接&lt;/h1&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
+    
+    
+      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Qt使Widget打开为全屏</title>
+    <link href="http://yoursite.com/2019/10/09/Qt-%E4%BD%BFWidget%E6%89%93%E5%BC%80%E4%B8%BA%E5%85%A8%E5%B1%8F/"/>
+    <id>http://yoursite.com/2019/10/09/Qt-使Widget打开为全屏/</id>
+    <published>2019-10-09T07:11:06.000Z</published>
+    <updated>2019-10-09T07:24:07.471Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Qt5-5-1使Widget打开为全屏"><a href="#Qt5-5-1使Widget打开为全屏" class="headerlink" title="Qt5.5.1使Widget打开为全屏"></a>Qt5.5.1使Widget打开为全屏</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MainWindow w;</span><br><span class="line">w.showMaximized();</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Qt5-5-1使Widget打开为全屏&quot;&gt;&lt;a href=&quot;#Qt5-5-1使Widget打开为全屏&quot; class=&quot;headerlink&quot; title=&quot;Qt5.5.1使Widget打开为全屏&quot;&gt;&lt;/a&gt;Qt5.5.1使Widget打开为全屏&lt;/h1&gt;&lt;figu
+      
+    
+    </summary>
+    
+    
+      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
+    
+    
+      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Qt信号与槽</title>
+    <link href="http://yoursite.com/2019/10/09/Qt-%E4%BF%A1%E5%8F%B7%E4%B8%8E%E6%A7%BD/"/>
+    <id>http://yoursite.com/2019/10/09/Qt-信号与槽/</id>
+    <published>2019-10-09T07:11:06.000Z</published>
+    <updated>2019-10-09T07:24:52.843Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="信号与槽"><a href="#信号与槽" class="headerlink" title="信号与槽"></a>信号与槽</h1><p>简介：</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;信号与槽&quot;&gt;&lt;a href=&quot;#信号与槽&quot; class=&quot;headerlink&quot; title=&quot;信号与槽&quot;&gt;&lt;/a&gt;信号与槽&lt;/h1&gt;&lt;p&gt;简介：&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
+    
+    
+      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Qt常用控件的创建和使用</title>
     <link href="http://yoursite.com/2019/10/09/Qt-%E5%B8%B8%E7%94%A8%E6%8E%A7%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/"/>
     <id>http://yoursite.com/2019/10/09/Qt-常用控件的创建和使用/</id>
@@ -672,6 +672,33 @@
       
       
         &lt;h1 id=&quot;常用控件的创建和使用&quot;&gt;&lt;a href=&quot;#常用控件的创建和使用&quot; class=&quot;headerlink&quot; title=&quot;常用控件的创建和使用&quot;&gt;&lt;/a&gt;常用控件的创建和使用&lt;/h1&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
+    
+    
+      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Qt设置背景界面</title>
+    <link href="http://yoursite.com/2019/10/09/Qt-%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E7%95%8C%E9%9D%A2/"/>
+    <id>http://yoursite.com/2019/10/09/Qt-设置背景界面/</id>
+    <published>2019-10-09T07:11:06.000Z</published>
+    <updated>2019-10-09T07:23:42.745Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Qt设置背景界面"><a href="#Qt设置背景界面" class="headerlink" title="Qt设置背景界面"></a>Qt设置背景界面</h1><p>1.设置背景图片的一种方式</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">QPixmap <span class="title">pixmap</span><span class="params">(QString::fromUtf8(<span class="string">"./icon/background.png"</span>))</span></span>;<span class="comment">//当前文件夹下面的图片</span></span><br><span class="line">QPalette palette = <span class="keyword">this</span>-&gt;palette();</span><br><span class="line">palette.setBrush(backgroundRole(), QBrush(pixmap));</span><br><span class="line">setPalette(palette);</span><br></pre></td></tr></table></figure><p>2.使用Qt捕获windows窗口变化事件函数，自动调整背景缩放</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> （当前函数所在类）::resizeEvent(QResizeEvent *e)</span><br><span class="line">&#123;</span><br><span class="line">    Q_UNUSED(e);    <span class="comment">//不使用传入参数e，避免警告</span></span><br><span class="line">    <span class="keyword">int</span> w = <span class="keyword">this</span>-&gt;widght();    <span class="comment">//w为当前widght宽度</span></span><br><span class="line">    <span class="keyword">int</span> h = <span class="keyword">this</span>-&gt;height();    <span class="comment">//h为当前widght高度</span></span><br><span class="line">    QPixmap back_icon(QString::fromUtf8("资源路径"))；    //back_icon指向图片路径</span><br><span class="line">    QPlette.setBrush(<span class="keyword">this</span>-&gt;backgroundRole(),QBrush(back_icon.scaled(w,h)));    <span class="comment">//设置窗体背景和和缩放比例</span></span><br><span class="line">    <span class="keyword">this</span>-&gt;setPalette(palette);    <span class="comment">//设置当前palette生效</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Qt设置背景界面&quot;&gt;&lt;a href=&quot;#Qt设置背景界面&quot; class=&quot;headerlink&quot; title=&quot;Qt设置背景界面&quot;&gt;&lt;/a&gt;Qt设置背景界面&lt;/h1&gt;&lt;p&gt;1.设置背景图片的一种方式&lt;/p&gt;
+&lt;figure class=&quot;highlight c++
       
     
     </summary>
@@ -707,33 +734,6 @@
     
     
       <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Qt设置背景界面</title>
-    <link href="http://yoursite.com/2019/10/09/Qt-%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E7%95%8C%E9%9D%A2/"/>
-    <id>http://yoursite.com/2019/10/09/Qt-设置背景界面/</id>
-    <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:23:42.745Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Qt设置背景界面"><a href="#Qt设置背景界面" class="headerlink" title="Qt设置背景界面"></a>Qt设置背景界面</h1><p>1.设置背景图片的一种方式</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">QPixmap <span class="title">pixmap</span><span class="params">(QString::fromUtf8(<span class="string">"./icon/background.png"</span>))</span></span>;<span class="comment">//当前文件夹下面的图片</span></span><br><span class="line">QPalette palette = <span class="keyword">this</span>-&gt;palette();</span><br><span class="line">palette.setBrush(backgroundRole(), QBrush(pixmap));</span><br><span class="line">setPalette(palette);</span><br></pre></td></tr></table></figure><p>2.使用Qt捕获windows窗口变化事件函数，自动调整背景缩放</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> （当前函数所在类）::resizeEvent(QResizeEvent *e)</span><br><span class="line">&#123;</span><br><span class="line">    Q_UNUSED(e);    <span class="comment">//不使用传入参数e，避免警告</span></span><br><span class="line">    <span class="keyword">int</span> w = <span class="keyword">this</span>-&gt;widght();    <span class="comment">//w为当前widght宽度</span></span><br><span class="line">    <span class="keyword">int</span> h = <span class="keyword">this</span>-&gt;height();    <span class="comment">//h为当前widght高度</span></span><br><span class="line">    QPixmap back_icon(QString::fromUtf8("资源路径"))；    //back_icon指向图片路径</span><br><span class="line">    QPlette.setBrush(<span class="keyword">this</span>-&gt;backgroundRole(),QBrush(back_icon.scaled(w,h)));    <span class="comment">//设置窗体背景和和缩放比例</span></span><br><span class="line">    <span class="keyword">this</span>-&gt;setPalette(palette);    <span class="comment">//设置当前palette生效</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Qt设置背景界面&quot;&gt;&lt;a href=&quot;#Qt设置背景界面&quot; class=&quot;headerlink&quot; title=&quot;Qt设置背景界面&quot;&gt;&lt;/a&gt;Qt设置背景界面&lt;/h1&gt;&lt;p&gt;1.设置背景图片的一种方式&lt;/p&gt;
-&lt;figure class=&quot;highlight c++
-      
-    
-    </summary>
-    
-    
-      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
-    
-    
-      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
     
   </entry>
   
