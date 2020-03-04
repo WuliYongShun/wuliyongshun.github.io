@@ -119,7 +119,7 @@
 
 
 
-  <meta name="keywords" content="C++,">
+  <meta name="keywords" content="STM,">
 
 
 
@@ -132,18 +132,18 @@
 
 
 
-<meta name="description" content="C++内联函数(C++ inline)使用函数能够避免将相同代码重写多次的麻烦，还能减少可执行程序的体积，但也会带来程序运行时间上的开销。 函数调用在执行时，首先要在栈中为形参和局部变量分配存储空间，然后还要将实参的值复制给形参，接下来还要将函数的返回地址（该地址指明了函数执行结束后，程序应该回到哪里继续执行）放入栈中，最后才跳转到函数内部执行。这个过程是要耗费时间的。 另外，函数执行 retur">
-<meta name="keywords" content="C++">
+<meta name="description" content="一、使用笔记1、关于遇到使用Stm32CubeMX生成带FreeRTOS代码使用printf打印死机问题1）首先在usart.c中的用户代码块中添加如下代码：12345678910111213141516171819202122232425262728/* USER CODE BEGIN 0 */#include &amp;quot;stdio.h&amp;quot;#ifdef __GNUC__#define">
+<meta name="keywords" content="STM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++内联函数(C++ inline)">
-<meta property="og:url" content="http://yoursite.com/2019/10/09/C++-内联函数(C++ inline)/index.html">
+<meta property="og:title" content="STM32-单片机应用笔记">
+<meta property="og:url" content="http://yoursite.com/2020/03/04/STM32-单片机应用笔记/index.html">
 <meta property="og:site_name" content="向北方">
-<meta property="og:description" content="C++内联函数(C++ inline)使用函数能够避免将相同代码重写多次的麻烦，还能减少可执行程序的体积，但也会带来程序运行时间上的开销。 函数调用在执行时，首先要在栈中为形参和局部变量分配存储空间，然后还要将实参的值复制给形参，接下来还要将函数的返回地址（该地址指明了函数执行结束后，程序应该回到哪里继续执行）放入栈中，最后才跳转到函数内部执行。这个过程是要耗费时间的。 另外，函数执行 retur">
+<meta property="og:description" content="一、使用笔记1、关于遇到使用Stm32CubeMX生成带FreeRTOS代码使用printf打印死机问题1）首先在usart.c中的用户代码块中添加如下代码：12345678910111213141516171819202122232425262728/* USER CODE BEGIN 0 */#include &amp;quot;stdio.h&amp;quot;#ifdef __GNUC__#define">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-09T07:54:13.460Z">
+<meta property="og:updated_time" content="2020-03-04T14:16:35.751Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++内联函数(C++ inline)">
-<meta name="twitter:description" content="C++内联函数(C++ inline)使用函数能够避免将相同代码重写多次的麻烦，还能减少可执行程序的体积，但也会带来程序运行时间上的开销。 函数调用在执行时，首先要在栈中为形参和局部变量分配存储空间，然后还要将实参的值复制给形参，接下来还要将函数的返回地址（该地址指明了函数执行结束后，程序应该回到哪里继续执行）放入栈中，最后才跳转到函数内部执行。这个过程是要耗费时间的。 另外，函数执行 retur">
+<meta name="twitter:title" content="STM32-单片机应用笔记">
+<meta name="twitter:description" content="一、使用笔记1、关于遇到使用Stm32CubeMX生成带FreeRTOS代码使用printf打印死机问题1）首先在usart.c中的用户代码块中添加如下代码：12345678910111213141516171819202122232425262728/* USER CODE BEGIN 0 */#include &amp;quot;stdio.h&amp;quot;#ifdef __GNUC__#define">
 
 
 
@@ -173,13 +173,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/10/09/C++-内联函数(C++ inline)/">
+  <link rel="canonical" href="http://yoursite.com/2020/03/04/STM32-单片机应用笔记/">
 
 
 
 
 
-  <title>C++内联函数(C++ inline) | 向北方</title>
+  <title>STM32-单片机应用笔记 | 向北方</title>
   
 
 
@@ -316,7 +316,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/C++-内联函数(C++ inline)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/STM32-单片机应用笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="不会飞的风">
@@ -333,7 +333,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C++内联函数(C++ inline)</h1>
+          <h1 class="post-title" itemprop="name headline">STM32-单片机应用笔记</h1>
         
 
         <div class="post-meta">
@@ -345,8 +345,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-09T15:11:06+08:00">
-                2019-10-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-04T21:39:17+08:00">
+                2020-03-04
               </time>
             
 
@@ -368,8 +368,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/YY/" itemprop="url" rel="index">
-                    <span itemprop="name">YY</span>
+                  <a href="/categories/单片机/" itemprop="url" rel="index">
+                    <span itemprop="name">单片机</span>
                   </a>
                 </span>
 
@@ -410,23 +410,18 @@
       
 
       
-        <h1 id="C-内联函数-C-inline"><a href="#C-内联函数-C-inline" class="headerlink" title="C++内联函数(C++ inline)"></a>C++内联函数(C++ inline)</h1><p>使用函数能够避免将相同代码重写多次的麻烦，还能减少可执行程序的体积，但也会带来程序运行时间上的开销。</p>
-<p>函数调用在执行时，首先要在栈中为形参和局部变量分配存储空间，然后还要将实参的值复制给形参，接下来还要将函数的返回地址（该地址指明了函数执行结束后，程序应该回到哪里继续执行）放入栈中，最后才跳转到函数内部执行。这个过程是要耗费时间的。</p>
-<p>另外，函数执行 return 语句返回时，需要从栈中回收形参和局部变量占用的存储空间，然后从栈中取出返回地址，再跳转到该地址继续执行，这个过程也要耗费时间。</p>
-<p>总之，使用函数调用语句和直接把函数中的代码重新抄写一遍相比，节省了人力，但是带来了程序运行时间上的额外开销。</p>
-<p>一般情况下，这个开销可以忽略不计。但是，如果一个函数内部没有几条语句，执行时间本来就非常短，那么这个函数调用产生的额外开销和函数本身执行的时间相比，就显得不能忽略了。假如这样的函数在一个循环中被上千万次地执行，函数调用导致的时间开销可能就会使得程序运行明显变慢。</p>
-<p>作为特别注重程序执行效率，适合编写底层系统软件的高级程序设计语言，C++ 用 inline 关键字较好地解决了函数调用开销的问题。</p>
-<p>在 C++ 中，可以在定义函数时，在返回值类型前面加上 inline 关键字。如： </p>
-<pre><code>inline int Max (int a, int b)
-{
-    if(a &gt;b)
-        return a;
-    return b;
-}</code></pre><p>增加了 inline 关键字的函数称为“内联函数”。内联函数和普通函数的区别在于：当编译器处理调用内联函数的语句时，不会将该语句编译成函数调用的指令，而是直接将整个函数体的代码插人调用语句处，就像整个函数体在调用处被重写了一遍一样。</p>
-<p>有了内联函数，就能像调用一个函数那样方便地重复使用一段代码，而不需要付出执行函数调用的额外开销。很显然，使用内联函数会使最终可执行程序的体积增加。以时间换取空间，或增加空间消耗来节省时间，这是计算机学科中常用的方法。</p>
-<p>内联函数中的代码应该只是很简单、执行很快的几条语句。如果一个函数较为复杂，它执行的时间可能上万倍于函数调用的额外开销，那么将其作为内联函数处理的结果是付出让代码体积增加不少的代价，却只使速度提高了万分之一，这显然是不划算的。</p>
-<p>有时函数看上去很简单，例如只有一个包含一两条语句的循环，但该循环的执行次数可能很多，要消耗大量时间，那么这种情况也不适合将其实现为内联函数。</p>
-<p>注意：的是，调用内联函数的语句前必须已经出现内联函数的定义（即整个数体），而不能只出现内联函数的声明！</p>
+        <h1 id="一、使用笔记"><a href="#一、使用笔记" class="headerlink" title="一、使用笔记"></a>一、使用笔记</h1><h3 id="1、关于遇到使用Stm32CubeMX生成带FreeRTOS代码使用printf打印死机问题"><a href="#1、关于遇到使用Stm32CubeMX生成带FreeRTOS代码使用printf打印死机问题" class="headerlink" title="1、关于遇到使用Stm32CubeMX生成带FreeRTOS代码使用printf打印死机问题"></a>1、关于遇到使用Stm32CubeMX生成带FreeRTOS代码使用printf打印死机问题</h3><h4 id="1）首先在usart-c中的用户代码块中添加如下代码："><a href="#1）首先在usart-c中的用户代码块中添加如下代码：" class="headerlink" title="1）首先在usart.c中的用户代码块中添加如下代码："></a>1）首先在usart.c中的用户代码块中添加如下代码：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">/* USER CODE BEGIN 0 */</span><br><span class="line">#include &quot;stdio.h&quot;</span><br><span class="line"></span><br><span class="line">#ifdef __GNUC__</span><br><span class="line"></span><br><span class="line">#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)</span><br><span class="line"></span><br><span class="line">PUTCHAR_PROTOTYPE</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">	// 注意下面第一个参数是&amp;huart1，因为cubemx配置了串口1自动生成的</span><br><span class="line">	HAL_UART_Transmit(&amp;huart1, (uint8_t*)&amp;ch, 1, HAL_MAX_DELAY);</span><br><span class="line">	return ch;</span><br><span class="line">&#125;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int _write(int file, char *ptr, int len)</span><br><span class="line">&#123;</span><br><span class="line">	int DataIdx;</span><br><span class="line">	for (DataIdx = 0; DataIdx &lt; len;DataIdx++)</span><br><span class="line">	&#123;</span><br><span class="line">	  __io_putchar(*ptr++);</span><br><span class="line">	&#125;</span><br><span class="line">	return len;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* USER CODE END 0 */</span><br></pre></td></tr></table></figure>
+
+<p>将以上代码加入后，在主函数中可以使用printf函数打印输出，但是不支持浮点数据打印。</p>
+<h4 id="2）添加浮点输出打印"><a href="#2）添加浮点输出打印" class="headerlink" title="2）添加浮点输出打印"></a>2）添加浮点输出打印</h4><p>就此便可直接通过printf输出数据但是没法输出浮点数，我们可以进行如下设置即可完美支持浮点数的输出。在工程属性下找到C/C++ build-&gt;Settings-&gt;Tool Settings-&gt;C Linker-&gt;Miscellaneous-&gt;Other options 选项空中填写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-u_printf_float</span><br></pre></td></tr></table></figure>
+
+<p>测试代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">double pi = 3.1415926;</span><br><span class="line">printf(&quot;%.3f\r\n&quot;,pi);</span><br></pre></td></tr></table></figure>
+
+<p>即可。到此为止TrueStudio即可支持printf的所有数据类型输出。</p>
+<p>至此为止，所有打印都可以正常完成，<strong>但是</strong>问题来了，在freeRTOS任务快中调用打印printf时，操作系统就会死机，于是各种寻找解决办法。</p>
+<h4 id="3）解决freeRTOS任务块打印死机问题"><a href="#3）解决freeRTOS任务块打印死机问题" class="headerlink" title="3）解决freeRTOS任务块打印死机问题"></a>3）解决freeRTOS任务块打印死机问题</h4><p>在工程目录下，按照如下路径添加微小printf实现：<br>新建-&gt;其他-库函数-&gt;微小printf实现(选择添加路径，然后确认添加完微小printf实现后，即可在任务代码块中使用printf函数)。</p>
 
       
     </div>
@@ -444,7 +439,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C/" rel="tag"># C++</a>
+            <a href="/tags/STM/" rel="tag"># STM</a>
           
         </div>
       
@@ -457,8 +452,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/09/C++-多线程/" rel="next" title="C++多线程">
-                <i class="fa fa-chevron-left"></i> C++多线程
+              <a href="/2020/03/01/FreeeRTOS-应用笔记/" rel="next" title="FreeeRTOS-应用笔记">
+                <i class="fa fa-chevron-left"></i> FreeeRTOS-应用笔记
               </a>
             
           </div>
@@ -466,10 +461,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/09/C++-函数/" rel="prev" title="C++函数">
-                C++函数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -656,7 +647,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-内联函数-C-inline"><span class="nav-number">1.</span> <span class="nav-text">C++内联函数(C++ inline)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、使用笔记"><span class="nav-number">1.</span> <span class="nav-text">一、使用笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、关于遇到使用Stm32CubeMX生成带FreeRTOS代码使用printf打印死机问题"><span class="nav-number">1.0.1.</span> <span class="nav-text">1、关于遇到使用Stm32CubeMX生成带FreeRTOS代码使用printf打印死机问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1）首先在usart-c中的用户代码块中添加如下代码："><span class="nav-number">1.0.1.1.</span> <span class="nav-text">1）首先在usart.c中的用户代码块中添加如下代码：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2）添加浮点输出打印"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">2）添加浮点输出打印</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3）解决freeRTOS任务块打印死机问题"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">3）解决freeRTOS任务块打印死机问题</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
