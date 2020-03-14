@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Tools,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="向北方" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="PicGo+Github搭建图床1、为什么要用PicGo 为了记录笔记以及编写文档，使用了各种MarkDown软件，Typora,有道云笔记,Vnote啊这些，除了云笔记以外其他得基于Markdown语法的软件都只能保存本地图片链接和网络图片链接，当我换一台电脑或者网络图片的链接挂掉以后，问题就出现了，我的图片都没了，时间久了问题多了，文档和笔记都乱了。为了解决这个问题，我找到了PicGo+Git">
+<meta name="keywords" content="Tools">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PicGo+Github搭建图床">
+<meta property="og:url" content="http://yoursite.com/2020/03/14/PicGo搭建Github图床/index.html">
+<meta property="og:site_name" content="向北方">
+<meta property="og:description" content="PicGo+Github搭建图床1、为什么要用PicGo 为了记录笔记以及编写文档，使用了各种MarkDown软件，Typora,有道云笔记,Vnote啊这些，除了云笔记以外其他得基于Markdown语法的软件都只能保存本地图片链接和网络图片链接，当我换一台电脑或者网络图片的链接挂掉以后，问题就出现了，我的图片都没了，时间久了问题多了，文档和笔记都乱了。为了解决这个问题，我找到了PicGo+Git">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314171534.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314171501.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314165902.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314170016.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314170319.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314170421.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314170529.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314170625.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314171011.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314170934.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314171150.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314173035.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314171823.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314172523.png">
+<meta property="og:updated_time" content="2020-03-14T09:45:16.933Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PicGo+Github搭建图床">
+<meta name="twitter:description" content="PicGo+Github搭建图床1、为什么要用PicGo 为了记录笔记以及编写文档，使用了各种MarkDown软件，Typora,有道云笔记,Vnote啊这些，除了云笔记以外其他得基于Markdown语法的软件都只能保存本地图片链接和网络图片链接，当我换一台电脑或者网络图片的链接挂掉以后，问题就出现了，我的图片都没了，时间久了问题多了，文档和笔记都乱了。为了解决这个问题，我找到了PicGo+Git">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314171534.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/14/PicGo搭建Github图床/">
+
+
+
+
+
+  <title>PicGo+Github搭建图床 | 向北方</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">向北方</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">code</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/14/PicGo搭建Github图床/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="不会飞的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="向北方">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">PicGo+Github搭建图床</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-14T17:44:31+08:00">
+                2020-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="PicGo-Github搭建图床"><a href="#PicGo-Github搭建图床" class="headerlink" title="PicGo+Github搭建图床"></a>PicGo+Github搭建图床</h1><h3 id="1、为什么要用PicGo"><a href="#1、为什么要用PicGo" class="headerlink" title="1、为什么要用PicGo"></a>1、为什么要用PicGo</h3><p><img src="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314171534.png" alt></p>
+<p>为了记录笔记以及编写文档，使用了各种MarkDown软件，<code>Typora</code>,<code>有道云笔记</code>,<code>Vnote</code>啊这些，除了云笔记以外其他得基于Markdown语法的软件都只能保存本地图片链接和网络图片链接，当我换一台电脑或者网络图片的链接挂掉以后，问题就出现了，我的图片都没了，时间久了问题多了，文档和笔记都乱了。为了解决这个问题，我找到了PicGo+GitHub图床的方法，制作个人图床，这样的话以上的问题都迎刃而解了，除非github挂掉，否则我的图片就不会有问题。<br>我们的思路就是使用PicGo将本地的文件，或者剪切板上面的截图发送图床，然后生成在线图片的链接，这样就可以让Markdown文档飞起来了，走到哪就可以用到哪。</p>
+<h3 id="2、PicGo简介"><a href="#2、PicGo简介" class="headerlink" title="2、PicGo简介"></a>2、PicGo简介</h3><p>这是一款图片上传的工具，目前支持微博图床，<code>七牛图床</code>，<code>腾讯云</code>，<code>又拍云</code>，<code>GitHub</code>等图床，未来将支持更多图床。<br>同时PicGo是一个免费开源的软件，其GitHub地址为：<code>https://github.com/WuliYongShun/PicGo.git</code><br>可以选择相关releases版本进行下载和安装，或者直接下载源码编译使用。<br><img src="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314171501.png" alt></p>
+<h3 id="3、准备工作"><a href="#3、准备工作" class="headerlink" title="3、准备工作"></a>3、准备工作</h3><p>主要是两个方面工作，一方面是使用github创建仓库并生成并保存taken，两仪方面的工作是根据github仓库芯片对PicGo软件进行相关配置工作</p>
+<h4 id="3-1、GitHub相关工作"><a href="#3-1、GitHub相关工作" class="headerlink" title="3.1、GitHub相关工作"></a>3.1、GitHub相关工作</h4><ul>
+<li>1、创建仓库</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314165902.png" alt></p>
+<p><img src="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314170016.png" alt></p>
+<ul>
+<li>2、生成并保存Token</li>
+</ul>
+<p>点击settings：<br><img src="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314170319.png" alt></p>
+<p>点击Developer settings<br><img src="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314170421.png" alt></p>
+<p>点击Personal access tokens<br><img src="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314170529.png" alt></p>
+<p>点击Generate new token<br><img src="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314170625.png" alt></p>
+<p>填写名字并勾选<br><img src="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314171011.png" alt></p>
+<p><img src="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314170934.png" alt></p>
+<p>该Toke码只会出现这一次记得保存，在接下来的PicGo配置中将会使用<br><img src="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314171150.png" alt></p>
+<h4 id="3-2、PicGo相关相关配置"><a href="#3-2、PicGo相关相关配置" class="headerlink" title="3.2、PicGo相关相关配置"></a>3.2、PicGo相关相关配置</h4><ul>
+<li><p>1、下载安装并运行<br>由于我使用的是MarkDown格式的图片链接所以，将链接格式默认设置为MarkDown同时设置gitHub为默认图床<br><img src="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314173035.png" alt></p>
+</li>
+<li><p>2、配置图床<br><img src="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314171823.png" alt></p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">设定仓库名的时候，是按照“账户名/仓库名的格式填写”</span><br><span class="line">分支名统一填写“master”</span><br><span class="line">将之前的Token黏贴在这里</span><br><span class="line">存储的路径可以按照我这样子写，就会在repository下创建一个“img”文件夹</span><br><span class="line">自定义域名的作用是，在上传图片后成功后，PicGo会将“自定义域名+上传的图片名”生成的访问链接，放到剪切板上https://raw.githubusercontent.com/用户名/RepositoryName/分支名，，自定义域名需要按照这样去填写</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>2、PicGo相关设置<br>包括更新及修改快捷键等设置在其中完成即可<br><img src="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200314172523.png" alt></p>
+</li>
+<li><p>3、重启将配置进行生效设置</p>
+</li>
+</ul>
+<h3 id="4、总结"><a href="#4、总结" class="headerlink" title="4、总结"></a>4、总结</h3><p>使用截图软件等等图后图片会自动在剪贴板去，使用快捷键可直接上传图片到图床，同时PicGo会在剪贴板自动生成相关格式连接，直接粘贴至MarkDown中即可。</p>
+<h3 id="5、使用中遇到的问题"><a href="#5、使用中遇到的问题" class="headerlink" title="5、使用中遇到的问题"></a>5、使用中遇到的问题</h3><h3 id="5-1、提示上传失败，服务端出错，请重试"><a href="#5-1、提示上传失败，服务端出错，请重试" class="headerlink" title="5.1、提示上传失败，服务端出错，请重试"></a>5.1、提示上传失败，服务端出错，请重试</h3><p>由于我配置的都是正确的，软件总是间歇式上传失败，经过百度经验<code>打开PicGo的设置-设置server</code>将是否开启server按钮关闭再打开能够解决问题<em>暂时理解为重启连接服务器问题</em>。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Tools/" rel="tag"># Tools</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/04/STM32-单片机应用笔记/" rel="next" title="STM32-单片机应用笔记">
+                <i class="fa fa-chevron-left"></i> STM32-单片机应用笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/14/STM2-ADXL361(微功耗三轴加速度计)使用笔记/" rel="prev" title="ADXL361(微功耗三轴加速度计)使用笔记">
+                ADXL361(微功耗三轴加速度计)使用笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">不会飞的风</p>
+              <p class="site-description motion-element" itemprop="description">此站点为自己学习的技术笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="471972509@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/WuliYongShun" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://me.csdn.net/weixin_41756255" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.alloyteam.com/nav/" title="Web前端导航" target="_blank">Web前端导航</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.chuangzaoshi.com/code" title="创造狮导航" target="_blank">创造狮导航</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.36zhen.com/t?id=3448" title="前端书籍资料" target="_blank">前端书籍资料</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://e.xitu.io/" title="掘金酱" target="_blank">掘金酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PicGo-Github搭建图床"><span class="nav-number">1.</span> <span class="nav-text">PicGo+Github搭建图床</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、为什么要用PicGo"><span class="nav-number">1.0.1.</span> <span class="nav-text">1、为什么要用PicGo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、PicGo简介"><span class="nav-number">1.0.2.</span> <span class="nav-text">2、PicGo简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、准备工作"><span class="nav-number">1.0.3.</span> <span class="nav-text">3、准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1、GitHub相关工作"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">3.1、GitHub相关工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2、PicGo相关相关配置"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">3.2、PicGo相关相关配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、总结"><span class="nav-number">1.0.4.</span> <span class="nav-text">4、总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、使用中遇到的问题"><span class="nav-number">1.0.5.</span> <span class="nav-text">5、使用中遇到的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1、提示上传失败，服务端出错，请重试"><span class="nav-number">1.0.6.</span> <span class="nav-text">5.1、提示上传失败，服务端出错，请重试</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">不会飞的风</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
