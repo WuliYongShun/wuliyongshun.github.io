@@ -493,59 +493,6 @@
   </entry>
   
   <entry>
-    <title>C++内联函数(C++ inline)</title>
-    <link href="http://yoursite.com/2019/10/09/C++-%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0(C++%20inline)/"/>
-    <id>http://yoursite.com/2019/10/09/C++-内联函数(C++ inline)/</id>
-    <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:54:13.460Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="C-内联函数-C-inline"><a href="#C-内联函数-C-inline" class="headerlink" title="C++内联函数(C++ inline)"></a>C++内联函数(C++ inline)</h1><p>使用函数能够避免将相同代码重写多次的麻烦，还能减少可执行程序的体积，但也会带来程序运行时间上的开销。</p><p>函数调用在执行时，首先要在栈中为形参和局部变量分配存储空间，然后还要将实参的值复制给形参，接下来还要将函数的返回地址（该地址指明了函数执行结束后，程序应该回到哪里继续执行）放入栈中，最后才跳转到函数内部执行。这个过程是要耗费时间的。</p><p>另外，函数执行 return 语句返回时，需要从栈中回收形参和局部变量占用的存储空间，然后从栈中取出返回地址，再跳转到该地址继续执行，这个过程也要耗费时间。</p><p>总之，使用函数调用语句和直接把函数中的代码重新抄写一遍相比，节省了人力，但是带来了程序运行时间上的额外开销。</p><p>一般情况下，这个开销可以忽略不计。但是，如果一个函数内部没有几条语句，执行时间本来就非常短，那么这个函数调用产生的额外开销和函数本身执行的时间相比，就显得不能忽略了。假如这样的函数在一个循环中被上千万次地执行，函数调用导致的时间开销可能就会使得程序运行明显变慢。</p><p>作为特别注重程序执行效率，适合编写底层系统软件的高级程序设计语言，C++ 用 inline 关键字较好地解决了函数调用开销的问题。</p><p>在 C++ 中，可以在定义函数时，在返回值类型前面加上 inline 关键字。如： </p><pre><code>inline int Max (int a, int b){    if(a &gt;b)        return a;    return b;}</code></pre><p>增加了 inline 关键字的函数称为“内联函数”。内联函数和普通函数的区别在于：当编译器处理调用内联函数的语句时，不会将该语句编译成函数调用的指令，而是直接将整个函数体的代码插人调用语句处，就像整个函数体在调用处被重写了一遍一样。</p><p>有了内联函数，就能像调用一个函数那样方便地重复使用一段代码，而不需要付出执行函数调用的额外开销。很显然，使用内联函数会使最终可执行程序的体积增加。以时间换取空间，或增加空间消耗来节省时间，这是计算机学科中常用的方法。</p><p>内联函数中的代码应该只是很简单、执行很快的几条语句。如果一个函数较为复杂，它执行的时间可能上万倍于函数调用的额外开销，那么将其作为内联函数处理的结果是付出让代码体积增加不少的代价，却只使速度提高了万分之一，这显然是不划算的。</p><p>有时函数看上去很简单，例如只有一个包含一两条语句的循环，但该循环的执行次数可能很多，要消耗大量时间，那么这种情况也不适合将其实现为内联函数。</p><p>注意：的是，调用内联函数的语句前必须已经出现内联函数的定义（即整个数体），而不能只出现内联函数的声明！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;C-内联函数-C-inline&quot;&gt;&lt;a href=&quot;#C-内联函数-C-inline&quot; class=&quot;headerlink&quot; title=&quot;C++内联函数(C++ inline)&quot;&gt;&lt;/a&gt;C++内联函数(C++ inline)&lt;/h1&gt;&lt;p&gt;使用函数能够避免将相
-      
-    
-    </summary>
-    
-    
-      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>构造函数和析构函数</title>
-    <link href="http://yoursite.com/2019/10/09/C++-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/"/>
-    <id>http://yoursite.com/2019/10/09/C++-构造函数和析构函数/</id>
-    <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:53:55.839Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h1><p><strong>构造函数</strong></p><p><strong>析构函数</strong><br>    构造函数（destructor）与构造函数相反，当对象结束其生命周期，如对象所在的函数已调用完毕时，系统自动执行析构函数。析构函数用来做“清理善后”的工作（例如在建立对象时用new开辟了一片内存空间，delete会自动调用析构函数后释放内存）。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;构造函数和析构函数&quot;&gt;&lt;a href=&quot;#构造函数和析构函数&quot; class=&quot;headerlink&quot; title=&quot;构造函数和析构函数&quot;&gt;&lt;/a&gt;构造函数和析构函数&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;构造函数&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;析构函数&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
     <title>C++中显式、隐式与explicit关键字</title>
     <link href="http://yoursite.com/2019/10/09/C++-%E4%B8%AD%E6%98%BE%E5%BC%8F%E3%80%81%E9%9A%90%E5%BC%8F%E4%B8%8Eexplicit%E5%85%B3%E9%94%AE%E5%AD%97/"/>
     <id>http://yoursite.com/2019/10/09/C++-中显式、隐式与explicit关键字/</id>
@@ -559,6 +506,32 @@
       
       
         &lt;h1 id=&quot;C-中显式、隐式与explicit关键字&quot;&gt;&lt;a href=&quot;#C-中显式、隐式与explicit关键字&quot; class=&quot;headerlink&quot; title=&quot;C++中显式、隐式与explicit关键字&quot;&gt;&lt;/a&gt;C++中显式、隐式与explicit关键字&lt;/h1
+      
+    
+    </summary>
+    
+    
+      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C++内联函数(C++ inline)</title>
+    <link href="http://yoursite.com/2019/10/09/C++-%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0(C++%20inline)/"/>
+    <id>http://yoursite.com/2019/10/09/C++-内联函数(C++ inline)/</id>
+    <published>2019-10-09T07:11:06.000Z</published>
+    <updated>2019-10-09T07:54:13.460Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="C-内联函数-C-inline"><a href="#C-内联函数-C-inline" class="headerlink" title="C++内联函数(C++ inline)"></a>C++内联函数(C++ inline)</h1><p>使用函数能够避免将相同代码重写多次的麻烦，还能减少可执行程序的体积，但也会带来程序运行时间上的开销。</p><p>函数调用在执行时，首先要在栈中为形参和局部变量分配存储空间，然后还要将实参的值复制给形参，接下来还要将函数的返回地址（该地址指明了函数执行结束后，程序应该回到哪里继续执行）放入栈中，最后才跳转到函数内部执行。这个过程是要耗费时间的。</p><p>另外，函数执行 return 语句返回时，需要从栈中回收形参和局部变量占用的存储空间，然后从栈中取出返回地址，再跳转到该地址继续执行，这个过程也要耗费时间。</p><p>总之，使用函数调用语句和直接把函数中的代码重新抄写一遍相比，节省了人力，但是带来了程序运行时间上的额外开销。</p><p>一般情况下，这个开销可以忽略不计。但是，如果一个函数内部没有几条语句，执行时间本来就非常短，那么这个函数调用产生的额外开销和函数本身执行的时间相比，就显得不能忽略了。假如这样的函数在一个循环中被上千万次地执行，函数调用导致的时间开销可能就会使得程序运行明显变慢。</p><p>作为特别注重程序执行效率，适合编写底层系统软件的高级程序设计语言，C++ 用 inline 关键字较好地解决了函数调用开销的问题。</p><p>在 C++ 中，可以在定义函数时，在返回值类型前面加上 inline 关键字。如： </p><pre><code>inline int Max (int a, int b){    if(a &gt;b)        return a;    return b;}</code></pre><p>增加了 inline 关键字的函数称为“内联函数”。内联函数和普通函数的区别在于：当编译器处理调用内联函数的语句时，不会将该语句编译成函数调用的指令，而是直接将整个函数体的代码插人调用语句处，就像整个函数体在调用处被重写了一遍一样。</p><p>有了内联函数，就能像调用一个函数那样方便地重复使用一段代码，而不需要付出执行函数调用的额外开销。很显然，使用内联函数会使最终可执行程序的体积增加。以时间换取空间，或增加空间消耗来节省时间，这是计算机学科中常用的方法。</p><p>内联函数中的代码应该只是很简单、执行很快的几条语句。如果一个函数较为复杂，它执行的时间可能上万倍于函数调用的额外开销，那么将其作为内联函数处理的结果是付出让代码体积增加不少的代价，却只使速度提高了万分之一，这显然是不划算的。</p><p>有时函数看上去很简单，例如只有一个包含一两条语句的循环，但该循环的执行次数可能很多，要消耗大量时间，那么这种情况也不适合将其实现为内联函数。</p><p>注意：的是，调用内联函数的语句前必须已经出现内联函数的定义（即整个数体），而不能只出现内联函数的声明！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;C-内联函数-C-inline&quot;&gt;&lt;a href=&quot;#C-内联函数-C-inline&quot; class=&quot;headerlink&quot; title=&quot;C++内联函数(C++ inline)&quot;&gt;&lt;/a&gt;C++内联函数(C++ inline)&lt;/h1&gt;&lt;p&gt;使用函数能够避免将相
       
     
     </summary>
@@ -626,6 +599,33 @@
   </entry>
   
   <entry>
+    <title>构造函数和析构函数</title>
+    <link href="http://yoursite.com/2019/10/09/C++-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/"/>
+    <id>http://yoursite.com/2019/10/09/C++-构造函数和析构函数/</id>
+    <published>2019-10-09T07:11:06.000Z</published>
+    <updated>2019-10-09T07:53:55.839Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h1><p><strong>构造函数</strong></p><p><strong>析构函数</strong><br>    构造函数（destructor）与构造函数相反，当对象结束其生命周期，如对象所在的函数已调用完毕时，系统自动执行析构函数。析构函数用来做“清理善后”的工作（例如在建立对象时用new开辟了一片内存空间，delete会自动调用析构函数后释放内存）。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;构造函数和析构函数&quot;&gt;&lt;a href=&quot;#构造函数和析构函数&quot; class=&quot;headerlink&quot; title=&quot;构造函数和析构函数&quot;&gt;&lt;/a&gt;构造函数和析构函数&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;构造函数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;析构函数&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Qt中C++中文显示</title>
     <link href="http://yoursite.com/2019/10/09/Qt-C++%E4%B8%AD%E6%96%87%E6%98%BE%E7%A4%BA/"/>
     <id>http://yoursite.com/2019/10/09/Qt-C++中文显示/</id>
@@ -648,85 +648,6 @@
     
     
       <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Qt+sqlite数据库连接</title>
-    <link href="http://yoursite.com/2019/10/09/Qt-sqlite%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5/"/>
-    <id>http://yoursite.com/2019/10/09/Qt-sqlite数据库连接/</id>
-    <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:21:43.231Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Qt-sqlite数据库连接"><a href="#Qt-sqlite数据库连接" class="headerlink" title="Qt+sqlite数据库连接"></a>Qt+sqlite数据库连接</h1>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Qt-sqlite数据库连接&quot;&gt;&lt;a href=&quot;#Qt-sqlite数据库连接&quot; class=&quot;headerlink&quot; title=&quot;Qt+sqlite数据库连接&quot;&gt;&lt;/a&gt;Qt+sqlite数据库连接&lt;/h1&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
-    
-    
-      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Qt信号与槽</title>
-    <link href="http://yoursite.com/2019/10/09/Qt-%E4%BF%A1%E5%8F%B7%E4%B8%8E%E6%A7%BD/"/>
-    <id>http://yoursite.com/2019/10/09/Qt-信号与槽/</id>
-    <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:24:52.843Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="信号与槽"><a href="#信号与槽" class="headerlink" title="信号与槽"></a>信号与槽</h1><p>简介：</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;信号与槽&quot;&gt;&lt;a href=&quot;#信号与槽&quot; class=&quot;headerlink&quot; title=&quot;信号与槽&quot;&gt;&lt;/a&gt;信号与槽&lt;/h1&gt;&lt;p&gt;简介：&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
-    
-    
-      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Qt使Widget打开为全屏</title>
-    <link href="http://yoursite.com/2019/10/09/Qt-%E4%BD%BFWidget%E6%89%93%E5%BC%80%E4%B8%BA%E5%85%A8%E5%B1%8F/"/>
-    <id>http://yoursite.com/2019/10/09/Qt-使Widget打开为全屏/</id>
-    <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:24:07.471Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Qt5-5-1使Widget打开为全屏"><a href="#Qt5-5-1使Widget打开为全屏" class="headerlink" title="Qt5.5.1使Widget打开为全屏"></a>Qt5.5.1使Widget打开为全屏</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MainWindow w;</span><br><span class="line">w.showMaximized();</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Qt5-5-1使Widget打开为全屏&quot;&gt;&lt;a href=&quot;#Qt5-5-1使Widget打开为全屏&quot; class=&quot;headerlink&quot; title=&quot;Qt5.5.1使Widget打开为全屏&quot;&gt;&lt;/a&gt;Qt5.5.1使Widget打开为全屏&lt;/h1&gt;&lt;figu
-      
-    
-    </summary>
-    
-    
-      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
-    
     
       <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
     
@@ -772,6 +693,85 @@
       
       
         &lt;h1 id=&quot;Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用&quot;&gt;&lt;a href=&quot;#Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用&quot; class=&quot;headerlink&quot; title=&quot;Qt中QT_BEGI
+      
+    
+    </summary>
+    
+    
+      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
+    
+    
+      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Qt+sqlite数据库连接</title>
+    <link href="http://yoursite.com/2019/10/09/Qt-sqlite%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5/"/>
+    <id>http://yoursite.com/2019/10/09/Qt-sqlite数据库连接/</id>
+    <published>2019-10-09T07:11:06.000Z</published>
+    <updated>2019-10-09T07:21:43.231Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Qt-sqlite数据库连接"><a href="#Qt-sqlite数据库连接" class="headerlink" title="Qt+sqlite数据库连接"></a>Qt+sqlite数据库连接</h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Qt-sqlite数据库连接&quot;&gt;&lt;a href=&quot;#Qt-sqlite数据库连接&quot; class=&quot;headerlink&quot; title=&quot;Qt+sqlite数据库连接&quot;&gt;&lt;/a&gt;Qt+sqlite数据库连接&lt;/h1&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
+    
+    
+      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Qt使Widget打开为全屏</title>
+    <link href="http://yoursite.com/2019/10/09/Qt-%E4%BD%BFWidget%E6%89%93%E5%BC%80%E4%B8%BA%E5%85%A8%E5%B1%8F/"/>
+    <id>http://yoursite.com/2019/10/09/Qt-使Widget打开为全屏/</id>
+    <published>2019-10-09T07:11:06.000Z</published>
+    <updated>2019-10-09T07:24:07.471Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Qt5-5-1使Widget打开为全屏"><a href="#Qt5-5-1使Widget打开为全屏" class="headerlink" title="Qt5.5.1使Widget打开为全屏"></a>Qt5.5.1使Widget打开为全屏</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MainWindow w;</span><br><span class="line">w.showMaximized();</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Qt5-5-1使Widget打开为全屏&quot;&gt;&lt;a href=&quot;#Qt5-5-1使Widget打开为全屏&quot; class=&quot;headerlink&quot; title=&quot;Qt5.5.1使Widget打开为全屏&quot;&gt;&lt;/a&gt;Qt5.5.1使Widget打开为全屏&lt;/h1&gt;&lt;figu
+      
+    
+    </summary>
+    
+    
+      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
+    
+    
+      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Qt信号与槽</title>
+    <link href="http://yoursite.com/2019/10/09/Qt-%E4%BF%A1%E5%8F%B7%E4%B8%8E%E6%A7%BD/"/>
+    <id>http://yoursite.com/2019/10/09/Qt-信号与槽/</id>
+    <published>2019-10-09T07:11:06.000Z</published>
+    <updated>2019-10-09T07:24:52.843Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="信号与槽"><a href="#信号与槽" class="headerlink" title="信号与槽"></a>信号与槽</h1><p>简介：</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;信号与槽&quot;&gt;&lt;a href=&quot;#信号与槽&quot; class=&quot;headerlink&quot; title=&quot;信号与槽&quot;&gt;&lt;/a&gt;信号与槽&lt;/h1&gt;&lt;p&gt;简介：&lt;/p&gt;
+
       
     
     </summary>
