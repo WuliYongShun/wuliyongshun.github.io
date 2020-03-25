@@ -184,6 +184,16 @@
 
 
 
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?44bc63b6c9f38c0cc8fa8abf79871a59";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
 
 
 
@@ -386,8 +396,15 @@
       
         
           
-            
           
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/01/29/Philosophy-亚瑟阿伦的36个问题-人际沟通交流/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -527,16 +544,21 @@
       
         
           
-            <h1 id="1-3GPP命令"><a href="#1-3GPP命令" class="headerlink" title="1.   3GPP命令"></a>1.   3GPP命令</h1><h2 id="1-1-显示产品详细信息命令"><a href="#1-1-显示产品详细信息命令" class="headerlink" title="1.1 显示产品详细信息命令"></a>1.1 显示产品详细信息命令</h2><p><strong>ATI</strong> </p>
-<p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ATI</span><br><span class="line">Quectel</span><br><span class="line">BC95-B5</span><br><span class="line">Revision:BC95B5HBR01A02W16</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+          1.   3GPP命令1.1 显示产品详细信息命令ATI 
+例子：
+12345ATIQuectelBC95-B5Revision:BC95B5HBR01A02W16OK
 
-<h2 id="1-2-打开关闭命令回显"><a href="#1-2-打开关闭命令回显" class="headerlink" title="1.2 打开关闭命令回显"></a>1.2 打开关闭命令回显</h2><p><strong>ATE</strong></p>
-<p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ATE0</span><br><span class="line">OK</span><br><span class="line">ATI</span><br><span class="line">Quectel</span><br><span class="line">BC95-B5</span><br><span class="line">Revision:BC95B5HBR01A02W16</span><br><span class="line">OK</span><br><span class="line">ATE1</span><br><span class="line">OK</span><br><span class="line">ATI</span><br><span class="line">ATI</span><br><span class="line">Quectel</span><br><span class="line">BC95-B5</span><br><span class="line">Revision:BC95B5HBR01A02W16</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
-
-
-          
+1.2 打开关闭命令回显ATE
+例子：
+123456789101112131415ATE0OKATIQuectelBC95-B5
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/01/01/BC95_AT_指令/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -654,41 +676,15 @@
       
         
           
-            <h1 id="VI-VIM编辑器"><a href="#VI-VIM编辑器" class="headerlink" title="VI/VIM编辑器"></a>VI/VIM编辑器</h1><p>在Ubuntu终端模式下进行文本编辑功能建议使用VI/VIM编辑器，Ubuntu系统自带VI编辑器，但是 VI 编辑器对于习惯了 Windows 下进行开发的人来说不方便，比如竟然不能使用键盘上的上下左右键调整光标位置。因此我推荐大家使用 VIM 编辑器， VIM 编辑器是 VI 编辑器升级版本， VI/VIM 编辑器都是一种基于指令式的编辑器，不需要鼠标，也没有菜单，仅仅使用键盘来完成所有的编辑工作。</p>
-<p><strong>安装VIM编辑器，命令如下：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vim</span><br></pre></td></tr></table></figure>
-
-<p>安装完成以后就可以使用 VIM 编辑器了， VIM 编辑器有 3 种工作模式：输入模式、指令模式和底行模式，通过切换不同的模式可以完成不同的功能，我们就以编辑一个文本文档为例讲解 VIM 编辑器的使用。</p>
-<p><em>例如：使用vim编辑器打开test.txt文档</em></p>
-<p><em>输入命令：</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim test.txt</span><br></pre></td></tr></table></figure>
-
-<p><em>默认打开时，无法直接输入这不是键盘问题。由于VIM默认是在只读模式打开文档的，因此我们需要切换到输入模式，切换到输入模式的命令如下：</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">i	在当前光标所在字符的前面，转为输入模式；</span><br><span class="line">I	在当前光标所在行的行首转换为输入模式；</span><br><span class="line">a	在当前光标所在字符后面，转为输入模式；</span><br><span class="line">A	在当前光标所在行行尾，转换为输入模式；</span><br><span class="line">o	在当前光标所在行的下方，新建一行，并转换为输入模式；</span><br><span class="line">O	在当前光标所在行的上方，新建一行，并转换为输入模式；</span><br><span class="line">s	删除光标所在字符；</span><br><span class="line">r	替换光标处字符。</span><br></pre></td></tr></table></figure>
-
-<p><em>最常用的输入命令就是”a”，在输入a以后在编辑下的左下方就会显示“出入等字样”。</em></p>
-<p>在txt文档我们输入完成以后需要保存文本啊， Windows 下的记事本可以使用快捷键 Ctrl+S 来保存， VIM 是否也可以使用 Ctrl+S 来保存呢？你会发现当你按下 Ctrl+S 键以后你的终端不能操作了！！！这是因为在 Ubuntu 下 Ctrl+S 快捷键不是用来完成保存的功能的，而是暂停该终端！所以你一旦在使用终端的时候按下 Ctrl+S快捷键，那么你的终端肯定不会再有任何反应，如果你按下 Ctrl+S 关闭了当前终端的话可以按下 Ctrl+Q 来重新打开终端。既然 Ctrl+S 不能保存文本文档，那么有没有其它方法保存文本文档呢？肯定是有的，我们需要从 VIM 现在的输入模式切换到指令模式，方式就是按下键盘的 ESC 键，按下 ESC 键以后终端坐下角的“插入”字样就会消失，此时你就不能在输入任何文本了，如果想再次输入文本的话就按下“a”键重新进入到输入模式。 </p>
-<p><em>指令模式顾名思义就是输入指令的模式，这些指令是 控制文本的指令，我们将这些指令进行分类，如下所示：</em></p>
-<p><strong>1、移动光标指令：</strong></p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">h(左方向键)	光标左移一个字符；</span><br><span class="line">l(右方向键) 光标右移一个字符;</span><br><span class="line"><span class="keyword">j</span>(下方向键)	光标下移一行；</span><br><span class="line"><span class="keyword">k</span>(上方向键)	光标上移一行；</span><br><span class="line"></span><br><span class="line">nG		光标移动到第n行首；</span><br><span class="line">n+		光标下移n行；</span><br><span class="line">n-		光标上移n行。</span><br></pre></td></tr></table></figure>
-
-<p><strong>2、屏幕翻滚指令</strong></p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+<span class="keyword">f</span>		屏幕向下翻一页，相当于下一页；</span><br><span class="line">Ctrl+<span class="keyword">b</span>		屏幕向上翻一页，相当于上一页。</span><br></pre></td></tr></table></figure>
-
-<p><strong>3、复制、删除和粘贴指令</strong></p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cc</span>	删除整行，并且修改整行内容；</span><br><span class="line">dd	删除该行，比提供修改功能；</span><br><span class="line">ndd 删除当前行向下n行；</span><br><span class="line"><span class="keyword">x</span>	删除光标所在字符；</span><br><span class="line"><span class="keyword">X</span>	删除光标前面一个字符；</span><br><span class="line">nyy 复制当前行及下面n行；</span><br><span class="line"><span class="keyword">p</span>	粘贴最近复制的内容。</span><br></pre></td></tr></table></figure>
-
-<p>上面就是 VI/VIM 的命令模式下最常用的一些命令，还有一些不常用的我没有列出来，感兴趣的可以自行上网查阅。从上面的命令可以看出，并没有保存文本的命令，那是因为保存文档的命令是在底行模式中，我们要先进入到指令模式，进入底行模式的方式是先进入指令模式下，然后在指令模式下输入“：”进入底行模式。</p>
-<p><em>当进入底行模式以后会在终端的左下角就会出现符号“：”，我们可以在“：”<br>后面输入命令，常用的命令如下：</em></p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">x</span>	保存当前文档并且推出；</span><br><span class="line">q	推出；</span><br><span class="line"><span class="keyword">w</span>	保存文档；</span><br><span class="line">q!	退出VI/VIM，不保存文档。</span><br></pre></td></tr></table></figure>
-
-<p>如果我们要退出并保存文档的话需要在”:”底行模式下输入”wq”。</p>
-<p>在“：”底行模式下输入“wq”以后按下回车键就保存 test.txt 并退出 VI/VIM 编辑器，退出以后我们可以使用命令“cat”来查看刚刚新建的 test.txt 文档的内容 。</p>
-<p><em>在上面讲解进入 VIM 的底行模式的时候之说了在指令模式下输入“：”的方法，还可以在指令模式下输入“/”进入底行模式</em></p>
-<p><em>在“/”底行模式下我们可以在文本中搜索指定的内容，比如搜索 test.txt 文件中“嵌入式”三个字，在“/”后面输入要搜索的内容，然后按下回车键就会在 test.txt 中找到与字符串“嵌入式”匹配的部分。</em><br><em>在 test.txt 中找到了“嵌入式”这个词，并且标记出来位置。我们以后要在一个文档中搜素是否存在某个字符串的时候就可以使用这种方法。有关 VI/VIM 编辑器的讲解就到这里，我们完整的练习了一遍如何使用 VIM 创建文档、编辑文档、保存文档和在文档中搜索字符串。</em></p>
-<p>以上为Ubuntu下VI/VIM编辑器的基本使用命令和方法</p>
-
-          
+          VI/VIM编辑器在Ubuntu终端模式下进行文本编辑功能建议使用VI/VIM编辑器，Ubuntu系统自带VI编辑器，但是 VI 编辑器对于习惯了 Windows 下进行开发的人来说不方便，比如竟然不能使用键盘上的上下左右键调整光标位置。因此我推荐大家使用 VIM 编辑器， VIM 编辑器是 VI 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/11/26/Linux4-VIM文本编辑器的安装及使用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -828,40 +824,15 @@
       
         
           
-            <h1 id="APT下载工具简介"><a href="#APT下载工具简介" class="headerlink" title="APT下载工具简介"></a>APT下载工具简介</h1><p>Ubuntu下我们常使用的下载工具就是：APT下载工具，APT 下载工具可以实现软件自动下载、配置、安装二进制或者源码的功能。 APT 下载工具和我们前面讲解的“install”命令结合在一起构成了 Ubuntu 下最常用的下载和安装软件方法。它解决了 Linux 平台下一安装软件的一个缺陷，即软件之间相互依赖。<br>APT 采用的 C/S 模式，也就是客户端/服务器模式，我们的 PC 机作为客户端，当需要下载软件的时候就向服务器请求，因此我们需要知道服务器的地址，也叫做安装源或者更新源。</p>
-<h2 id="1-更新本地数据库"><a href="#1-更新本地数据库" class="headerlink" title="1.更新本地数据库"></a>1.更新本地数据库</h2><p>如果想查看本地哪些软件可以更新的话可以使用如下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-检查依赖关系"><a href="#2-检查依赖关系" class="headerlink" title="2.检查依赖关系"></a>2.检查依赖关系</h2><p>有时候本地某些软件可能存在依赖关系，所谓依赖关系就是 A 软件依赖于 B 软件。通过如下命令可以查看依赖关系，如果存在依赖关系的话 APT 会提出解决方案：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get check</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-软件安装"><a href="#3-软件安装" class="headerlink" title="3.软件安装"></a>3.软件安装</h2><p>软件安装使用如下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install package-name</span><br></pre></td></tr></table></figure>
-
-<p>可以看出上述命令是由“apt-get”和“install”组合在一起的，“package-name”就是要安装的软件名字，“apt-get”负责下载软件，“install”负责安装软件。比如我们要安装软件 Ubuntu 下的串口工具“minicom”，我们就可以使用如下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install minicom</span><br></pre></td></tr></table></figure>
-
-<p>执行以上命令以后就会自动下载和安装minicom软件。</p>
-<p>安装 minicom 这个软件的过程，会有如下所示询问：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">您希望继续执行吗？ [Y/n]</span><br></pre></td></tr></table></figure>
-
-<p>如果希望继续执行的话就输入 y，如果不希望继续执行的话就输入 n。安装完成以后我们直接在终端输入如下命令打开 minicom 这个串口软件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minicom -s</span><br></pre></td></tr></table></figure>
-
-<p>关于 minicom 的使用大家可以上网搜索一下，这里就不详细讲解了，要退出 minicom 可以直接按下 ESC 键。</p>
-<h2 id="4-软件更新"><a href="#4-软件更新" class="headerlink" title="4.软件更新"></a>4.软件更新</h2><p>更新软件的话使用如下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get upgrade package-name</span><br></pre></td></tr></table></figure>
-
-<p>其中 package-name 为要升级的软件名字，比如我们升级刚刚安装的 minicom 这个软件，输入如下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get upgrade minicom</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-卸载软件"><a href="#5-卸载软件" class="headerlink" title="5.卸载软件"></a>5.卸载软件</h2><p>卸载软件使用如下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove package-name</span><br></pre></td></tr></table></figure>
-
-<p>其中package-name是要卸载的软件，比如卸载前面安装的minicom软件。</p>
-<p>以上为Ubuntu下的APT下载工具的大部分使用命令了。</p>
-
-          
+          APT下载工具简介Ubuntu下我们常使用的下载工具就是：APT下载工具，APT 下载工具可以实现软件自动下载、配置、安装二进制或者源码的功能。 APT 下载工具和我们前面讲解的“install”命令结合在一起构成了 Ubuntu 下最常用的下载和安装软件方法。它解决了 Linux 平台下一安装软件
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/11/24/Linux3-Ubuntu下APT下载工具/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1001,27 +972,15 @@
       
         
           
-            <h1 id="Ubuntu系统操作基本命令"><a href="#Ubuntu系统操作基本命令" class="headerlink" title="Ubuntu系统操作基本命令"></a>Ubuntu系统操作基本命令</h1><h2 id="1-目录信息查看命令ls"><a href="#1-目录信息查看命令ls" class="headerlink" title="1.目录信息查看命令ls"></a>1.目录信息查看命令ls</h2><p>文件浏览是最基本的操作了， Shell 下文件浏览命令为 ls，格式如下：<br>ls    [选项]    [路径]<br>ls 命令主要用于显示指定目录下的内容，列出指定目录下包含的所有的文件以及子目录，<br>它的主要参数有：<br>-a 显示所有的文件以及子目录，包括以“.”开头的隐藏文件。<br>-l 显示文件的详细信息，比如文件的形态、权限、所有者、大小等信息。<br>-t 将文件按照创建时间排序列出。<br>-A 和-a 一样，但是不列出“.” (当前目录)和“..” (父目录)。<br>-R 递归列出所有文件，包括子目录中的文件。<br>Shell 命令里面的参数是可以组合在一起用的，比如组合“-al”就是显示所有文件的详细信<br>息，包括以“.”开头的隐藏文件， ls 命令使用如图 2.2.4.1 所示：</p>
-<h2 id="2-目录切换命令-cd"><a href="#2-目录切换命令-cd" class="headerlink" title="2.目录切换命令 cd"></a>2.目录切换命令 cd</h2><p>要想在 Shell 中切换到其它的目录，使用的命令是 cd，命令格式如下：<br>cd [路径]<br>路径就是我们要进入的目录路径，比如下面所示操作：<br>cd / //进入到根目录“/”下， Linux 系统的根目录为“/” ,<br>cd /usr //进入到目录“/usr”里面。<br>cd .. //进入到上一级目录。<br>cd ~ //切换到当前用户主目录</p>
-<h2 id="3-当前路径显示命令-pwd"><a href="#3-当前路径显示命令-pwd" class="headerlink" title="3.当前路径显示命令 pwd"></a>3.当前路径显示命令 pwd</h2><p>pwd 命令用来显示当前工作目录的绝对路径，不需要任何的参数</p>
-<h2 id="4-系统信息查看命令-uname"><a href="#4-系统信息查看命令-uname" class="headerlink" title="4.系统信息查看命令 uname"></a>4.系统信息查看命令 uname</h2><p>要查看当前系统信息，可以使用命令 uname，命令格式如下：<br>uname [选项]<br>可选的选项参数如下：<br>-r 列出当前系统的具体内核版本号。<br>-s 列出系统内核名称。<br>-o 列出系统信息。</p>
-<h2 id="5-清屏命令-clear"><a href="#5-清屏命令-clear" class="headerlink" title="5.清屏命令 clear"></a>5.清屏命令 clear</h2><p>clear 命令用于清除终端上的所有内容，只留下一行提示符</p>
-<h2 id="6-切换用户执行身份命令-sudo"><a href="#6-切换用户执行身份命令-sudo" class="headerlink" title="6.切换用户执行身份命令 sudo"></a>6.切换用户执行身份命令 sudo</h2><p>Ubuntu(Linux)是一个允许多用户的操作系统，其中权限最大的就是超级用户 root，有时候<br>我们执行一些操作的时候是需要用 root 用户身份才能执行，比如安装软件。通过 sudo 命令可以<br>使我们暂时将身份切换到 root 用户。当使用 sudo 命令的时候是需要输入密码的，这里要注意输<br>入密码的时候是没有任何提示的！命令格式如下：<br>sudo [选项] [命令]<br>选项主要参数如下：<br>-h 显示帮助信息<br>l 列出当前用户可执行与不可执行的命令<br>-p 改变询问密码的提示符。<br>假如我们现在要创建一个新的用户 test，创建新用户的命令为“adduser”，创建新用户的权限只有 root 用户才有，我们在装系统的时候创建的那个用户是没有这个权限的.</p>
-<h2 id="7-添加用户命令-adduser"><a href="#7-添加用户命令-adduser" class="headerlink" title="7.添加用户命令 adduser"></a>7.添加用户命令 adduser</h2><p>在讲解 sudo 命令的时候我们已经用过命令“adduser”，此命令需要 root 身份去运行。命令<br>格式如下：<br>adduser [参数] [用户名]<br>常用的参数如下：<br>-system 添加一个系统用户<br>-home DIR DIR 表示用户的主目录路径<br>-uid ID ID 表示用户的 uid。<br>-ingroup GRP 表示用户所属的组名。<br>adduser 的使用我们前面已经演示过了，大家可以试着再添加一个用户。</p>
-<h2 id="8-删除用户命令-deluser"><a href="#8-删除用户命令-deluser" class="headerlink" title="8.删除用户命令 deluser"></a>8.删除用户命令 deluser</h2><p>前面讲了添加用户的命令，那肯定也有删除用户的命令，删除用户使用命令“deluser”，命<br>令参数如下：<br>deluser [参数] [用户名]<br>主要参数有：<br>-system 当用户是一个系统用户的时候才能删除。<br>-remove-home 删除用户的主目录<br>-remove-all-files 删除与用户有关的所有文件。<br>-backup 备份用户信息<br>同样的，命令“deluser”也要使用“sudo”来以 root 用户运行.</p>
-<h2 id="9-切换用户-命令-su"><a href="#9-切换用户-命令-su" class="headerlink" title="9.切换用户 命令 su"></a>9.切换用户 命令 su</h2><p>前面在讲解命令“sudo”的时候说过，“sudo”是以 root 用户身份执行一个命令，并没有更改当前的用户身份，所有需要 root 身份执行的命令都必须在前面加上“sudo”。命令“su”可以直接将当前用户切换为 root 用户，切换到 root 用户以后就可以尽情的进行任何操作了！因为你已经获得了系统最高权限，在 root 用户下，所有的命令都可以无障碍执行，不需要在前面加上“sudo”，“su”命令格式如下：<br>su [选项] [用户名]<br>常用选项参数如下：<br>-c –command 执行指定的命令，执行完毕以后回复原用户身份。<br>-login 改变用户身份，同时改变工作目录和 PATH 环境变量。<br>-m 改变用户身份的时候不改变环境变量<br>-h 显示帮助信息</p>
-<h2 id="10-显示文件内容命令-cat"><a href="#10-显示文件内容命令-cat" class="headerlink" title="10.显示文件内容命令 cat"></a>10.显示文件内容命令 cat</h2><p>cat [选项] [文件]<br>选项主要参数如下：<br>-n 由 1 开始对所有输出的行进行编号。<br>-b 和-n 类似，但是不对空白行编号。<br>-s 当遇到连续两个行以上空白行的话就合并为一个行空白行。</p>
-<h2 id="11-显示和配置网络属性命令-ifconfig"><a href="#11-显示和配置网络属性命令-ifconfig" class="headerlink" title="11.显示和配置网络属性命令 ifconfig"></a>11.显示和配置网络属性命令 ifconfig</h2><p>ifconfig 是一个跟网络属性配置和显示密切相关的命令，通过此命令我们可以查看当前网络<br>属性，也可以通过此命令配置网络属性，比如设置网络 IP 地址等等，此命令格式如下：<br>ifconfig interface options | address<br>主要参数如下：<br>interface 网络接口名称，比如 eth0 等。<br>up 开启网络设备。<br>down 关闭网络设备。<br>add IP 地址，设置网络 IP 地址。<br>netmask add 子网掩码。</p>
-<h2 id="12-系统帮助命令-man"><a href="#12-系统帮助命令-man" class="headerlink" title="12.系统帮助命令 man"></a>12.系统帮助命令 man</h2><p>Ubuntu 系统中有很多命令，这些命令都有不同的格式，不同的格式对应不同的功能，要完全记住这些命令和格式几乎是不可能的，必须有一个帮助手册，当我们需要了解一个命令的详细信息的时候查阅这个帮助手册就行了。 Ubuntu 提供了一个命令来帮助用户完成这个功能，那就是“man”命令，通过“man”命令可以查看其它命令的语法格式、主要功能、主要参数说明等， “man”命令格式如下：<br>man [命令名]<br>比如我们要查看命令“ifconfig”的说明，输入“man ifconfig”即可。</p>
-<h2 id="13-系统重启命令-reboot"><a href="#13-系统重启命令-reboot" class="headerlink" title="13.系统重启命令 reboot"></a>13.系统重启命令 reboot</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
-
-<h2 id="14-系统关闭命令-poweroff"><a href="#14-系统关闭命令-poweroff" class="headerlink" title="14.系统关闭命令 poweroff"></a>14.系统关闭命令 poweroff</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poweroff</span><br></pre></td></tr></table></figure>
-
-<h2 id="15-软件安装命令-install"><a href="#15-软件安装命令-install" class="headerlink" title="15.软件安装命令 install"></a>15.软件安装命令 install</h2><p>install [选项]… [-T] 源文件 目标文件<br>或： install [选项]… 源文件… 目录<br>或： install [选项]… -t 目录 源文件…<br>或： install [选项]… -d 目录…</p>
-<p>“install”命令是将文件(通常是编译后的文件)复制到目的位置，在前三种形式中，将源文件复制到目标文件或将多个源文件复制到一个已存在的目录中同时设置其所有权和权限模式。在第四种形式会创建指定的目录。命令“install”通常和命令“apt-get”组合在一起使用的，关于“apt-get”命令我们稍后会讲解。</p>
-<p>以上就是Ubuntu下Shell脚本的最基本命令，慢慢学习。</p>
-
-          
+          Ubuntu系统操作基本命令1.目录信息查看命令ls文件浏览是最基本的操作了， Shell 下文件浏览命令为 ls，格式如下：ls    [选项]    [路径]ls 命令主要用于显示指定目录下的内容，列出指定目录下包含的所有的文件以及子目录，它的主要参数有：-a 显示所有的文件以及子目录，包括以“
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/11/24/Linux2-Unbuntu常用命令/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1161,14 +1120,16 @@
       
         
           
-            <h1 id="开发前准备"><a href="#开发前准备" class="headerlink" title="开发前准备"></a>开发前准备</h1><p>整个开发需要在windows电脑上安装虚拟机，在虚拟机中安装Linux操作系统</p>
-<h2 id="虚拟机安装"><a href="#虚拟机安装" class="headerlink" title="虚拟机安装"></a>虚拟机安装</h2><p>虚拟机使用VMware 15pro，在官网下载完成直接安装，适用和激活自己看着办吧。<br>下载地址：<a href="https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html" target="_blank" rel="noopener">https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html</a><br>网络上随便找的秘钥（亲测可用），随便找一个用吧：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">YG5H2-ANZ0H-M8ERY-TXZZZ-YKRV8</span><br><span class="line">UG5J2-0ME12-M89WY-NPWXX-WQH88</span><br><span class="line">UA5DR-2ZD4H-089FY-6YQ5T-YPRX6</span><br><span class="line">GA590-86Y05-4806Y-X4PEE-ZV8E0</span><br><span class="line">ZF582-0NW5N-H8D2P-0XZEE-Z22VA</span><br><span class="line">YA18K-0WY8P-H85DY-L4NZG-X7RAD</span><br></pre></td></tr></table></figure>
-
-<h2 id="Ubuntu安装"><a href="#Ubuntu安装" class="headerlink" title="Ubuntu安装"></a>Ubuntu安装</h2><h3 id="1-首先下载Ubuntu"><a href="#1-首先下载Ubuntu" class="headerlink" title="1.首先下载Ubuntu"></a>1.首先下载Ubuntu</h3><p>官网下载链接（本人下载Ubuntu18.04.3版本）：</p>
-<p>  <a href="https://www.ubuntu.com/download/desktop" target="_blank" rel="noopener">https://www.ubuntu.com/download/desktop</a></p>
-<h3 id="2-挂载到虚拟机中安装完成即可"><a href="#2-挂载到虚拟机中安装完成即可" class="headerlink" title="2.挂载到虚拟机中安装完成即可"></a>2.挂载到虚拟机中安装完成即可</h3><h2 id="学习适用Ubuntu操作系统"><a href="#学习适用Ubuntu操作系统" class="headerlink" title="学习适用Ubuntu操作系统"></a>学习适用Ubuntu操作系统</h2>
-          
+          开发前准备整个开发需要在windows电脑上安装虚拟机，在虚拟机中安装Linux操作系统
+虚拟机安装虚拟机使用VMware 15pro，在官网下载完成直接安装，适用和激活自己看着办吧。下载地址：https://www.vmware.com/products/workstation-pro/works
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/11/24/Linux1-虚拟机及Ubuntu系统安装/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1308,13 +1269,15 @@
       
         
           
-            <h1 id="说说我自己吧！！"><a href="#说说我自己吧！！" class="headerlink" title="说说我自己吧！！"></a>说说我自己吧！！</h1><p>作为一个毕业1年的本科学生也就是我本人，自从毕业之后一直还从事着电子类相关行业，会使用AD画一些图、会使用keil和一些开源软件写单片机代码；每个月拿着不多的工资、干着并不创新又重复操作的工作、生活在一个三四线又没有足够资金定居城市。毕业这一年每天都感到巨大的压力，从一个一心想转软件的小白到妥协搞嵌入式的渣渣，但是吧生活总是要继续的，总不能让明天过得比今天差吧，所以呢要坚持学习，相信付出总会有回报，坚持！！！！</p>
-<h1 id="说说为什么要学嵌入式linux"><a href="#说说为什么要学嵌入式linux" class="headerlink" title="说说为什么要学嵌入式linux"></a>说说为什么要学嵌入式linux</h1><p>为什么要学linux呢，首先linux是一个世界级别的开源系统咱们就不在BB了，linux技术除了主要应用在服务器设备中，还在嵌入式行业占有很大的市场，通俗的再说一下吧，现在整个嵌入式除了单片机就是linux了，然后呢单片机主要面对的额是低端市场居多，嵌入式长期占领高端市场。那我们一个五六七八九十流的小公司来说吧，一个设备跑单片机完全能够解决所有问题，那还要花费巨大的人力和资金将设备转成linux操作系统的设备，就是为了个宣传假装高大上很多而已。说了这么多其实都是客套的在说，因为这不符合我的初衷啊，俺可是真的是热爱喜欢呢，大学就开始学习linux操作系统，Ubuntu系统一直在玩就是一直没有用武之地导致自己二半吊子的啥也不行，这次借助正点原子和野火这波风气必须好好搞一搞这个linux。</p>
-<h1 id="说说我的准备吧"><a href="#说说我的准备吧" class="headerlink" title="说说我的准备吧"></a>说说我的准备吧</h1><p>为了学这个操作系统我在一年之前就买了一块核心吧，基于Cotex-A53架构的全志A64芯片做的一块核心板，这大半年一直想点亮呢，又由于各种事情没有进行下去，拓展板画好了很久很久也一直没有投出去焊接出来成品，这次是真的下定决心了，所以呢我吧自己画的板子做了一批件也买了一批，暂时只是没有时间焊接，等哪天挑出来个大片的时间把板子搞定再慢慢调吧。同时呢，我又买了一块野火的I.MX6ULL的开发板，画了几百票（想想千万不要为了省钱而不花钱投资自己的学习，你现在的话费和付出在将来一定会几倍、几十倍、几百倍的汇报回来）。</p>
-<h1 id="说说开发板的选择吧"><a href="#说说开发板的选择吧" class="headerlink" title="说说开发板的选择吧"></a>说说开发板的选择吧</h1><p>这个开发板我可是选了很久很久，主要在正点原子和野火两家之间进行选择。我好的衡量了下还是野火的更适合我吧，屏幕的驱动转接板可以自己画，主要板载HDMI不要LCD也照样能看效果。话说这两家的套路还是很神的呢，很芯片做成了邮票边很明显不能再次更换核心了，BTB板接和金手指的还要再等他一个月，不过呢我忍了，就是个买吧，先好好地铺垫学习下等到板子回来之后就可以直接上手开发学习了；前边说的这个都是野火的板子，他的三个版本还是给大家留下了选择的余地了，再说说正点原子的吧，这个板子真的是让我又爱又气，虽然留下了BTB的核心板（显然是为了日后升级），但是呢只有LCD的屏幕接口（还是被改良过的只能用他们家的LCD液晶屏，显然不划算），没有HDMI接口还需后续购买，唯一让我能说好的就只是发货快，还能开发4G模组了。综合两个比较呢，还是野火的开发板更适合我了。</p>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>以上内容多数都为自己的观点，本片文章只是留给以后的自己看，在以后的日子中要为自己的这个开始做一个收尾。</p>
-
-          
+          说说我自己吧！！作为一个毕业1年的本科学生也就是我本人，自从毕业之后一直还从事着电子类相关行业，会使用AD画一些图、会使用keil和一些开源软件写单片机代码；每个月拿着不多的工资、干着并不创新又重复操作的工作、生活在一个三四线又没有足够资金定居城市。毕业这一年每天都感到巨大的压力，从一个一心想转软件
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/11/23/Linux-苦逼如我开始开发简介/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1454,8 +1417,15 @@
       
         
           
-            <h1 id="1、Markdown-列表"><a href="#1、Markdown-列表" class="headerlink" title="1、Markdown 列表"></a>1、Markdown 列表</h1>
+          1、Markdown 列表
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/10/14/Markdown4-列表/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1595,45 +1565,20 @@
       
         
           
-            <h1 id="1、Markdown-段落"><a href="#1、Markdown-段落" class="headerlink" title="1、Markdown 段落"></a>1、Markdown 段落</h1><p>Markdown 段落没有特殊的格式，直接编写号文字就好， 段落的换行是使用两个以上的空格加上回车。  </p>
-<p><img src="C:%5CUsers%5CS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1571029888842.png" alt></p>
-<p>也可以在段落后面使用一个空行来表示重新开始一个段落。</p>
-<p><img src="C:%5CUsers%5CS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1571029978682.png" alt="1571029978682"></p>
-<h1 id="2、字体"><a href="#2、字体" class="headerlink" title="2、字体"></a>2、字体</h1><p>Markdown 可以使用以下几种字体：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">*斜体文本*</span><br><span class="line">_斜体文本_</span><br><span class="line">**粗体文本**</span><br><span class="line">__粗体文本__</span><br><span class="line">***粗斜体文本***</span><br><span class="line">___粗斜体文本___</span><br></pre></td></tr></table></figure>
+          1、Markdown 段落Markdown 段落没有特殊的格式，直接编写号文字就好， 段落的换行是使用两个以上的空格加上回车。  
 
-<p>显示效果如下所示（源码下可以查看格式）：</p>
-<p><em>斜体文本</em><br><em>斜体文本</em><br><strong>粗体文本</strong><br><strong>粗体文本</strong><br><strong><em>粗斜体文本</em></strong><br><strong><em>粗斜体文本</em></strong></p>
-<h1 id="3、分割线"><a href="#3、分割线" class="headerlink" title="3、分割线"></a>3、分割线</h1><p>可以在一行中用三个以上的星号、减号、底线来建立一个分割线，行内不能有其他东西。也可以在星号或是减号中间插入空格。写法如下所示：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="emphasis">***</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">* </span><span class="bullet">* *</span></span><br><span class="line"></span><br><span class="line"><span class="strong">*****</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>- -</span><br><span class="line"></span><br><span class="line">----------</span><br></pre></td></tr></table></figure>
+也可以在段落后面使用一个空行来表示重新开始一个段落。
 
-<p>显示效果如下所示（md下可以查看源码格式）：</p>
-<hr>
-<hr>
-<hr>
-<hr>
-<hr>
-<h1 id="4、删除线"><a href="#4、删除线" class="headerlink" title="4、删除线"></a>4、删除线</h1><p>如果段落上的文字需要添加删除线，只需要在文字两端加上两个波浪线’~~’即可，实例如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hello</span><br><span class="line">你好</span><br><span class="line">~~你好~~</span><br></pre></td></tr></table></figure>
-
-<p>显示效果如下所示：</p>
-<p>hello<br>你好<br><del>你好</del>  </p>
-<h1 id="5、下划线"><a href="#5、下划线" class="headerlink" title="5、下划线"></a>5、下划线</h1><p>下划线可以通过HTML的<u>标签来实现：</u></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">后面为带下划线显示内容&lt;u&gt;I am a good dog!!!&lt;/u&gt;</span><br></pre></td></tr></table></figure>
-
-<p>显示效果如下所示：</p>
-<p>后面为带下划线显示内容<u>I am a good dog!!!</u>  </p>
-<h1 id="6、脚注"><a href="#6、脚注" class="headerlink" title="6、脚注"></a>6、脚注</h1><p>脚注是对文本的补充说明。</p>
-<p>Markdown脚注的格式如下：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[^我是被脚注的部分]</span><br></pre></td></tr></table></figure>
-
-<p>脚注实例如下用法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">先在文本后面添加脚注，想这样[^Haha]</span><br><span class="line">[^Haha]: 天道酬勤</span><br></pre></td></tr></table></figure>
-
-<p>显示效果如下所示（鼠标悬停在第一个脚注上即可显示下面的脚注内容）：  </p>
-<p>先在文本后面添加脚注，想这样<a href="天道酬勤">^Haha</a></p>
-
-          
+2、字体Markdown 可以使用以下几种字体：
+123456*斜体文本*_斜体文本_**粗体文本**__粗体
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/10/14/Markdown3-段落格式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1680,7 +1625,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/C++-中显式、隐式与explicit关键字/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/Qt-QLineEdit的使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="不会飞的风">
@@ -1699,7 +1644,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/09/C++-中显式、隐式与explicit关键字/" itemprop="url">C++中显式、隐式与explicit关键字</a></h1>
+                <a class="post-title-link" href="/2019/10/09/Qt-QLineEdit的使用/" itemprop="url">Qt中QLineEdit的使用</a></h1>
         
 
         <div class="post-meta">
@@ -1773,16 +1718,16 @@
       
         
           
-            <h1 id="C-中显式、隐式与explicit关键字"><a href="#C-中显式、隐式与explicit关键字" class="headerlink" title="C++中显式、隐式与explicit关键字"></a>C++中显式、隐式与explicit关键字</h1><p><strong><em>1.隐式转换</em></strong><br>隐式转换，即编译器完成的转换，例如<br>int a = 1;<br>float b = 3;<br>float sum;<br>sum = a + b;//a是int类型，b是float类型；在编译的时候，编译器自动将int a转换成了float类型</p>
-<p><strong><em>2.显式转换</em></strong><br>显式转换，即用户完成的转换，例如<br>float a = 1;<br>float b = 3;<br>int s;<br>s = (int)a + (int)b;//float类型的a与b被显示的(强制)转换成成为float数据类型</p>
-<p>对于非数据的函数函数而言，例：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line">　　<span class="keyword">int</span> x;</span><br><span class="line">　　<span class="keyword">public</span>:</span><br><span class="line">　　　　A()&#123;x=<span class="number">0</span>;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:0"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　A(<span class="keyword">int</span> a)&#123;x=a;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　~A()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Delete A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">　　A a1;</span><br><span class="line">　　A *a2=<span class="keyword">new</span> A(<span class="number">10</span>);</span><br><span class="line">　　<span class="keyword">delete</span> a2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>程序分析：<br>A a1；隐式的调用了A();<br>A *a2 = new A(10);对A()进行了重载，显式的调用了A(int a);</p>
-<p><strong><em>3.explicit关键字</em></strong></p>
-<p>explicit用于构造函数，抑制隐式转换的发生，防止出现误区。</p>
-
-          
+          QLineEdit的使用定义：        QLineEdit是一个单行文本编辑控件。功能：        可以调用多个可用函数，输入和编辑单行文本，比如撤销、恢复、剪切、粘贴及拖放等。
+函数说明：    echoMode()：可以设置其属性，比如一密码的形式输入；    maxLength()：
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/10/09/Qt-QLineEdit的使用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
