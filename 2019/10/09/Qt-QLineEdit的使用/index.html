@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Qt,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="向北方" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="QLineEdit的使用定义：        QLineEdit是一个单行文本编辑控件。功能：        可以调用多个可用函数，输入和编辑单行文本，比如撤销、恢复、剪切、粘贴及拖放等。 函数说明：    echoMode()：可以设置其属性，比如一密码的形式输入；    maxLength()：限制文本长度；    validator()或inputMask()：限制智能输入数字，在对同一个Q">
+<meta name="keywords" content="Qt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qt中QLineEdit的使用">
+<meta property="og:url" content="http://yoursite.com/2019/10/09/Qt-QLineEdit的使用/index.html">
+<meta property="og:site_name" content="向北方">
+<meta property="og:description" content="QLineEdit的使用定义：        QLineEdit是一个单行文本编辑控件。功能：        可以调用多个可用函数，输入和编辑单行文本，比如撤销、恢复、剪切、粘贴及拖放等。 函数说明：    echoMode()：可以设置其属性，比如一密码的形式输入；    maxLength()：限制文本长度；    validator()或inputMask()：限制智能输入数字，在对同一个Q">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/628412/201602/628412-20160205204407710-892374169.jpg">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/628412/201602/628412-20160205223926663-818638865.jpg">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/628412/201602/628412-20160205224628272-1758708857.jpg">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/628412/201602/628412-20160205213813663-1721525219.jpg">
+<meta property="og:updated_time" content="2019-10-09T07:54:49.759Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Qt中QLineEdit的使用">
+<meta name="twitter:description" content="QLineEdit的使用定义：        QLineEdit是一个单行文本编辑控件。功能：        可以调用多个可用函数，输入和编辑单行文本，比如撤销、恢复、剪切、粘贴及拖放等。 函数说明：    echoMode()：可以设置其属性，比如一密码的形式输入；    maxLength()：限制文本长度；    validator()或inputMask()：限制智能输入数字，在对同一个Q">
+<meta name="twitter:image" content="https://images2015.cnblogs.com/blog/628412/201602/628412-20160205204407710-892374169.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/10/09/Qt-QLineEdit的使用/">
+
+
+
+
+
+  <title>Qt中QLineEdit的使用 | 向北方</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?44bc63b6c9f38c0cc8fa8abf79871a59";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">向北方</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">code</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/Qt-QLineEdit的使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="不会飞的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="向北方">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Qt中QLineEdit的使用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-09T15:11:06+08:00">
+                2019-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/YY/" itemprop="url" rel="index">
+                    <span itemprop="name">YY</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="QLineEdit的使用"><a href="#QLineEdit的使用" class="headerlink" title="QLineEdit的使用"></a>QLineEdit的使用</h1><p>定义：<br>        QLineEdit是一个单行文本编辑控件。<br>功能：<br>        可以调用多个可用函数，输入和编辑单行文本，比如撤销、恢复、剪切、粘贴及拖放等。</p>
+<p>函数说明：<br>    echoMode()：可以设置其属性，比如一密码的形式输入；<br>    maxLength()：限制文本长度；<br>    validator()或inputMask()：限制智能输入数字，在对同一个QLineEdit的validator或者inputmask进行转换时，最好将它的validator或者inputmask清楚，以避免错误发生；</p>
+<p>与QLineEdit相关的一个类QTextEdit，她允许多行文本以及富文本编辑：<br>    setText()或者insert()改变其中的文本;<br>    text()：获得文本；<br>    displayText()：获得显示的文本；<br>    setSelection()或者selectAll()选中文本；<br>    cut()、copy()、paste()函数可以对文本中的数据进行剪切、复制和粘贴；<br>    setAlignment()：设置文本为位置；</p>
+<p>信号反馈：<br>    文本改变信号：textChange();<br>    不是由setText()造成文本的改变信号：textEdit();<br>    鼠标光标改变时信号：cursorPostionChanged()；<br>    返回键或者回车键按下时信号：returnPressed();</p>
+<p>常用方法说明：</p>
+<p>1.setPlaceholderText()设置提示文字<br><img src="https://images2015.cnblogs.com/blog/628412/201602/628412-20160205204407710-892374169.jpg" alt="文本框提示文字"><br>豆瓣电影的搜索输入框，没有输入任何字符时，显示“电影、影人、影院、电视剧”这些占位文字，对用户输入作相关提示。<br>echoLineEdit-&gt;setPlaceholderText(“电影、影人、影院、电视剧”);</p>
+<p>2.setEchoMode()设置模式<br><img src="https://images2015.cnblogs.com/blog/628412/201602/628412-20160205223926663-818638865.jpg" alt="淘宝"><br>淘宝登录界面的一部分，用户名可以直接看到，密码一般都用小黑点掩盖。</p>
+<figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            <span class="comment">//默认,输入什么即显示什么</span></span><br><span class="line">            echoLineEdit-&gt;setEchoMode(<span class="attribute">QLineEdit</span>::Normal);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">     <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">             <span class="comment">//密码，一般用小黑点覆盖你所输入的字符</span></span><br><span class="line">             echoLineEdit-&gt;setEchoMode(<span class="attribute">QLineEdit</span>::Password);</span><br><span class="line">             <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            <span class="comment">//编辑时输入字符显示输入内容否则用小黑点代替</span></span><br><span class="line">            echoLineEdit-&gt;setEchoMode(<span class="attribute">QLintEdit</span>::PasswordEchoOnEdit);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            <span class="comment">//任何输入都看不见（只是看不见，不是不能输入）</span></span><br><span class="line">            echoLineEdit-&gt;setEchoMode(<span class="attribute">ALineEdit</span>::NoEcho);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.setAlignment()设置文本位置</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            alignmentLineEdit-&gt;setAlignment(Qt::Alignleft);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            alignmentLineEdit-&gt;setAlignment(Qt::AlignCenter);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            alignmentLineEdit-&gt;setAlignment(Qt::AlignRight);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.setReadOnly()设置能否编辑</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            accessLineEdit-&gt;setReadOnly(<span class="literal">false</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            accessLineEdit-&gt;setReadOnly(<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5.setValidator()对输入进行限制<br>这种方式的是指是通过正则表达式限制输入内容<br><img src="https://images2015.cnblogs.com/blog/628412/201602/628412-20160205224628272-1758708857.jpg" alt="输入限制"></p>
+<figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            <span class="comment">//无限制</span></span><br><span class="line">            validatorLineEdit-&gt;setValidator(<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            <span class="comment">//只能输入整数</span></span><br><span class="line">            validatorLineEdit-&gt;setValidator(<span class="keyword">new</span> QintValidator);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            <span class="comment">//实例，只能输入-180到180之间的小数，小数点后最多两位（可用于限制经纬度等）</span></span><br><span class="line">            QDoubleValodator *pDfValidator = <span class="keyword">new</span> QDoubleValidator(<span class="number">-180</span>, <span class="number">180.0</span>, <span class="number">2</span>, validatorLineEdit);</span><br><span class="line">            pDfValidator-&gt;setNotation(<span class="attribute">QDoubleValidator</span>::StandardNotation);</span><br><span class="line">            validatorLineEdit-&gt;setValidator(pDfValidator);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>6.setInputMask()对输入进行限制<br>通过限制格式限制输入，具体怎么格式化客气参考Qt助手。<br><img src="https://images2015.cnblogs.com/blog/628412/201602/628412-20160205213813663-1721525219.jpg" alt="对输入进行限制"></p>
+<figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(index)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            inputMaskLineEdit-&gt;setInputMask(<span class="string">""</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            inputMaskLineEdit-&gt;setInputMask(<span class="string">"-99 99 99 99 99;_"</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            inputMaskLineEdit-&gt;setInputMask(<span class="string">"0000-00-00"</span>);</span><br><span class="line">            inputMaskLineEdit-&gt;setText(<span class="string">"00000000"</span>);</span><br><span class="line">            inputMaskLineEdit-&gt;setCursorposition(<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            inputMaskLineEdit-&gt;setInputMask(<span class="string">"&gt;AAAAA-AAAAA-AAAAA-AAAAA-AAAAA;#"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>7.setLength()设置可以输入的最多字符数<br>//最多只能输入9个字符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echoLineEdit-&gt;setMaxLength(9);</span><br></pre></td></tr></table></figure>
+
+<p>8.validator和inputmask的结合<br>比如经纬度用“度”</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Qt/" rel="tag"># Qt</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/08/Qt-多线程实例/" rel="next" title="Qt多线程实例">
+                <i class="fa fa-chevron-left"></i> Qt多线程实例
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/09/C++-函数/" rel="prev" title="C++函数">
+                C++函数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">不会飞的风</p>
+              <p class="site-description motion-element" itemprop="description">此站点为自己学习的技术笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="471972509@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/WuliYongShun" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://me.csdn.net/weixin_41756255" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.alloyteam.com/nav/" title="Web前端导航" target="_blank">Web前端导航</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.chuangzaoshi.com/code" title="创造狮导航" target="_blank">创造狮导航</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.36zhen.com/t?id=3448" title="前端书籍资料" target="_blank">前端书籍资料</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://e.xitu.io/" title="掘金酱" target="_blank">掘金酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#QLineEdit的使用"><span class="nav-number">1.</span> <span class="nav-text">QLineEdit的使用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">不会飞的风</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="传感器,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="向北方" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="ADXL361(微功耗三轴加速度计)使用笔记一、硬件介绍特性:超低功耗待机电流: 10nA运动唤醒模式电流: 270nA高分辨率: 1 mg/LSB数字接口: SPI数字接口供电电压: 1.6 V至3.5 V 概述ADXL362是一款超低功耗、 3轴MEMS加速度计，输出数据速率为100 Hz时功耗低于2 μA，在运动触发唤醒模式下功耗为270 nA。与使用周期采样来实现低功耗的加速度计不同，AD">
+<meta name="keywords" content="传感器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ADXL361(微功耗三轴加速度计)使用笔记">
+<meta property="og:url" content="http://yoursite.com/2020/03/14/STM2-ADXL361(微功耗三轴加速度计)使用笔记/index.html">
+<meta property="og:site_name" content="向北方">
+<meta property="og:description" content="ADXL361(微功耗三轴加速度计)使用笔记一、硬件介绍特性:超低功耗待机电流: 10nA运动唤醒模式电流: 270nA高分辨率: 1 mg/LSB数字接口: SPI数字接口供电电压: 1.6 V至3.5 V 概述ADXL362是一款超低功耗、 3轴MEMS加速度计，输出数据速率为100 Hz时功耗低于2 μA，在运动触发唤醒模式下功耗为270 nA。与使用周期采样来实现低功耗的加速度计不同，AD">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200313173608.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200313173627.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200313172247.png">
+<meta property="og:updated_time" content="2020-03-14T09:52:00.104Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ADXL361(微功耗三轴加速度计)使用笔记">
+<meta name="twitter:description" content="ADXL361(微功耗三轴加速度计)使用笔记一、硬件介绍特性:超低功耗待机电流: 10nA运动唤醒模式电流: 270nA高分辨率: 1 mg/LSB数字接口: SPI数字接口供电电压: 1.6 V至3.5 V 概述ADXL362是一款超低功耗、 3轴MEMS加速度计，输出数据速率为100 Hz时功耗低于2 μA，在运动触发唤醒模式下功耗为270 nA。与使用周期采样来实现低功耗的加速度计不同，AD">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200313173608.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/14/STM2-ADXL361(微功耗三轴加速度计)使用笔记/">
+
+
+
+
+
+  <title>ADXL361(微功耗三轴加速度计)使用笔记 | 向北方</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?44bc63b6c9f38c0cc8fa8abf79871a59";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">向北方</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">code</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/14/STM2-ADXL361(微功耗三轴加速度计)使用笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="不会飞的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="向北方">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ADXL361(微功耗三轴加速度计)使用笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-14T17:51:55+08:00">
+                2020-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/单片机/" itemprop="url" rel="index">
+                    <span itemprop="name">单片机</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="ADXL361-微功耗三轴加速度计-使用笔记"><a href="#ADXL361-微功耗三轴加速度计-使用笔记" class="headerlink" title="ADXL361(微功耗三轴加速度计)使用笔记"></a>ADXL361(微功耗三轴加速度计)使用笔记</h1><h3 id="一、硬件介绍"><a href="#一、硬件介绍" class="headerlink" title="一、硬件介绍"></a>一、硬件介绍</h3><h4 id="特性"><a href="#特性" class="headerlink" title="特性:"></a>特性:</h4><p>超低功耗<br><strong>待机电流:</strong> 10nA<br><strong>运动唤醒模式电流:</strong> 270nA<br><strong>高分辨率:</strong> 1 mg/LSB<br><strong>数字接口:</strong> SPI数字接口<br><strong>供电电压:</strong> 1.6 V至3.5 V</p>
+<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>ADXL362是一款超低功耗、 3轴MEMS加速度计，输出数据速率为100 Hz时功耗低于2 μA，在运动触发唤醒模式下功耗为270 nA。与使用周期采样来实现低功耗的加速度计不同，ADXL362没有通过欠采样混叠输入信号；它采用全数据速率对传感器的整个带宽进行采样。ADXL362通常提供12位输出分辨率；在较低分辨率足够时，还提供8位数据输出以实现更高效的单字节传送。测量范围为±2 g、 ±4 g及±8 g， ±2 g范围内的分辨率为1 mg/LSB。噪声电平要求低于ADXL362正常值550 μg/√Hz的应用可以选择两个低噪声模式(典型值低至175 μg/√Hz)之一，电源电流增加极小。除了超低功耗以外， ADXL362还具有许多特性来实现真正的系统级节能。该器件包含了一个深度多模式输出FIFO、一个内置微功耗温度传感器和几个运动检测模式，其中包括阙值可调的睡眠和唤醒工作模式，在该模式下当测量速率为6 HZ左右时功耗低至270 nA。如有需要，可在检测到运动时提供一个引脚输出来直接控制外部开关。此外，ADXL362还支持对采样时间和/或系统时钟进行外部控制。ADXL362可以在1.6V至3.5V的宽电源电压范围内工作，并且必要时可以与采用独立低电源电压工作的主机接口。</p>
+<h4 id="引脚配置和功能描述"><a href="#引脚配置和功能描述" class="headerlink" title="引脚配置和功能描述"></a>引脚配置和功能描述</h4><p><img src="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200313173608.png" alt></p>
+<p><img src="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200313173627.png" alt></p>
+<h3 id="二、驱动程序"><a href="#二、驱动程序" class="headerlink" title="二、驱动程序"></a>二、驱动程序</h3><p>驱动程序调试成功，正常通讯，使用STM32单片机（Hal库）形式对传感器进行控制操作及读取数据，源码如下（程序原理ADI官方代码，修改其中读写程序即可），经过测试驱动程序正常使用。</p>
+<h4 id="1、头文件"><a href="#1、头文件" class="headerlink" title="1、头文件"></a>1、头文件</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  ******************************************************************************</span></span><br><span class="line"><span class="comment">  *               Copyright(C) 2016-2026 GDKY All Rights Reserved</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * @file     ADXL362Driver.c</span></span><br><span class="line"><span class="comment">  * @author   YSHUN</span></span><br><span class="line"><span class="comment">  * @version  V1.00</span></span><br><span class="line"><span class="comment">  * @date     2020.02.05</span></span><br><span class="line"><span class="comment">  * @brief    硬件层驱动处理程序.</span></span><br><span class="line"><span class="comment">  ******************************************************************************</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __ADXL362_H__</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __ADXL362_H__</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* INCLUDES ------------------------------------------------------------------- */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stm32l0xx_hal.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"gpio.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"spi.h"</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">	</span><br><span class="line"><span class="comment">/* TYPEDEFS ------------------------------------------------------------------- */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_CS_Pin GPIO_PIN_1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_CS_GPIO_Port GPIOB</span></span><br><span class="line">	</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Clr_Cs()	HAL_GPIO_WritePin(ADXL362_CS_GPIO_Port, ADXL362_CS_Pin, GPIO_PIN_RESET)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Set_Cs()	HAL_GPIO_WritePin(ADXL362_CS_GPIO_Port, ADXL362_CS_Pin, GPIO_PIN_SET)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_SLAVE_ID    1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* ADXL362 communication commands */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_WRITE_REG           0x0A</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_READ_REG            0x0B</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_WRITE_FIFO          0x0D</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Registers */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_DEVID_AD            0x00</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_DEVID_MST           0x01</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_PARTID              0x02</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_REVID               0x03</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_XDATA               0x08	<span class="comment">//X轴数据(8 MSB)寄存器</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_YDATA               0x09	<span class="comment">//Y轴数据(8 MSB)寄存器</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_ZDATA               0x0A	<span class="comment">//Z轴数据(8 MSB)寄存器</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_STATUS              0x0B	<span class="comment">//状态寄存器，用于指示ADXL362的各种状态</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_FIFO_L              0x0C	<span class="comment">//FIFO条目寄存器,低8位</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_FIFO_H              0x0D	<span class="comment">//FIFO条目寄存器,高8位</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_XDATA_L             0x0E</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_XDATA_H             0x0F</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_YDATA_L             0x10</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_YDATA_H             0x11</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_ZDATA_L             0x12</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_ZDATA_H             0x13</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_TEMP_L              0x14	<span class="comment">//温度数据寄存器</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_TEMP_H              0x15</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_SOFT_RESET          0x1F	<span class="comment">//软复位寄存器</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_THRESH_ACT_L        0x20	<span class="comment">//运动阈值寄存器，保存8个LSB</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_THRESH_ACT_H        0x21	<span class="comment">//运动阈值寄存器，保存3个MSB</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_TIME_ACT            0x22	<span class="comment">//运动时间寄存器</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_THRESH_INACT_L      0x23	<span class="comment">//静止阈值寄存器，保存8个LSB</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_THRESH_INACT_H      0x24	<span class="comment">//静止阈值寄存器，保存3个MSB</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_TIME_INACT_L        0x25	<span class="comment">//静止时间寄存器，保存8个LSB</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_TIME_INACT_H        0x26	<span class="comment">//静止时间寄存器，保存8个MSB</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_ACT_INACT_CTL       0x27</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_FIFO_CTL            0x28</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_FIFO_SAMPLES        0x29</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_INTMAP1             0x2A	<span class="comment">//INT1/INT2功能映射寄存器,INT1映射</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_INTMAP2             0x2B	<span class="comment">//INT1/INT2功能映射寄存器,INT2映射</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_FILTER_CTL          0x2C	<span class="comment">//滤波器控制寄存器</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_POWER_CTL           0x2D	<span class="comment">//电源控制寄存器</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_REG_SELF_TEST           0x2E	<span class="comment">//自检寄存器</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* ADXL362_REG_STATUS definitions */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_STATUS_ERR_USER_REGS        (1 &lt;&lt; 7)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_STATUS_AWAKE                (1 &lt;&lt; 6)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_STATUS_INACT                (1 &lt;&lt; 5)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_STATUS_ACT                  (1 &lt;&lt; 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_STATUS_FIFO_OVERRUN         (1 &lt;&lt; 3)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_STATUS_FIFO_WATERMARK       (1 &lt;&lt; 2)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_STATUS_FIFO_RDY             (1 &lt;&lt; 1)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_STATUS_DATA_RDY             (1 &lt;&lt; 0)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* ADXL362_REG_ACT_INACT_CTL definitions */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_ACT_INACT_CTL_LINKLOOP(x)   (((x) &amp; 0x3) &lt;&lt; 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_ACT_INACT_CTL_INACT_REF     (1 &lt;&lt; 3)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_ACT_INACT_CTL_INACT_EN      (1 &lt;&lt; 2)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_ACT_INACT_CTL_ACT_REF       (1 &lt;&lt; 1)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_ACT_INACT_CTL_ACT_EN        (1 &lt;&lt; 0)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* ADXL362_ACT_INACT_CTL_LINKLOOP(x) options */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_MODE_DEFAULT        0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_MODE_LINK           1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_MODE_LOOP           3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* ADXL362_REG_FIFO_CTL */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_FIFO_CTL_AH                 (1 &lt;&lt; 3)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_FIFO_CTL_FIFO_TEMP          (1 &lt;&lt; 2)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_FIFO_CTL_FIFO_MODE(x)       (((x) &amp; 0x3) &lt;&lt; 0)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* ADXL362_FIFO_CTL_FIFO_MODE(x) options */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_FIFO_DISABLE              0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_FIFO_OLDEST_SAVED         1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_FIFO_STREAM               2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_FIFO_TRIGGERED            3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* ADXL362_REG_INTMAP1 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_INTMAP1_INT_LOW             (1 &lt;&lt; 7)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_INTMAP1_AWAKE               (1 &lt;&lt; 6)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_INTMAP1_INACT               (1 &lt;&lt; 5)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_INTMAP1_ACT                 (1 &lt;&lt; 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_INTMAP1_FIFO_OVERRUN        (1 &lt;&lt; 3)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_INTMAP1_FIFO_WATERMARK      (1 &lt;&lt; 2)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_INTMAP1_FIFO_READY          (1 &lt;&lt; 1)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_INTMAP1_DATA_READY          (1 &lt;&lt; 0)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* ADXL362_REG_INTMAP2 definitions */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_INTMAP2_INT_LOW             (1 &lt;&lt; 7)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_INTMAP2_AWAKE               (1 &lt;&lt; 6)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_INTMAP2_INACT               (1 &lt;&lt; 5)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_INTMAP2_ACT                 (1 &lt;&lt; 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_INTMAP2_FIFO_OVERRUN        (1 &lt;&lt; 3)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_INTMAP2_FIFO_WATERMARK      (1 &lt;&lt; 2)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_INTMAP2_FIFO_READY          (1 &lt;&lt; 1)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_INTMAP2_DATA_READY          (1 &lt;&lt; 0)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* ADXL362_REG_FILTER_CTL definitions */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_FILTER_CTL_RANGE(x)         (((x) &amp; 0x3) &lt;&lt; 6)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_FILTER_CTL_RES              (1 &lt;&lt; 5)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_FILTER_CTL_HALF_BW          (1 &lt;&lt; 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_FILTER_CTL_EXT_SAMPLE       (1 &lt;&lt; 3)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_FILTER_CTL_ODR(x)           (((x) &amp; 0x7) &lt;&lt; 0)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* ADXL362_FILTER_CTL_RANGE(x) options */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_RANGE_2G                0 <span class="comment">/* +-2 g */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_RANGE_4G                1 <span class="comment">/* +-4 g */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_RANGE_8G                2 <span class="comment">/* +-8 g */</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* ADXL362_FILTER_CTL_ODR(x) options */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_ODR_12_5_HZ             0 <span class="comment">/* 12.5 Hz */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_ODR_25_HZ               1 <span class="comment">/* 25 Hz */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_ODR_50_HZ               2 <span class="comment">/* 50 Hz */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_ODR_100_HZ              3 <span class="comment">/* 100 Hz */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_ODR_200_HZ              4 <span class="comment">/* 200 Hz */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_ODR_400_HZ              5 <span class="comment">/* 400 Hz */</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* ADXL362_REG_POWER_CTL definitions */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_POWER_CTL_RES               (1 &lt;&lt; 7)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_POWER_CTL_EXT_CLK           (1 &lt;&lt; 6)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_POWER_CTL_LOW_NOISE(x)      (((x) &amp; 0x3) &lt;&lt; 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_POWER_CTL_WAKEUP            (1 &lt;&lt; 3)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_POWER_CTL_AUTOSLEEP         (1 &lt;&lt; 2)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_POWER_CTL_MEASURE(x)        (((x) &amp; 0x3) &lt;&lt; 0)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* ADXL362_POWER_CTL_LOW_NOISE(x) options */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_NOISE_MODE_NORMAL           0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_NOISE_MODE_LOW              1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_NOISE_MODE_ULTRALOW         2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* ADXL362_POWER_CTL_MEASURE(x) options */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_MEASURE_STANDBY         0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_MEASURE_ON              2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* ADXL362_REG_SELF_TEST */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_SELF_TEST_ST            (1 &lt;&lt; 0)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* ADXL362 device information */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_DEVICE_AD               0xAD</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_DEVICE_MST              0x1D</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_PART_ID                 0xF2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* ADXL362 Reset settings */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ADXL362_RESET_KEY               0x52</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* MACROS  -------------------------------------------------------------------- */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* CONSTANTS  ----------------------------------------------------------------- */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* GLOBAL VARIABLES ----------------------------------------------------------- */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* GLOBAL FUNCTIONS ----------------------------------------------------------- */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*! Initializes the device. */</span></span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">char</span> <span class="title">ADXL362_Init</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*! Writes data into a register. */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_SetRegisterValue</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> registerValue,</span></span></span><br><span class="line"><span class="function"><span class="params">                              <span class="keyword">unsigned</span> <span class="keyword">char</span>  registerAddress,</span></span></span><br><span class="line"><span class="function"><span class="params">                              <span class="keyword">unsigned</span> <span class="keyword">char</span>  bytesNumber)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*! Performs a burst read of a specified number of registers. */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_GetRegisterValue</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> *pReadData,</span></span></span><br><span class="line"><span class="function"><span class="params">                              <span class="keyword">unsigned</span> <span class="keyword">char</span>  registerAddress,</span></span></span><br><span class="line"><span class="function"><span class="params">                              <span class="keyword">unsigned</span> <span class="keyword">char</span>  bytesNumber)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*! Reads multiple bytes from the device's FIFO buffer. */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_GetFifoValue</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> *pBuffer, <span class="keyword">unsigned</span> <span class="keyword">short</span> bytesNumber)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*! Resets the device via SPI communication bus. */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_SoftwareReset</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*! Places the device into standby/measure mode. */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_SetPowerMode</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> pwrMode)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*! Selects the measurement range. */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_SetRange</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> gRange)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*! Selects the Output Data Rate of the device. */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_SetOutputRate</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> outRate)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*! Reads the 3-axis raw data from the accelerometer. */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_GetXyz</span><span class="params">(<span class="keyword">short</span> *x, <span class="keyword">short</span> *y, <span class="keyword">short</span> *z)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*! Reads the temperature of the device. */</span></span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">ADXL362_ReadTemperature</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*! Configures the FIFO feature. */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_FifoSetup</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span>  mode,</span></span></span><br><span class="line"><span class="function"><span class="params">                       <span class="keyword">unsigned</span> <span class="keyword">short</span> waterMarkLvl,</span></span></span><br><span class="line"><span class="function"><span class="params">                       <span class="keyword">unsigned</span> <span class="keyword">char</span>  enTempRead)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*! Configures activity detection. */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_SetupActivityDetection</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span>  refOrAbs,</span></span></span><br><span class="line"><span class="function"><span class="params">                                    <span class="keyword">unsigned</span> <span class="keyword">short</span> threshold,</span></span></span><br><span class="line"><span class="function"><span class="params">                                    <span class="keyword">unsigned</span> <span class="keyword">char</span>  time)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*! Configures inactivity detection. */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_SetupInactivityDetection</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span>  refOrAbs,</span></span></span><br><span class="line"><span class="function"><span class="params">                                      <span class="keyword">unsigned</span> <span class="keyword">short</span> threshold,</span></span></span><br><span class="line"><span class="function"><span class="params">                                      <span class="keyword">unsigned</span> <span class="keyword">short</span> time)</span></span>;</span><br><span class="line">																			</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_Set</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 芯片ID读取 */</span>																			</span><br><span class="line"><span class="keyword">uint16_t</span>	ADXL362_ReadID(<span class="keyword">void</span>);</span><br><span class="line">																			</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_GetData</span><span class="params">(<span class="keyword">int16_t</span> *Xdata,<span class="keyword">int16_t</span> *Ydata,<span class="keyword">int16_t</span> *Zdata,<span class="keyword">int16_t</span> *Tdata)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 唤醒模式初始化 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_WakeUpMode</span><span class="params">( <span class="keyword">void</span> )</span></span>;</span><br><span class="line">																			</span><br><span class="line">																			</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span>	<span class="comment">/* __ADXL362_H__ */</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1、源码文件"><a href="#1、源码文件" class="headerlink" title="1、源码文件"></a>1、源码文件</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  ******************************************************************************</span></span><br><span class="line"><span class="comment">  *               Copyright(C) 2016-2026 GDKY All Rights Reserved</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * @file     ADXL362Driver.c</span></span><br><span class="line"><span class="comment">  * @author   YSHUN</span></span><br><span class="line"><span class="comment">  * @version  V1.00</span></span><br><span class="line"><span class="comment">  * @date     2020.02.05</span></span><br><span class="line"><span class="comment">  * @brief    硬件层驱动处理程序.</span></span><br><span class="line"><span class="comment">  ******************************************************************************</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* INCLUDES ------------------------------------------------------------------- */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"ADXL362.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  唤醒模式初始化</span></span><br><span class="line"><span class="comment">  * @retval None</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_WakeUpMode</span><span class="params">( <span class="keyword">void</span> )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">/* 1、写入十进制250 (0xFA)到寄存器0x20，写入0到寄存器0x21：将运动阈值设为250 mg */</span></span><br><span class="line"><span class="comment">//	ADXL362_SetRegisterValue( 0xFA, 0x20, 1 );</span></span><br><span class="line">	ADXL362_SetRegisterValue( <span class="number">0x32</span>, <span class="number">0x20</span>, <span class="number">1</span> );</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 2、写入十进制150 (0x96)到寄存器0x23，写入0到寄存器0x24：将静止阈值设为150 mg */</span></span><br><span class="line"><span class="comment">//	ADXL362_SetRegisterValue( 0x96, 0x23, 1 );</span></span><br><span class="line">	ADXL362_SetRegisterValue( <span class="number">0x32</span>, <span class="number">0x20</span>, <span class="number">1</span> );</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 3、写入十进制30 (0x1E)到寄存器0x25：将静止定时器设为30个样本或约5秒 */</span></span><br><span class="line">	ADXL362_SetRegisterValue( <span class="number">0x1E</span>, <span class="number">0x25</span>, <span class="number">1</span> );</span><br><span class="line"><span class="comment">//	ADXL362_SetRegisterValue( 0x10, 0x25, 1 );</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 4、写入0x3F到寄存器0x27：配置环路模式的运动检测并使能相对运动和静止检测 */</span></span><br><span class="line">	ADXL362_SetRegisterValue( <span class="number">0x3F</span>, <span class="number">0x27</span>, <span class="number">1</span> );</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 5、写入0x40到寄存器0x2B：将AWAKE位映射到INT2。INT2引脚与开关的栅极相连 */</span></span><br><span class="line">	ADXL362_SetRegisterValue( <span class="number">0x40</span>, <span class="number">0x2B</span>, <span class="number">1</span> );</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 6、写入0x0A到寄存器0x2D：开始在唤醒模式下进行测量*/</span></span><br><span class="line">	ADXL362_SetRegisterValue( <span class="number">0x0A</span>, <span class="number">0x2D</span>, <span class="number">1</span> );</span><br><span class="line">	</span><br><span class="line">&#125;	</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  唤醒模式初始化</span></span><br><span class="line"><span class="comment">  * @retval None</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL632_WakeMode</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">/* 设置设备为待机模式,先进入待机模式配置将不会影响到传感器数据 */</span></span><br><span class="line">	ADXL362_SetPowerMode(<span class="number">0</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 加速计的输出数据速率设置为: 12.5 Hz. */</span></span><br><span class="line">	ADXL362_SetOutputRate(ADXL362_ODR_12_5_HZ);</span><br><span class="line">	<span class="comment">/* 测量范围设置为4g */</span></span><br><span class="line">	ADXL362_SetRange(ADXL362_RANGE_4G);</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 失能中断输出 */</span></span><br><span class="line">	ADXL362_SetRegisterValue(ADXL362_REG_INTMAP1, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">	ADXL362_SetRegisterValue(ADXL362_REG_INTMAP2, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 运动/静止控制寄存器配置,配置为环路模式内部中断信号 */</span></span><br><span class="line">	ADXL362_SetRegisterValue(ADXL362_ACT_INACT_CTL_LINKLOOP(ADXL362_MODE_LOOP) \</span><br><span class="line">													| ADXL362_ACT_INACT_CTL_INACT_EN \</span><br><span class="line">												 	| ADXL362_ACT_INACT_CTL_ACT_EN , </span><br><span class="line">													ADXL362_REG_ACT_INACT_CTL, <span class="number">1</span>);</span><br><span class="line">	<span class="comment">/* 设置运动状态阈值 */</span></span><br><span class="line">	ADXL362_SetupActivityDetection(<span class="number">1</span>, <span class="number">30</span>, <span class="number">1</span>);</span><br><span class="line">	<span class="comment">/* 设置静止状态阈值 */</span></span><br><span class="line">	ADXL362_SetupInactivityDetection(<span class="number">1</span>, <span class="number">700</span>, <span class="number">25</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* FIFO缓冲区设置 */</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 输出中断使能，设置INT1为运动中断  INT2为唤醒中断*/</span></span><br><span class="line">	ADXL362_SetRegisterValue(ADXL362_INTMAP1_ACT, ADXL362_REG_INTMAP1, <span class="number">1</span>);</span><br><span class="line">	ADXL362_SetRegisterValue(ADXL362_INTMAP2_INACT, ADXL362_REG_INTMAP2, <span class="number">1</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 进入测量模式，开始测量过程 */</span></span><br><span class="line">	ADXL362_SetPowerMode(<span class="number">1</span>);</span><br><span class="line"><span class="comment">//	ADXL362_SetRegisterValue(0xC0, ADXL362_REG_POWER_CTL, 1);</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  初始化与设备的通信，并通过读取设备id检查部件是否存在</span></span><br><span class="line"><span class="comment">  * @param  </span></span><br><span class="line"><span class="comment">  * @retval 1 成功</span></span><br><span class="line"><span class="comment">	*					0 失败</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">char</span> <span class="title">ADXL362_Init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> regValue = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> status   = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* SPI Init */</span></span><br><span class="line"><span class="comment">//	MX_SPI1_Init();</span></span><br><span class="line">	</span><br><span class="line"><span class="comment">//	ADXL362_SoftwareReset();</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	ADXL362_GetRegisterValue(&amp;regValue, ADXL362_REG_PARTID, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">if</span>((regValue != ADXL362_PART_ID))</span><br><span class="line">	&#123;</span><br><span class="line">		status = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		status = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	ADXL362_WakeUpMode( );</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> status;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  写数据到寄存器</span></span><br><span class="line"><span class="comment">  * @param  registerValue - 写数据值</span></span><br><span class="line"><span class="comment">  * @param  registerAddress - 寄存器地址</span></span><br><span class="line"><span class="comment">  * @param  bytesNumber - 字节数. Accepted values: 0 - 1</span></span><br><span class="line"><span class="comment">  * @retval None</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_SetRegisterValue</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> registerValue,</span></span></span><br><span class="line"><span class="function"><span class="params">                              <span class="keyword">unsigned</span> <span class="keyword">char</span>  registerAddress,</span></span></span><br><span class="line"><span class="function"><span class="params">                              <span class="keyword">unsigned</span> <span class="keyword">char</span>  bytesNumber)</span></span></span><br><span class="line"><span class="function"></span>&#123;	</span><br><span class="line">		<span class="keyword">uint8_t</span> m_reg_cmd = <span class="number">0</span>;</span><br><span class="line">		m_reg_cmd = ADXL362_WRITE_REG;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(registerAddress &gt; ADXL362_REG_SELF_TEST)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		Clr_Cs();</span><br><span class="line">		HAL_SPI_Transmit(&amp;hspi1, &amp;m_reg_cmd, <span class="number">1</span>, <span class="number">1000</span>);</span><br><span class="line">		HAL_SPI_Transmit(&amp;hspi1, &amp;registerAddress, <span class="number">1</span>, <span class="number">1000</span>);</span><br><span class="line">		HAL_SPI_Transmit(&amp;hspi1, &amp;registerValue, bytesNumber, <span class="number">1000</span>);</span><br><span class="line">		Set_Cs();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  读数据从寄存器</span></span><br><span class="line"><span class="comment">  * @param  pReadData - 读缓冲区</span></span><br><span class="line"><span class="comment">  * @param  registerAddress - 寄存器地址</span></span><br><span class="line"><span class="comment">  * @param  bytesNumber - 字节数</span></span><br><span class="line"><span class="comment">  * @retval None</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_GetRegisterValue</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span>* pReadData,</span></span></span><br><span class="line"><span class="function"><span class="params">                              <span class="keyword">unsigned</span> <span class="keyword">char</span>  registerAddress,</span></span></span><br><span class="line"><span class="function"><span class="params">                              <span class="keyword">unsigned</span> <span class="keyword">char</span>  bytesNumber)</span></span></span><br><span class="line"><span class="function"></span>&#123;	</span><br><span class="line">		<span class="keyword">uint8_t</span> m_reg_addr = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">uint8_t</span> m_reg_cmd = <span class="number">0</span>;</span><br><span class="line">		</span><br><span class="line">		m_reg_addr = registerAddress;</span><br><span class="line">		m_reg_cmd = ADXL362_READ_REG;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(pReadData == <span class="literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(m_reg_cmd &gt; ADXL362_REG_SELF_TEST)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		Clr_Cs();</span><br><span class="line">		HAL_SPI_Transmit(&amp;hspi1, &amp;m_reg_cmd, <span class="number">1</span>, <span class="number">1000</span>);</span><br><span class="line">		HAL_SPI_Transmit(&amp;hspi1, &amp;m_reg_addr, <span class="number">1</span>, <span class="number">1000</span>);</span><br><span class="line">		HAL_SPI_Receive(&amp;hspi1, pReadData, bytesNumber, <span class="number">1000</span>);</span><br><span class="line">		Set_Cs();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  从设备的FIFO缓冲区读取多个字节</span></span><br><span class="line"><span class="comment">  * @param  pBuffer - 存储读取字节缓冲区</span></span><br><span class="line"><span class="comment">  * @param  bytesNumber - 字节数</span></span><br><span class="line"><span class="comment">  * @retval None</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_GetFifoValue</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span>* pBuffer, <span class="keyword">unsigned</span> <span class="keyword">short</span> bytesNumber)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">		<span class="keyword">uint8_t</span> m_reg_cmd = <span class="number">0</span>;</span><br><span class="line">		</span><br><span class="line">		m_reg_cmd = ADXL362_WRITE_FIFO;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(pBuffer == <span class="literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		Clr_Cs();</span><br><span class="line">		HAL_SPI_Transmit(&amp;hspi1, &amp;m_reg_cmd, <span class="number">1</span>, <span class="number">1000</span>);</span><br><span class="line">		HAL_SPI_Receive(&amp;hspi1, pBuffer, bytesNumber, <span class="number">1000</span>);</span><br><span class="line">		Set_Cs();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  软复位</span></span><br><span class="line"><span class="comment">  * </span></span><br><span class="line"><span class="comment">  * @retval None</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_SoftwareReset</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ADXL362_SetRegisterValue(ADXL362_RESET_KEY, ADXL362_REG_SOFT_RESET, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  芯片ID读取</span></span><br><span class="line"><span class="comment">  * </span></span><br><span class="line"><span class="comment">  * @retval 设备ID(默认为0xAD)</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="keyword">uint16_t</span> ADXL362_ReadID(<span class="keyword">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">uint8_t</span> defID = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">/* 读取器件ID，默认0xAD */</span></span><br><span class="line">	ADXL362_GetRegisterValue(&amp;defID, ADXL362_REG_DEVID_AD, <span class="number">1</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> defID;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  将设备置于待机/测量模式</span></span><br><span class="line"><span class="comment">  * @param pwrMode - Power mode.</span></span><br><span class="line"><span class="comment">  *                  Example: 0 - standby mode.</span></span><br><span class="line"><span class="comment">  *		                     1 - measure mode.</span></span><br><span class="line"><span class="comment">  * @retval None</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_SetPowerMode</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> pwrMode)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> oldPowerCtl = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> newPowerCtl = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    ADXL362_GetRegisterValue(&amp;oldPowerCtl, ADXL362_REG_POWER_CTL, <span class="number">1</span>);</span><br><span class="line">    newPowerCtl = oldPowerCtl &amp; ~ADXL362_POWER_CTL_MEASURE(<span class="number">0x3</span>);</span><br><span class="line">    newPowerCtl = newPowerCtl |</span><br><span class="line">                  (pwrMode * ADXL362_POWER_CTL_MEASURE(ADXL362_MEASURE_ON));</span><br><span class="line">    ADXL362_SetRegisterValue(newPowerCtl, ADXL362_REG_POWER_CTL, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  测量范围选择</span></span><br><span class="line"><span class="comment">  * @param gRange - Range option.</span></span><br><span class="line"><span class="comment">  *                  Example: ADXL362_RANGE_2G  -  +-2 g</span></span><br><span class="line"><span class="comment">  *                           ADXL362_RANGE_4G  -  +-4 g</span></span><br><span class="line"><span class="comment">  *                           ADXL362_RANGE_8G  -  +-8 g</span></span><br><span class="line"><span class="comment">  * @retval None</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_SetRange</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> gRange)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> oldFilterCtl = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> newFilterCtl = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    ADXL362_GetRegisterValue(&amp;oldFilterCtl, ADXL362_REG_FILTER_CTL, <span class="number">1</span>);</span><br><span class="line">    newFilterCtl = oldFilterCtl &amp; ~ADXL362_FILTER_CTL_RANGE(<span class="number">0x3</span>);</span><br><span class="line">    newFilterCtl = newFilterCtl | ADXL362_FILTER_CTL_RANGE(gRange);</span><br><span class="line">    ADXL362_SetRegisterValue(newFilterCtl, ADXL362_REG_FILTER_CTL, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  选择设备的输出数据速率</span></span><br><span class="line"><span class="comment">  * @param outRate - Output Data Rate option.</span></span><br><span class="line"><span class="comment">  *                  Example: ADXL362_ODR_12_5_HZ  -  12.5Hz</span></span><br><span class="line"><span class="comment">  *                           ADXL362_ODR_25_HZ    -  25Hz</span></span><br><span class="line"><span class="comment">  *                           ADXL362_ODR_50_HZ    -  50Hz</span></span><br><span class="line"><span class="comment">  *                           ADXL362_ODR_100_HZ   -  100Hz</span></span><br><span class="line"><span class="comment">  *                           ADXL362_ODR_200_HZ   -  200Hz</span></span><br><span class="line"><span class="comment">  *                           ADXL362_ODR_400_HZ   -  400Hz</span></span><br><span class="line"><span class="comment">  * @retval None</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_SetOutputRate</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> outRate)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> oldFilterCtl = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> newFilterCtl = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    ADXL362_GetRegisterValue(&amp;oldFilterCtl, ADXL362_REG_FILTER_CTL, <span class="number">1</span>);</span><br><span class="line">    newFilterCtl = oldFilterCtl &amp; ~ADXL362_FILTER_CTL_ODR(<span class="number">0x7</span>);</span><br><span class="line">    newFilterCtl = newFilterCtl | ADXL362_FILTER_CTL_ODR(outRate);</span><br><span class="line">    ADXL362_SetRegisterValue(newFilterCtl, ADXL362_REG_FILTER_CTL, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  从加速度计读取3轴原始数据</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * @param x - Stores the X-axis data(as two's complement).</span></span><br><span class="line"><span class="comment">  * @param y - Stores the X-axis data(as two's complement).</span></span><br><span class="line"><span class="comment">  * @param z - Stores the X-axis data(as two's complement).</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * @retval None</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_GetXyz</span><span class="params">(<span class="keyword">short</span>* x, <span class="keyword">short</span>* y, <span class="keyword">short</span>* z)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> xyzValues[<span class="number">6</span>] = &#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">    ADXL362_GetRegisterValue(xyzValues, ADXL362_REG_XDATA_L, <span class="number">6</span>);</span><br><span class="line">    *x = ((<span class="keyword">short</span>)xyzValues[<span class="number">1</span>] &lt;&lt; <span class="number">8</span>) + xyzValues[<span class="number">0</span>];</span><br><span class="line">    *y = ((<span class="keyword">short</span>)xyzValues[<span class="number">3</span>] &lt;&lt; <span class="number">8</span>) + xyzValues[<span class="number">2</span>];</span><br><span class="line">    *z = ((<span class="keyword">short</span>)xyzValues[<span class="number">5</span>] &lt;&lt; <span class="number">8</span>) + xyzValues[<span class="number">4</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  读设备温度</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * @retval tempCelsius - 温度（摄氏度）</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">ADXL362_ReadTemperature</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> rawTempData[<span class="number">2</span>] = &#123;<span class="number">0</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">short</span>         signedTemp     = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">float</span>         tempCelsius    = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    ADXL362_GetRegisterValue(rawTempData, ADXL362_REG_TEMP_L, <span class="number">2</span>);</span><br><span class="line">    signedTemp = (<span class="keyword">short</span>)(rawTempData[<span class="number">1</span>] &lt;&lt; <span class="number">8</span>) + rawTempData[<span class="number">0</span>];</span><br><span class="line">    tempCelsius = (<span class="keyword">float</span>)signedTemp * <span class="number">0.065</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> tempCelsius;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  配置FIFO特征</span></span><br><span class="line"><span class="comment">  * @param mode - 可选择模式</span></span><br><span class="line"><span class="comment">  *               Example: ADXL362_FIFO_DISABLE        -  FIFO 失能.</span></span><br><span class="line"><span class="comment">  *                        ADXL362_FIFO_OLDEST_SAVED   -  Oldest saved mode.</span></span><br><span class="line"><span class="comment">  *                        ADXL362_FIFO_STREAM         -  Stream mode.</span></span><br><span class="line"><span class="comment">  *                        ADXL362_FIFO_TRIGGERED      -  Triggered mode.</span></span><br><span class="line"><span class="comment">  * @param waterMarkLvl - 指定要存储在FIFO中的样本数.</span></span><br><span class="line"><span class="comment">  * @param enTempRead - 将温度数据存储到FIFO</span></span><br><span class="line"><span class="comment">  *                     Example: 1 - temperature data is stored in the FIFO</span></span><br><span class="line"><span class="comment">  *                                  together with x-, y- and x-axis data.</span></span><br><span class="line"><span class="comment">  *                              0 - temperature data is skipped.</span></span><br><span class="line"><span class="comment">  * @retval None</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_FifoSetup</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span>  mode,</span></span></span><br><span class="line"><span class="function"><span class="params">                       <span class="keyword">unsigned</span> <span class="keyword">short</span> waterMarkLvl,</span></span></span><br><span class="line"><span class="function"><span class="params">                       <span class="keyword">unsigned</span> <span class="keyword">char</span>  enTempRead)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> writeVal = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    writeVal = ADXL362_FIFO_CTL_FIFO_MODE(mode) |</span><br><span class="line">               (enTempRead * ADXL362_FIFO_CTL_FIFO_TEMP) |</span><br><span class="line">               ADXL362_FIFO_CTL_AH;</span><br><span class="line">    ADXL362_SetRegisterValue(writeVal, ADXL362_REG_FIFO_CTL, <span class="number">1</span>);</span><br><span class="line">    ADXL362_SetRegisterValue(waterMarkLvl, ADXL362_REG_FIFO_SAMPLES, <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  配置活动检测</span></span><br><span class="line"><span class="comment">  * @param  refOrAbs - 参考/绝对 活动选择</span></span><br><span class="line"><span class="comment">  *                   Example: 0 - absolute mode.</span></span><br><span class="line"><span class="comment">  *                            1 - referenced mode.</span></span><br><span class="line"><span class="comment">  * @param  threshold - 11-bit unsigned value that the adxl362 samples are</span></span><br><span class="line"><span class="comment">  *                    compared to.</span></span><br><span class="line"><span class="comment">  * @param  time - 8-bit value written to the activity timer register. The amount</span></span><br><span class="line"><span class="comment">  *               of time (in seconds) is: time / ODR, where ODR - is the output </span></span><br><span class="line"><span class="comment">  *               data rate.</span></span><br><span class="line"><span class="comment">  * @retval None.</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_SetupActivityDetection</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span>  refOrAbs,</span></span></span><br><span class="line"><span class="function"><span class="params">                                    <span class="keyword">unsigned</span> <span class="keyword">short</span> threshold,</span></span></span><br><span class="line"><span class="function"><span class="params">                                    <span class="keyword">unsigned</span> <span class="keyword">char</span>  time)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> oldActInactReg = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> newActInactReg = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Configure motion threshold and activity timer. */</span></span><br><span class="line">    ADXL362_SetRegisterValue((threshold &amp; <span class="number">0x7FF</span>), ADXL362_REG_THRESH_ACT_L, <span class="number">2</span>);</span><br><span class="line">    ADXL362_SetRegisterValue(time, ADXL362_REG_TIME_ACT, <span class="number">1</span>);</span><br><span class="line">    <span class="comment">/* Enable activity interrupt and select a referenced or absolute</span></span><br><span class="line"><span class="comment">       configuration. */</span></span><br><span class="line">    ADXL362_GetRegisterValue(&amp;oldActInactReg, ADXL362_REG_ACT_INACT_CTL, <span class="number">1</span>);</span><br><span class="line">    newActInactReg = oldActInactReg &amp; ~ADXL362_ACT_INACT_CTL_ACT_REF;</span><br><span class="line">    newActInactReg |= ADXL362_ACT_INACT_CTL_ACT_EN |</span><br><span class="line">                     (refOrAbs * ADXL362_ACT_INACT_CTL_ACT_REF);</span><br><span class="line">    ADXL362_SetRegisterValue(newActInactReg, ADXL362_REG_ACT_INACT_CTL, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @brief  配置不活动检测</span></span><br><span class="line"><span class="comment">  * @param refOrAbs - 参考/绝对不活动选择</span></span><br><span class="line"><span class="comment">  *                   Example: 0 - absolute mode.</span></span><br><span class="line"><span class="comment">  *                            1 - referenced mode.</span></span><br><span class="line"><span class="comment">  * @param threshold - 11-bit unsigned value that the adxl362 samples are</span></span><br><span class="line"><span class="comment">  *                    compared to.</span></span><br><span class="line"><span class="comment">  * @param time - 16-bit value written to the inactivity timer register. The </span></span><br><span class="line"><span class="comment">  *               amount of time (in seconds) is: time / ODR, where ODR - is the </span></span><br><span class="line"><span class="comment">  *               output  data rate.</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * @retval None</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_SetupInactivityDetection</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span>  refOrAbs,</span></span></span><br><span class="line"><span class="function"><span class="params">                                      <span class="keyword">unsigned</span> <span class="keyword">short</span> threshold,</span></span></span><br><span class="line"><span class="function"><span class="params">                                      <span class="keyword">unsigned</span> <span class="keyword">short</span> time)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> oldActInactReg = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> newActInactReg = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* Configure motion threshold and inactivity timer. */</span></span><br><span class="line">    ADXL362_SetRegisterValue((threshold &amp; <span class="number">0x7FF</span>),</span><br><span class="line">                              ADXL362_REG_THRESH_INACT_L,</span><br><span class="line">                              <span class="number">2</span>);</span><br><span class="line">    ADXL362_SetRegisterValue(time, ADXL362_REG_TIME_INACT_L, <span class="number">2</span>);</span><br><span class="line">    <span class="comment">/* Enable inactivity interrupt and select a referenced or absolute</span></span><br><span class="line"><span class="comment">       configuration. */</span></span><br><span class="line">    ADXL362_GetRegisterValue(&amp;oldActInactReg, ADXL362_REG_ACT_INACT_CTL, <span class="number">1</span>);</span><br><span class="line">    newActInactReg = oldActInactReg &amp; ~ADXL362_ACT_INACT_CTL_INACT_REF;</span><br><span class="line">    newActInactReg |= ADXL362_ACT_INACT_CTL_INACT_EN |</span><br><span class="line">                     (refOrAbs * ADXL362_ACT_INACT_CTL_INACT_REF);</span><br><span class="line">    ADXL362_SetRegisterValue(newActInactReg, ADXL362_REG_ACT_INACT_CTL, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、芯片使用"><a href="#二、芯片使用" class="headerlink" title="二、芯片使用"></a>二、芯片使用</h3><p>使用芯片的运动唤醒模式功能，通过映射唤醒信号到中断INT2引脚，控制单片机发送数据。</p>
+<h3 id="1、运动唤醒模式"><a href="#1、运动唤醒模式" class="headerlink" title="1、运动唤醒模式"></a>1、运动唤醒模式</h3><p>唤醒模式非常适合进行简单的有无运动检测，其功耗极低(2.0 V电源电压时仅270 nA)。唤醒模式对于实现运动激活的开关操作特别有用，系统其余部分只有在检测到运动之后才激活。<br>唤醒模式仅以大约每秒6次的频率测量加速度以确定是否发生运动，从而将功耗降至非常低的水平。如果检测到运动，加速度计可以通过如下方式自治响应：</p>
+<ul>
+<li>切换到全带宽测量模式</li>
+<li>向微控制器发出一个中断信号</li>
+<li>唤醒下游电路，具体依配置而定</li>
+</ul>
+<p>在唤醒模式下，除运动定时器以外的所有其它加速计功能都可以使用。所有寄存器都可以访问，实时数据可以读出和/或存入FIFO。</p>
+<h4 id="1-1唤醒模式的体现由AWAKE位来体现"><a href="#1-1唤醒模式的体现由AWAKE位来体现" class="headerlink" title="1.1唤醒模式的体现由AWAKE位来体现"></a>1.1唤醒模式的体现由AWAKE位来体现</h4><p>AWAKE位用于指示ADXL362处于唤醒还是休眠状态。当器件运动时，器件唤醒；当器件静止时，器件休眠。<br>唤醒信号可以映射到INT1或INT2引脚，该引脚可以用作状态输出，用以根据加速度计的唤醒状态，连接或断开下游电路的电源。配合环路模式时，此配置可实现自治运动激活的开关，如图所示。<br><img src="https://raw.githubusercontent.com/WuliYongShun/PictureHouse/master/img/20200313172247.png" alt><br>如果下游电路的开启时间是可接受的，此运动开关配置可以消除应用其余部分的待机功耗，从而大幅降低系统级功耗。此待机功耗常常超过ADXL362的正常工作功耗。</p>
+<h4 id="1-2自治运动开关原理及程序"><a href="#1-2自治运动开关原理及程序" class="headerlink" title="1.2自治运动开关原理及程序"></a>1.2自治运动开关原理及程序</h4><p>ADXL362的特性使它非常适合用作自治运动开关。下面的示例实现了一个开关，配置好后，它不需要主机处理器的干预，就能灵巧地管理系统电源。本例中，唤醒信号映射到INT2引脚，<del>用以驱动高边功率开关(如ADP195等)来控制下游电路的电源</del>,我们这里用中断信号唤醒单片机并，通过485向另一块电路板发送数据。</p>
+<p><strong>程序启动流程</strong><br><em>假设使用±2 g测量范围和唤醒工作模式</em></p>
+<ul>
+<li>1、写入十进制250 (0xFA)到寄存器0x20，写入0到寄存器0x21：将运动阈值设为250 mg。</li>
+<li>2、写入十进制150 (0x96)到寄存器0x23，写入0到寄存器0x24：将静止阈值设为150 mg。</li>
+<li>3、写入十进制30 (0x1E)到寄存器0x25：将静止定时器设为30个样本或约5秒。</li>
+<li>4、写入0x3F到寄存器0x27：配置环路模式的运动检测并使能相对运动和静止检测。</li>
+<li>5、写入0x40到寄存器0x2B：将AWAKE位映射到INT2。INT2引脚与开关的栅极相连。</li>
+<li>6、写入0x0A到寄存器0x2D：开始在唤醒模式下进行测量。</li>
+</ul>
+<p>对应相关程序代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADXL362_WakeUpMode</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">/* 1、写入十进制250 (0xFA)到寄存器0x20，写入0到寄存器0x21：将运动阈值设为250 mg。 */</span></span><br><span class="line">	ADXL362_SetRegisterValue( <span class="number">0xFA</span>, <span class="number">0x20</span>, <span class="number">1</span> );</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 2、写入十进制150 (0x96)到寄存器0x23，写入0到寄存器0x24：将静止阈值设为150 mg。 */</span></span><br><span class="line">	ADXL362_SetRegisterValue( <span class="number">0x96</span>, <span class="number">0x23</span>, <span class="number">1</span> );</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 3、写入十进制30 (0x1E)到寄存器0x25：将静止定时器设为30个样本或约5秒。 */</span></span><br><span class="line">	ADXL362_SetRegisterValue( <span class="number">0x1E</span>, <span class="number">0x25</span>, <span class="number">1</span> );</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 4、写入0x3F到寄存器0x27：配置环路模式的运动检测并使能相对运动和静止检测。 */</span></span><br><span class="line">	ADXL362_SetRegisterValue( <span class="number">0x3F</span>, <span class="number">0x27</span>, <span class="number">1</span> );</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 5、写入0x40到寄存器0x2B：将AWAKE位映射到INT2。INT2引脚与开关的栅极相连。 */</span></span><br><span class="line">	ADXL362_SetRegisterValue( <span class="number">0x40</span>, <span class="number">0x2B</span>, <span class="number">1</span> );</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 6、写入0x0A到寄存器0x2D：开始在唤醒模式下进行测量。*/</span></span><br><span class="line">	ADXL362_SetRegisterValue( <span class="number">0x0A</span>, <span class="number">0x2D</span>, <span class="number">1</span> );</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>进过验证传感器正常，唤醒功能正常</strong>同时该传感器作为动作开关可以根据’ 0x20,和0x23 ‘设置动作阈值,来改变传感器的灵敏度。<br><em>需要注意的是，需要按照参考手册的时序进行操作</em></p>
+<h3 id="2、静止检测模式"><a href="#2、静止检测模式" class="headerlink" title="2、静止检测模式"></a>2、静止检测模式</h3><p>后续更新</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/传感器/" rel="tag"># 传感器</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/14/PicGo搭建Github图床/" rel="next" title="PicGo+Github搭建图床">
+                <i class="fa fa-chevron-left"></i> PicGo+Github搭建图床
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/21/PicGo搭建Gitee图床/" rel="prev" title="PicGo+Gitee搭建图床">
+                PicGo+Gitee搭建图床 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">不会飞的风</p>
+              <p class="site-description motion-element" itemprop="description">此站点为自己学习的技术笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="471972509@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/WuliYongShun" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://me.csdn.net/weixin_41756255" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.alloyteam.com/nav/" title="Web前端导航" target="_blank">Web前端导航</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.chuangzaoshi.com/code" title="创造狮导航" target="_blank">创造狮导航</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.36zhen.com/t?id=3448" title="前端书籍资料" target="_blank">前端书籍资料</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://e.xitu.io/" title="掘金酱" target="_blank">掘金酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ADXL361-微功耗三轴加速度计-使用笔记"><span class="nav-number">1.</span> <span class="nav-text">ADXL361(微功耗三轴加速度计)使用笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、硬件介绍"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、硬件介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特性"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">特性:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#概述"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引脚配置和功能描述"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">引脚配置和功能描述</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、驱动程序"><span class="nav-number">1.0.2.</span> <span class="nav-text">二、驱动程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、头文件"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">1、头文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1、源码文件"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">1、源码文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、芯片使用"><span class="nav-number">1.0.3.</span> <span class="nav-text">二、芯片使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1、运动唤醒模式"><span class="nav-number">1.0.4.</span> <span class="nav-text">1、运动唤醒模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1唤醒模式的体现由AWAKE位来体现"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">1.1唤醒模式的体现由AWAKE位来体现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2自治运动开关原理及程序"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">1.2自治运动开关原理及程序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、静止检测模式"><span class="nav-number">1.0.5.</span> <span class="nav-text">2、静止检测模式</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">不会飞的风</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

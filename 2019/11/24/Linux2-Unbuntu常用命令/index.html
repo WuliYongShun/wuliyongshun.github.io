@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linux,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="向北方" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Ubuntu系统操作基本命令1.目录信息查看命令ls文件浏览是最基本的操作了， Shell 下文件浏览命令为 ls，格式如下：ls    [选项]    [路径]ls 命令主要用于显示指定目录下的内容，列出指定目录下包含的所有的文件以及子目录，它的主要参数有：-a 显示所有的文件以及子目录，包括以“.”开头的隐藏文件。-l 显示文件的详细信息，比如文件的形态、权限、所有者、大小等信息。-t 将文件">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux2-Unbuntu常用命令">
+<meta property="og:url" content="http://yoursite.com/2019/11/24/Linux2-Unbuntu常用命令/index.html">
+<meta property="og:site_name" content="向北方">
+<meta property="og:description" content="Ubuntu系统操作基本命令1.目录信息查看命令ls文件浏览是最基本的操作了， Shell 下文件浏览命令为 ls，格式如下：ls    [选项]    [路径]ls 命令主要用于显示指定目录下的内容，列出指定目录下包含的所有的文件以及子目录，它的主要参数有：-a 显示所有的文件以及子目录，包括以“.”开头的隐藏文件。-l 显示文件的详细信息，比如文件的形态、权限、所有者、大小等信息。-t 将文件">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-24T14:26:10.010Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux2-Unbuntu常用命令">
+<meta name="twitter:description" content="Ubuntu系统操作基本命令1.目录信息查看命令ls文件浏览是最基本的操作了， Shell 下文件浏览命令为 ls，格式如下：ls    [选项]    [路径]ls 命令主要用于显示指定目录下的内容，列出指定目录下包含的所有的文件以及子目录，它的主要参数有：-a 显示所有的文件以及子目录，包括以“.”开头的隐藏文件。-l 显示文件的详细信息，比如文件的形态、权限、所有者、大小等信息。-t 将文件">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/24/Linux2-Unbuntu常用命令/">
+
+
+
+
+
+  <title>Linux2-Unbuntu常用命令 | 向北方</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?44bc63b6c9f38c0cc8fa8abf79871a59";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">向北方</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">code</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/24/Linux2-Unbuntu常用命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="不会飞的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="向北方">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux2-Unbuntu常用命令</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-24T21:46:31+08:00">
+                2019-11-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Embedded-system/" itemprop="url" rel="index">
+                    <span itemprop="name">Embedded system</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Ubuntu系统操作基本命令"><a href="#Ubuntu系统操作基本命令" class="headerlink" title="Ubuntu系统操作基本命令"></a>Ubuntu系统操作基本命令</h1><h2 id="1-目录信息查看命令ls"><a href="#1-目录信息查看命令ls" class="headerlink" title="1.目录信息查看命令ls"></a>1.目录信息查看命令ls</h2><p>文件浏览是最基本的操作了， Shell 下文件浏览命令为 ls，格式如下：<br>ls    [选项]    [路径]<br>ls 命令主要用于显示指定目录下的内容，列出指定目录下包含的所有的文件以及子目录，<br>它的主要参数有：<br>-a 显示所有的文件以及子目录，包括以“.”开头的隐藏文件。<br>-l 显示文件的详细信息，比如文件的形态、权限、所有者、大小等信息。<br>-t 将文件按照创建时间排序列出。<br>-A 和-a 一样，但是不列出“.” (当前目录)和“..” (父目录)。<br>-R 递归列出所有文件，包括子目录中的文件。<br>Shell 命令里面的参数是可以组合在一起用的，比如组合“-al”就是显示所有文件的详细信<br>息，包括以“.”开头的隐藏文件， ls 命令使用如图 2.2.4.1 所示：</p>
+<h2 id="2-目录切换命令-cd"><a href="#2-目录切换命令-cd" class="headerlink" title="2.目录切换命令 cd"></a>2.目录切换命令 cd</h2><p>要想在 Shell 中切换到其它的目录，使用的命令是 cd，命令格式如下：<br>cd [路径]<br>路径就是我们要进入的目录路径，比如下面所示操作：<br>cd / //进入到根目录“/”下， Linux 系统的根目录为“/” ,<br>cd /usr //进入到目录“/usr”里面。<br>cd .. //进入到上一级目录。<br>cd ~ //切换到当前用户主目录</p>
+<h2 id="3-当前路径显示命令-pwd"><a href="#3-当前路径显示命令-pwd" class="headerlink" title="3.当前路径显示命令 pwd"></a>3.当前路径显示命令 pwd</h2><p>pwd 命令用来显示当前工作目录的绝对路径，不需要任何的参数</p>
+<h2 id="4-系统信息查看命令-uname"><a href="#4-系统信息查看命令-uname" class="headerlink" title="4.系统信息查看命令 uname"></a>4.系统信息查看命令 uname</h2><p>要查看当前系统信息，可以使用命令 uname，命令格式如下：<br>uname [选项]<br>可选的选项参数如下：<br>-r 列出当前系统的具体内核版本号。<br>-s 列出系统内核名称。<br>-o 列出系统信息。</p>
+<h2 id="5-清屏命令-clear"><a href="#5-清屏命令-clear" class="headerlink" title="5.清屏命令 clear"></a>5.清屏命令 clear</h2><p>clear 命令用于清除终端上的所有内容，只留下一行提示符</p>
+<h2 id="6-切换用户执行身份命令-sudo"><a href="#6-切换用户执行身份命令-sudo" class="headerlink" title="6.切换用户执行身份命令 sudo"></a>6.切换用户执行身份命令 sudo</h2><p>Ubuntu(Linux)是一个允许多用户的操作系统，其中权限最大的就是超级用户 root，有时候<br>我们执行一些操作的时候是需要用 root 用户身份才能执行，比如安装软件。通过 sudo 命令可以<br>使我们暂时将身份切换到 root 用户。当使用 sudo 命令的时候是需要输入密码的，这里要注意输<br>入密码的时候是没有任何提示的！命令格式如下：<br>sudo [选项] [命令]<br>选项主要参数如下：<br>-h 显示帮助信息<br>l 列出当前用户可执行与不可执行的命令<br>-p 改变询问密码的提示符。<br>假如我们现在要创建一个新的用户 test，创建新用户的命令为“adduser”，创建新用户的权限只有 root 用户才有，我们在装系统的时候创建的那个用户是没有这个权限的.</p>
+<h2 id="7-添加用户命令-adduser"><a href="#7-添加用户命令-adduser" class="headerlink" title="7.添加用户命令 adduser"></a>7.添加用户命令 adduser</h2><p>在讲解 sudo 命令的时候我们已经用过命令“adduser”，此命令需要 root 身份去运行。命令<br>格式如下：<br>adduser [参数] [用户名]<br>常用的参数如下：<br>-system 添加一个系统用户<br>-home DIR DIR 表示用户的主目录路径<br>-uid ID ID 表示用户的 uid。<br>-ingroup GRP 表示用户所属的组名。<br>adduser 的使用我们前面已经演示过了，大家可以试着再添加一个用户。</p>
+<h2 id="8-删除用户命令-deluser"><a href="#8-删除用户命令-deluser" class="headerlink" title="8.删除用户命令 deluser"></a>8.删除用户命令 deluser</h2><p>前面讲了添加用户的命令，那肯定也有删除用户的命令，删除用户使用命令“deluser”，命<br>令参数如下：<br>deluser [参数] [用户名]<br>主要参数有：<br>-system 当用户是一个系统用户的时候才能删除。<br>-remove-home 删除用户的主目录<br>-remove-all-files 删除与用户有关的所有文件。<br>-backup 备份用户信息<br>同样的，命令“deluser”也要使用“sudo”来以 root 用户运行.</p>
+<h2 id="9-切换用户-命令-su"><a href="#9-切换用户-命令-su" class="headerlink" title="9.切换用户 命令 su"></a>9.切换用户 命令 su</h2><p>前面在讲解命令“sudo”的时候说过，“sudo”是以 root 用户身份执行一个命令，并没有更改当前的用户身份，所有需要 root 身份执行的命令都必须在前面加上“sudo”。命令“su”可以直接将当前用户切换为 root 用户，切换到 root 用户以后就可以尽情的进行任何操作了！因为你已经获得了系统最高权限，在 root 用户下，所有的命令都可以无障碍执行，不需要在前面加上“sudo”，“su”命令格式如下：<br>su [选项] [用户名]<br>常用选项参数如下：<br>-c –command 执行指定的命令，执行完毕以后回复原用户身份。<br>-login 改变用户身份，同时改变工作目录和 PATH 环境变量。<br>-m 改变用户身份的时候不改变环境变量<br>-h 显示帮助信息</p>
+<h2 id="10-显示文件内容命令-cat"><a href="#10-显示文件内容命令-cat" class="headerlink" title="10.显示文件内容命令 cat"></a>10.显示文件内容命令 cat</h2><p>cat [选项] [文件]<br>选项主要参数如下：<br>-n 由 1 开始对所有输出的行进行编号。<br>-b 和-n 类似，但是不对空白行编号。<br>-s 当遇到连续两个行以上空白行的话就合并为一个行空白行。</p>
+<h2 id="11-显示和配置网络属性命令-ifconfig"><a href="#11-显示和配置网络属性命令-ifconfig" class="headerlink" title="11.显示和配置网络属性命令 ifconfig"></a>11.显示和配置网络属性命令 ifconfig</h2><p>ifconfig 是一个跟网络属性配置和显示密切相关的命令，通过此命令我们可以查看当前网络<br>属性，也可以通过此命令配置网络属性，比如设置网络 IP 地址等等，此命令格式如下：<br>ifconfig interface options | address<br>主要参数如下：<br>interface 网络接口名称，比如 eth0 等。<br>up 开启网络设备。<br>down 关闭网络设备。<br>add IP 地址，设置网络 IP 地址。<br>netmask add 子网掩码。</p>
+<h2 id="12-系统帮助命令-man"><a href="#12-系统帮助命令-man" class="headerlink" title="12.系统帮助命令 man"></a>12.系统帮助命令 man</h2><p>Ubuntu 系统中有很多命令，这些命令都有不同的格式，不同的格式对应不同的功能，要完全记住这些命令和格式几乎是不可能的，必须有一个帮助手册，当我们需要了解一个命令的详细信息的时候查阅这个帮助手册就行了。 Ubuntu 提供了一个命令来帮助用户完成这个功能，那就是“man”命令，通过“man”命令可以查看其它命令的语法格式、主要功能、主要参数说明等， “man”命令格式如下：<br>man [命令名]<br>比如我们要查看命令“ifconfig”的说明，输入“man ifconfig”即可。</p>
+<h2 id="13-系统重启命令-reboot"><a href="#13-系统重启命令-reboot" class="headerlink" title="13.系统重启命令 reboot"></a>13.系统重启命令 reboot</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+<h2 id="14-系统关闭命令-poweroff"><a href="#14-系统关闭命令-poweroff" class="headerlink" title="14.系统关闭命令 poweroff"></a>14.系统关闭命令 poweroff</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poweroff</span><br></pre></td></tr></table></figure>
+
+<h2 id="15-软件安装命令-install"><a href="#15-软件安装命令-install" class="headerlink" title="15.软件安装命令 install"></a>15.软件安装命令 install</h2><p>install [选项]… [-T] 源文件 目标文件<br>或： install [选项]… 源文件… 目录<br>或： install [选项]… -t 目录 源文件…<br>或： install [选项]… -d 目录…</p>
+<p>“install”命令是将文件(通常是编译后的文件)复制到目的位置，在前三种形式中，将源文件复制到目标文件或将多个源文件复制到一个已存在的目录中同时设置其所有权和权限模式。在第四种形式会创建指定的目录。命令“install”通常和命令“apt-get”组合在一起使用的，关于“apt-get”命令我们稍后会讲解。</p>
+<p>以上就是Ubuntu下Shell脚本的最基本命令，慢慢学习。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/24/Linux1-虚拟机及Ubuntu系统安装/" rel="next" title="Linux1-虚拟机及Ubuntu系统安装">
+                <i class="fa fa-chevron-left"></i> Linux1-虚拟机及Ubuntu系统安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/24/Linux3-Ubuntu下APT下载工具/" rel="prev" title="Linux3-Ubuntu下APT下载工具">
+                Linux3-Ubuntu下APT下载工具 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">不会飞的风</p>
+              <p class="site-description motion-element" itemprop="description">此站点为自己学习的技术笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="471972509@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/WuliYongShun" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://me.csdn.net/weixin_41756255" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.alloyteam.com/nav/" title="Web前端导航" target="_blank">Web前端导航</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.chuangzaoshi.com/code" title="创造狮导航" target="_blank">创造狮导航</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.36zhen.com/t?id=3448" title="前端书籍资料" target="_blank">前端书籍资料</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://e.xitu.io/" title="掘金酱" target="_blank">掘金酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Ubuntu系统操作基本命令"><span class="nav-number">1.</span> <span class="nav-text">Ubuntu系统操作基本命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-目录信息查看命令ls"><span class="nav-number">1.1.</span> <span class="nav-text">1.目录信息查看命令ls</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-目录切换命令-cd"><span class="nav-number">1.2.</span> <span class="nav-text">2.目录切换命令 cd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-当前路径显示命令-pwd"><span class="nav-number">1.3.</span> <span class="nav-text">3.当前路径显示命令 pwd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-系统信息查看命令-uname"><span class="nav-number">1.4.</span> <span class="nav-text">4.系统信息查看命令 uname</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-清屏命令-clear"><span class="nav-number">1.5.</span> <span class="nav-text">5.清屏命令 clear</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-切换用户执行身份命令-sudo"><span class="nav-number">1.6.</span> <span class="nav-text">6.切换用户执行身份命令 sudo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-添加用户命令-adduser"><span class="nav-number">1.7.</span> <span class="nav-text">7.添加用户命令 adduser</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-删除用户命令-deluser"><span class="nav-number">1.8.</span> <span class="nav-text">8.删除用户命令 deluser</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-切换用户-命令-su"><span class="nav-number">1.9.</span> <span class="nav-text">9.切换用户 命令 su</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-显示文件内容命令-cat"><span class="nav-number">1.10.</span> <span class="nav-text">10.显示文件内容命令 cat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-显示和配置网络属性命令-ifconfig"><span class="nav-number">1.11.</span> <span class="nav-text">11.显示和配置网络属性命令 ifconfig</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-系统帮助命令-man"><span class="nav-number">1.12.</span> <span class="nav-text">12.系统帮助命令 man</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-系统重启命令-reboot"><span class="nav-number">1.13.</span> <span class="nav-text">13.系统重启命令 reboot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-系统关闭命令-poweroff"><span class="nav-number">1.14.</span> <span class="nav-text">14.系统关闭命令 poweroff</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-软件安装命令-install"><span class="nav-number">1.15.</span> <span class="nav-text">15.软件安装命令 install</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">不会飞的风</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

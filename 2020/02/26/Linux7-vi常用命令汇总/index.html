@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linux,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="向北方" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="vi编辑器的使用一个编辑器具备的功能1）打开文件、新建文件、保存文件2）光标移动3）文本编辑4）(多行间|多列间)复制、粘贴、删除5）查找和替换 //=========================================vi编辑器的配置 1234cd /etc/vimcp vimrc ~/.vimrccd ~gedit .vimrc  在.vimrc中加入如下内容： 123456789">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux7-vi常用命令汇总">
+<meta property="og:url" content="http://yoursite.com/2020/02/26/Linux7-vi常用命令汇总/index.html">
+<meta property="og:site_name" content="向北方">
+<meta property="og:description" content="vi编辑器的使用一个编辑器具备的功能1）打开文件、新建文件、保存文件2）光标移动3）文本编辑4）(多行间|多列间)复制、粘贴、删除5）查找和替换 //=========================================vi编辑器的配置 1234cd /etc/vimcp vimrc ~/.vimrccd ~gedit .vimrc  在.vimrc中加入如下内容： 123456789">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-02-26T05:41:50.342Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux7-vi常用命令汇总">
+<meta name="twitter:description" content="vi编辑器的使用一个编辑器具备的功能1）打开文件、新建文件、保存文件2）光标移动3）文本编辑4）(多行间|多列间)复制、粘贴、删除5）查找和替换 //=========================================vi编辑器的配置 1234cd /etc/vimcp vimrc ~/.vimrccd ~gedit .vimrc  在.vimrc中加入如下内容： 123456789">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/02/26/Linux7-vi常用命令汇总/">
+
+
+
+
+
+  <title>Linux7-vi常用命令汇总 | 向北方</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?44bc63b6c9f38c0cc8fa8abf79871a59";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">向北方</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">code</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/26/Linux7-vi常用命令汇总/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="不会飞的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="向北方">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux7-vi常用命令汇总</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-26T12:44:52+08:00">
+                2020-02-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="vi编辑器的使用"><a href="#vi编辑器的使用" class="headerlink" title="vi编辑器的使用"></a>vi编辑器的使用</h1><p><strong>一个编辑器具备的功能</strong><br>1）打开文件、新建文件、保存文件<br>2）光标移动<br>3）文本编辑<br>4）(多行间|多列间)复制、粘贴、删除<br>5）查找和替换</p>
+<p>//=========================================<br><strong>vi编辑器的配置</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/vim</span><br><span class="line">cp vimrc ~/.vimrc</span><br><span class="line">cd ~</span><br><span class="line">gedit .vimrc</span><br></pre></td></tr></table></figure>
+
+<p>在.vimrc中加入如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&quot;关闭兼容功能</span><br><span class="line">set nocompatible </span><br><span class="line">&quot;显示行号</span><br><span class="line">set number</span><br><span class="line">&quot;编辑时 backspace 键设置为2个空格</span><br><span class="line">set backspace=2</span><br><span class="line">&quot;编辑时 tab 键设置为4个空格</span><br><span class="line">set tabstop=4</span><br><span class="line">&quot;设置自动对齐为4个空格</span><br><span class="line">set shiftwidth=4</span><br><span class="line">&quot;搜索时不区分大小写</span><br><span class="line">set ignorecase</span><br><span class="line">&quot;搜索时高亮显示</span><br><span class="line">set hlsearch</span><br></pre></td></tr></table></figure>
+
+<p>//=========================================</p>
+<p><strong>vi编辑器有三种模式</strong><br>1）一般模式（光标移动、复制、粘贴、删除）<br>2）编辑模式（编辑文本）<br>3）命令行模式（查找和替换）</p>
+<p><strong>注意：</strong><br>1）当不知道处于何种模式时，按ESC键返回到一般模式。<br>2）wq(write quit)<br>3）i(insert)</p>
+<p>//==================================================</p>
+<h2 id="1-打开文件、新建文件、保存文件"><a href="#1-打开文件、新建文件、保存文件" class="headerlink" title="1.打开文件、新建文件、保存文件"></a>1.打开文件、新建文件、保存文件</h2><pre><code>vi 文件名
+如果文件存在，输入结束后，:wq保存并退出文件
+如果文件不存在，输入结束后，:wq就可以新建并保存文件</code></pre><p><em>在编辑完成时，返回一般模式，</em><br>1）输入:w则保存文件，如果已经保存文件，输入:q则退出文件<br>2）直接输入:wq保存并退出<br>3)如果不想保存被修改的内容，则:q!强制退出。</p>
+<h2 id="2-进入编辑模式"><a href="#2-进入编辑模式" class="headerlink" title="2.进入编辑模式"></a>2.进入编辑模式</h2><p>i(在光标前开始插入文本)<br>a在光标后开始插入文本<br>o(在当前行之下新开一行，并到行首)</p>
+<h2 id="3-光标移动"><a href="#3-光标移动" class="headerlink" title="3.光标移动"></a>3.光标移动</h2><p>在一般模式下，hjkl这四个按键就可以移动光标<br>h(左)<br>j(下)<br>k(上)<br>l(右)</p>
+<p>快速的定位到某一行：<br>文件头、文件尾、指定某一行<br>ngg光标移至第n行的行首（n为数字），<br>    如1gg就跳到第一行的行首，就是文件头<br>    如2gg就跳到第二行的行首</p>
+<p>G转至文件结尾<br>注意：ngg和G是在一般模式</p>
+<p>在某一行如何快速定位到某一列<br>0（数字零）光标移至当前行行首<br>$光标移至当前行行末<br>fx搜索当前行中下一个出现字母x的地方<br>注意：0、$、fx是在一般模式</p>
+<p>vi的难点：<br>1）vi操作之前，先判断一下当前是哪一种模式，再看光标所在位置。<br>当你不知道处于何种模式时，使用esc键返回到一般模式。<br>再看光标，难点在于移动光标，可以做到快速切换到某一行某一列。</p>
+<h2 id="4-文本复制、粘贴、删除、撤销"><a href="#4-文本复制、粘贴、删除、撤销" class="headerlink" title="4.文本复制、粘贴、删除、撤销"></a>4.文本复制、粘贴、删除、撤销</h2><p>yy复制当前行(y:yank(复制))<br>nyy复制当前行及其后的n-1行(n是数字)</p>
+<p>使用P键来粘贴(p:paste)</p>
+<p>dd  删除光标所在行(d:delete)<br>ndd 删除当前行及其后的n-1行(n是数字)</p>
+<p>按u键来撤销上一步操作</p>
+<p>x删除光标所在位置的字符</p>
+<p>注意：<br>yy/nyy/dd/ndd/x/u都是在一般模式。</p>
+<h2 id="5-查找和替换"><a href="#5-查找和替换" class="headerlink" title="5.查找和替换"></a>5.查找和替换</h2><p>/pattern 从光标开始处向文件尾搜索pattern，后按下n或N<br>注意：<br>n在同一个方向重复上一次搜索命令<br>N在反方向重复上一次搜索命令<br>n(N)来源于next</p>
+<p>注意：<br>在/pattern之前先跳到第一行则进行全文件搜索。</p>
+<p>:%s/p1/p2/g将文件中所有的p1均用p2替换<br>:%s/p1/p2/gc替换时需要确认</p>
+<p>s:substitute替换<br>g:global全局<br>c:confirm确认</p>
+<p>vi的难点：<br>1）vi操作之前，先判断一下当前是哪一种模式，再看光标所在位置。<br>当你不知道处于何种模式时，使用esc键返回到一般模式。<br>再看光标，难点在于移动光标，可以做到快速切换到某一行某一列。</p>
+<p>vi编辑器有三种模式<br>1）一般模式（光标移动、复制、粘贴、删除、撤销）<br>   hjkl、ngg/G、0、$、fx<br>   yy/nyy<br>   p<br>   dd/ndd、x<br>   u<br>2）编辑模式（编辑文本）<br>   i  a o<br>3）命令行模式（查找和替换、保存退出文件）<br>   /pattern、:%s/p1/p2/gc、:wq</p>
+<p>举例：<br>1）用vi 新建一个文件test2.txt，然后输入”welaome to the world of vi.”,并保存。<br>2）由于拼写错误，需要将其中的welaome中的a替换成c。<br>3）在上步的基础上，复制第一行到第二行和第三行。<br>4）在上步的基础上，删除第三行的全部内容。<br>5）在上步的基础上，搜索出现vi的地方。<br>6）在上步的基础上，将字符串vi替换成vim。<br>7）保存并退出。</p>
+<h1 id="vi常用命令汇总表"><a href="#vi常用命令汇总表" class="headerlink" title="vi常用命令汇总表"></a><strong>vi常用命令汇总表</strong></h1><table>
+<thead>
+<tr>
+<th align="left">内容</th>
+<th align="left">命令及作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>打开文件</strong></td>
+<td align="left">vi+文件名/vi+文件名+行号</td>
+</tr>
+<tr>
+<td align="left"><strong>退出/保存文件</strong></td>
+<td align="left">:q! 强制退出vi,即使文件被修改，也不保存</td>
+</tr>
+<tr>
+<td align="left"><strong>进入编辑模式</strong></td>
+<td align="left">:wq 保存文件并退出</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">:w 保存文件</td>
+</tr>
+<tr>
+<td align="left"><strong>进入编辑模式</strong></td>
+<td align="left"><em>i 在光标前开始插入文本</em></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><em>a 在光标后开始插入文本</em></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><em>o 在当前行之下新开一行</em></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><em>O 在当前行之上新开一行</em></td>
+</tr>
+<tr>
+<td align="left"><strong>光标移动（多行间切换）</strong></td>
+<td align="left">Ctrl+f 向前滚动一整屏</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Ctrl+b 向后滚动一整屏</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">gg 转至文件开头</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">G 转至文件结尾</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">ngg/nG 光标移至第n行的行首（n为数字）</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">:n 光标移动至第n行的行首（n为数字）</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">n+ 光标向下移动n行（n为数字）</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">n- 光标向上移动n行（n为数字）</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">j/nj 光标向下移动1行/n行（n为数字）</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">k/nk 光标向上移动1行/n行（n为数字）</td>
+</tr>
+<tr>
+<td align="left"><strong>光标移动（单行间切换）</strong></td>
+<td align="left">0 （数字零）光标移至当前行行首</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">$ 光标移至当前行行末</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">h/nh 光标向左移动1列/n列（n为数字）</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">k/nk 光标向右移动1列/n列（n为数字）</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">w 光标移动到下一个字的开头</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">b 光标移动到上一个字的开头</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">fx 搜索当前行中下一个出现字母x的地方</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Fx 搜索当前行中上一个出现字母x的地方</td>
+</tr>
+<tr>
+<td align="left"><strong>文本复制命令</strong></td>
+<td align="left"><em>yy 复制当前行</em></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><em>nyy 复制当前行及其后的n-1行</em></td>
+</tr>
+<tr>
+<td align="left"><strong>文本删除命令</strong></td>
+<td align="left"><em>x 删除光标后的一个字符</em></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">X 删除光标前的一个字符</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">nx 删除光标后的n个字符</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">nX 删除光标前的n个字符</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">dw 从光标处删至当前词尾</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">db 从光标处删至当前词首</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">d0 从光标处删至行首</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">d$/D 从光标处删至行尾</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><em>dd  删除光标所在行</em></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><em>ndd 删除当前行及其后的n-1行</em></td>
+</tr>
+<tr>
+<td align="left"><strong>文本粘贴命令</strong></td>
+<td align="left"><em>使用P键</em></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">如复制当前行，先用yy复制当前行，切换到目的行的上一行后，用p来粘贴所复制的行。</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">如剪切当前行，先用dd复制当前行，切换到目的行的上一行后，用p来粘贴所剪切的行。</td>
+</tr>
+<tr>
+<td align="left"><strong>撤销命令</strong></td>
+<td align="left"><em>按u键来撤销上一步操作</em></td>
+</tr>
+<tr>
+<td align="left"><strong>查找及替换命令</strong></td>
+<td align="left"><em>/pattern 从光标开始处向文件尾搜索pattern</em>（在/pattern之前先跳到第一行则进行全文件搜索），后按下n或N</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">?pattern 从光标开始处向文件首部搜索pattern ，后按下n或N</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">注：n在同一个方向重复上一次搜索命令,N在反方向重复上一次搜索命令</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">:s/p1/p2/g将当前行中所有的p1均用p2替换，:s/p1/p2/gc替换时需要确认</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">:n1,n2s/p1/p2/g将n1至n2行中所有的p1均用p2替换，:n1,n2s/p1/p2/gc替换时需要确认</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><em>:%s/p1/p2/g将文件中所有的p1均用p2替换，:%s/p1/p2/gc替换时需要确认</em></td>
+</tr>
+</tbody></table>
+<p>更正：</p>
+<p>x删除光标所在位置的字符</p>
+<p>nx删除光标所在位置和光标后的n-1个字符</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/17/Modbus1-modbus协议分析/" rel="next" title="Modbus1-modbus协议分析">
+                <i class="fa fa-chevron-left"></i> Modbus1-modbus协议分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/01/FreeRTOS使用笔记/" rel="prev" title="FreeeRTOS-应用笔记">
+                FreeeRTOS-应用笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">不会飞的风</p>
+              <p class="site-description motion-element" itemprop="description">此站点为自己学习的技术笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="471972509@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/WuliYongShun" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://me.csdn.net/weixin_41756255" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.alloyteam.com/nav/" title="Web前端导航" target="_blank">Web前端导航</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.chuangzaoshi.com/code" title="创造狮导航" target="_blank">创造狮导航</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.36zhen.com/t?id=3448" title="前端书籍资料" target="_blank">前端书籍资料</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://e.xitu.io/" title="掘金酱" target="_blank">掘金酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vi编辑器的使用"><span class="nav-number">1.</span> <span class="nav-text">vi编辑器的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-打开文件、新建文件、保存文件"><span class="nav-number">1.1.</span> <span class="nav-text">1.打开文件、新建文件、保存文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-进入编辑模式"><span class="nav-number">1.2.</span> <span class="nav-text">2.进入编辑模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-光标移动"><span class="nav-number">1.3.</span> <span class="nav-text">3.光标移动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-文本复制、粘贴、删除、撤销"><span class="nav-number">1.4.</span> <span class="nav-text">4.文本复制、粘贴、删除、撤销</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-查找和替换"><span class="nav-number">1.5.</span> <span class="nav-text">5.查找和替换</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vi常用命令汇总表"><span class="nav-number">2.</span> <span class="nav-text">vi常用命令汇总表</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">不会飞的风</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

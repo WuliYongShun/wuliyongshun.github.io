@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="FreeRTOS,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="向北方" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="FreeRTOS系统使用笔记一、FreeRTOS1、简介免费的可以裁剪的实时操作系统 2、特点​    FreeRTOS的内核是支持抢占式，合作式和时间片调度；​    等等…… 3、freeRTOS的使用官网地址： www.freertos.org使用方法： 官网文档 二、移植FreeRTOS不建议手动去移植，针对STM32单片机，直接使用CubeMX软件直接生成源码使用。 三、FreeRTOS">
+<meta name="keywords" content="FreeRTOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FreeeRTOS-应用笔记">
+<meta property="og:url" content="http://yoursite.com/2020/03/01/FreeRTOS使用笔记/index.html">
+<meta property="og:site_name" content="向北方">
+<meta property="og:description" content="FreeRTOS系统使用笔记一、FreeRTOS1、简介免费的可以裁剪的实时操作系统 2、特点​    FreeRTOS的内核是支持抢占式，合作式和时间片调度；​    等等…… 3、freeRTOS的使用官网地址： www.freertos.org使用方法： 官网文档 二、移植FreeRTOS不建议手动去移植，针对STM32单片机，直接使用CubeMX软件直接生成源码使用。 三、FreeRTOS">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="h:%5CZPanDisk%5C%E6%96%87%E4%BB%B6%5CShunWork%5CMyblog%5Csource_posts%5CPICTURE%5C%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8.png">
+<meta property="og:updated_time" content="2020-03-08T02:01:27.267Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FreeeRTOS-应用笔记">
+<meta name="twitter:description" content="FreeRTOS系统使用笔记一、FreeRTOS1、简介免费的可以裁剪的实时操作系统 2、特点​    FreeRTOS的内核是支持抢占式，合作式和时间片调度；​    等等…… 3、freeRTOS的使用官网地址： www.freertos.org使用方法： 官网文档 二、移植FreeRTOS不建议手动去移植，针对STM32单片机，直接使用CubeMX软件直接生成源码使用。 三、FreeRTOS">
+<meta name="twitter:image" content="h:%5CZPanDisk%5C%E6%96%87%E4%BB%B6%5CShunWork%5CMyblog%5Csource_posts%5CPICTURE%5C%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/01/FreeRTOS使用笔记/">
+
+
+
+
+
+  <title>FreeeRTOS-应用笔记 | 向北方</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?44bc63b6c9f38c0cc8fa8abf79871a59";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">向北方</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">code</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/01/FreeRTOS使用笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="不会飞的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="向北方">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">FreeeRTOS-应用笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-01T10:05:55+08:00">
+                2020-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Embedded/" itemprop="url" rel="index">
+                    <span itemprop="name">Embedded</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="FreeRTOS系统使用笔记"><a href="#FreeRTOS系统使用笔记" class="headerlink" title="FreeRTOS系统使用笔记"></a>FreeRTOS系统使用笔记</h1><h2 id="一、FreeRTOS"><a href="#一、FreeRTOS" class="headerlink" title="一、FreeRTOS"></a>一、FreeRTOS</h2><h3 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h3><p>免费的可以裁剪的实时操作系统</p>
+<h3 id="2、特点"><a href="#2、特点" class="headerlink" title="2、特点"></a>2、特点</h3><p>​    FreeRTOS的内核是支持抢占式，合作式和时间片调度；<br>​    等等……</p>
+<h3 id="3、freeRTOS的使用"><a href="#3、freeRTOS的使用" class="headerlink" title="3、freeRTOS的使用"></a>3、freeRTOS的使用</h3><p>官网地址： <a href="http://www.freertos.org" target="_blank" rel="noopener">www.freertos.org</a><br>使用方法： 官网文档</p>
+<h2 id="二、移植FreeRTOS"><a href="#二、移植FreeRTOS" class="headerlink" title="二、移植FreeRTOS"></a>二、移植FreeRTOS</h2><p>不建议手动去移植，针对STM32单片机，直接使用CubeMX软件直接生成源码使用。</p>
+<h2 id="三、FreeRTOS系统相关配置"><a href="#三、FreeRTOS系统相关配置" class="headerlink" title="三、FreeRTOS系统相关配置"></a>三、FreeRTOS系统相关配置</h2><h3 id="1、配置文件"><a href="#1、配置文件" class="headerlink" title="1、配置文件"></a>1、配置文件</h3><p>使用STMCubeMX生成的操作系统配置文件在一下文件中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;FreeRTOSConfig.h&quot;</span><br></pre></td></tr></table></figure>
+
+<p>说明如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/*-----------------------------------------------------------</span><br><span class="line"> * Application specific definitions.</span><br><span class="line"> *</span><br><span class="line"> * These definitions should be adjusted for your particular hardware and</span><br><span class="line"> * application requirements.</span><br><span class="line"> *</span><br><span class="line"> * These parameters and more are described within the &apos;configuration&apos; section of the</span><br><span class="line"> * FreeRTOS API documentation available on the FreeRTOS.org web site.</span><br><span class="line"> *</span><br><span class="line"> * See http://www.freertos.org/a00110.html</span><br><span class="line"> *----------------------------------------------------------*/</span><br></pre></td></tr></table></figure>
+
+<p>我们可以通过该配置文件，对系统进行裁剪操作（推荐直接使用STMCube 进行配置同时生成代码更方便），这个文件对于操作系统来说比较重要。</p>
+<p><em>配置文件中主要有两种类型的配置：</em></p>
+<p>1、”#INCLUDE_”开头的宏；</p>
+<p>2、”config”开头的宏；</p>
+<h3 id="2、”-INCLUDE-”开头的宏；"><a href="#2、”-INCLUDE-”开头的宏；" class="headerlink" title="2、”#INCLUDE_”开头的宏；"></a>2、”#INCLUDE_”开头的宏；</h3><p>通过配置此类型的宏定义，来表示使能或失能FreeRTOS中的API函数，作用就是配置FreeRTOS中的可选API函数。如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/* Set the following definitions to 1 to include the API function, or zero</span><br><span class="line">to exclude the API function. */</span><br><span class="line">#define INCLUDE_vTaskPrioritySet            1</span><br><span class="line">#define INCLUDE_uxTaskPriorityGet           1</span><br><span class="line">#define INCLUDE_vTaskDelete                 1</span><br><span class="line">#define INCLUDE_vTaskCleanUpResources       0</span><br><span class="line">#define INCLUDE_vTaskSuspend                1</span><br><span class="line">#define INCLUDE_vTaskDelayUntil             0</span><br><span class="line">#define INCLUDE_vTaskDelay                  1</span><br><span class="line">#define INCLUDE_xTaskGetSchedulerState      1</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、”config”开头的宏"><a href="#3、”config”开头的宏" class="headerlink" title="3、”config”开头的宏"></a>3、”config”开头的宏</h3><p>通过配置此类型的宏定义，来配置和裁剪FreeRTOS的相关功能和参数。如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/* Ensure definitions are only used by the compiler, and not by the assembler. */</span><br><span class="line">#if defined(__ICCARM__) || defined(__CC_ARM) || defined(__GNUC__)</span><br><span class="line">  #include &lt;stdint.h&gt;</span><br><span class="line">  extern uint32_t SystemCoreClock;</span><br><span class="line">  void xPortSysTickHandler(void);</span><br><span class="line">#endif</span><br><span class="line">#define configUSE_PREEMPTION                     1</span><br><span class="line">#define configSUPPORT_STATIC_ALLOCATION          1</span><br><span class="line">#define configSUPPORT_DYNAMIC_ALLOCATION         1</span><br><span class="line">#define configUSE_IDLE_HOOK                      0</span><br><span class="line">#define configUSE_TICK_HOOK                      0</span><br><span class="line">#define configCPU_CLOCK_HZ                       ( SystemCoreClock )</span><br><span class="line">#define configTICK_RATE_HZ                       ((TickType_t)1000)</span><br><span class="line">#define configMAX_PRIORITIES                     ( 32 )</span><br><span class="line">#define configMINIMAL_STACK_SIZE                 ((uint16_t)128)</span><br><span class="line">#define configTOTAL_HEAP_SIZE                    ((size_t)3072)</span><br><span class="line">#define configMAX_TASK_NAME_LEN                  ( 16 )</span><br><span class="line">#define configUSE_16_BIT_TICKS                   0</span><br><span class="line">#define configUSE_MUTEXES                        1</span><br><span class="line">#define configQUEUE_REGISTRY_SIZE                8</span><br><span class="line">#define configUSE_PORT_OPTIMISED_TASK_SELECTION  1</span><br><span class="line"></span><br><span class="line">/* Co-routine definitions. */</span><br><span class="line">#define configUSE_CO_ROUTINES                    0</span><br><span class="line">#define configMAX_CO_ROUTINE_PRIORITIES          ( 2 )</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、系统任务相关API函数"><a href="#四、系统任务相关API函数" class="headerlink" title="四、系统任务相关API函数"></a>四、系统任务相关API函数</h2><p>系统任务主要包括以下几个方面的API函数：</p>
+<p>1、任务创建和删除API函数（包括动态方法和静态方法）；</p>
+<p>2、任务的挂起和恢复API函数；</p>
+<h3 id="1、任务创建和删除相关API函数"><a href="#1、任务创建和删除相关API函数" class="headerlink" title="1、任务创建和删除相关API函数"></a>1、任务创建和删除相关API函数</h3><table>
+<thead>
+<tr>
+<th align="left">函数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">xTaskCreate()</td>
+<td align="left">动态方法创建一个任务</td>
+</tr>
+<tr>
+<td align="left">xTaskCreateStatic()</td>
+<td align="left">静态方法创建一个任务</td>
+</tr>
+<tr>
+<td align="left">xTaskCreateRestricted()</td>
+<td align="left">创建一个使用MPU进行限制的任务，相关内存使用动态内存分配</td>
+</tr>
+<tr>
+<td align="left">vTaskDelete()</td>
+<td align="left">删除一个任务</td>
+</tr>
+</tbody></table>
+<h4 id="1-1-动态创建函数-xTaskCreate-："><a href="#1-1-动态创建函数-xTaskCreate-：" class="headerlink" title="1.1 动态创建函数 xTaskCreate()："></a>1.1 动态创建函数 xTaskCreate()：</h4><p>动态创建任务原型如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">BaseType_t xTaskCreate(	TaskFunction_t pxTaskCode,</span><br><span class="line">							const char * const pcName,		/*lint !e971 Unqualified char types are allowed for strings and single characters only. */</span><br><span class="line">							const configSTACK_DEPTH_TYPE usStackDepth,</span><br><span class="line">							void * const pvParameters,</span><br><span class="line">							UBaseType_t uxPriority,</span><br><span class="line">							TaskHandle_t * const pxCreatedTask )</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数：</strong></p>
+<p>pxTaskCode：            任务函数；</p>
+<p>pcName：                  任务名字，一般用于追踪和调试，任务名字长度不能超过configMAX_TASK_NAME_LEN；</p>
+<p>usStackDepth：        任务堆栈大小，使用申请到的堆栈是usStackDepth的4倍，空闲任务的堆栈大小为 configMINIMAL_STACK_SIZE</p>
+<p>uxPriority：                任务优先级，范围是0~configMAX_TASK_NAME_LEN-1；</p>
+<p>pxCreatedTask：        任务句柄，任务创建成功后会返回这个任务句柄，这个句柄其实就是任务的任务堆栈。此参数就用来保存这个任务句柄。其他API函数就可能会使用到这个句柄。</p>
+<p><strong>返回值</strong></p>
+<p>pdPASS:                        任务创建成功</p>
+<p>errCOILD_NOT_ALLOCATE_REQUIRED_MEMORY:    任务创建失败因为内存不足。</p>
+<h4 id="1-2-动态创建函数-xTaskCreateStatic-："><a href="#1-2-动态创建函数-xTaskCreateStatic-：" class="headerlink" title="1.2 动态创建函数 xTaskCreateStatic()："></a>1.2 动态创建函数 xTaskCreateStatic()：</h4><p>此函数和xTaskCreate()的功能相同，也是用来创建任务的，但是使用此函数的任务所需要的RAM需要用户来提供。如果要使用此函数的话需要将宏configSUPPORT_STATIC_ALLOCATION定义为1。函数原型如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">TaskHandle_t xTaskCreateStatic(	TaskFunction_t pxTaskCode,</span><br><span class="line">									const char * const pcName,		/*lint !e971 Unqualified char types are allowed for strings and single characters only. */</span><br><span class="line">									const uint32_t ulStackDepth,</span><br><span class="line">									void * const pvParameters,</span><br><span class="line">									UBaseType_t uxPriority,</span><br><span class="line">									StackType_t * const puxStackBuffer,</span><br><span class="line">									StaticTask_t * const pxTaskBuffer )</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数：</strong></p>
+<p>pxTaskCode:                任务函数</p>
+<p>pcName:                      任务名字，一般用于追踪和调试，任务名字长度不能超过configMAX_TASK_NAME_LEN；</p>
+<p>ulStackDepth:              任务堆栈大小，由于本函数是静态方法创建任务，所以任务堆栈由用户给出，一般是个数组，此参数就是这个数组的大小；</p>
+<p>pvParameters:            传递任务函数的参数；</p>
+<p>uxPriority:                    任务优先级，范围是0~configMAX_TASK_NAME_LEN-1；</p>
+<p>puxStackBuffer:          任务堆栈，一般为数组，数组类型要为StackType_t类型；</p>
+<p>pxTaskBuffer:              任务控制块。</p>
+<p><strong>返回值</strong></p>
+<p>NULL:                            任务创建失败，puxStackBuffer或pxTaskBuffer为NULL的时候会导致这个错误的发生；</p>
+<p>其他值：                        任务创建成功。返回值是任务的句柄。</p>
+<h4 id="1-3、函数xTaskCreateRestricted"><a href="#1-3、函数xTaskCreateRestricted" class="headerlink" title="1.3、函数xTaskCreateRestricted()"></a>1.3、函数xTaskCreateRestricted()</h4><p>此函数也是用来创建任务的，只是此函数要求所使用的MCU有MPU（内存保护单元），用此函数创建的任务会受到MPU的保护。其他的功能和函数xTaskCreate()一样。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaseType_t xTaskCreateRestricted( const TaskParameters_t * const pxTaskDefinition, TaskHandle_t *pxCreatedTask )</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数：</strong></p>
+<p>pxTaskDefinition：        指向一个结构体TaskParameters_t,这个结构体描述了任务的任务函数堆栈大小、优先级等。此结构体在文件task.h中有定义；</p>
+<p>pxCreatedTask:              任务句柄。</p>
+<p><strong>返回值：</strong></p>
+<p>pdPASS:                            任务创建成功；</p>
+<p>其他值：                            任务未创建成功，很有可能是因为FreeRTOS的堆太小了。</p>
+<h4 id="1、4任务删除函数vTaskDelete"><a href="#1、4任务删除函数vTaskDelete" class="headerlink" title="1、4任务删除函数vTaskDelete()"></a>1、4任务删除函数vTaskDelete()</h4><p>删除上述的任意任务创建函数，被删除的任务不在存在，也就是说不会进入运行态。静态任务直接被释放掉内存，动态创建任务在空闲任务中被释放掉，一次调用函数vTaskDelete()删除任务以后必须给空闲任务一定的运行时间。</p>
+<p><em>只有那些由内核分配给任务的内存才会在任务删除以后会被释放掉，用户分配给任务的内存需要用户自行释放掉，比如摸个任务中用户调用函数pvPortMalloc()分配了500个字节的内存，那么在此任务被删除后用户也必须调用函数vPortFree()将这500个字节的内存释放掉，否则会导致内存泄露。</em>此函数原型如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vTaskDelete( TaskHandle_t xTaskToDelete )</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数：</strong></p>
+<p>xTaskToDelete：        要删除任务的任务句柄。</p>
+<p><strong>返回值：</strong></p>
+<p>无</p>
+<h3 id="2、任务挂起和恢复相关API函数"><a href="#2、任务挂起和恢复相关API函数" class="headerlink" title="2、任务挂起和恢复相关API函数"></a>2、任务挂起和恢复相关API函数</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>vTaskSuspend()</td>
+<td>挂起一个任务</td>
+</tr>
+<tr>
+<td>vTaskResume()</td>
+<td>恢复一个任务的运行</td>
+</tr>
+<tr>
+<td>xTaskResumeFromISR()</td>
+<td>中断服务函数中恢复一个任务的运行</td>
+</tr>
+</tbody></table>
+<h4 id="2-1、vTaskSuspend-函数"><a href="#2-1、vTaskSuspend-函数" class="headerlink" title="2.1、vTaskSuspend()函数"></a>2.1、vTaskSuspend()函数</h4><p>此函数用于将某个任务设置为挂起态，进入挂起态的任务永远都不会进入运行态。函数原型如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void vTaskSuspend( TaskHandle_t xTaskToSuspend )</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数：</strong></p>
+<p>xTaskToSuspend:要挂起的任务的任务句柄，创建任务的时候会为每个任务分配一个任务句柄。<em>注意如果参数为NULL的话表示挂起任务自己。</em></p>
+<p><strong>返回值：</strong></p>
+<p>无</p>
+<h4 id="2-2、vTaskResume-函数"><a href="#2-2、vTaskResume-函数" class="headerlink" title="2.2、vTaskResume()函数"></a>2.2、vTaskResume()函数</h4><p>将一个挂起任务恢复到就绪态，只有通过函数vTaskSuspend()设置为挂起态的任务才可以使用vTaskResume()恢复，函数原型如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void vTaskResume( TaskHandle_t xTaskToResume )</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数：</strong></p>
+<p>xTaskToResume：    要恢复任务的任务句柄。</p>
+<p><strong>返回值：</strong></p>
+<p>无</p>
+<h4 id="2-3、vTaskResumeFromISR"><a href="#2-3、vTaskResumeFromISR" class="headerlink" title="2.3、vTaskResumeFromISR()"></a>2.3、vTaskResumeFromISR()</h4><p>此函数是vTaskResume()的中断版本，用于在中断服务函数中恢复一个任务。函数原型如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaseType_t xTaskResumeFromISR( TaskHandle_t xTaskToResume )</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数：</strong></p>
+<p>xTaskToResume：    要恢复任务的任务句柄。</p>
+<p><strong>返回值：</strong></p>
+<p>pdTRUE:        恢复运行的任务的任务优先级等于或者高于正在运行的任务(被中断打断的任务),这意味着在退出中断服务函数以后必须进行一次上下文切换；</p>
+<p>pdFALSE：    恢复运行的任务的任务优先级低于当前正在运行的任务(被中断打断的任务),这意味着在退出中断服务函数等以后不需要进行上下文切换。</p>
+<p><em>例如：</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//任务句柄</span><br><span class="line">extern TaskHandle_t Task2Task_Handler;</span><br><span class="line"></span><br><span class="line">//外部中断4服务程序</span><br><span class="line">void EXTI4_IRQHandler(void)</span><br><span class="line">&#123;</span><br><span class="line">	BaseType_t YieldRequired;</span><br><span class="line">	</span><br><span class="line">	delay_xms(20);	//消抖</span><br><span class="line">	if(KEY0==0)	 </span><br><span class="line">	&#123;				 </span><br><span class="line">		YieldRequired=xTaskResumeFromISR(Task2Task_Handler);//恢复任务2</span><br><span class="line">		printf(&quot;恢复任务2的运行!\r\n&quot;);</span><br><span class="line">		if(YieldRequired==pdTRUE)</span><br><span class="line">		&#123;</span><br><span class="line">			/*如果函数xTaskResumeFromISR()返回值为pdTRUE，那么说明要恢复的这个</span><br><span class="line">			任务的任务优先级等于或者高于正在运行的任务(被中断打断的任务),所以在</span><br><span class="line">			退出中断的时候一定要进行上下文切换！*/</span><br><span class="line">			portYIELD_FROM_ISR(YieldRequired);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;		 </span><br><span class="line">	 EXTI_ClearITPendingBit(EXTI_Line4);//清除LINE4上的中断标志位  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、任务临界段保护代码"><a href="#五、任务临界段保护代码" class="headerlink" title="五、任务临界段保护代码"></a>五、任务临界段保护代码</h2><p>临界段代码也叫做临界区，是指那些必须完整运行，不能被打断的代码段，比如有外设的初始化需要严格的时序，初始化过程中不能被打断。FreeRTOS在进入临界段代码的时候需要关闭中断，当处理完临界段代码以后再打开中断。FreeRTOS系统本身就有很多临界段代码，这些代码都加入了临界段代码保护，我们在写自己的用户程序的时候有些地方也需要添加临界段代码保护。</p>
+<p><em>FreeRTOS与临界段代码保护有关的函数有4个：</em></p>
+<p>​    taskENTER_CRITICAL();</p>
+<p>​    taskEXIT_CRITICAL();</p>
+<p>​    taskENTER_CRITICAL_FROM_ISR();</p>
+<p>​    taskEXIT_CRITICAL_FROM_ISR();</p>
+<p>这四个函数是在task.h文件中的宏定义，这四个函数的区别是前两个是任务级的临界段保护代码，后两个是中断级的临界段代码保护。</p>
+<h3 id="1、任务级临界段代码保护"><a href="#1、任务级临界段代码保护" class="headerlink" title="1、任务级临界段代码保护"></a>1、任务级临界段代码保护</h3><p>taskENTER_CRITICAL()和    taskEXIT_CRITICAL()是任务级别的临界代码保护，一个是进入临界段，一个是退出临界段，这两个函数是成对使用的，函数的定义如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#define taskENTER_CRITICAL()		portENTER_CRITICAL()</span><br><span class="line">#define taskEXIT_CRITICAL()			portEXIT_CRITICAL()</span><br></pre></td></tr></table></figure>
+
+<p>而portENTER_CRITICAL()和portEXIT_CRITICAL()也是宏定义，在文件portmacro.h中有定义，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#define portENTER_CRITICAL()					vPortEnterCritical()</span><br><span class="line">#define portEXIT_CRITICAL()						vPortExitCritical()</span><br></pre></td></tr></table></figure>
+
+<p>函数vPortEnterCritical()和vPortExitCritical()在文件port.c中，函数如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">void vPortEnterCritical( void )</span><br><span class="line">&#123;</span><br><span class="line">	portDISABLE_INTERRUPTS();</span><br><span class="line">	uxCriticalNesting++;</span><br><span class="line"></span><br><span class="line">	/* This is not the interrupt safe version of the enter critical function so</span><br><span class="line">	assert() if it is being called from an interrupt context.  Only API</span><br><span class="line">	functions that end in &quot;FromISR&quot; can be used in an interrupt.  Only assert if</span><br><span class="line">	the critical nesting count is 1 to protect against recursive calls if the</span><br><span class="line">	assert function also uses a critical section. */</span><br><span class="line">	if( uxCriticalNesting == 1 )</span><br><span class="line">	&#123;</span><br><span class="line">		configASSERT( ( portNVIC_INT_CTRL_REG &amp; portVECTACTIVE_MASK ) == 0 );</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void vPortExitCritical( void )</span><br><span class="line">&#123;</span><br><span class="line">	configASSERT( uxCriticalNesting );</span><br><span class="line">	uxCriticalNesting--;</span><br><span class="line">	if( uxCriticalNesting == 0 )</span><br><span class="line">	&#123;</span><br><span class="line">		portENABLE_INTERRUPTS();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>任务级临界代码保护使用方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void taskcritical_test(void)</span><br><span class="line">&#123;</span><br><span class="line">	while(1)</span><br><span class="line">	&#123;</span><br><span class="line">		taskENTER_CRITICAL();	//进入临界</span><br><span class="line">		total_num += 0.01f;</span><br><span class="line">		printf(&quot;total_num的值为：%.4f\r\n&quot;,total_num);</span><br><span class="line">		taskEXIT_CRITICAL();	//退出临界保护</span><br><span class="line">		vTaskDelay(1000);	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>注意临界区代码一定要精简，因为进入临界区会关闭中断，这样会导致优先级低于configMAX_SYSCALL_INTERRUPT_PRIORITY的中断得不到及时的响应。</em></p>
+<h3 id="2、中断临界段保护代码"><a href="#2、中断临界段保护代码" class="headerlink" title="2、中断临界段保护代码"></a>2、中断临界段保护代码</h3><p> 函数taskENTER_CRITICAL_FROM_ISR()和 taskEXIT_CRITICAL_FROM_ISR()中断界别临界段代码保护，是用在中断服务程序中的，而且这个中断的优先级一定要低于configMAX_SYSCALL_INTERRUPT_PRIORITY。这两个函数在task.h文件中定义如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#define taskENTER_CRITICAL_FROM_ISR() portSET_INTERRUPT_MASK_FROM_ISR()</span><br><span class="line">#define taskEXIT_CRITICAL_FROM_ISR( x ) portCLEAR_INTERRUPT_MASK_FROM_ISR( x )</span><br></pre></td></tr></table></figure>
+
+<p>接着找到portSET_INTERRUPT_MASK_FROM_ISR()和portCLEAR_INTERRUPT_MASK_FROM_ISR( x )在portmaro.h中定义如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#define portSET_INTERRUPT_MASK_FROM_ISR()		ulPortRaiseBASEPRI()</span><br><span class="line">#define portCLEAR_INTERRUPT_MASK_FROM_ISR(x)	vPortSetBASEPRI(x)</span><br></pre></td></tr></table></figure>
+
+<p><em>vPortSetBASEPRI</em>函数就是给BASEPRI寄存器中写入一个值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/*-----------------------------------------------------------*/</span><br><span class="line">portFORCE_INLINE static void vPortSetBASEPRI( uint32_t ulNewMaskValue )</span><br><span class="line">&#123;</span><br><span class="line">	__asm volatile</span><br><span class="line">	(</span><br><span class="line">		&quot;	msr basepri, %0	&quot; :: &quot;r&quot; ( ulNewMaskValue ) : &quot;memory&quot;</span><br><span class="line">	);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数ulPortRaiseBASEPRI()在文件portmacro.h中定义如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">portFORCE_INLINE static uint32_t ulPortRaiseBASEPRI( void )</span><br><span class="line">&#123;</span><br><span class="line">uint32_t ulOriginalBASEPRI, ulNewBASEPRI;</span><br><span class="line"></span><br><span class="line">	__asm volatile</span><br><span class="line">	(</span><br><span class="line">		&quot;	mrs %0, basepri											\n&quot; \</span><br><span class="line">		&quot;	mov %1, %2												\n&quot; \</span><br><span class="line">		&quot;	msr basepri, %1											\n&quot; \</span><br><span class="line">		&quot;	isb														\n&quot; \</span><br><span class="line">		&quot;	dsb														\n&quot; \</span><br><span class="line">		:&quot;=r&quot; (ulOriginalBASEPRI), &quot;=r&quot; (ulNewBASEPRI) : &quot;i&quot; ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : &quot;memory&quot;</span><br><span class="line">	);</span><br><span class="line"></span><br><span class="line">	/* This return will not be reached but is necessary to prevent compiler</span><br><span class="line">	warnings. */</span><br><span class="line">	return ulOriginalBASEPRI;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>先读出BASEPRI的值，保存在ulOriginalBASEPRI中；将configMAX_SYSCALL_INTERRUPT_PRIORITY写入到寄存器BASEPRI；</p>
+<p>返回ulOriginalBASEPRI，退出临界区代码保护的时候要用到此值。</p>
+<p>中断级临界代码保护使用方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//定时器中断服务函数</span><br><span class="line">void TIM3_IRQHandler(void)</span><br><span class="line">&#123;</span><br><span class="line">	if(TIM_GetITStatus(TIM3,TIM_IT_Update) == SET) //溢出中断</span><br><span class="line">	&#123;</span><br><span class="line">		status_value = taskENTER_CRITICAL_FROM_ISR(); //进入临界保护</span><br><span class="line">		total_num += 1;</span><br><span class="line">		printf(&quot;total_num的值为：%.4f\r\n&quot;,total_num);</span><br><span class="line">		taskEXIT_CRITICAL_FROM_ISR( status_value ) ;</span><br><span class="line">	&#125;</span><br><span class="line">	TIM_ClearITPendingBit(TIM3, TIM_IT_Update);	//清除中断标志位</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、任务状态查询及任务相关API函数"><a href="#六、任务状态查询及任务相关API函数" class="headerlink" title="六、任务状态查询及任务相关API函数"></a>六、任务状态查询及任务相关API函数</h2><h3 id="1、主要函数"><a href="#1、主要函数" class="headerlink" title="1、主要函数"></a>1、主要函数</h3><p><img src="H:%5CZPanDisk%5C%E6%96%87%E4%BB%B6%5CShunWork%5CMyblog%5Csource_posts%5CPICTURE%5C%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8.png" alt="任务列表"></p>
+<h3 id="2、函数的使用案例"><a href="#2、函数的使用案例" class="headerlink" title="2、函数的使用案例"></a>2、函数的使用案例</h3><p><strong>如下案例在自己建立的任务循环之前的初始化之前执行，同时保证printf重定向到串口，针对某些API函数不能直接使用，需要在FreeRTOSConfig.h操作系统配置文件中进行裁剪，下方附本系统实现的配置文件源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">UBaseType_t TaskNum, x;</span><br><span class="line">TaskStatus_t *StatusArray;</span><br><span class="line">uint32_t TotalRunTime;</span><br><span class="line"></span><br><span class="line">/* 1、測試函數uxTaskGetNumberState( )的使用 */</span><br><span class="line">printf(&quot;/********1、函数uxTaskGetSystemState()的使用**********/\r\n&quot;);</span><br><span class="line">/* 获取系统任务数量 */</span><br><span class="line">TaskNum = uxTaskGetNumberOfTasks( );</span><br><span class="line"></span><br><span class="line">/* 申请内存 */</span><br><span class="line">StatusArray = pvPortMalloc( TaskNum * sizeof( TaskStatus_t ) );</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* 判断内存是否申请成功 */</span><br><span class="line">if( StatusArray != NULL )</span><br><span class="line">&#123;</span><br><span class="line">	/* 包括：任务信息存储数组   任务信息存储数组大小     保存系统总的运行时间 */</span><br><span class="line">	TaskNum = uxTaskGetSystemState( ( TaskStatus_t * )StatusArray, ( UBaseType_t )TaskNum, ( uint32_t * )&amp;TotalRunTime );</span><br><span class="line">	printf(&quot;TaskName\t\tPriority\t\tTaskNumber\t\t\r\n&quot;);</span><br><span class="line">	for( x = 0; x &lt; TaskNum; x++ )</span><br><span class="line">	&#123;</span><br><span class="line">		/* 通过串口打印出获取到的系统任务的有关信息，比如任务名称、任务优先级和任务编号。 */</span><br><span class="line">		printf(&quot;%s\t\t%d\t\t\t%d\t\t\t\r\n&quot;,StatusArray[ x ].pcTaskName, (int)StatusArray[ x ].uxCurrentPriority, (int)StatusArray[ x ].xTaskNumber );</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">vPortFree( StatusArray );</span><br><span class="line">printf(&quot;/***************************结束***************************/\r\n&quot;);</span><br><span class="line">printf(&quot;/********************************************************/\r\n&quot;);</span><br><span class="line">printf(&quot;/********************************************************/\r\n&quot;);</span><br><span class="line">printf(&quot;/********************************************************/\r\n&quot;);</span><br><span class="line"></span><br><span class="line">/* 2、函数vTaskGetInfo()的使用 */</span><br><span class="line">TaskHandle_t TaskHandle;</span><br><span class="line">TaskStatus_t TaskStatus;</span><br><span class="line"></span><br><span class="line">printf(&quot;/* *******************测试2，函数vTaskGetInfo()的使用******************** */\r\n&quot;);</span><br><span class="line">TaskHandle = xTaskGetHandle( &quot;myTask1_App&quot; );	//参数为查看任务名字</span><br><span class="line"></span><br><span class="line">/* 检查句柄是够为空 */</span><br><span class="line">configASSERT( TaskHandle );</span><br><span class="line"></span><br><span class="line">/* 获取Task1_App的任务信息 */</span><br><span class="line">// Use the handle to obtain further information about the task.</span><br><span class="line">vTaskGetInfo( TaskHandle,	//任务句柄</span><br><span class="line">			  &amp;TaskStatus,	//任务信息结构体</span><br><span class="line">			  pdTRUE, // Include the high water mark in xTaskDetails.</span><br><span class="line">			  eInvalid ); // Include the task state in xTaskDetails.</span><br><span class="line"></span><br><span class="line">//通过串口打印出指定任务的有关信息。</span><br><span class="line">printf(&quot;任务名:                %s\r\n&quot;,TaskStatus.pcTaskName);</span><br><span class="line">printf(&quot;任务编号:              %d\r\n&quot;,(int)TaskStatus.xTaskNumber);</span><br><span class="line">printf(&quot;任务壮态:              %d\r\n&quot;,TaskStatus.eCurrentState);</span><br><span class="line">printf(&quot;任务当前优先级:        %d\r\n&quot;,(int)TaskStatus.uxCurrentPriority);</span><br><span class="line">printf(&quot;任务基优先级:          %d\r\n&quot;,(int)TaskStatus.uxBasePriority);</span><br><span class="line">printf(&quot;任务堆栈基地址:        %#x\r\n&quot;,(int)TaskStatus.pxStackBase);</span><br><span class="line">printf(&quot;任务堆栈历史剩余最小值:%d\r\n&quot;,TaskStatus.usStackHighWaterMark);</span><br><span class="line"></span><br><span class="line">printf(&quot;/**************************结束***************************/\r\n&quot;);</span><br><span class="line">printf(&quot;/********************************************************/\r\n&quot;);</span><br><span class="line">printf(&quot;/********************************************************/\r\n&quot;);</span><br><span class="line">printf(&quot;/********************************************************/\r\n&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* 3、函数eTaskState()的作用 */</span><br><span class="line">eTaskState TaskState;</span><br><span class="line">char TaskInfo[ 10 ];</span><br><span class="line">printf(&quot;/***********测试3，函数eTaskGetState()的使用*************/\r\n&quot;);</span><br><span class="line">TaskHandle = xTaskGetHandle( &quot;defaultTask&quot; );	//当前运行任务名字</span><br><span class="line">TaskState = eTaskGetState( TaskHandle );</span><br><span class="line">memset( TaskInfo, 0, 10 );</span><br><span class="line"></span><br><span class="line">switch((int)TaskState)</span><br><span class="line">&#123;</span><br><span class="line">	case 0:</span><br><span class="line">		sprintf(TaskInfo,&quot;Running&quot;);</span><br><span class="line">		break;</span><br><span class="line">	case 1:</span><br><span class="line">		sprintf(TaskInfo,&quot;Ready&quot;);</span><br><span class="line">		break;</span><br><span class="line">	case 2:</span><br><span class="line">		sprintf(TaskInfo,&quot;Suspend&quot;);</span><br><span class="line">		break;</span><br><span class="line">	case 3:</span><br><span class="line">		sprintf(TaskInfo,&quot;Delete&quot;);</span><br><span class="line">		break;</span><br><span class="line">	case 4:</span><br><span class="line">		sprintf(TaskInfo,&quot;Invalid&quot;);</span><br><span class="line">		break;</span><br><span class="line">&#125;</span><br><span class="line">printf(&quot;任务壮态值:%d,对应的壮态为:%s\r\n&quot;,TaskState,TaskInfo);</span><br><span class="line">printf(&quot;/**************************结束**************************/\r\n&quot;);</span><br><span class="line">printf(&quot;/********************************************************/\r\n&quot;);</span><br><span class="line">printf(&quot;/********************************************************/\r\n&quot;);</span><br><span class="line">printf(&quot;/********************************************************/\r\n&quot;);</span><br><span class="line"></span><br><span class="line">/* 4、函数vTaskList()的使用 */</span><br><span class="line">printf( &quot;/*************4、函数vTaskList()的使用*************/\r\n&quot; );</span><br><span class="line"></span><br><span class="line">vTaskList( InfoBuffer );		//获取所有任务的信息</span><br><span class="line">printf( &quot;%s\r\n&quot;,InfoBuffer );	//通过串口打印所有任务的信息</span><br><span class="line">printf( &quot;/**************************结束**************************/\r\n&quot; );</span><br><span class="line">printf(&quot;/********************************************************/\r\n&quot;);</span><br><span class="line">printf(&quot;/********************************************************/\r\n&quot;);</span><br><span class="line">printf(&quot;/********************************************************/\r\n&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>系统配置文件FreeRTOSConfig.h源码：</p>
+<p>  <a href="Src\FreeRTOSConfig.h">FreeRTOSConfig.h</a> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><span class="line">/* USER CODE BEGIN Header */</span><br><span class="line">/*</span><br><span class="line"> * FreeRTOS Kernel V10.0.1</span><br><span class="line"> * Copyright (C) 2017 Amazon.com, Inc. or its affiliates.  All Rights Reserved.</span><br><span class="line"> *</span><br><span class="line"> * Permission is hereby granted, free of charge, to any person obtaining a copy of</span><br><span class="line"> * this software and associated documentation files (the &quot;Software&quot;), to deal in</span><br><span class="line"> * the Software without restriction, including without limitation the rights to</span><br><span class="line"> * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of</span><br><span class="line"> * the Software, and to permit persons to whom the Software is furnished to do so,</span><br><span class="line"> * subject to the following conditions:</span><br><span class="line"> *</span><br><span class="line"> * The above copyright notice and this permission notice shall be included in all</span><br><span class="line"> * copies or substantial portions of the Software.</span><br><span class="line"> *</span><br><span class="line"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span><br><span class="line"> * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS</span><br><span class="line"> * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR</span><br><span class="line"> * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER</span><br><span class="line"> * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN</span><br><span class="line"> * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</span><br><span class="line"> *</span><br><span class="line"> * http://www.FreeRTOS.org</span><br><span class="line"> * http://aws.amazon.com/freertos</span><br><span class="line"> *</span><br><span class="line"> * 1 tab == 4 spaces!</span><br><span class="line"> */</span><br><span class="line">/* USER CODE END Header */</span><br><span class="line"></span><br><span class="line">#ifndef FREERTOS_CONFIG_H</span><br><span class="line">#define FREERTOS_CONFIG_H</span><br><span class="line"></span><br><span class="line">/*-----------------------------------------------------------</span><br><span class="line"> * Application specific definitions.</span><br><span class="line"> *</span><br><span class="line"> * These definitions should be adjusted for your particular hardware and</span><br><span class="line"> * application requirements.</span><br><span class="line"> *</span><br><span class="line"> * These parameters and more are described within the &apos;configuration&apos; section of the</span><br><span class="line"> * FreeRTOS API documentation available on the FreeRTOS.org web site.</span><br><span class="line"> *</span><br><span class="line"> * See http://www.freertos.org/a00110.html</span><br><span class="line"> *----------------------------------------------------------*/</span><br><span class="line"></span><br><span class="line">/* USER CODE BEGIN Includes */   	      </span><br><span class="line">/* Section where include file can be added */</span><br><span class="line">/* USER CODE END Includes */ </span><br><span class="line"></span><br><span class="line">/* Ensure definitions are only used by the compiler, and not by the assembler. */</span><br><span class="line">#if defined(__ICCARM__) || defined(__CC_ARM) || defined(__GNUC__)</span><br><span class="line">  #include &lt;stdint.h&gt;</span><br><span class="line">  extern uint32_t SystemCoreClock;</span><br><span class="line">#endif</span><br><span class="line">#define configUSE_PREEMPTION                     1</span><br><span class="line">#define configSUPPORT_STATIC_ALLOCATION          1</span><br><span class="line">#define configSUPPORT_DYNAMIC_ALLOCATION         1</span><br><span class="line">#define configUSE_IDLE_HOOK                      0</span><br><span class="line">#define configUSE_TICK_HOOK                      0</span><br><span class="line">#define configCPU_CLOCK_HZ                       ( SystemCoreClock )</span><br><span class="line">#define configTICK_RATE_HZ                       ((TickType_t)1000)</span><br><span class="line">#define configMAX_PRIORITIES                     ( 32 )</span><br><span class="line">#define configMINIMAL_STACK_SIZE                 ((uint16_t)128)</span><br><span class="line">#define configTOTAL_HEAP_SIZE                    ((size_t)3072)</span><br><span class="line">#define configMAX_TASK_NAME_LEN                  ( 16 )</span><br><span class="line">#define configUSE_TRACE_FACILITY                 1</span><br><span class="line">#define configUSE_STATS_FORMATTING_FUNCTIONS     1</span><br><span class="line">#define configUSE_16_BIT_TICKS                   0</span><br><span class="line">#define configUSE_MUTEXES                        1</span><br><span class="line">#define configQUEUE_REGISTRY_SIZE                8</span><br><span class="line">#define configUSE_PORT_OPTIMISED_TASK_SELECTION  1</span><br><span class="line"></span><br><span class="line">/* Co-routine definitions. */</span><br><span class="line">#define configUSE_CO_ROUTINES                    0</span><br><span class="line">#define configMAX_CO_ROUTINE_PRIORITIES          ( 2 )</span><br><span class="line"></span><br><span class="line">/* Set the following definitions to 1 to include the API function, or zero</span><br><span class="line">to exclude the API function. */</span><br><span class="line">#define INCLUDE_vTaskPrioritySet            1</span><br><span class="line">#define INCLUDE_uxTaskPriorityGet           1</span><br><span class="line">#define INCLUDE_vTaskDelete                 1</span><br><span class="line">#define INCLUDE_vTaskCleanUpResources       0</span><br><span class="line">#define INCLUDE_vTaskSuspend                1</span><br><span class="line">#define INCLUDE_vTaskDelayUntil             0</span><br><span class="line">#define INCLUDE_vTaskDelay                  1</span><br><span class="line">#define INCLUDE_xTaskGetSchedulerState      1</span><br><span class="line">#define INCLUDE_xQueueGetMutexHolder        1</span><br><span class="line">#define INCLUDE_pcTaskGetTaskName           1</span><br><span class="line">#define INCLUDE_uxTaskGetStackHighWaterMark 1</span><br><span class="line">#define INCLUDE_xTaskGetCurrentTaskHandle   1</span><br><span class="line">#define INCLUDE_eTaskGetState               1</span><br><span class="line">#define INCLUDE_xTaskAbortDelay             1</span><br><span class="line">#define INCLUDE_xTaskGetHandle              1</span><br><span class="line"></span><br><span class="line">/* Cortex-M specific definitions. */</span><br><span class="line">#ifdef __NVIC_PRIO_BITS</span><br><span class="line"> /* __BVIC_PRIO_BITS will be specified when CMSIS is being used. */</span><br><span class="line"> #define configPRIO_BITS         __NVIC_PRIO_BITS</span><br><span class="line">#else</span><br><span class="line"> #define configPRIO_BITS         4</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">/* The lowest interrupt priority that can be used in a call to a &quot;set priority&quot;</span><br><span class="line">function. */</span><br><span class="line">#define configLIBRARY_LOWEST_INTERRUPT_PRIORITY   15</span><br><span class="line"></span><br><span class="line">/* The highest interrupt priority that can be used by any interrupt service</span><br><span class="line">routine that makes calls to interrupt safe FreeRTOS API functions.  DO NOT CALL</span><br><span class="line">INTERRUPT SAFE FREERTOS API FUNCTIONS FROM ANY INTERRUPT THAT HAS A HIGHER</span><br><span class="line">PRIORITY THAN THIS! (higher priorities are lower numeric values. */</span><br><span class="line">#define configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY 5</span><br><span class="line"></span><br><span class="line">/* Interrupt priorities used by the kernel port layer itself.  These are generic</span><br><span class="line">to all Cortex-M ports, and do not rely on any particular library functions. */</span><br><span class="line">#define configKERNEL_INTERRUPT_PRIORITY 		( configLIBRARY_LOWEST_INTERRUPT_PRIORITY &lt;&lt; (8 - configPRIO_BITS) )</span><br><span class="line">/* !!!! configMAX_SYSCALL_INTERRUPT_PRIORITY must not be set to zero !!!!</span><br><span class="line">See http://www.FreeRTOS.org/RTOS-Cortex-M3-M4.html. */</span><br><span class="line">#define configMAX_SYSCALL_INTERRUPT_PRIORITY 	( configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY &lt;&lt; (8 - configPRIO_BITS) )</span><br><span class="line"></span><br><span class="line">/* Normal assert() semantics without relying on the provision of an assert.h</span><br><span class="line">header file. */</span><br><span class="line">/* USER CODE BEGIN 1 */</span><br><span class="line">#define configASSERT( x ) if ((x) == 0) &#123;taskDISABLE_INTERRUPTS(); for( ;; );&#125; </span><br><span class="line">/* USER CODE END 1 */</span><br><span class="line"></span><br><span class="line">/* Definitions that map the FreeRTOS port interrupt handlers to their CMSIS</span><br><span class="line">standard names. */</span><br><span class="line">#define vPortSVCHandler    SVC_Handler</span><br><span class="line">#define xPortPendSVHandler PendSV_Handler</span><br><span class="line"></span><br><span class="line">/* IMPORTANT: This define is commented when used with STM32Cube firmware, when the timebase source is SysTick,</span><br><span class="line">              to prevent overwriting SysTick_Handler defined within STM32Cube HAL */</span><br><span class="line"> </span><br><span class="line">#define xPortSysTickHandler SysTick_Handler</span><br><span class="line"></span><br><span class="line">/* USER CODE BEGIN Defines */   	      </span><br><span class="line">/* Section where parameter definitions can be added (for instance, to override default ones in FreeRTOS.h) */</span><br><span class="line">/* USER CODE END Defines */ </span><br><span class="line"></span><br><span class="line">#endif /* FREERTOS_CONFIG_H */</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FreeRTOS/" rel="tag"># FreeRTOS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/26/Linux7-vi常用命令汇总/" rel="next" title="Linux7-vi常用命令汇总">
+                <i class="fa fa-chevron-left"></i> Linux7-vi常用命令汇总
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/04/STM32-单片机应用笔记/" rel="prev" title="STM32-单片机应用笔记">
+                STM32-单片机应用笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">不会飞的风</p>
+              <p class="site-description motion-element" itemprop="description">此站点为自己学习的技术笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="471972509@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/WuliYongShun" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://me.csdn.net/weixin_41756255" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.alloyteam.com/nav/" title="Web前端导航" target="_blank">Web前端导航</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.chuangzaoshi.com/code" title="创造狮导航" target="_blank">创造狮导航</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.36zhen.com/t?id=3448" title="前端书籍资料" target="_blank">前端书籍资料</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://e.xitu.io/" title="掘金酱" target="_blank">掘金酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#FreeRTOS系统使用笔记"><span class="nav-number">1.</span> <span class="nav-text">FreeRTOS系统使用笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、FreeRTOS"><span class="nav-number">1.1.</span> <span class="nav-text">一、FreeRTOS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、简介"><span class="nav-number">1.1.1.</span> <span class="nav-text">1、简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、特点"><span class="nav-number">1.1.2.</span> <span class="nav-text">2、特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、freeRTOS的使用"><span class="nav-number">1.1.3.</span> <span class="nav-text">3、freeRTOS的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、移植FreeRTOS"><span class="nav-number">1.2.</span> <span class="nav-text">二、移植FreeRTOS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、FreeRTOS系统相关配置"><span class="nav-number">1.3.</span> <span class="nav-text">三、FreeRTOS系统相关配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、配置文件"><span class="nav-number">1.3.1.</span> <span class="nav-text">1、配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、”-INCLUDE-”开头的宏；"><span class="nav-number">1.3.2.</span> <span class="nav-text">2、”#INCLUDE_”开头的宏；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、”config”开头的宏"><span class="nav-number">1.3.3.</span> <span class="nav-text">3、”config”开头的宏</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、系统任务相关API函数"><span class="nav-number">1.4.</span> <span class="nav-text">四、系统任务相关API函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、任务创建和删除相关API函数"><span class="nav-number">1.4.1.</span> <span class="nav-text">1、任务创建和删除相关API函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-动态创建函数-xTaskCreate-："><span class="nav-number">1.4.1.1.</span> <span class="nav-text">1.1 动态创建函数 xTaskCreate()：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-动态创建函数-xTaskCreateStatic-："><span class="nav-number">1.4.1.2.</span> <span class="nav-text">1.2 动态创建函数 xTaskCreateStatic()：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3、函数xTaskCreateRestricted"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">1.3、函数xTaskCreateRestricted()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1、4任务删除函数vTaskDelete"><span class="nav-number">1.4.1.4.</span> <span class="nav-text">1、4任务删除函数vTaskDelete()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、任务挂起和恢复相关API函数"><span class="nav-number">1.4.2.</span> <span class="nav-text">2、任务挂起和恢复相关API函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1、vTaskSuspend-函数"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">2.1、vTaskSuspend()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2、vTaskResume-函数"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">2.2、vTaskResume()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3、vTaskResumeFromISR"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">2.3、vTaskResumeFromISR()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、任务临界段保护代码"><span class="nav-number">1.5.</span> <span class="nav-text">五、任务临界段保护代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、任务级临界段代码保护"><span class="nav-number">1.5.1.</span> <span class="nav-text">1、任务级临界段代码保护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、中断临界段保护代码"><span class="nav-number">1.5.2.</span> <span class="nav-text">2、中断临界段保护代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、任务状态查询及任务相关API函数"><span class="nav-number">1.6.</span> <span class="nav-text">六、任务状态查询及任务相关API函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、主要函数"><span class="nav-number">1.6.1.</span> <span class="nav-text">1、主要函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、函数的使用案例"><span class="nav-number">1.6.2.</span> <span class="nav-text">2、函数的使用案例</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">不会飞的风</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
