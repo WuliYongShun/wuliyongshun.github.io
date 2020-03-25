@@ -948,25 +948,6 @@
       </tags>
   </entry>
   <entry>
-    <title>C++中显式、隐式与explicit关键字</title>
-    <url>/2019/10/09/C++-%E4%B8%AD%E6%98%BE%E5%BC%8F%E3%80%81%E9%9A%90%E5%BC%8F%E4%B8%8Eexplicit%E5%85%B3%E9%94%AE%E5%AD%97/</url>
-    <content><![CDATA[<h1 id="C-中显式、隐式与explicit关键字"><a href="#C-中显式、隐式与explicit关键字" class="headerlink" title="C++中显式、隐式与explicit关键字"></a>C++中显式、隐式与explicit关键字</h1><p><strong><em>1.隐式转换</em></strong><br>隐式转换，即编译器完成的转换，例如<br>int a = 1;<br>float b = 3;<br>float sum;<br>sum = a + b;//a是int类型，b是float类型；在编译的时候，编译器自动将int a转换成了float类型</p>
-<p><strong><em>2.显式转换</em></strong><br>显式转换，即用户完成的转换，例如<br>float a = 1;<br>float b = 3;<br>int s;<br>s = (int)a + (int)b;//float类型的a与b被显示的(强制)转换成成为float数据类型</p>
-<p>对于非数据的函数函数而言，例：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line">　　<span class="keyword">int</span> x;</span><br><span class="line">　　<span class="keyword">public</span>:</span><br><span class="line">　　　　A()&#123;x=<span class="number">0</span>;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:0"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　A(<span class="keyword">int</span> a)&#123;x=a;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　~A()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Delete A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">　　A a1;</span><br><span class="line">　　A *a2=<span class="keyword">new</span> A(<span class="number">10</span>);</span><br><span class="line">　　<span class="keyword">delete</span> a2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>程序分析：<br>A a1；隐式的调用了A();<br>A *a2 = new A(10);对A()进行了重载，显式的调用了A(int a);</p>
-<p><strong><em>3.explicit关键字</em></strong></p>
-<p>explicit用于构造函数，抑制隐式转换的发生，防止出现误区。</p>
-]]></content>
-      <categories>
-        <category>YY</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C++内联函数(C++ inline)</title>
     <url>/2019/10/09/C++-%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0(C++%20inline)/</url>
     <content><![CDATA[<h1 id="C-内联函数-C-inline"><a href="#C-内联函数-C-inline" class="headerlink" title="C++内联函数(C++ inline)"></a>C++内联函数(C++ inline)</h1><p>使用函数能够避免将相同代码重写多次的麻烦，还能减少可执行程序的体积，但也会带来程序运行时间上的开销。</p>
@@ -986,6 +967,38 @@
 <p>内联函数中的代码应该只是很简单、执行很快的几条语句。如果一个函数较为复杂，它执行的时间可能上万倍于函数调用的额外开销，那么将其作为内联函数处理的结果是付出让代码体积增加不少的代价，却只使速度提高了万分之一，这显然是不划算的。</p>
 <p>有时函数看上去很简单，例如只有一个包含一两条语句的循环，但该循环的执行次数可能很多，要消耗大量时间，那么这种情况也不适合将其实现为内联函数。</p>
 <p>注意：的是，调用内联函数的语句前必须已经出现内联函数的定义（即整个数体），而不能只出现内联函数的声明！</p>
+]]></content>
+      <categories>
+        <category>YY</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>构造函数和析构函数</title>
+    <url>/2019/10/09/C++-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h1><p><strong>构造函数</strong></p>
+<p><strong>析构函数</strong><br>    构造函数（destructor）与构造函数相反，当对象结束其生命周期，如对象所在的函数已调用完毕时，系统自动执行析构函数。析构函数用来做“清理善后”的工作（例如在建立对象时用new开辟了一片内存空间，delete会自动调用析构函数后释放内存）。</p>
+]]></content>
+      <categories>
+        <category>YY</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++中显式、隐式与explicit关键字</title>
+    <url>/2019/10/09/C++-%E4%B8%AD%E6%98%BE%E5%BC%8F%E3%80%81%E9%9A%90%E5%BC%8F%E4%B8%8Eexplicit%E5%85%B3%E9%94%AE%E5%AD%97/</url>
+    <content><![CDATA[<h1 id="C-中显式、隐式与explicit关键字"><a href="#C-中显式、隐式与explicit关键字" class="headerlink" title="C++中显式、隐式与explicit关键字"></a>C++中显式、隐式与explicit关键字</h1><p><strong><em>1.隐式转换</em></strong><br>隐式转换，即编译器完成的转换，例如<br>int a = 1;<br>float b = 3;<br>float sum;<br>sum = a + b;//a是int类型，b是float类型；在编译的时候，编译器自动将int a转换成了float类型</p>
+<p><strong><em>2.显式转换</em></strong><br>显式转换，即用户完成的转换，例如<br>float a = 1;<br>float b = 3;<br>int s;<br>s = (int)a + (int)b;//float类型的a与b被显示的(强制)转换成成为float数据类型</p>
+<p>对于非数据的函数函数而言，例：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line">　　<span class="keyword">int</span> x;</span><br><span class="line">　　<span class="keyword">public</span>:</span><br><span class="line">　　　　A()&#123;x=<span class="number">0</span>;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:0"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　A(<span class="keyword">int</span> a)&#123;x=a;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　~A()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Delete A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">　　A a1;</span><br><span class="line">　　A *a2=<span class="keyword">new</span> A(<span class="number">10</span>);</span><br><span class="line">　　<span class="keyword">delete</span> a2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>程序分析：<br>A a1；隐式的调用了A();<br>A *a2 = new A(10);对A()进行了重载，显式的调用了A(int a);</p>
+<p><strong><em>3.explicit关键字</em></strong></p>
+<p>explicit用于构造函数，抑制隐式转换的发生，防止出现误区。</p>
 ]]></content>
       <categories>
         <category>YY</category>
@@ -1057,19 +1070,6 @@
       </tags>
   </entry>
   <entry>
-    <title>构造函数和析构函数</title>
-    <url>/2019/10/09/C++-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h1><p><strong>构造函数</strong></p>
-<p><strong>析构函数</strong><br>    构造函数（destructor）与构造函数相反，当对象结束其生命周期，如对象所在的函数已调用完毕时，系统自动执行析构函数。析构函数用来做“清理善后”的工作（例如在建立对象时用new开辟了一片内存空间，delete会自动调用析构函数后释放内存）。</p>
-]]></content>
-      <categories>
-        <category>YY</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Qt中C++中文显示</title>
     <url>/2019/10/09/Qt-C++%E4%B8%AD%E6%96%87%E6%98%BE%E7%A4%BA/</url>
     <content><![CDATA[<h1 id="Qt中C-中文显示"><a href="#Qt中C-中文显示" class="headerlink" title="Qt中C++中文显示"></a>Qt中C++中文显示</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QTextCodec&gt;    //1.包含头文件</span></span></span><br><span class="line"></span><br><span class="line">QTextCodec *codec;     <span class="comment">//2声明一个全局变量</span></span><br><span class="line">codec = QtextCodec::codecForName(<span class="string">"GBK"</span>);    <span class="comment">//将编码格式声明为GBK</span></span><br><span class="line">ui-&gt;textEdit-&gt;setText(codec-&gt;toUnicode*(<span class="string">"中文"</span>));    <span class="comment">//将中文转换为为固定编码格式</span></span><br></pre></td></tr></table></figure>]]></content>
@@ -1078,6 +1078,42 @@
       </categories>
       <tags>
         <tag>C++</tag>
+        <tag>Qt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Qt+sqlite数据库连接</title>
+    <url>/2019/10/09/Qt-sqlite%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5/</url>
+    <content><![CDATA[<h1 id="Qt-sqlite数据库连接"><a href="#Qt-sqlite数据库连接" class="headerlink" title="Qt+sqlite数据库连接"></a>Qt+sqlite数据库连接</h1>]]></content>
+      <categories>
+        <category>Qt</category>
+      </categories>
+      <tags>
+        <tag>Qt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Qt信号与槽</title>
+    <url>/2019/10/09/Qt-%E4%BF%A1%E5%8F%B7%E4%B8%8E%E6%A7%BD/</url>
+    <content><![CDATA[<h1 id="信号与槽"><a href="#信号与槽" class="headerlink" title="信号与槽"></a>信号与槽</h1><p>简介：</p>
+]]></content>
+      <categories>
+        <category>Qt</category>
+      </categories>
+      <tags>
+        <tag>Qt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Qt使Widget打开为全屏</title>
+    <url>/2019/10/09/Qt-%E4%BD%BFWidget%E6%89%93%E5%BC%80%E4%B8%BA%E5%85%A8%E5%B1%8F/</url>
+    <content><![CDATA[<h1 id="Qt5-5-1使Widget打开为全屏"><a href="#Qt5-5-1使Widget打开为全屏" class="headerlink" title="Qt5.5.1使Widget打开为全屏"></a>Qt5.5.1使Widget打开为全屏</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">MainWindow w;</span><br><span class="line">w.showMaximized();</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Qt</category>
+      </categories>
+      <tags>
         <tag>Qt</tag>
       </tags>
   </entry>
@@ -1125,42 +1161,6 @@
 <p>至于说该宏提升编译速度什么的，那是上述类的声明的作用，与Qt无关的（也即与该宏QT_BEGIN_NAMESPACE无关），若要大幅提升编译速度需要开启qt的预编译头文件，会另起章节解说，并附测试结果。</p>
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">#ifndef PREVIEWWINDOW_H</span><br><span class="line"></span><br><span class="line">#define PREVIEWWINDOW_H</span><br><span class="line"></span><br><span class="line">#include &lt;QMainWindow&gt;</span><br><span class="line"></span><br><span class="line">#if 0</span><br><span class="line"><span class="comment">// 方式一:</span></span><br><span class="line">#include &lt;QTextBrowser&gt;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#if 0</span><br><span class="line"><span class="comment">// 方式二:    比方式一可轻微提升编译速度</span></span><br><span class="line">class QTextBrowser;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#if 1</span><br><span class="line"><span class="comment">// 方式三:    编译速度与方式二一样，该宏用于自编译qt源码是否启动命令空间的补充</span></span><br><span class="line">QT_BEGIN_NAMESPACE</span><br><span class="line">class QTextBrowser;</span><br><span class="line">QT_END_NAMESPACE</span><br><span class="line"></span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">class <span class="attribute">PreviewWindow</span> : public QMainWindow</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"><span class="attribute">public</span>:</span><br><span class="line">    explicit PreviewWindow(QWidget *<span class="built_in">parent</span> = <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="attribute">signals</span>:</span><br><span class="line"></span><br><span class="line">public <span class="attribute">slots</span>:</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">#endif // PREVIEWWINDOW_H</span><br></pre></td></tr></table></figure>
 
-]]></content>
-      <categories>
-        <category>Qt</category>
-      </categories>
-      <tags>
-        <tag>Qt</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Qt+sqlite数据库连接</title>
-    <url>/2019/10/09/Qt-sqlite%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5/</url>
-    <content><![CDATA[<h1 id="Qt-sqlite数据库连接"><a href="#Qt-sqlite数据库连接" class="headerlink" title="Qt+sqlite数据库连接"></a>Qt+sqlite数据库连接</h1>]]></content>
-      <categories>
-        <category>Qt</category>
-      </categories>
-      <tags>
-        <tag>Qt</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Qt使Widget打开为全屏</title>
-    <url>/2019/10/09/Qt-%E4%BD%BFWidget%E6%89%93%E5%BC%80%E4%B8%BA%E5%85%A8%E5%B1%8F/</url>
-    <content><![CDATA[<h1 id="Qt5-5-1使Widget打开为全屏"><a href="#Qt5-5-1使Widget打开为全屏" class="headerlink" title="Qt5.5.1使Widget打开为全屏"></a>Qt5.5.1使Widget打开为全屏</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">MainWindow w;</span><br><span class="line">w.showMaximized();</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Qt</category>
-      </categories>
-      <tags>
-        <tag>Qt</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Qt信号与槽</title>
-    <url>/2019/10/09/Qt-%E4%BF%A1%E5%8F%B7%E4%B8%8E%E6%A7%BD/</url>
-    <content><![CDATA[<h1 id="信号与槽"><a href="#信号与槽" class="headerlink" title="信号与槽"></a>信号与槽</h1><p>简介：</p>
 ]]></content>
       <categories>
         <category>Qt</category>
