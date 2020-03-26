@@ -948,38 +948,14 @@
       </tags>
   </entry>
   <entry>
-    <title>Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用</title>
-    <url>/2019/10/09/Qt-QT_BEGIN_NAMESPACE%E5%92%8CQT_END_NAMESPACE%E7%9A%84%E4%BD%9C%E7%94%A8/</url>
-    <content><![CDATA[<h1 id="Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用"><a href="#Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用" class="headerlink" title="Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用"></a>Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用</h1><p> QT_BEGIN_NAMESPACE其实就是个宏，以前Qt4是没有命令空间的，后来才加上的，编译Qt源码时会有选项，是否将这些类放到专用的Qt命令空间内，默认是没有的。这就出来问题了，为了统一，如果你的代码在默认没有Qt命令空间的SDK中编译，那你就不用在前面加上命令空间，反之则需要。</p>
-<p>为了屏蔽上面这个差异，使得你的代码能在这两种情况下都进行编译，Qt就提供了QT_BEGIN_NAMESPACE宏，这样开发者就省的自己来用程序或宏进行处理了。</p>
-<p>至于说该宏提升编译速度什么的，那是上述类的声明的作用，与Qt无关的（也即与该宏QT_BEGIN_NAMESPACE无关），若要大幅提升编译速度需要开启qt的预编译头文件，会另起章节解说，并附测试结果。</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">#ifndef PREVIEWWINDOW_H</span><br><span class="line"></span><br><span class="line">#define PREVIEWWINDOW_H</span><br><span class="line"></span><br><span class="line">#include &lt;QMainWindow&gt;</span><br><span class="line"></span><br><span class="line">#if 0</span><br><span class="line"><span class="comment">// 方式一:</span></span><br><span class="line">#include &lt;QTextBrowser&gt;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#if 0</span><br><span class="line"><span class="comment">// 方式二:    比方式一可轻微提升编译速度</span></span><br><span class="line">class QTextBrowser;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#if 1</span><br><span class="line"><span class="comment">// 方式三:    编译速度与方式二一样，该宏用于自编译qt源码是否启动命令空间的补充</span></span><br><span class="line">QT_BEGIN_NAMESPACE</span><br><span class="line">class QTextBrowser;</span><br><span class="line">QT_END_NAMESPACE</span><br><span class="line"></span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">class <span class="attribute">PreviewWindow</span> : public QMainWindow</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"><span class="attribute">public</span>:</span><br><span class="line">    explicit PreviewWindow(QWidget *<span class="built_in">parent</span> = <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="attribute">signals</span>:</span><br><span class="line"></span><br><span class="line">public <span class="attribute">slots</span>:</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">#endif // PREVIEWWINDOW_H</span><br></pre></td></tr></table></figure>
-
-]]></content>
+    <title>Qt+sqlite数据库连接</title>
+    <url>/2019/10/09/Qt-sqlite%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5/</url>
+    <content><![CDATA[<h1 id="Qt-sqlite数据库连接"><a href="#Qt-sqlite数据库连接" class="headerlink" title="Qt+sqlite数据库连接"></a>Qt+sqlite数据库连接</h1>]]></content>
       <categories>
         <category>Qt</category>
       </categories>
       <tags>
         <tag>Qt</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C++中显式、隐式与explicit关键字</title>
-    <url>/2019/10/09/C++-%E4%B8%AD%E6%98%BE%E5%BC%8F%E3%80%81%E9%9A%90%E5%BC%8F%E4%B8%8Eexplicit%E5%85%B3%E9%94%AE%E5%AD%97/</url>
-    <content><![CDATA[<h1 id="C-中显式、隐式与explicit关键字"><a href="#C-中显式、隐式与explicit关键字" class="headerlink" title="C++中显式、隐式与explicit关键字"></a>C++中显式、隐式与explicit关键字</h1><p><strong><em>1.隐式转换</em></strong><br>隐式转换，即编译器完成的转换，例如<br>int a = 1;<br>float b = 3;<br>float sum;<br>sum = a + b;//a是int类型，b是float类型；在编译的时候，编译器自动将int a转换成了float类型</p>
-<p><strong><em>2.显式转换</em></strong><br>显式转换，即用户完成的转换，例如<br>float a = 1;<br>float b = 3;<br>int s;<br>s = (int)a + (int)b;//float类型的a与b被显示的(强制)转换成成为float数据类型</p>
-<p>对于非数据的函数函数而言，例：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line">　　<span class="keyword">int</span> x;</span><br><span class="line">　　<span class="keyword">public</span>:</span><br><span class="line">　　　　A()&#123;x=<span class="number">0</span>;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:0"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　A(<span class="keyword">int</span> a)&#123;x=a;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　~A()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Delete A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">　　A a1;</span><br><span class="line">　　A *a2=<span class="keyword">new</span> A(<span class="number">10</span>);</span><br><span class="line">　　<span class="keyword">delete</span> a2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>程序分析：<br>A a1；隐式的调用了A();<br>A *a2 = new A(10);对A()进行了重载，显式的调用了A(int a);</p>
-<p><strong><em>3.explicit关键字</em></strong></p>
-<p>explicit用于构造函数，抑制隐式转换的发生，防止出现误区。</p>
-]]></content>
-      <categories>
-        <category>YY</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
@@ -1011,15 +987,16 @@
       </tags>
   </entry>
   <entry>
-    <title>C++多线程</title>
-    <url>/2019/10/09/C++-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">CRITICAL_SECTION CriticalSection;    <span class="comment">//防止共有资源被同时调用</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> number = <span class="number">10</span>;    <span class="comment">//定义一个变量初始值为10</span></span><br><span class="line"></span><br><span class="line"><span class="function">DWORD WINAPI <span class="title">ThreadOne</span><span class="params">(LPVOID lpParameter)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    qDebug() &lt;&lt; <span class="string">"窗口1开始售票"</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        EnterCriticalSection(&amp;CriticalSection);    <span class="comment">//进入临界状态</span></span><br><span class="line">        <span class="keyword">if</span>(number &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            qDebug() &lt;&lt; <span class="string">"窗口1售出"</span> &lt;&lt; number;    <span class="comment">//打印出线程1抢占数值</span></span><br><span class="line">            number--;</span><br><span class="line">            Sleep(<span class="number">1000</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       LeaveCriticalSection(&amp;CriticalSection);    <span class="comment">//退出临界状态</span></span><br><span class="line">       Sleep(<span class="number">100</span>);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">DWORD WINAPI <span class="title">ThreadTwo</span><span class="params">(LPVOID lpParameter)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    qDebug() &lt;&lt; <span class="string">"窗口2售票开始"</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">    EnterCriticalSection(&amp;CriticalSection);    <span class="comment">//进入线程临界状态</span></span><br><span class="line">    <span class="keyword">if</span>(number&gt;<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        qDebug() &lt;&lt; <span class="string">"窗口2售出第"</span> &lt;&lt; number &lt;&lt; <span class="string">"张票"</span>；</span><br><span class="line">        Sleep(<span class="number">1000</span>);</span><br><span class="line">        number--;</span><br><span class="line">    &#125;</span><br><span class="line">    LeaveCriticalSection(&amp;CriticalSection);</span><br><span class="line">    Sleep(<span class="number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> Widget::on_pushButton_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    HANDLE HOne,HTwo;</span><br><span class="line">    InitaializeCriticalSection(&amp;CriticalSection);</span><br><span class="line">    qDebug() &lt;&lt; <span class="string">"*********vpoet******"</span>;</span><br><span class="line">    HOne = CreateThread(<span class="literal">NULL</span>,<span class="number">0</span>,ThreadOne,<span class="literal">NULL</span>,<span class="number">0</span>,<span class="literal">NULL</span>);</span><br><span class="line">    HTwo = CreateThread(<span class="literal">NULL</span>,<span class="number">0</span>,ThreadTwo,<span class="literal">NULL</span>,<span class="number">0</span>,<span class="literal">NULL</span>);</span><br><span class="line">    CloseHandle(HOne);</span><br><span class="line">    CloseHandle(HTwo);</span><br><span class="line">    <span class="keyword">while</span>(TRUE)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(number = <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            qDebug() &lt;&lt; <span class="string">"票没了！"</span></span><br><span class="line">            DeleCriticalSection(&amp;CriticalSection);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            coutinue;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <title>构造函数和析构函数</title>
+    <url>/2019/10/09/C++-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h1><p><strong>构造函数</strong></p>
+<p><strong>析构函数</strong><br>    构造函数（destructor）与构造函数相反，当对象结束其生命周期，如对象所在的函数已调用完毕时，系统自动执行析构函数。析构函数用来做“清理善后”的工作（例如在建立对象时用new开辟了一片内存空间，delete会自动调用析构函数后释放内存）。</p>
+]]></content>
       <categories>
         <category>YY</category>
       </categories>
       <tags>
         <tag>C++</tag>
-        <tag>Qt</tag>
       </tags>
   </entry>
   <entry>
@@ -1032,6 +1009,25 @@
       <tags>
         <tag>C++</tag>
         <tag>Qt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++中显式、隐式与explicit关键字</title>
+    <url>/2019/10/09/C++-%E4%B8%AD%E6%98%BE%E5%BC%8F%E3%80%81%E9%9A%90%E5%BC%8F%E4%B8%8Eexplicit%E5%85%B3%E9%94%AE%E5%AD%97/</url>
+    <content><![CDATA[<h1 id="C-中显式、隐式与explicit关键字"><a href="#C-中显式、隐式与explicit关键字" class="headerlink" title="C++中显式、隐式与explicit关键字"></a>C++中显式、隐式与explicit关键字</h1><p><strong><em>1.隐式转换</em></strong><br>隐式转换，即编译器完成的转换，例如<br>int a = 1;<br>float b = 3;<br>float sum;<br>sum = a + b;//a是int类型，b是float类型；在编译的时候，编译器自动将int a转换成了float类型</p>
+<p><strong><em>2.显式转换</em></strong><br>显式转换，即用户完成的转换，例如<br>float a = 1;<br>float b = 3;<br>int s;<br>s = (int)a + (int)b;//float类型的a与b被显示的(强制)转换成成为float数据类型</p>
+<p>对于非数据的函数函数而言，例：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line">　　<span class="keyword">int</span> x;</span><br><span class="line">　　<span class="keyword">public</span>:</span><br><span class="line">　　　　A()&#123;x=<span class="number">0</span>;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:0"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　A(<span class="keyword">int</span> a)&#123;x=a;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　~A()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Delete A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">　　A a1;</span><br><span class="line">　　A *a2=<span class="keyword">new</span> A(<span class="number">10</span>);</span><br><span class="line">　　<span class="keyword">delete</span> a2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>程序分析：<br>A a1；隐式的调用了A();<br>A *a2 = new A(10);对A()进行了重载，显式的调用了A(int a);</p>
+<p><strong><em>3.explicit关键字</em></strong></p>
+<p>explicit用于构造函数，抑制隐式转换的发生，防止出现误区。</p>
+]]></content>
+      <categories>
+        <category>YY</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
@@ -1065,6 +1061,117 @@
 ]]></content>
       <categories>
         <category>YY</category>
+      </categories>
+      <tags>
+        <tag>Qt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++多线程</title>
+    <url>/2019/10/09/C++-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">CRITICAL_SECTION CriticalSection;    <span class="comment">//防止共有资源被同时调用</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> number = <span class="number">10</span>;    <span class="comment">//定义一个变量初始值为10</span></span><br><span class="line"></span><br><span class="line"><span class="function">DWORD WINAPI <span class="title">ThreadOne</span><span class="params">(LPVOID lpParameter)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    qDebug() &lt;&lt; <span class="string">"窗口1开始售票"</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        EnterCriticalSection(&amp;CriticalSection);    <span class="comment">//进入临界状态</span></span><br><span class="line">        <span class="keyword">if</span>(number &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            qDebug() &lt;&lt; <span class="string">"窗口1售出"</span> &lt;&lt; number;    <span class="comment">//打印出线程1抢占数值</span></span><br><span class="line">            number--;</span><br><span class="line">            Sleep(<span class="number">1000</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       LeaveCriticalSection(&amp;CriticalSection);    <span class="comment">//退出临界状态</span></span><br><span class="line">       Sleep(<span class="number">100</span>);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">DWORD WINAPI <span class="title">ThreadTwo</span><span class="params">(LPVOID lpParameter)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    qDebug() &lt;&lt; <span class="string">"窗口2售票开始"</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">    EnterCriticalSection(&amp;CriticalSection);    <span class="comment">//进入线程临界状态</span></span><br><span class="line">    <span class="keyword">if</span>(number&gt;<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        qDebug() &lt;&lt; <span class="string">"窗口2售出第"</span> &lt;&lt; number &lt;&lt; <span class="string">"张票"</span>；</span><br><span class="line">        Sleep(<span class="number">1000</span>);</span><br><span class="line">        number--;</span><br><span class="line">    &#125;</span><br><span class="line">    LeaveCriticalSection(&amp;CriticalSection);</span><br><span class="line">    Sleep(<span class="number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> Widget::on_pushButton_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    HANDLE HOne,HTwo;</span><br><span class="line">    InitaializeCriticalSection(&amp;CriticalSection);</span><br><span class="line">    qDebug() &lt;&lt; <span class="string">"*********vpoet******"</span>;</span><br><span class="line">    HOne = CreateThread(<span class="literal">NULL</span>,<span class="number">0</span>,ThreadOne,<span class="literal">NULL</span>,<span class="number">0</span>,<span class="literal">NULL</span>);</span><br><span class="line">    HTwo = CreateThread(<span class="literal">NULL</span>,<span class="number">0</span>,ThreadTwo,<span class="literal">NULL</span>,<span class="number">0</span>,<span class="literal">NULL</span>);</span><br><span class="line">    CloseHandle(HOne);</span><br><span class="line">    CloseHandle(HTwo);</span><br><span class="line">    <span class="keyword">while</span>(TRUE)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(number = <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            qDebug() &lt;&lt; <span class="string">"票没了！"</span></span><br><span class="line">            DeleCriticalSection(&amp;CriticalSection);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            coutinue;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>YY</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>Qt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用</title>
+    <url>/2019/10/09/Qt-QT_BEGIN_NAMESPACE%E5%92%8CQT_END_NAMESPACE%E7%9A%84%E4%BD%9C%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用"><a href="#Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用" class="headerlink" title="Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用"></a>Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用</h1><p> QT_BEGIN_NAMESPACE其实就是个宏，以前Qt4是没有命令空间的，后来才加上的，编译Qt源码时会有选项，是否将这些类放到专用的Qt命令空间内，默认是没有的。这就出来问题了，为了统一，如果你的代码在默认没有Qt命令空间的SDK中编译，那你就不用在前面加上命令空间，反之则需要。</p>
+<p>为了屏蔽上面这个差异，使得你的代码能在这两种情况下都进行编译，Qt就提供了QT_BEGIN_NAMESPACE宏，这样开发者就省的自己来用程序或宏进行处理了。</p>
+<p>至于说该宏提升编译速度什么的，那是上述类的声明的作用，与Qt无关的（也即与该宏QT_BEGIN_NAMESPACE无关），若要大幅提升编译速度需要开启qt的预编译头文件，会另起章节解说，并附测试结果。</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">#ifndef PREVIEWWINDOW_H</span><br><span class="line"></span><br><span class="line">#define PREVIEWWINDOW_H</span><br><span class="line"></span><br><span class="line">#include &lt;QMainWindow&gt;</span><br><span class="line"></span><br><span class="line">#if 0</span><br><span class="line"><span class="comment">// 方式一:</span></span><br><span class="line">#include &lt;QTextBrowser&gt;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#if 0</span><br><span class="line"><span class="comment">// 方式二:    比方式一可轻微提升编译速度</span></span><br><span class="line">class QTextBrowser;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#if 1</span><br><span class="line"><span class="comment">// 方式三:    编译速度与方式二一样，该宏用于自编译qt源码是否启动命令空间的补充</span></span><br><span class="line">QT_BEGIN_NAMESPACE</span><br><span class="line">class QTextBrowser;</span><br><span class="line">QT_END_NAMESPACE</span><br><span class="line"></span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">class <span class="attribute">PreviewWindow</span> : public QMainWindow</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"><span class="attribute">public</span>:</span><br><span class="line">    explicit PreviewWindow(QWidget *<span class="built_in">parent</span> = <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="attribute">signals</span>:</span><br><span class="line"></span><br><span class="line">public <span class="attribute">slots</span>:</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">#endif // PREVIEWWINDOW_H</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Qt</category>
+      </categories>
+      <tags>
+        <tag>Qt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Qt信号与槽</title>
+    <url>/2019/10/09/Qt-%E4%BF%A1%E5%8F%B7%E4%B8%8E%E6%A7%BD/</url>
+    <content><![CDATA[<h1 id="信号与槽"><a href="#信号与槽" class="headerlink" title="信号与槽"></a>信号与槽</h1><p>简介：</p>
+]]></content>
+      <categories>
+        <category>Qt</category>
+      </categories>
+      <tags>
+        <tag>Qt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>阻塞与非阻塞的区别</title>
+    <url>/2019/10/09/YY-%E9%98%BB%E5%A1%9E%E4%B8%8E%E9%9D%9E%E9%98%BB%E5%A1%9E%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<h1 id="阻塞与非阻塞的区别"><a href="#阻塞与非阻塞的区别" class="headerlink" title="阻塞与非阻塞的区别"></a>阻塞与非阻塞的区别</h1><p><strong>概念性理解：</strong><br>1.阻塞就是干不完不准回来；<br>2.非阻塞就是你先干，我现在看看有其他事没有，完了告诉我一声。</p>
+<p><strong>以常用函数send和recv举例：</strong><br>    比如你调用send函数发送一定的Byte,在系统内部send做的工作其实只是把数据传输(Copy)到TCP/IP协议栈的输出缓冲区,它执行成功并不代表数据已经成功的发送出去了,如果TCP/IP协议栈没有足够的可用缓冲区来保存你Copy过来的数据的话…这时候就体现出阻塞和非阻塞的不同之处了:对于阻塞模式的socket send函数将不返回直到系统缓冲区有足够的空间把你要发送的数据Copy过去以后才返回,而对于非阻塞的socket来说send会立即返回WSAEWOULDDBLOCK告诉调用者说:”发送操作被阻塞了!!!你想办法处理吧…”<br>    对于recv函数,同样道理,该函数的内部工作机制其实是在等待TCP/IP协议栈的接收缓冲区通知它说:嗨,你的数据来了.对于阻塞模式的socket来说如果TCP/IP协议栈的接收缓冲区没有通知一个结果给它它就一直不返回:耗费着系统资源….对于非阻塞模式的socket该函数会马上返回,然后告诉你:WSAEWOULDDBLOCK—“现在没有数据,回头在来看看”</p>
+<p><strong>概念性拓展：</strong><br>在进行网络编程时，我们常常见到同步、异步、阻塞和非阻塞四种调用方式。这些方式彼此概念并不好理解。下面是我对这些术语的理解。</p>
+<p><em>同步</em><br>    所谓同步，就是在发出一个功能调用时，在没有得到结果之前，该调用就不返回。按照这个定义，其实绝大多数函数都是同步调用（例如sin, isdigit等）。但是一般而言，我们在说同步、异步的时候，特指那些需要其他部件协作或者需要一定时间完成的任务。最常见的例子就是 SendMessage。该函数发送一个消息给某个窗口，在对方处理完消息之前，这个函数不返回。当对方处理完毕以后，该函数才把消息处理函数所返回的 LRESULT值返回给调用者。</p>
+<p><em>异步</em><br>    异步的概念和同步相对。当一个异步过程调用发出后，调用者不能立刻得到结果。实际处理这个调用的部件在完成后，通过状态、通知和回调来通知调用者。以 CAsycSocket类为例（注意，CSocket从CAsyncSocket派生，但是起功能已经由异步转化为同步），当一个客户端通过调用 Connect函数发出一个连接请求后，调用者线程立刻可以向下运行。当连接真正建立起来以后，socket底 层会发送一个消息通知该对象。这里提到执行部件和调用者通过三种途径返回结果：状态、通知和回调。可以使用哪一种依赖于执行部件的实现，除非执行部件提供 多种选择，否则不受调用者控制。如果执行部件用状态来通知，那么调用者就需要每隔一定时间检查一次，效率就很低（有些初学多线程编程的人，总喜欢用一个循 环去检查某个变量的值，这其实是一种很严重的错误）。如果是使用通知的方式，效率则很高，因为执行部件几乎不需要做额外的操作。至于回调函数，其实和通知 没太多区别。</p>
+<p><em>阻塞</em><br>    阻塞调用是指调用结果返回之前，当前线程会被挂起。函数只有在得到结果之后才会返回。有人也许会把阻塞调用和同步调用等同起来，实际上它们是不同的。对于同步调用来说，很多时候当前线程还是激活的，只是从逻辑上当前函数没有返回而已。例如，我们在CSocket中调用Receive函数，如果缓冲区中没有数据，这个函数就会一直等待，直到有数据才返回。而此时，当前线程还会继续处理各种各样的消息。如果主窗口和调用函数在同一个线程中，除非你在特殊的界面操作函数中调用，其实主界面还是应该可以刷新。socket接收数据的另外一个函数recv则是一个阻塞调用的例子。当socket工作在阻塞模式的时候， 如果没有数据的情况下调用该函数，则当前线程就会被挂起，直到有数据为止。</p>
+<p><em>非阻塞</em><br>    非阻塞和阻塞的概念相对应，指在不能立刻得到结果之前，该函数不会阻塞当前线程，而会立刻返回。</p>
+]]></content>
+      <categories>
+        <category>YY</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2019/10/09/YY-#pragma%E9%A2%84%E5%A4%84%E7%90%86%E6%8C%87%E4%BB%A4/</url>
+    <content><![CDATA[<h1 id="pragma预处理指令"><a href="#pragma预处理指令" class="headerlink" title="#pragma预处理指令"></a>#pragma预处理指令</h1><p><strong><em>定义：</em></strong><br>在所有的预处理指令中，#pragma 指令可能是最复杂的了，它的作用是设定编译器的状态或者是指示编译器完成一些特定的动作。#pragma指令对每个编译器给出了一个方法，在保持与C和C++语言完全兼容的情况下，给出主机或操作系统专有的特征。依据定义，编译指示是机器或操作系统专有的，且对于每个编译器都是不同的。</p>
+<p><strong><em>一般格式：</em></strong></p>
+<p>#pargam Para        其中Para为参数</p>
+<p><strong>举例</strong><br><em>1.message参数：</em><br>    Message 参数能够在编译信息输出窗口中输出相应的信息，这对于源代码信息的控制是非常重要的。其使用方法为：</p>
+<p>   #pragma message(“消息文本”)</p>
+<p>   当编译器遇到这条指令时就在编译输出窗口中将消息文本打印出来。<br>   当我们在程序中定义了许多宏来控制源代码版本的时候，我们自己有可能都会忘记有没有正确的设置这些宏，此时我们可以用这条指令在编译的时候就进行检查。假设我们希望判断自己有没有在源代码的什么地方定义了_X86这个宏可以用下面的方法<br>    #ifdef _X86<br>    #pragma message(“_X86 macro activated!”)<br>    #endif</p>
+<p>当我们定义了_X86这个宏以后，应用程序在编译时就会在编译输出窗口里显示“_X86 macro activated! ”。我们就不会因为不记得自己定义的一些特定的宏而抓耳挠腮了。</p>
+<p><em>2.code_seg存放代码段：</em></p>
+<p>code_seg对pragma的使用量也比较大</p>
+<p>#pragma code_seg([“section-name”[,”section-class”]])</p>
+<p>它能够设置程序中函数代码存放的代码段，当我们开发驱动程序的时候就会使用到它。</p>
+<p>3.pragma once 执行一次（常用）<br>    只要在头文件的最开始加入这条指令就能够保证头文件被编译一次，这条指令实际上在VC6中就已经有了，但是考虑到兼容性并没有太多的使用它。<br>    #pragma once是编译相关，就是说这个编译系统上能用，但在其他编译系统不一定可以，也就是说移植性差，不过现在基本上已经是每个编译器都有这个定义了。<br>    #ifndef，#define，#endif这个是C++语言相关，这是C++语言中的宏定义，通过宏定义避免文件多次编译。所以在所有支持C++语言的编译器上都是有效的，如果写的程序要跨平台，最好使用这种方式</p>
+<p>附件链接：<a href="https://baike.baidu.com/item/%23pragma/706691?fr=aladdin#1_10" target="_blank" rel="noopener">pragma百度百科</a></p>
+]]></content>
+      <categories>
+        <category>YY</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Qt常用控件的创建和使用</title>
+    <url>/2019/10/09/Qt-%E5%B8%B8%E7%94%A8%E6%8E%A7%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="常用控件的创建和使用"><a href="#常用控件的创建和使用" class="headerlink" title="常用控件的创建和使用"></a>常用控件的创建和使用</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"mainwindow.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMenuBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QToolBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QStatusBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QLabel&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDockWidget&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QTextEdit&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MainWindow::MainWindow(QWidget *parent)</span><br><span class="line">    : QMainWindow(parent)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;resize(<span class="number">600</span>,<span class="number">400</span>);  <span class="comment">//Set the window size</span></span><br><span class="line"></span><br><span class="line">    QMenuBar *bar = menuBar();  <span class="comment">//创建菜单栏,只能一个</span></span><br><span class="line">    setMenuBar(bar);    <span class="comment">//将菜单栏设置到窗口中</span></span><br><span class="line"></span><br><span class="line">    QMenu * fileMenu = bar-&gt;addMenu(<span class="string">"文件"</span>);</span><br><span class="line">    QMenu * editMenu = bar-&gt;addMenu(<span class="string">"编辑"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//添加文件菜单项</span></span><br><span class="line">    QAction * createAction = fileMenu-&gt;addAction(<span class="string">"创建"</span>);</span><br><span class="line">    fileMenu-&gt;addSeparator();<span class="comment">//添加分割线</span></span><br><span class="line">    QAction * closeAction = fileMenu-&gt;addAction(<span class="string">"关闭"</span>);</span><br><span class="line">    fileMenu-&gt;addSeparator();<span class="comment">//添加分割线</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//添加编辑菜单栏</span></span><br><span class="line">    QAction * copyAction = editMenu-&gt;addAction(<span class="string">"拷贝"</span>);</span><br><span class="line">    QAction * pasteAction = editMenu-&gt;addAction(<span class="string">"粘贴"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//菜单栏 可以有很多个</span></span><br><span class="line">    QToolBar *toolBar = <span class="keyword">new</span> QToolBar(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//将工具栏放入窗口中</span></span><br><span class="line">    addToolBar(Qt::LeftToolBarArea, toolBar);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//只允许左右停靠</span></span><br><span class="line">    toolBar-&gt;setAllowedAreas(Qt::LeftToolBarArea | Qt::RightToolBarArea</span><br><span class="line">                             | Qt::TopToolBarArea | Qt::BottomToolBarArea);</span><br><span class="line">    <span class="comment">//设置是否允许浮动</span></span><br><span class="line">    toolBar-&gt;setFloatable(<span class="literal">false</span>);</span><br><span class="line">    <span class="comment">//设置是否允许移动</span></span><br><span class="line">    toolBar-&gt;setMovable(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//在工具栏中添加控件</span></span><br><span class="line">    QPushButton *btn = <span class="keyword">new</span> QPushButton(<span class="string">"按钮1"</span>,<span class="keyword">this</span>);</span><br><span class="line">    QPushButton *btn1 = <span class="keyword">new</span> QPushButton(<span class="string">"按钮2"</span>,<span class="keyword">this</span>);</span><br><span class="line">    btn1-&gt;setStyleSheet(<span class="string">"QPushButton&#123;color:red&#125;"</span>);</span><br><span class="line">    QPushButton *btn2 = <span class="keyword">new</span> QPushButton(<span class="string">"按钮3"</span>,<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    toolBar-&gt;addWidget(btn);</span><br><span class="line">    toolBar-&gt;addSeparator();</span><br><span class="line">    toolBar-&gt;addWidget(btn1);</span><br><span class="line">    toolBar-&gt;addSeparator();</span><br><span class="line">    toolBar-&gt;addWidget(btn2);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//状态栏，只有一个</span></span><br><span class="line">    QStatusBar * status = statusBar();</span><br><span class="line">    <span class="comment">//将状态栏放入到窗口中</span></span><br><span class="line">    setStatusBar(status);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建标签</span></span><br><span class="line">    QLabel * label1 = <span class="keyword">new</span> QLabel(<span class="string">"左侧信息"</span>, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//将label放入到状态栏中</span></span><br><span class="line">    status-&gt;addWidget(label1);</span><br><span class="line">    QLabel * label2 = <span class="keyword">new</span> QLabel(<span class="string">"右侧信息"</span>, <span class="keyword">this</span>);</span><br><span class="line">    status-&gt;addPermanentWidget(label2);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//铆接部件 浮动窗口 可以多个</span></span><br><span class="line">    QDockWidget * dock = <span class="keyword">new</span> QDockWidget(<span class="string">"铆接部件"</span>, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//将铆接部件放到窗体的核心部件的下方</span></span><br><span class="line">    addDockWidget(Qt::BottomDockWidgetArea, dock);</span><br><span class="line">    <span class="comment">//铆接部件设置停靠范文</span></span><br><span class="line">    dock-&gt;setAllowedAreas(Qt::TopDockWidgetArea | Qt::BottomDockWidgetArea);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建核心部件 只能有一个</span></span><br><span class="line">    QTextEdit * edit = <span class="keyword">new</span> QTextEdit(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//将文本编辑 放到窗体中间</span></span><br><span class="line">    setCentralWidget(edit);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainWindow::~MainWindow()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>总结：直接使用set方法的窗口中只能有一个，使用add方法的窗口中可以有很多个</p>
+]]></content>
+      <categories>
+        <category>Qt</category>
+      </categories>
+      <tags>
+        <tag>Qt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Qt设置背景界面</title>
+    <url>/2019/10/09/Qt-%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E7%95%8C%E9%9D%A2/</url>
+    <content><![CDATA[<h1 id="Qt设置背景界面"><a href="#Qt设置背景界面" class="headerlink" title="Qt设置背景界面"></a>Qt设置背景界面</h1><p>1.设置背景图片的一种方式</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">QPixmap <span class="title">pixmap</span><span class="params">(QString::fromUtf8(<span class="string">"./icon/background.png"</span>))</span></span>;<span class="comment">//当前文件夹下面的图片</span></span><br><span class="line">QPalette palette = <span class="keyword">this</span>-&gt;palette();</span><br><span class="line">palette.setBrush(backgroundRole(), QBrush(pixmap));</span><br><span class="line">setPalette(palette);</span><br></pre></td></tr></table></figure>
+
+<p>2.使用Qt捕获windows窗口变化事件函数，自动调整背景缩放</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">void</span> （当前函数所在类）::resizeEvent(QResizeEvent *e)</span><br><span class="line">&#123;</span><br><span class="line">    Q_UNUSED(e);    <span class="comment">//不使用传入参数e，避免警告</span></span><br><span class="line">    <span class="keyword">int</span> w = <span class="keyword">this</span>-&gt;widght();    <span class="comment">//w为当前widght宽度</span></span><br><span class="line">    <span class="keyword">int</span> h = <span class="keyword">this</span>-&gt;height();    <span class="comment">//h为当前widght高度</span></span><br><span class="line">    QPixmap back_icon(QString::fromUtf8("资源路径"))；    //back_icon指向图片路径</span><br><span class="line">    QPlette.setBrush(<span class="keyword">this</span>-&gt;backgroundRole(),QBrush(back_icon.scaled(w,h)));    <span class="comment">//设置窗体背景和和缩放比例</span></span><br><span class="line">    <span class="keyword">this</span>-&gt;setPalette(palette);    <span class="comment">//设置当前palette生效</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Qt</category>
       </categories>
       <tags>
         <tag>Qt</tag>
@@ -1134,110 +1241,19 @@
       </tags>
   </entry>
   <entry>
-    <title>Qt信号与槽</title>
-    <url>/2019/10/09/Qt-%E4%BF%A1%E5%8F%B7%E4%B8%8E%E6%A7%BD/</url>
-    <content><![CDATA[<h1 id="信号与槽"><a href="#信号与槽" class="headerlink" title="信号与槽"></a>信号与槽</h1><p>简介：</p>
-]]></content>
-      <categories>
-        <category>Qt</category>
-      </categories>
-      <tags>
-        <tag>Qt</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>阻塞与非阻塞的区别</title>
-    <url>/2019/10/09/YY-%E9%98%BB%E5%A1%9E%E4%B8%8E%E9%9D%9E%E9%98%BB%E5%A1%9E%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<h1 id="阻塞与非阻塞的区别"><a href="#阻塞与非阻塞的区别" class="headerlink" title="阻塞与非阻塞的区别"></a>阻塞与非阻塞的区别</h1><p><strong>概念性理解：</strong><br>1.阻塞就是干不完不准回来；<br>2.非阻塞就是你先干，我现在看看有其他事没有，完了告诉我一声。</p>
-<p><strong>以常用函数send和recv举例：</strong><br>    比如你调用send函数发送一定的Byte,在系统内部send做的工作其实只是把数据传输(Copy)到TCP/IP协议栈的输出缓冲区,它执行成功并不代表数据已经成功的发送出去了,如果TCP/IP协议栈没有足够的可用缓冲区来保存你Copy过来的数据的话…这时候就体现出阻塞和非阻塞的不同之处了:对于阻塞模式的socket send函数将不返回直到系统缓冲区有足够的空间把你要发送的数据Copy过去以后才返回,而对于非阻塞的socket来说send会立即返回WSAEWOULDDBLOCK告诉调用者说:”发送操作被阻塞了!!!你想办法处理吧…”<br>    对于recv函数,同样道理,该函数的内部工作机制其实是在等待TCP/IP协议栈的接收缓冲区通知它说:嗨,你的数据来了.对于阻塞模式的socket来说如果TCP/IP协议栈的接收缓冲区没有通知一个结果给它它就一直不返回:耗费着系统资源….对于非阻塞模式的socket该函数会马上返回,然后告诉你:WSAEWOULDDBLOCK—“现在没有数据,回头在来看看”</p>
-<p><strong>概念性拓展：</strong><br>在进行网络编程时，我们常常见到同步、异步、阻塞和非阻塞四种调用方式。这些方式彼此概念并不好理解。下面是我对这些术语的理解。</p>
-<p><em>同步</em><br>    所谓同步，就是在发出一个功能调用时，在没有得到结果之前，该调用就不返回。按照这个定义，其实绝大多数函数都是同步调用（例如sin, isdigit等）。但是一般而言，我们在说同步、异步的时候，特指那些需要其他部件协作或者需要一定时间完成的任务。最常见的例子就是 SendMessage。该函数发送一个消息给某个窗口，在对方处理完消息之前，这个函数不返回。当对方处理完毕以后，该函数才把消息处理函数所返回的 LRESULT值返回给调用者。</p>
-<p><em>异步</em><br>    异步的概念和同步相对。当一个异步过程调用发出后，调用者不能立刻得到结果。实际处理这个调用的部件在完成后，通过状态、通知和回调来通知调用者。以 CAsycSocket类为例（注意，CSocket从CAsyncSocket派生，但是起功能已经由异步转化为同步），当一个客户端通过调用 Connect函数发出一个连接请求后，调用者线程立刻可以向下运行。当连接真正建立起来以后，socket底 层会发送一个消息通知该对象。这里提到执行部件和调用者通过三种途径返回结果：状态、通知和回调。可以使用哪一种依赖于执行部件的实现，除非执行部件提供 多种选择，否则不受调用者控制。如果执行部件用状态来通知，那么调用者就需要每隔一定时间检查一次，效率就很低（有些初学多线程编程的人，总喜欢用一个循 环去检查某个变量的值，这其实是一种很严重的错误）。如果是使用通知的方式，效率则很高，因为执行部件几乎不需要做额外的操作。至于回调函数，其实和通知 没太多区别。</p>
-<p><em>阻塞</em><br>    阻塞调用是指调用结果返回之前，当前线程会被挂起。函数只有在得到结果之后才会返回。有人也许会把阻塞调用和同步调用等同起来，实际上它们是不同的。对于同步调用来说，很多时候当前线程还是激活的，只是从逻辑上当前函数没有返回而已。例如，我们在CSocket中调用Receive函数，如果缓冲区中没有数据，这个函数就会一直等待，直到有数据才返回。而此时，当前线程还会继续处理各种各样的消息。如果主窗口和调用函数在同一个线程中，除非你在特殊的界面操作函数中调用，其实主界面还是应该可以刷新。socket接收数据的另外一个函数recv则是一个阻塞调用的例子。当socket工作在阻塞模式的时候， 如果没有数据的情况下调用该函数，则当前线程就会被挂起，直到有数据为止。</p>
-<p><em>非阻塞</em><br>    非阻塞和阻塞的概念相对应，指在不能立刻得到结果之前，该函数不会阻塞当前线程，而会立刻返回。</p>
+    <title>Qt多线程实例</title>
+    <url>/2019/10/08/Qt-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E4%BE%8B/</url>
+    <content><![CDATA[<h1 id="多线程实例"><a href="#多线程实例" class="headerlink" title="多线程实例"></a>多线程实例</h1><p><strong>使用QThread类，实现Qt多线程</strong></p>
+<p>方法：使用一个类继承QThread，然后重新改写虚函数run()。</p>
+<p><strong>使用moveToThread，实现Qt多线程</strong></p>
+<p>通过这种方法不需要继承QThread,重写run()函数来实现Qt多线程，而是通过moveToThread(QThread *thread)函数将工作累对象移到所创建的QThread对象中去执行。利用信号与槽机制。</p>
+<p>程序结构：<br>1.在主程序中，那里需要多线程就在哪里创建一个QThread实例；<br>2.把耗时操作封装到一个继承QObject的子类</p>
 ]]></content>
       <categories>
         <category>YY</category>
       </categories>
       <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Qt常用控件的创建和使用</title>
-    <url>/2019/10/09/Qt-%E5%B8%B8%E7%94%A8%E6%8E%A7%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h1 id="常用控件的创建和使用"><a href="#常用控件的创建和使用" class="headerlink" title="常用控件的创建和使用"></a>常用控件的创建和使用</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"mainwindow.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMenuBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QToolBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QStatusBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QLabel&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDockWidget&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QTextEdit&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MainWindow::MainWindow(QWidget *parent)</span><br><span class="line">    : QMainWindow(parent)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;resize(<span class="number">600</span>,<span class="number">400</span>);  <span class="comment">//Set the window size</span></span><br><span class="line"></span><br><span class="line">    QMenuBar *bar = menuBar();  <span class="comment">//创建菜单栏,只能一个</span></span><br><span class="line">    setMenuBar(bar);    <span class="comment">//将菜单栏设置到窗口中</span></span><br><span class="line"></span><br><span class="line">    QMenu * fileMenu = bar-&gt;addMenu(<span class="string">"文件"</span>);</span><br><span class="line">    QMenu * editMenu = bar-&gt;addMenu(<span class="string">"编辑"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//添加文件菜单项</span></span><br><span class="line">    QAction * createAction = fileMenu-&gt;addAction(<span class="string">"创建"</span>);</span><br><span class="line">    fileMenu-&gt;addSeparator();<span class="comment">//添加分割线</span></span><br><span class="line">    QAction * closeAction = fileMenu-&gt;addAction(<span class="string">"关闭"</span>);</span><br><span class="line">    fileMenu-&gt;addSeparator();<span class="comment">//添加分割线</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//添加编辑菜单栏</span></span><br><span class="line">    QAction * copyAction = editMenu-&gt;addAction(<span class="string">"拷贝"</span>);</span><br><span class="line">    QAction * pasteAction = editMenu-&gt;addAction(<span class="string">"粘贴"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//菜单栏 可以有很多个</span></span><br><span class="line">    QToolBar *toolBar = <span class="keyword">new</span> QToolBar(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//将工具栏放入窗口中</span></span><br><span class="line">    addToolBar(Qt::LeftToolBarArea, toolBar);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//只允许左右停靠</span></span><br><span class="line">    toolBar-&gt;setAllowedAreas(Qt::LeftToolBarArea | Qt::RightToolBarArea</span><br><span class="line">                             | Qt::TopToolBarArea | Qt::BottomToolBarArea);</span><br><span class="line">    <span class="comment">//设置是否允许浮动</span></span><br><span class="line">    toolBar-&gt;setFloatable(<span class="literal">false</span>);</span><br><span class="line">    <span class="comment">//设置是否允许移动</span></span><br><span class="line">    toolBar-&gt;setMovable(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//在工具栏中添加控件</span></span><br><span class="line">    QPushButton *btn = <span class="keyword">new</span> QPushButton(<span class="string">"按钮1"</span>,<span class="keyword">this</span>);</span><br><span class="line">    QPushButton *btn1 = <span class="keyword">new</span> QPushButton(<span class="string">"按钮2"</span>,<span class="keyword">this</span>);</span><br><span class="line">    btn1-&gt;setStyleSheet(<span class="string">"QPushButton&#123;color:red&#125;"</span>);</span><br><span class="line">    QPushButton *btn2 = <span class="keyword">new</span> QPushButton(<span class="string">"按钮3"</span>,<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    toolBar-&gt;addWidget(btn);</span><br><span class="line">    toolBar-&gt;addSeparator();</span><br><span class="line">    toolBar-&gt;addWidget(btn1);</span><br><span class="line">    toolBar-&gt;addSeparator();</span><br><span class="line">    toolBar-&gt;addWidget(btn2);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//状态栏，只有一个</span></span><br><span class="line">    QStatusBar * status = statusBar();</span><br><span class="line">    <span class="comment">//将状态栏放入到窗口中</span></span><br><span class="line">    setStatusBar(status);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建标签</span></span><br><span class="line">    QLabel * label1 = <span class="keyword">new</span> QLabel(<span class="string">"左侧信息"</span>, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//将label放入到状态栏中</span></span><br><span class="line">    status-&gt;addWidget(label1);</span><br><span class="line">    QLabel * label2 = <span class="keyword">new</span> QLabel(<span class="string">"右侧信息"</span>, <span class="keyword">this</span>);</span><br><span class="line">    status-&gt;addPermanentWidget(label2);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//铆接部件 浮动窗口 可以多个</span></span><br><span class="line">    QDockWidget * dock = <span class="keyword">new</span> QDockWidget(<span class="string">"铆接部件"</span>, <span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//将铆接部件放到窗体的核心部件的下方</span></span><br><span class="line">    addDockWidget(Qt::BottomDockWidgetArea, dock);</span><br><span class="line">    <span class="comment">//铆接部件设置停靠范文</span></span><br><span class="line">    dock-&gt;setAllowedAreas(Qt::TopDockWidgetArea | Qt::BottomDockWidgetArea);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建核心部件 只能有一个</span></span><br><span class="line">    QTextEdit * edit = <span class="keyword">new</span> QTextEdit(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//将文本编辑 放到窗体中间</span></span><br><span class="line">    setCentralWidget(edit);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainWindow::~MainWindow()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>总结：直接使用set方法的窗口中只能有一个，使用add方法的窗口中可以有很多个</p>
-]]></content>
-      <categories>
-        <category>Qt</category>
-      </categories>
-      <tags>
         <tag>Qt</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Qt+sqlite数据库连接</title>
-    <url>/2019/10/09/Qt-sqlite%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5/</url>
-    <content><![CDATA[<h1 id="Qt-sqlite数据库连接"><a href="#Qt-sqlite数据库连接" class="headerlink" title="Qt+sqlite数据库连接"></a>Qt+sqlite数据库连接</h1>]]></content>
-      <categories>
-        <category>Qt</category>
-      </categories>
-      <tags>
-        <tag>Qt</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Qt设置背景界面</title>
-    <url>/2019/10/09/Qt-%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E7%95%8C%E9%9D%A2/</url>
-    <content><![CDATA[<h1 id="Qt设置背景界面"><a href="#Qt设置背景界面" class="headerlink" title="Qt设置背景界面"></a>Qt设置背景界面</h1><p>1.设置背景图片的一种方式</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">QPixmap <span class="title">pixmap</span><span class="params">(QString::fromUtf8(<span class="string">"./icon/background.png"</span>))</span></span>;<span class="comment">//当前文件夹下面的图片</span></span><br><span class="line">QPalette palette = <span class="keyword">this</span>-&gt;palette();</span><br><span class="line">palette.setBrush(backgroundRole(), QBrush(pixmap));</span><br><span class="line">setPalette(palette);</span><br></pre></td></tr></table></figure>
-
-<p>2.使用Qt捕获windows窗口变化事件函数，自动调整背景缩放</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">void</span> （当前函数所在类）::resizeEvent(QResizeEvent *e)</span><br><span class="line">&#123;</span><br><span class="line">    Q_UNUSED(e);    <span class="comment">//不使用传入参数e，避免警告</span></span><br><span class="line">    <span class="keyword">int</span> w = <span class="keyword">this</span>-&gt;widght();    <span class="comment">//w为当前widght宽度</span></span><br><span class="line">    <span class="keyword">int</span> h = <span class="keyword">this</span>-&gt;height();    <span class="comment">//h为当前widght高度</span></span><br><span class="line">    QPixmap back_icon(QString::fromUtf8("资源路径"))；    //back_icon指向图片路径</span><br><span class="line">    QPlette.setBrush(<span class="keyword">this</span>-&gt;backgroundRole(),QBrush(back_icon.scaled(w,h)));    <span class="comment">//设置窗体背景和和缩放比例</span></span><br><span class="line">    <span class="keyword">this</span>-&gt;setPalette(palette);    <span class="comment">//设置当前palette生效</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Qt</category>
-      </categories>
-      <tags>
-        <tag>Qt</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>构造函数和析构函数</title>
-    <url>/2019/10/09/C++-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h1><p><strong>构造函数</strong></p>
-<p><strong>析构函数</strong><br>    构造函数（destructor）与构造函数相反，当对象结束其生命周期，如对象所在的函数已调用完毕时，系统自动执行析构函数。析构函数用来做“清理善后”的工作（例如在建立对象时用new开辟了一片内存空间，delete会自动调用析构函数后释放内存）。</p>
-]]></content>
-      <categories>
-        <category>YY</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2019/10/09/YY-#pragma%E9%A2%84%E5%A4%84%E7%90%86%E6%8C%87%E4%BB%A4/</url>
-    <content><![CDATA[<h1 id="pragma预处理指令"><a href="#pragma预处理指令" class="headerlink" title="#pragma预处理指令"></a>#pragma预处理指令</h1><p><strong><em>定义：</em></strong><br>在所有的预处理指令中，#pragma 指令可能是最复杂的了，它的作用是设定编译器的状态或者是指示编译器完成一些特定的动作。#pragma指令对每个编译器给出了一个方法，在保持与C和C++语言完全兼容的情况下，给出主机或操作系统专有的特征。依据定义，编译指示是机器或操作系统专有的，且对于每个编译器都是不同的。</p>
-<p><strong><em>一般格式：</em></strong></p>
-<p>#pargam Para        其中Para为参数</p>
-<p><strong>举例</strong><br><em>1.message参数：</em><br>    Message 参数能够在编译信息输出窗口中输出相应的信息，这对于源代码信息的控制是非常重要的。其使用方法为：</p>
-<p>   #pragma message(“消息文本”)</p>
-<p>   当编译器遇到这条指令时就在编译输出窗口中将消息文本打印出来。<br>   当我们在程序中定义了许多宏来控制源代码版本的时候，我们自己有可能都会忘记有没有正确的设置这些宏，此时我们可以用这条指令在编译的时候就进行检查。假设我们希望判断自己有没有在源代码的什么地方定义了_X86这个宏可以用下面的方法<br>    #ifdef _X86<br>    #pragma message(“_X86 macro activated!”)<br>    #endif</p>
-<p>当我们定义了_X86这个宏以后，应用程序在编译时就会在编译输出窗口里显示“_X86 macro activated! ”。我们就不会因为不记得自己定义的一些特定的宏而抓耳挠腮了。</p>
-<p><em>2.code_seg存放代码段：</em></p>
-<p>code_seg对pragma的使用量也比较大</p>
-<p>#pragma code_seg([“section-name”[,”section-class”]])</p>
-<p>它能够设置程序中函数代码存放的代码段，当我们开发驱动程序的时候就会使用到它。</p>
-<p>3.pragma once 执行一次（常用）<br>    只要在头文件的最开始加入这条指令就能够保证头文件被编译一次，这条指令实际上在VC6中就已经有了，但是考虑到兼容性并没有太多的使用它。<br>    #pragma once是编译相关，就是说这个编译系统上能用，但在其他编译系统不一定可以，也就是说移植性差，不过现在基本上已经是每个编译器都有这个定义了。<br>    #ifndef，#define，#endif这个是C++语言相关，这是C++语言中的宏定义，通过宏定义避免文件多次编译。所以在所有支持C++语言的编译器上都是有效的，如果写的程序要跨平台，最好使用这种方式</p>
-<p>附件链接：<a href="https://baike.baidu.com/item/%23pragma/706691?fr=aladdin#1_10" target="_blank" rel="noopener">pragma百度百科</a></p>
-]]></content>
-      <categories>
-        <category>YY</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
@@ -1283,22 +1299,6 @@
       </categories>
       <tags>
         <tag>Markdown</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Qt多线程实例</title>
-    <url>/2019/10/08/Qt-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E4%BE%8B/</url>
-    <content><![CDATA[<h1 id="多线程实例"><a href="#多线程实例" class="headerlink" title="多线程实例"></a>多线程实例</h1><p><strong>使用QThread类，实现Qt多线程</strong></p>
-<p>方法：使用一个类继承QThread，然后重新改写虚函数run()。</p>
-<p><strong>使用moveToThread，实现Qt多线程</strong></p>
-<p>通过这种方法不需要继承QThread,重写run()函数来实现Qt多线程，而是通过moveToThread(QThread *thread)函数将工作累对象移到所创建的QThread对象中去执行。利用信号与槽机制。</p>
-<p>程序结构：<br>1.在主程序中，那里需要多线程就在哪里创建一个QThread实例；<br>2.把耗时操作封装到一个继承QObject的子类</p>
-]]></content>
-      <categories>
-        <category>YY</category>
-      </categories>
-      <tags>
-        <tag>Qt</tag>
       </tags>
   </entry>
   <entry>
