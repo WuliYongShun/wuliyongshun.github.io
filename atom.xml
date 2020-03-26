@@ -493,19 +493,19 @@
   </entry>
   
   <entry>
-    <title>阻塞与非阻塞的区别</title>
-    <link href="http://yoursite.com/2019/10/09/YY-%E9%98%BB%E5%A1%9E%E4%B8%8E%E9%9D%9E%E9%98%BB%E5%A1%9E%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
-    <id>http://yoursite.com/2019/10/09/YY-阻塞与非阻塞的区别/</id>
+    <title>C++内联函数(C++ inline)</title>
+    <link href="http://yoursite.com/2019/10/09/C++-%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0(C++%20inline)/"/>
+    <id>http://yoursite.com/2019/10/09/C++-内联函数(C++ inline)/</id>
     <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:57:02.361Z</updated>
+    <updated>2019-10-09T07:54:13.460Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="阻塞与非阻塞的区别"><a href="#阻塞与非阻塞的区别" class="headerlink" title="阻塞与非阻塞的区别"></a>阻塞与非阻塞的区别</h1><p><strong>概念性理解：</strong><br>1.阻塞就是干不完不准回来；<br>2.非阻塞就是你先干，我现在看看有其他事没有，完了告诉我一声。</p><p><strong>以常用函数send和recv举例：</strong><br>    比如你调用send函数发送一定的Byte,在系统内部send做的工作其实只是把数据传输(Copy)到TCP/IP协议栈的输出缓冲区,它执行成功并不代表数据已经成功的发送出去了,如果TCP/IP协议栈没有足够的可用缓冲区来保存你Copy过来的数据的话…这时候就体现出阻塞和非阻塞的不同之处了:对于阻塞模式的socket send函数将不返回直到系统缓冲区有足够的空间把你要发送的数据Copy过去以后才返回,而对于非阻塞的socket来说send会立即返回WSAEWOULDDBLOCK告诉调用者说:”发送操作被阻塞了!!!你想办法处理吧…”<br>    对于recv函数,同样道理,该函数的内部工作机制其实是在等待TCP/IP协议栈的接收缓冲区通知它说:嗨,你的数据来了.对于阻塞模式的socket来说如果TCP/IP协议栈的接收缓冲区没有通知一个结果给它它就一直不返回:耗费着系统资源….对于非阻塞模式的socket该函数会马上返回,然后告诉你:WSAEWOULDDBLOCK—“现在没有数据,回头在来看看”</p><p><strong>概念性拓展：</strong><br>在进行网络编程时，我们常常见到同步、异步、阻塞和非阻塞四种调用方式。这些方式彼此概念并不好理解。下面是我对这些术语的理解。</p><p><em>同步</em><br>    所谓同步，就是在发出一个功能调用时，在没有得到结果之前，该调用就不返回。按照这个定义，其实绝大多数函数都是同步调用（例如sin, isdigit等）。但是一般而言，我们在说同步、异步的时候，特指那些需要其他部件协作或者需要一定时间完成的任务。最常见的例子就是 SendMessage。该函数发送一个消息给某个窗口，在对方处理完消息之前，这个函数不返回。当对方处理完毕以后，该函数才把消息处理函数所返回的 LRESULT值返回给调用者。</p><p><em>异步</em><br>    异步的概念和同步相对。当一个异步过程调用发出后，调用者不能立刻得到结果。实际处理这个调用的部件在完成后，通过状态、通知和回调来通知调用者。以 CAsycSocket类为例（注意，CSocket从CAsyncSocket派生，但是起功能已经由异步转化为同步），当一个客户端通过调用 Connect函数发出一个连接请求后，调用者线程立刻可以向下运行。当连接真正建立起来以后，socket底 层会发送一个消息通知该对象。这里提到执行部件和调用者通过三种途径返回结果：状态、通知和回调。可以使用哪一种依赖于执行部件的实现，除非执行部件提供 多种选择，否则不受调用者控制。如果执行部件用状态来通知，那么调用者就需要每隔一定时间检查一次，效率就很低（有些初学多线程编程的人，总喜欢用一个循 环去检查某个变量的值，这其实是一种很严重的错误）。如果是使用通知的方式，效率则很高，因为执行部件几乎不需要做额外的操作。至于回调函数，其实和通知 没太多区别。</p><p><em>阻塞</em><br>    阻塞调用是指调用结果返回之前，当前线程会被挂起。函数只有在得到结果之后才会返回。有人也许会把阻塞调用和同步调用等同起来，实际上它们是不同的。对于同步调用来说，很多时候当前线程还是激活的，只是从逻辑上当前函数没有返回而已。例如，我们在CSocket中调用Receive函数，如果缓冲区中没有数据，这个函数就会一直等待，直到有数据才返回。而此时，当前线程还会继续处理各种各样的消息。如果主窗口和调用函数在同一个线程中，除非你在特殊的界面操作函数中调用，其实主界面还是应该可以刷新。socket接收数据的另外一个函数recv则是一个阻塞调用的例子。当socket工作在阻塞模式的时候， 如果没有数据的情况下调用该函数，则当前线程就会被挂起，直到有数据为止。</p><p><em>非阻塞</em><br>    非阻塞和阻塞的概念相对应，指在不能立刻得到结果之前，该函数不会阻塞当前线程，而会立刻返回。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="C-内联函数-C-inline"><a href="#C-内联函数-C-inline" class="headerlink" title="C++内联函数(C++ inline)"></a>C++内联函数(C++ inline)</h1><p>使用函数能够避免将相同代码重写多次的麻烦，还能减少可执行程序的体积，但也会带来程序运行时间上的开销。</p><p>函数调用在执行时，首先要在栈中为形参和局部变量分配存储空间，然后还要将实参的值复制给形参，接下来还要将函数的返回地址（该地址指明了函数执行结束后，程序应该回到哪里继续执行）放入栈中，最后才跳转到函数内部执行。这个过程是要耗费时间的。</p><p>另外，函数执行 return 语句返回时，需要从栈中回收形参和局部变量占用的存储空间，然后从栈中取出返回地址，再跳转到该地址继续执行，这个过程也要耗费时间。</p><p>总之，使用函数调用语句和直接把函数中的代码重新抄写一遍相比，节省了人力，但是带来了程序运行时间上的额外开销。</p><p>一般情况下，这个开销可以忽略不计。但是，如果一个函数内部没有几条语句，执行时间本来就非常短，那么这个函数调用产生的额外开销和函数本身执行的时间相比，就显得不能忽略了。假如这样的函数在一个循环中被上千万次地执行，函数调用导致的时间开销可能就会使得程序运行明显变慢。</p><p>作为特别注重程序执行效率，适合编写底层系统软件的高级程序设计语言，C++ 用 inline 关键字较好地解决了函数调用开销的问题。</p><p>在 C++ 中，可以在定义函数时，在返回值类型前面加上 inline 关键字。如： </p><pre><code>inline int Max (int a, int b){    if(a &gt;b)        return a;    return b;}</code></pre><p>增加了 inline 关键字的函数称为“内联函数”。内联函数和普通函数的区别在于：当编译器处理调用内联函数的语句时，不会将该语句编译成函数调用的指令，而是直接将整个函数体的代码插人调用语句处，就像整个函数体在调用处被重写了一遍一样。</p><p>有了内联函数，就能像调用一个函数那样方便地重复使用一段代码，而不需要付出执行函数调用的额外开销。很显然，使用内联函数会使最终可执行程序的体积增加。以时间换取空间，或增加空间消耗来节省时间，这是计算机学科中常用的方法。</p><p>内联函数中的代码应该只是很简单、执行很快的几条语句。如果一个函数较为复杂，它执行的时间可能上万倍于函数调用的额外开销，那么将其作为内联函数处理的结果是付出让代码体积增加不少的代价，却只使速度提高了万分之一，这显然是不划算的。</p><p>有时函数看上去很简单，例如只有一个包含一两条语句的循环，但该循环的执行次数可能很多，要消耗大量时间，那么这种情况也不适合将其实现为内联函数。</p><p>注意：的是，调用内联函数的语句前必须已经出现内联函数的定义（即整个数体），而不能只出现内联函数的声明！</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;阻塞与非阻塞的区别&quot;&gt;&lt;a href=&quot;#阻塞与非阻塞的区别&quot; class=&quot;headerlink&quot; title=&quot;阻塞与非阻塞的区别&quot;&gt;&lt;/a&gt;阻塞与非阻塞的区别&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;概念性理解：&lt;/strong&gt;&lt;br&gt;1.阻塞就是干不完不准回来；&lt;
+        &lt;h1 id=&quot;C-内联函数-C-inline&quot;&gt;&lt;a href=&quot;#C-内联函数-C-inline&quot; class=&quot;headerlink&quot; title=&quot;C++内联函数(C++ inline)&quot;&gt;&lt;/a&gt;C++内联函数(C++ inline)&lt;/h1&gt;&lt;p&gt;使用函数能够避免将相
       
     
     </summary>
@@ -519,55 +519,28 @@
   </entry>
   
   <entry>
-    <title>C++中显式、隐式与explicit关键字</title>
-    <link href="http://yoursite.com/2019/10/09/C++-%E4%B8%AD%E6%98%BE%E5%BC%8F%E3%80%81%E9%9A%90%E5%BC%8F%E4%B8%8Eexplicit%E5%85%B3%E9%94%AE%E5%AD%97/"/>
-    <id>http://yoursite.com/2019/10/09/C++-中显式、隐式与explicit关键字/</id>
+    <title>Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用</title>
+    <link href="http://yoursite.com/2019/10/09/Qt-QT_BEGIN_NAMESPACE%E5%92%8CQT_END_NAMESPACE%E7%9A%84%E4%BD%9C%E7%94%A8/"/>
+    <id>http://yoursite.com/2019/10/09/Qt-QT_BEGIN_NAMESPACE和QT_END_NAMESPACE的作用/</id>
     <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:54:21.523Z</updated>
+    <updated>2019-10-09T07:21:15.682Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="C-中显式、隐式与explicit关键字"><a href="#C-中显式、隐式与explicit关键字" class="headerlink" title="C++中显式、隐式与explicit关键字"></a>C++中显式、隐式与explicit关键字</h1><p><strong><em>1.隐式转换</em></strong><br>隐式转换，即编译器完成的转换，例如<br>int a = 1;<br>float b = 3;<br>float sum;<br>sum = a + b;//a是int类型，b是float类型；在编译的时候，编译器自动将int a转换成了float类型</p><p><strong><em>2.显式转换</em></strong><br>显式转换，即用户完成的转换，例如<br>float a = 1;<br>float b = 3;<br>int s;<br>s = (int)a + (int)b;//float类型的a与b被显示的(强制)转换成成为float数据类型</p><p>对于非数据的函数函数而言，例：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line">　　<span class="keyword">int</span> x;</span><br><span class="line">　　<span class="keyword">public</span>:</span><br><span class="line">　　　　A()&#123;x=<span class="number">0</span>;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:0"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　A(<span class="keyword">int</span> a)&#123;x=a;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　~A()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Delete A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">　　A a1;</span><br><span class="line">　　A *a2=<span class="keyword">new</span> A(<span class="number">10</span>);</span><br><span class="line">　　<span class="keyword">delete</span> a2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>程序分析：<br>A a1；隐式的调用了A();<br>A *a2 = new A(10);对A()进行了重载，显式的调用了A(int a);</p><p><strong><em>3.explicit关键字</em></strong></p><p>explicit用于构造函数，抑制隐式转换的发生，防止出现误区。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用"><a href="#Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用" class="headerlink" title="Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用"></a>Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用</h1><p> QT_BEGIN_NAMESPACE其实就是个宏，以前Qt4是没有命令空间的，后来才加上的，编译Qt源码时会有选项，是否将这些类放到专用的Qt命令空间内，默认是没有的。这就出来问题了，为了统一，如果你的代码在默认没有Qt命令空间的SDK中编译，那你就不用在前面加上命令空间，反之则需要。</p><p>为了屏蔽上面这个差异，使得你的代码能在这两种情况下都进行编译，Qt就提供了QT_BEGIN_NAMESPACE宏，这样开发者就省的自己来用程序或宏进行处理了。</p><p>至于说该宏提升编译速度什么的，那是上述类的声明的作用，与Qt无关的（也即与该宏QT_BEGIN_NAMESPACE无关），若要大幅提升编译速度需要开启qt的预编译头文件，会另起章节解说，并附测试结果。</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#ifndef PREVIEWWINDOW_H</span><br><span class="line"></span><br><span class="line">#define PREVIEWWINDOW_H</span><br><span class="line"></span><br><span class="line">#include &lt;QMainWindow&gt;</span><br><span class="line"></span><br><span class="line">#if 0</span><br><span class="line"><span class="comment">// 方式一:</span></span><br><span class="line">#include &lt;QTextBrowser&gt;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#if 0</span><br><span class="line"><span class="comment">// 方式二:    比方式一可轻微提升编译速度</span></span><br><span class="line">class QTextBrowser;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#if 1</span><br><span class="line"><span class="comment">// 方式三:    编译速度与方式二一样，该宏用于自编译qt源码是否启动命令空间的补充</span></span><br><span class="line">QT_BEGIN_NAMESPACE</span><br><span class="line">class QTextBrowser;</span><br><span class="line">QT_END_NAMESPACE</span><br><span class="line"></span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">class <span class="attribute">PreviewWindow</span> : public QMainWindow</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"><span class="attribute">public</span>:</span><br><span class="line">    explicit PreviewWindow(QWidget *<span class="built_in">parent</span> = <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="attribute">signals</span>:</span><br><span class="line"></span><br><span class="line">public <span class="attribute">slots</span>:</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">#endif // PREVIEWWINDOW_H</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;C-中显式、隐式与explicit关键字&quot;&gt;&lt;a href=&quot;#C-中显式、隐式与explicit关键字&quot; class=&quot;headerlink&quot; title=&quot;C++中显式、隐式与explicit关键字&quot;&gt;&lt;/a&gt;C++中显式、隐式与explicit关键字&lt;/h1
+        &lt;h1 id=&quot;Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用&quot;&gt;&lt;a href=&quot;#Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用&quot; class=&quot;headerlink&quot; title=&quot;Qt中QT_BEGI
       
     
     </summary>
     
     
-      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
+      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
     
     
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>构造函数和析构函数</title>
-    <link href="http://yoursite.com/2019/10/09/C++-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/"/>
-    <id>http://yoursite.com/2019/10/09/C++-构造函数和析构函数/</id>
-    <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:53:55.839Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h1><p><strong>构造函数</strong></p><p><strong>析构函数</strong><br>    构造函数（destructor）与构造函数相反，当对象结束其生命周期，如对象所在的函数已调用完毕时，系统自动执行析构函数。析构函数用来做“清理善后”的工作（例如在建立对象时用new开辟了一片内存空间，delete会自动调用析构函数后释放内存）。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;构造函数和析构函数&quot;&gt;&lt;a href=&quot;#构造函数和析构函数&quot; class=&quot;headerlink&quot; title=&quot;构造函数和析构函数&quot;&gt;&lt;/a&gt;构造函数和析构函数&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;构造函数&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;析构函数&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
     
   </entry>
   
@@ -600,47 +573,20 @@
   </entry>
   
   <entry>
-    <title>Qt中C++中文显示</title>
-    <link href="http://yoursite.com/2019/10/09/Qt-C++%E4%B8%AD%E6%96%87%E6%98%BE%E7%A4%BA/"/>
-    <id>http://yoursite.com/2019/10/09/Qt-C++中文显示/</id>
+    <title>构造函数和析构函数</title>
+    <link href="http://yoursite.com/2019/10/09/C++-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/"/>
+    <id>http://yoursite.com/2019/10/09/C++-构造函数和析构函数/</id>
     <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:54:40.813Z</updated>
+    <updated>2019-10-09T07:53:55.839Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Qt中C-中文显示"><a href="#Qt中C-中文显示" class="headerlink" title="Qt中C++中文显示"></a>Qt中C++中文显示</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QTextCodec&gt;    //1.包含头文件</span></span></span><br><span class="line"></span><br><span class="line">QTextCodec *codec;     <span class="comment">//2声明一个全局变量</span></span><br><span class="line">codec = QtextCodec::codecForName(<span class="string">"GBK"</span>);    <span class="comment">//将编码格式声明为GBK</span></span><br><span class="line">ui-&gt;textEdit-&gt;setText(codec-&gt;toUnicode*(<span class="string">"中文"</span>));    <span class="comment">//将中文转换为为固定编码格式</span></span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h1><p><strong>构造函数</strong></p><p><strong>析构函数</strong><br>    构造函数（destructor）与构造函数相反，当对象结束其生命周期，如对象所在的函数已调用完毕时，系统自动执行析构函数。析构函数用来做“清理善后”的工作（例如在建立对象时用new开辟了一片内存空间，delete会自动调用析构函数后释放内存）。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;Qt中C-中文显示&quot;&gt;&lt;a href=&quot;#Qt中C-中文显示&quot; class=&quot;headerlink&quot; title=&quot;Qt中C++中文显示&quot;&gt;&lt;/a&gt;Qt中C++中文显示&lt;/h1&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;t
-      
-    
-    </summary>
-    
-    
-      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C++内联函数(C++ inline)</title>
-    <link href="http://yoursite.com/2019/10/09/C++-%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0(C++%20inline)/"/>
-    <id>http://yoursite.com/2019/10/09/C++-内联函数(C++ inline)/</id>
-    <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:54:13.460Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="C-内联函数-C-inline"><a href="#C-内联函数-C-inline" class="headerlink" title="C++内联函数(C++ inline)"></a>C++内联函数(C++ inline)</h1><p>使用函数能够避免将相同代码重写多次的麻烦，还能减少可执行程序的体积，但也会带来程序运行时间上的开销。</p><p>函数调用在执行时，首先要在栈中为形参和局部变量分配存储空间，然后还要将实参的值复制给形参，接下来还要将函数的返回地址（该地址指明了函数执行结束后，程序应该回到哪里继续执行）放入栈中，最后才跳转到函数内部执行。这个过程是要耗费时间的。</p><p>另外，函数执行 return 语句返回时，需要从栈中回收形参和局部变量占用的存储空间，然后从栈中取出返回地址，再跳转到该地址继续执行，这个过程也要耗费时间。</p><p>总之，使用函数调用语句和直接把函数中的代码重新抄写一遍相比，节省了人力，但是带来了程序运行时间上的额外开销。</p><p>一般情况下，这个开销可以忽略不计。但是，如果一个函数内部没有几条语句，执行时间本来就非常短，那么这个函数调用产生的额外开销和函数本身执行的时间相比，就显得不能忽略了。假如这样的函数在一个循环中被上千万次地执行，函数调用导致的时间开销可能就会使得程序运行明显变慢。</p><p>作为特别注重程序执行效率，适合编写底层系统软件的高级程序设计语言，C++ 用 inline 关键字较好地解决了函数调用开销的问题。</p><p>在 C++ 中，可以在定义函数时，在返回值类型前面加上 inline 关键字。如： </p><pre><code>inline int Max (int a, int b){    if(a &gt;b)        return a;    return b;}</code></pre><p>增加了 inline 关键字的函数称为“内联函数”。内联函数和普通函数的区别在于：当编译器处理调用内联函数的语句时，不会将该语句编译成函数调用的指令，而是直接将整个函数体的代码插人调用语句处，就像整个函数体在调用处被重写了一遍一样。</p><p>有了内联函数，就能像调用一个函数那样方便地重复使用一段代码，而不需要付出执行函数调用的额外开销。很显然，使用内联函数会使最终可执行程序的体积增加。以时间换取空间，或增加空间消耗来节省时间，这是计算机学科中常用的方法。</p><p>内联函数中的代码应该只是很简单、执行很快的几条语句。如果一个函数较为复杂，它执行的时间可能上万倍于函数调用的额外开销，那么将其作为内联函数处理的结果是付出让代码体积增加不少的代价，却只使速度提高了万分之一，这显然是不划算的。</p><p>有时函数看上去很简单，例如只有一个包含一两条语句的循环，但该循环的执行次数可能很多，要消耗大量时间，那么这种情况也不适合将其实现为内联函数。</p><p>注意：的是，调用内联函数的语句前必须已经出现内联函数的定义（即整个数体），而不能只出现内联函数的声明！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;C-内联函数-C-inline&quot;&gt;&lt;a href=&quot;#C-内联函数-C-inline&quot; class=&quot;headerlink&quot; title=&quot;C++内联函数(C++ inline)&quot;&gt;&lt;/a&gt;C++内联函数(C++ inline)&lt;/h1&gt;&lt;p&gt;使用函数能够避免将相
+        &lt;h1 id=&quot;构造函数和析构函数&quot;&gt;&lt;a href=&quot;#构造函数和析构函数&quot; class=&quot;headerlink&quot; title=&quot;构造函数和析构函数&quot;&gt;&lt;/a&gt;构造函数和析构函数&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;构造函数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;析构函数&lt;
       
     
     </summary>
@@ -680,19 +626,73 @@
   </entry>
   
   <entry>
-    <title>Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用</title>
-    <link href="http://yoursite.com/2019/10/09/Qt-QT_BEGIN_NAMESPACE%E5%92%8CQT_END_NAMESPACE%E7%9A%84%E4%BD%9C%E7%94%A8/"/>
-    <id>http://yoursite.com/2019/10/09/Qt-QT_BEGIN_NAMESPACE和QT_END_NAMESPACE的作用/</id>
+    <title>Qt中C++中文显示</title>
+    <link href="http://yoursite.com/2019/10/09/Qt-C++%E4%B8%AD%E6%96%87%E6%98%BE%E7%A4%BA/"/>
+    <id>http://yoursite.com/2019/10/09/Qt-C++中文显示/</id>
     <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:21:15.682Z</updated>
+    <updated>2019-10-09T07:54:40.813Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用"><a href="#Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用" class="headerlink" title="Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用"></a>Qt中QT_BEGIN_NAMESPACE与QT_END_NAMESPACE的作用</h1><p> QT_BEGIN_NAMESPACE其实就是个宏，以前Qt4是没有命令空间的，后来才加上的，编译Qt源码时会有选项，是否将这些类放到专用的Qt命令空间内，默认是没有的。这就出来问题了，为了统一，如果你的代码在默认没有Qt命令空间的SDK中编译，那你就不用在前面加上命令空间，反之则需要。</p><p>为了屏蔽上面这个差异，使得你的代码能在这两种情况下都进行编译，Qt就提供了QT_BEGIN_NAMESPACE宏，这样开发者就省的自己来用程序或宏进行处理了。</p><p>至于说该宏提升编译速度什么的，那是上述类的声明的作用，与Qt无关的（也即与该宏QT_BEGIN_NAMESPACE无关），若要大幅提升编译速度需要开启qt的预编译头文件，会另起章节解说，并附测试结果。</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#ifndef PREVIEWWINDOW_H</span><br><span class="line"></span><br><span class="line">#define PREVIEWWINDOW_H</span><br><span class="line"></span><br><span class="line">#include &lt;QMainWindow&gt;</span><br><span class="line"></span><br><span class="line">#if 0</span><br><span class="line"><span class="comment">// 方式一:</span></span><br><span class="line">#include &lt;QTextBrowser&gt;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#if 0</span><br><span class="line"><span class="comment">// 方式二:    比方式一可轻微提升编译速度</span></span><br><span class="line">class QTextBrowser;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#if 1</span><br><span class="line"><span class="comment">// 方式三:    编译速度与方式二一样，该宏用于自编译qt源码是否启动命令空间的补充</span></span><br><span class="line">QT_BEGIN_NAMESPACE</span><br><span class="line">class QTextBrowser;</span><br><span class="line">QT_END_NAMESPACE</span><br><span class="line"></span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">class <span class="attribute">PreviewWindow</span> : public QMainWindow</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"><span class="attribute">public</span>:</span><br><span class="line">    explicit PreviewWindow(QWidget *<span class="built_in">parent</span> = <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="attribute">signals</span>:</span><br><span class="line"></span><br><span class="line">public <span class="attribute">slots</span>:</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">#endif // PREVIEWWINDOW_H</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="Qt中C-中文显示"><a href="#Qt中C-中文显示" class="headerlink" title="Qt中C++中文显示"></a>Qt中C++中文显示</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QTextCodec&gt;    //1.包含头文件</span></span></span><br><span class="line"></span><br><span class="line">QTextCodec *codec;     <span class="comment">//2声明一个全局变量</span></span><br><span class="line">codec = QtextCodec::codecForName(<span class="string">"GBK"</span>);    <span class="comment">//将编码格式声明为GBK</span></span><br><span class="line">ui-&gt;textEdit-&gt;setText(codec-&gt;toUnicode*(<span class="string">"中文"</span>));    <span class="comment">//将中文转换为为固定编码格式</span></span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用&quot;&gt;&lt;a href=&quot;#Qt中QT-BEGIN-NAMESPACE与QT-END-NAMESPACE的作用&quot; class=&quot;headerlink&quot; title=&quot;Qt中QT_BEGI
+        &lt;h1 id=&quot;Qt中C-中文显示&quot;&gt;&lt;a href=&quot;#Qt中C-中文显示&quot; class=&quot;headerlink&quot; title=&quot;Qt中C++中文显示&quot;&gt;&lt;/a&gt;Qt中C++中文显示&lt;/h1&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;t
+      
+    
+    </summary>
+    
+    
+      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C++函数</title>
+    <link href="http://yoursite.com/2019/10/09/C++-%E5%87%BD%E6%95%B0/"/>
+    <id>http://yoursite.com/2019/10/09/C++-函数/</id>
+    <published>2019-10-09T07:11:06.000Z</published>
+    <updated>2019-10-09T07:54:04.471Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="C-函数"><a href="#C-函数" class="headerlink" title="C++函数"></a>C++函数</h1><p>函数是一组一起执行一个任务的语句。每个 C++ 程序都至少有一个函数，即主函数 main() ，所有简单的程序都可以定义其他额外的函数。</p><p>您可以把代码划分到不同的函数中。如何划分代码到不同的函数中是由您来决定的，但在逻辑上，划分通常是根据每个函数执行一个特定的任务来进行的。</p><p>函数声明告诉编译器函数的名称、返回类型和参数。函数定义提供了函数的实际主体。</p><p>C++ 标准库提供了大量的程序可以调用的内置函数。例如，函数 strcat() 用来连接两个字符串，函数 memcpy() 用来复制内存到另一个位置。</p><p>函数还有很多叫法，比如方法、子例程或程序，等等。</p><p><strong>函数定义格式</strong><br>C++ 中的函数定义的一般形式如下：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">return_type <span class="title">function_name</span><span class="params">( parameter <span class="built_in">list</span> )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    body of the function</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>在 C++ 中，函数由一个函数头和一个函数主体组成。下面列出一个函数的所有组成部分：</p><pre><code>返回类型：一个函数可以返回一个值。return_type 是函数返回的值的数据类型。有些函数执行所需的操作而不返回值，在这种情况下，return_type 是关键字 void。函数名称：这是函数的实际名称。函数名和参数列表一起构成了函数签名。参数：参数就像是占位符。当函数被调用时，您向参数传递一个值，这个值被称为实际参数。参数列表包括函数参数的类型、顺序、数量。参数是可选的，也就是说，函数可能不包含参数。函数主体：函数主体包含一组定义函数执行任务的语句。</code></pre><p><strong>实例</strong><br>以下是 max() 函数的源代码。该函数有两个参数 num1 和 num2，会返回这两个数中较大的那个数：<br>//函数返回两个数中较大那个数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int max( int num1, int num2 )</span><br><span class="line">&#123;</span><br><span class="line">    //局部变量声明</span><br><span class="line">    int result；</span><br><span class="line">    </span><br><span class="line">   if(num1 &gt; num2 )</span><br><span class="line">        result = num1;</span><br><span class="line">    else </span><br><span class="line">        result = num2;</span><br><span class="line">        </span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>函数声明</strong><br>函数声明会告诉编译器函数名称及如何调用函数。函数的实际主体可以单独定义。<br>函数声明包括以下几个部分：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return_type function_name( parameter list );</span><br></pre></td></tr></table></figure><p>针对上面定义的函数 max()，以下是函数声明：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int max(int num1, int num2);</span><br></pre></td></tr></table></figure><p>在函数声明中，参数的名称并不重要，只有参数的类型是必需的，因此下面也是有效的声明：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int max(int, int);</span><br></pre></td></tr></table></figure><p>当您在一个源文件中定义函数且在另一个文件中调用函数时，函数声明是必需的。在这种情况下，您应该在调用函数的文件顶部声明函数。</p><p>创建 C++ 函数时，会定义函数做什么，然后通过调用函数来完成已定义的任务。</p><p><strong>函数调用</strong><br>当程序调用函数时，程序控制权会转移给被调用的函数。被调用的函数执行已定义的任务，当函数的返回语句被执行时，或到达函数的结束括号时，会把程序控制权交还给主程序。<br>调用函数时，传递所需参数，如果函数返回一个值，则可以存储返回值。例如：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数声明</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> num1, <span class="keyword">int</span> num2)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="comment">// 局部变量声明</span></span><br><span class="line">   <span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">   <span class="keyword">int</span> b = <span class="number">200</span>;</span><br><span class="line">   <span class="keyword">int</span> ret;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 调用函数来获取最大值</span></span><br><span class="line">   ret = max(a, b);</span><br><span class="line"></span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"Max value is : "</span> &lt;&lt; ret &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数返回两个数中较大的那个数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> num1, <span class="keyword">int</span> num2)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="comment">// 局部变量声明</span></span><br><span class="line">   <span class="keyword">int</span> result;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span> (num1 &gt; num2)</span><br><span class="line">      result = num1;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">      result = num2;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> result; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>把 max() 函数和 main() 函数放一块，编译源代码。当运行最后的可执行文件时，会产生下列结果：<br>Max value is : 200</p><p><strong>函数参数</strong></p><p>如果函数要使用参数，则必须声明接受参数值的变量。这些变量称为函数的形式参数。<br>形式参数就像函数内的其他局部变量，在进入函数时被创建，退出函数时被销毁。<br>当调用函数时，有两种向函数传递参数的方式：</p><p>调用类型：<br>传值调用：该方法把参数的实际值复制给函数的形式参数。在这种情况下，修改函数内的形式参数对实际参数没有影响。<br>指针调用：该方法把参数的地址复制给形式参数。在函数内，该地址用于访问调用中要用到的实际参数。这意味着，修改形式参数会影响实际参数。<br>引用调用：该方法把参数的引用复制给形式参数。在函数内，该引用用于访问调用中要用到的实际参数。这意味着，修改形式参数会影响实际参数。</p><p>默认情况下，C++ 使用传值调用来传递参数。一般来说，这意味着函数内的代码不能改变用于调用函数的参数。之前提到的实例，调用 max() 函数时，使用了相同的方法。</p><p><strong>参数的默认值</strong></p><p>当您定义一个函数，您可以为参数列表中后边的每一个参数指定默认值。当调用函数时，如果实际参数的值留空，则使用这个默认值。<br>这是通过在函数定义中使用赋值运算符来为参数赋值的。调用函数时，如果未传递参数的值，则会使用默认值，如果指定了值，则会忽略默认值，使用传递的值。请看下面的实例：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b=<span class="number">20</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> result;</span><br><span class="line"></span><br><span class="line">  result = a + b;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (result);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="comment">// 局部变量声明</span></span><br><span class="line">   <span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">   <span class="keyword">int</span> b = <span class="number">200</span>;</span><br><span class="line">   <span class="keyword">int</span> result;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 调用函数来添加值</span></span><br><span class="line">   result = sum(a, b);</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"Total value is :"</span> &lt;&lt; result &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 再次调用函数</span></span><br><span class="line">   result = sum(a);</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"Total value is :"</span> &lt;&lt; result &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>结果：<br>Total value is :300<br>Total value is :120</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;C-函数&quot;&gt;&lt;a href=&quot;#C-函数&quot; class=&quot;headerlink&quot; title=&quot;C++函数&quot;&gt;&lt;/a&gt;C++函数&lt;/h1&gt;&lt;p&gt;函数是一组一起执行一个任务的语句。每个 C++ 程序都至少有一个函数，即主函数 main() ，所有简单的程序都可以定义
+      
+    
+    </summary>
+    
+    
+      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Qt使Widget打开为全屏</title>
+    <link href="http://yoursite.com/2019/10/09/Qt-%E4%BD%BFWidget%E6%89%93%E5%BC%80%E4%B8%BA%E5%85%A8%E5%B1%8F/"/>
+    <id>http://yoursite.com/2019/10/09/Qt-使Widget打开为全屏/</id>
+    <published>2019-10-09T07:11:06.000Z</published>
+    <updated>2019-10-09T07:24:07.471Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Qt5-5-1使Widget打开为全屏"><a href="#Qt5-5-1使Widget打开为全屏" class="headerlink" title="Qt5.5.1使Widget打开为全屏"></a>Qt5.5.1使Widget打开为全屏</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MainWindow w;</span><br><span class="line">w.showMaximized();</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Qt5-5-1使Widget打开为全屏&quot;&gt;&lt;a href=&quot;#Qt5-5-1使Widget打开为全屏&quot; class=&quot;headerlink&quot; title=&quot;Qt5.5.1使Widget打开为全屏&quot;&gt;&lt;/a&gt;Qt5.5.1使Widget打开为全屏&lt;/h1&gt;&lt;figu
       
     
     </summary>
@@ -719,32 +719,6 @@
       
       
         &lt;h1 id=&quot;Qt-sqlite数据库连接&quot;&gt;&lt;a href=&quot;#Qt-sqlite数据库连接&quot; class=&quot;headerlink&quot; title=&quot;Qt+sqlite数据库连接&quot;&gt;&lt;/a&gt;Qt+sqlite数据库连接&lt;/h1&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="Qt" scheme="http://yoursite.com/categories/Qt/"/>
-    
-    
-      <category term="Qt" scheme="http://yoursite.com/tags/Qt/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Qt使Widget打开为全屏</title>
-    <link href="http://yoursite.com/2019/10/09/Qt-%E4%BD%BFWidget%E6%89%93%E5%BC%80%E4%B8%BA%E5%85%A8%E5%B1%8F/"/>
-    <id>http://yoursite.com/2019/10/09/Qt-使Widget打开为全屏/</id>
-    <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:24:07.471Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Qt5-5-1使Widget打开为全屏"><a href="#Qt5-5-1使Widget打开为全屏" class="headerlink" title="Qt5.5.1使Widget打开为全屏"></a>Qt5.5.1使Widget打开为全屏</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MainWindow w;</span><br><span class="line">w.showMaximized();</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Qt5-5-1使Widget打开为全屏&quot;&gt;&lt;a href=&quot;#Qt5-5-1使Widget打开为全屏&quot; class=&quot;headerlink&quot; title=&quot;Qt5.5.1使Widget打开为全屏&quot;&gt;&lt;/a&gt;Qt5.5.1使Widget打开为全屏&lt;/h1&gt;&lt;figu
       
     
     </summary>
@@ -811,32 +785,6 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="http://yoursite.com/2019/10/09/YY-#pragma%E9%A2%84%E5%A4%84%E7%90%86%E6%8C%87%E4%BB%A4/"/>
-    <id>http://yoursite.com/2019/10/09/YY-#pragma预处理指令/</id>
-    <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:56:50.519Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="pragma预处理指令"><a href="#pragma预处理指令" class="headerlink" title="#pragma预处理指令"></a>#pragma预处理指令</h1><p><strong><em>定义：</em></strong><br>在所有的预处理指令中，#pragma 指令可能是最复杂的了，它的作用是设定编译器的状态或者是指示编译器完成一些特定的动作。#pragma指令对每个编译器给出了一个方法，在保持与C和C++语言完全兼容的情况下，给出主机或操作系统专有的特征。依据定义，编译指示是机器或操作系统专有的，且对于每个编译器都是不同的。</p><p><strong><em>一般格式：</em></strong></p><p>#pargam Para        其中Para为参数</p><p><strong>举例</strong><br><em>1.message参数：</em><br>    Message 参数能够在编译信息输出窗口中输出相应的信息，这对于源代码信息的控制是非常重要的。其使用方法为：</p><p>   #pragma message(“消息文本”)</p><p>   当编译器遇到这条指令时就在编译输出窗口中将消息文本打印出来。<br>   当我们在程序中定义了许多宏来控制源代码版本的时候，我们自己有可能都会忘记有没有正确的设置这些宏，此时我们可以用这条指令在编译的时候就进行检查。假设我们希望判断自己有没有在源代码的什么地方定义了_X86这个宏可以用下面的方法<br>    #ifdef _X86<br>    #pragma message(“_X86 macro activated!”)<br>    #endif</p><p>当我们定义了_X86这个宏以后，应用程序在编译时就会在编译输出窗口里显示“_X86 macro activated! ”。我们就不会因为不记得自己定义的一些特定的宏而抓耳挠腮了。</p><p><em>2.code_seg存放代码段：</em></p><p>code_seg对pragma的使用量也比较大</p><p>#pragma code_seg([“section-name”[,”section-class”]])</p><p>它能够设置程序中函数代码存放的代码段，当我们开发驱动程序的时候就会使用到它。</p><p>3.pragma once 执行一次（常用）<br>    只要在头文件的最开始加入这条指令就能够保证头文件被编译一次，这条指令实际上在VC6中就已经有了，但是考虑到兼容性并没有太多的使用它。<br>    #pragma once是编译相关，就是说这个编译系统上能用，但在其他编译系统不一定可以，也就是说移植性差，不过现在基本上已经是每个编译器都有这个定义了。<br>    #ifndef，#define，#endif这个是C++语言相关，这是C++语言中的宏定义，通过宏定义避免文件多次编译。所以在所有支持C++语言的编译器上都是有效的，如果写的程序要跨平台，最好使用这种方式</p><p>附件链接：<a href="https://baike.baidu.com/item/%23pragma/706691?fr=aladdin#1_10" target="_blank" rel="noopener">pragma百度百科</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;pragma预处理指令&quot;&gt;&lt;a href=&quot;#pragma预处理指令&quot; class=&quot;headerlink&quot; title=&quot;#pragma预处理指令&quot;&gt;&lt;/a&gt;#pragma预处理指令&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt;定义：&lt;/em&gt;&lt;/strong&gt;&lt;br
-      
-    
-    </summary>
-    
-    
-      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
-    
-    
-      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Qt设置背景界面</title>
     <link href="http://yoursite.com/2019/10/09/Qt-%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E7%95%8C%E9%9D%A2/"/>
     <id>http://yoursite.com/2019/10/09/Qt-设置背景界面/</id>
@@ -864,19 +812,71 @@
   </entry>
   
   <entry>
-    <title>C++函数</title>
-    <link href="http://yoursite.com/2019/10/09/C++-%E5%87%BD%E6%95%B0/"/>
-    <id>http://yoursite.com/2019/10/09/C++-函数/</id>
+    <title>C++中显式、隐式与explicit关键字</title>
+    <link href="http://yoursite.com/2019/10/09/C++-%E4%B8%AD%E6%98%BE%E5%BC%8F%E3%80%81%E9%9A%90%E5%BC%8F%E4%B8%8Eexplicit%E5%85%B3%E9%94%AE%E5%AD%97/"/>
+    <id>http://yoursite.com/2019/10/09/C++-中显式、隐式与explicit关键字/</id>
     <published>2019-10-09T07:11:06.000Z</published>
-    <updated>2019-10-09T07:54:04.471Z</updated>
+    <updated>2019-10-09T07:54:21.523Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="C-函数"><a href="#C-函数" class="headerlink" title="C++函数"></a>C++函数</h1><p>函数是一组一起执行一个任务的语句。每个 C++ 程序都至少有一个函数，即主函数 main() ，所有简单的程序都可以定义其他额外的函数。</p><p>您可以把代码划分到不同的函数中。如何划分代码到不同的函数中是由您来决定的，但在逻辑上，划分通常是根据每个函数执行一个特定的任务来进行的。</p><p>函数声明告诉编译器函数的名称、返回类型和参数。函数定义提供了函数的实际主体。</p><p>C++ 标准库提供了大量的程序可以调用的内置函数。例如，函数 strcat() 用来连接两个字符串，函数 memcpy() 用来复制内存到另一个位置。</p><p>函数还有很多叫法，比如方法、子例程或程序，等等。</p><p><strong>函数定义格式</strong><br>C++ 中的函数定义的一般形式如下：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">return_type <span class="title">function_name</span><span class="params">( parameter <span class="built_in">list</span> )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    body of the function</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>在 C++ 中，函数由一个函数头和一个函数主体组成。下面列出一个函数的所有组成部分：</p><pre><code>返回类型：一个函数可以返回一个值。return_type 是函数返回的值的数据类型。有些函数执行所需的操作而不返回值，在这种情况下，return_type 是关键字 void。函数名称：这是函数的实际名称。函数名和参数列表一起构成了函数签名。参数：参数就像是占位符。当函数被调用时，您向参数传递一个值，这个值被称为实际参数。参数列表包括函数参数的类型、顺序、数量。参数是可选的，也就是说，函数可能不包含参数。函数主体：函数主体包含一组定义函数执行任务的语句。</code></pre><p><strong>实例</strong><br>以下是 max() 函数的源代码。该函数有两个参数 num1 和 num2，会返回这两个数中较大的那个数：<br>//函数返回两个数中较大那个数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int max( int num1, int num2 )</span><br><span class="line">&#123;</span><br><span class="line">    //局部变量声明</span><br><span class="line">    int result；</span><br><span class="line">    </span><br><span class="line">   if(num1 &gt; num2 )</span><br><span class="line">        result = num1;</span><br><span class="line">    else </span><br><span class="line">        result = num2;</span><br><span class="line">        </span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>函数声明</strong><br>函数声明会告诉编译器函数名称及如何调用函数。函数的实际主体可以单独定义。<br>函数声明包括以下几个部分：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return_type function_name( parameter list );</span><br></pre></td></tr></table></figure><p>针对上面定义的函数 max()，以下是函数声明：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int max(int num1, int num2);</span><br></pre></td></tr></table></figure><p>在函数声明中，参数的名称并不重要，只有参数的类型是必需的，因此下面也是有效的声明：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int max(int, int);</span><br></pre></td></tr></table></figure><p>当您在一个源文件中定义函数且在另一个文件中调用函数时，函数声明是必需的。在这种情况下，您应该在调用函数的文件顶部声明函数。</p><p>创建 C++ 函数时，会定义函数做什么，然后通过调用函数来完成已定义的任务。</p><p><strong>函数调用</strong><br>当程序调用函数时，程序控制权会转移给被调用的函数。被调用的函数执行已定义的任务，当函数的返回语句被执行时，或到达函数的结束括号时，会把程序控制权交还给主程序。<br>调用函数时，传递所需参数，如果函数返回一个值，则可以存储返回值。例如：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数声明</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> num1, <span class="keyword">int</span> num2)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="comment">// 局部变量声明</span></span><br><span class="line">   <span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">   <span class="keyword">int</span> b = <span class="number">200</span>;</span><br><span class="line">   <span class="keyword">int</span> ret;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 调用函数来获取最大值</span></span><br><span class="line">   ret = max(a, b);</span><br><span class="line"></span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"Max value is : "</span> &lt;&lt; ret &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数返回两个数中较大的那个数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> num1, <span class="keyword">int</span> num2)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="comment">// 局部变量声明</span></span><br><span class="line">   <span class="keyword">int</span> result;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span> (num1 &gt; num2)</span><br><span class="line">      result = num1;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">      result = num2;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> result; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>把 max() 函数和 main() 函数放一块，编译源代码。当运行最后的可执行文件时，会产生下列结果：<br>Max value is : 200</p><p><strong>函数参数</strong></p><p>如果函数要使用参数，则必须声明接受参数值的变量。这些变量称为函数的形式参数。<br>形式参数就像函数内的其他局部变量，在进入函数时被创建，退出函数时被销毁。<br>当调用函数时，有两种向函数传递参数的方式：</p><p>调用类型：<br>传值调用：该方法把参数的实际值复制给函数的形式参数。在这种情况下，修改函数内的形式参数对实际参数没有影响。<br>指针调用：该方法把参数的地址复制给形式参数。在函数内，该地址用于访问调用中要用到的实际参数。这意味着，修改形式参数会影响实际参数。<br>引用调用：该方法把参数的引用复制给形式参数。在函数内，该引用用于访问调用中要用到的实际参数。这意味着，修改形式参数会影响实际参数。</p><p>默认情况下，C++ 使用传值调用来传递参数。一般来说，这意味着函数内的代码不能改变用于调用函数的参数。之前提到的实例，调用 max() 函数时，使用了相同的方法。</p><p><strong>参数的默认值</strong></p><p>当您定义一个函数，您可以为参数列表中后边的每一个参数指定默认值。当调用函数时，如果实际参数的值留空，则使用这个默认值。<br>这是通过在函数定义中使用赋值运算符来为参数赋值的。调用函数时，如果未传递参数的值，则会使用默认值，如果指定了值，则会忽略默认值，使用传递的值。请看下面的实例：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b=<span class="number">20</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> result;</span><br><span class="line"></span><br><span class="line">  result = a + b;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (result);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="comment">// 局部变量声明</span></span><br><span class="line">   <span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">   <span class="keyword">int</span> b = <span class="number">200</span>;</span><br><span class="line">   <span class="keyword">int</span> result;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 调用函数来添加值</span></span><br><span class="line">   result = sum(a, b);</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"Total value is :"</span> &lt;&lt; result &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 再次调用函数</span></span><br><span class="line">   result = sum(a);</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"Total value is :"</span> &lt;&lt; result &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>结果：<br>Total value is :300<br>Total value is :120</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="C-中显式、隐式与explicit关键字"><a href="#C-中显式、隐式与explicit关键字" class="headerlink" title="C++中显式、隐式与explicit关键字"></a>C++中显式、隐式与explicit关键字</h1><p><strong><em>1.隐式转换</em></strong><br>隐式转换，即编译器完成的转换，例如<br>int a = 1;<br>float b = 3;<br>float sum;<br>sum = a + b;//a是int类型，b是float类型；在编译的时候，编译器自动将int a转换成了float类型</p><p><strong><em>2.显式转换</em></strong><br>显式转换，即用户完成的转换，例如<br>float a = 1;<br>float b = 3;<br>int s;<br>s = (int)a + (int)b;//float类型的a与b被显示的(强制)转换成成为float数据类型</p><p>对于非数据的函数函数而言，例：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line">　　<span class="keyword">int</span> x;</span><br><span class="line">　　<span class="keyword">public</span>:</span><br><span class="line">　　　　A()&#123;x=<span class="number">0</span>;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:0"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　A(<span class="keyword">int</span> a)&#123;x=a;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Create A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">　　　　~A()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"Delete A:"</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">　　A a1;</span><br><span class="line">　　A *a2=<span class="keyword">new</span> A(<span class="number">10</span>);</span><br><span class="line">　　<span class="keyword">delete</span> a2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>程序分析：<br>A a1；隐式的调用了A();<br>A *a2 = new A(10);对A()进行了重载，显式的调用了A(int a);</p><p><strong><em>3.explicit关键字</em></strong></p><p>explicit用于构造函数，抑制隐式转换的发生，防止出现误区。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;C-函数&quot;&gt;&lt;a href=&quot;#C-函数&quot; class=&quot;headerlink&quot; title=&quot;C++函数&quot;&gt;&lt;/a&gt;C++函数&lt;/h1&gt;&lt;p&gt;函数是一组一起执行一个任务的语句。每个 C++ 程序都至少有一个函数，即主函数 main() ，所有简单的程序都可以定义
+        &lt;h1 id=&quot;C-中显式、隐式与explicit关键字&quot;&gt;&lt;a href=&quot;#C-中显式、隐式与explicit关键字&quot; class=&quot;headerlink&quot; title=&quot;C++中显式、隐式与explicit关键字&quot;&gt;&lt;/a&gt;C++中显式、隐式与explicit关键字&lt;/h1
+      
+    
+    </summary>
+    
+    
+      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2019/10/09/YY-#pragma%E9%A2%84%E5%A4%84%E7%90%86%E6%8C%87%E4%BB%A4/"/>
+    <id>http://yoursite.com/2019/10/09/YY-#pragma预处理指令/</id>
+    <published>2019-10-09T07:11:06.000Z</published>
+    <updated>2019-10-09T07:56:50.519Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="pragma预处理指令"><a href="#pragma预处理指令" class="headerlink" title="#pragma预处理指令"></a>#pragma预处理指令</h1><p><strong><em>定义：</em></strong><br>在所有的预处理指令中，#pragma 指令可能是最复杂的了，它的作用是设定编译器的状态或者是指示编译器完成一些特定的动作。#pragma指令对每个编译器给出了一个方法，在保持与C和C++语言完全兼容的情况下，给出主机或操作系统专有的特征。依据定义，编译指示是机器或操作系统专有的，且对于每个编译器都是不同的。</p><p><strong><em>一般格式：</em></strong></p><p>#pargam Para        其中Para为参数</p><p><strong>举例</strong><br><em>1.message参数：</em><br>    Message 参数能够在编译信息输出窗口中输出相应的信息，这对于源代码信息的控制是非常重要的。其使用方法为：</p><p>   #pragma message(“消息文本”)</p><p>   当编译器遇到这条指令时就在编译输出窗口中将消息文本打印出来。<br>   当我们在程序中定义了许多宏来控制源代码版本的时候，我们自己有可能都会忘记有没有正确的设置这些宏，此时我们可以用这条指令在编译的时候就进行检查。假设我们希望判断自己有没有在源代码的什么地方定义了_X86这个宏可以用下面的方法<br>    #ifdef _X86<br>    #pragma message(“_X86 macro activated!”)<br>    #endif</p><p>当我们定义了_X86这个宏以后，应用程序在编译时就会在编译输出窗口里显示“_X86 macro activated! ”。我们就不会因为不记得自己定义的一些特定的宏而抓耳挠腮了。</p><p><em>2.code_seg存放代码段：</em></p><p>code_seg对pragma的使用量也比较大</p><p>#pragma code_seg([“section-name”[,”section-class”]])</p><p>它能够设置程序中函数代码存放的代码段，当我们开发驱动程序的时候就会使用到它。</p><p>3.pragma once 执行一次（常用）<br>    只要在头文件的最开始加入这条指令就能够保证头文件被编译一次，这条指令实际上在VC6中就已经有了，但是考虑到兼容性并没有太多的使用它。<br>    #pragma once是编译相关，就是说这个编译系统上能用，但在其他编译系统不一定可以，也就是说移植性差，不过现在基本上已经是每个编译器都有这个定义了。<br>    #ifndef，#define，#endif这个是C++语言相关，这是C++语言中的宏定义，通过宏定义避免文件多次编译。所以在所有支持C++语言的编译器上都是有效的，如果写的程序要跨平台，最好使用这种方式</p><p>附件链接：<a href="https://baike.baidu.com/item/%23pragma/706691?fr=aladdin#1_10" target="_blank" rel="noopener">pragma百度百科</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;pragma预处理指令&quot;&gt;&lt;a href=&quot;#pragma预处理指令&quot; class=&quot;headerlink&quot; title=&quot;#pragma预处理指令&quot;&gt;&lt;/a&gt;#pragma预处理指令&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt;定义：&lt;/em&gt;&lt;/strong&gt;&lt;br
+      
+    
+    </summary>
+    
+    
+      <category term="YY" scheme="http://yoursite.com/categories/YY/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>阻塞与非阻塞的区别</title>
+    <link href="http://yoursite.com/2019/10/09/YY-%E9%98%BB%E5%A1%9E%E4%B8%8E%E9%9D%9E%E9%98%BB%E5%A1%9E%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>http://yoursite.com/2019/10/09/YY-阻塞与非阻塞的区别/</id>
+    <published>2019-10-09T07:11:06.000Z</published>
+    <updated>2019-10-09T07:57:02.361Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="阻塞与非阻塞的区别"><a href="#阻塞与非阻塞的区别" class="headerlink" title="阻塞与非阻塞的区别"></a>阻塞与非阻塞的区别</h1><p><strong>概念性理解：</strong><br>1.阻塞就是干不完不准回来；<br>2.非阻塞就是你先干，我现在看看有其他事没有，完了告诉我一声。</p><p><strong>以常用函数send和recv举例：</strong><br>    比如你调用send函数发送一定的Byte,在系统内部send做的工作其实只是把数据传输(Copy)到TCP/IP协议栈的输出缓冲区,它执行成功并不代表数据已经成功的发送出去了,如果TCP/IP协议栈没有足够的可用缓冲区来保存你Copy过来的数据的话…这时候就体现出阻塞和非阻塞的不同之处了:对于阻塞模式的socket send函数将不返回直到系统缓冲区有足够的空间把你要发送的数据Copy过去以后才返回,而对于非阻塞的socket来说send会立即返回WSAEWOULDDBLOCK告诉调用者说:”发送操作被阻塞了!!!你想办法处理吧…”<br>    对于recv函数,同样道理,该函数的内部工作机制其实是在等待TCP/IP协议栈的接收缓冲区通知它说:嗨,你的数据来了.对于阻塞模式的socket来说如果TCP/IP协议栈的接收缓冲区没有通知一个结果给它它就一直不返回:耗费着系统资源….对于非阻塞模式的socket该函数会马上返回,然后告诉你:WSAEWOULDDBLOCK—“现在没有数据,回头在来看看”</p><p><strong>概念性拓展：</strong><br>在进行网络编程时，我们常常见到同步、异步、阻塞和非阻塞四种调用方式。这些方式彼此概念并不好理解。下面是我对这些术语的理解。</p><p><em>同步</em><br>    所谓同步，就是在发出一个功能调用时，在没有得到结果之前，该调用就不返回。按照这个定义，其实绝大多数函数都是同步调用（例如sin, isdigit等）。但是一般而言，我们在说同步、异步的时候，特指那些需要其他部件协作或者需要一定时间完成的任务。最常见的例子就是 SendMessage。该函数发送一个消息给某个窗口，在对方处理完消息之前，这个函数不返回。当对方处理完毕以后，该函数才把消息处理函数所返回的 LRESULT值返回给调用者。</p><p><em>异步</em><br>    异步的概念和同步相对。当一个异步过程调用发出后，调用者不能立刻得到结果。实际处理这个调用的部件在完成后，通过状态、通知和回调来通知调用者。以 CAsycSocket类为例（注意，CSocket从CAsyncSocket派生，但是起功能已经由异步转化为同步），当一个客户端通过调用 Connect函数发出一个连接请求后，调用者线程立刻可以向下运行。当连接真正建立起来以后，socket底 层会发送一个消息通知该对象。这里提到执行部件和调用者通过三种途径返回结果：状态、通知和回调。可以使用哪一种依赖于执行部件的实现，除非执行部件提供 多种选择，否则不受调用者控制。如果执行部件用状态来通知，那么调用者就需要每隔一定时间检查一次，效率就很低（有些初学多线程编程的人，总喜欢用一个循 环去检查某个变量的值，这其实是一种很严重的错误）。如果是使用通知的方式，效率则很高，因为执行部件几乎不需要做额外的操作。至于回调函数，其实和通知 没太多区别。</p><p><em>阻塞</em><br>    阻塞调用是指调用结果返回之前，当前线程会被挂起。函数只有在得到结果之后才会返回。有人也许会把阻塞调用和同步调用等同起来，实际上它们是不同的。对于同步调用来说，很多时候当前线程还是激活的，只是从逻辑上当前函数没有返回而已。例如，我们在CSocket中调用Receive函数，如果缓冲区中没有数据，这个函数就会一直等待，直到有数据才返回。而此时，当前线程还会继续处理各种各样的消息。如果主窗口和调用函数在同一个线程中，除非你在特殊的界面操作函数中调用，其实主界面还是应该可以刷新。socket接收数据的另外一个函数recv则是一个阻塞调用的例子。当socket工作在阻塞模式的时候， 如果没有数据的情况下调用该函数，则当前线程就会被挂起，直到有数据为止。</p><p><em>非阻塞</em><br>    非阻塞和阻塞的概念相对应，指在不能立刻得到结果之前，该函数不会阻塞当前线程，而会立刻返回。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;阻塞与非阻塞的区别&quot;&gt;&lt;a href=&quot;#阻塞与非阻塞的区别&quot; class=&quot;headerlink&quot; title=&quot;阻塞与非阻塞的区别&quot;&gt;&lt;/a&gt;阻塞与非阻塞的区别&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;概念性理解：&lt;/strong&gt;&lt;br&gt;1.阻塞就是干不完不准回来；&lt;
       
     
     </summary>
